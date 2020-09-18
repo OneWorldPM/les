@@ -1,7 +1,7 @@
 'use strict';
 var Main = function () {
     var $html = $('html'), $win = $(window), wrap = $('.app-aside'), MEDIAQUERY = {}, app = $('#app');
-    var base_url = "http://localhost/les/";
+    var base_url = "https://yourconference.live/LES/";
     MEDIAQUERY = {
         desktopXL: 1200,
         desktop: 992,
