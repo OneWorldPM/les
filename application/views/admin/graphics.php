@@ -9,7 +9,7 @@
                             <fieldset>
                                 <h3 class="box-title">Update Graphics</h3>
                                 <div class="form-group">
-                                    <label>Login / Register / Forgot / Main hall</label>
+                                    <label>Login / Register / Forgot Password / Main hall / Change Password </label>
                                     <span class="input-icon">
                                         <input type="file" class="form-control" name="main_background" id="main_background">
                                         <i class="fa fa-user"></i> 
@@ -17,7 +17,7 @@
                                     <img src="<?= base_url() ?>front_assets/images/tiada.jpg" alt="les" style="width:30%">
                                 </div>
                                 <div class="form-group">
-                                    <label>Session List / Session View / My Backpack</label>
+                                    <label>Session List / Session View / My Backpack / Sponsor / Sponsor View / Attend View</label>
                                     <span class="input-icon">
                                         <input type="file" class="form-control" name="sub_background" id="sub_background">
                                         <i class="fa fa-user"></i> 
