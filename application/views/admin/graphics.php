@@ -17,12 +17,20 @@
                                     <img src="<?= base_url() ?>front_assets/images/tiada.jpg" alt="les" style="width:30%">
                                 </div>
                                 <div class="form-group">
-                                    <label>Session List / Session View / My Backpack / Sponsor / Sponsor View / Attend View</label>
+                                    <label>Session List / Session View / My Backpack / Attend View</label>
                                     <span class="input-icon">
                                         <input type="file" class="form-control" name="sub_background" id="sub_background">
                                         <i class="fa fa-user"></i> 
                                     </span>
                                     <img src="<?= base_url() ?>front_assets/images/bubble_bg_1920.jpg" alt="les" style="width:30%">
+                                </div>
+                                <div class="form-group">
+                                    <label>Expo / Expo View</label>
+                                    <span class="input-icon">
+                                        <input type="file" class="form-control" name="expo_background" id="expo_background">
+                                        <i class="fa fa-user"></i> 
+                                    </span>
+                                    <img src="<?= base_url() ?>front_assets/images/expo_background.jpg" alt="les" style="width:30%">
                                 </div>
                                 <div class="form-actions">
                                     <button type="submit" class="btn btn-primary form-control" id="btn_image_upload">

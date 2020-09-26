@@ -6,7 +6,7 @@
 
 <?php
 $sponsors_logo = ($sponsor->sponsors_logo == '') ? 'logo_placeholder.png' : $sponsor->sponsors_logo;
-$sponsor_cover = ($sponsor->sponsor_cover == '') ? 'tiada_default_cover.jpg' : $sponsor->sponsor_cover;
+$sponsor_cover = ($sponsor->sponsor_cover == '') ? 'expo_background.jpg' : $sponsor->sponsor_cover;
 ?>
 
 <main role="main">
@@ -15,8 +15,7 @@ $sponsor_cover = ($sponsor->sponsor_cover == '') ? 'tiada_default_cover.jpg' : $
     <div class="jumbotron" style="background-image: url(<?= base_url() ?>uploads/sponsors/<?= $sponsor_cover ?>?v=<?= rand(1, 100) ?>);background-size: 1930px;background-repeat: no-repeat;background-position: center;height: 600px;background-color: #272f31;">
         <span class="pull-right fishbowl" style="cursor: pointer;"><img src="<?= base_url() ?>front_assets/sponsor/images/fishbowl.png" style="width: 165px;margin-top: 30px;"><br><span style="color: white;font-size: 15px;">click to leave your card</span></span>
         <?php
-        if ($sponsor->embed_code != '' && $sponsor->video_position == '1')
-        {
+        if ($sponsor->embed_code != '' && $sponsor->video_position == '1') {
             ?>
             <div id="tv-container">
                 <div id="monitor">
@@ -25,7 +24,7 @@ $sponsor_cover = ($sponsor->sponsor_cover == '') ? 'tiada_default_cover.jpg' : $
                     </div>
                 </div>
             </div>
-        <?php
+            <?php
         }
         ?>
     </div>
@@ -88,7 +87,7 @@ $sponsor_cover = ($sponsor->sponsor_cover == '') ? 'tiada_default_cover.jpg' : $
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">
-                            Chat with <?= substr($sponsor->company_name, 0, 18).'...' ?>
+                            Chat with <?= substr($sponsor->company_name, 0, 18) . '...' ?>
                             <span class="schedule-meet-btn small-edit-btn badge badge-primary pull-right">
                                 <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Schedule a meet
                             </span>
@@ -157,10 +156,10 @@ $sponsor_cover = ($sponsor->sponsor_cover == '') ? 'tiada_default_cover.jpg' : $
             </div>
 
         </div>
-        <?php $meeting_room_allowed_sposors = array('22', '15', '36', '9', '7');
-        if (in_array($sponsor->sponsors_id, $meeting_room_allowed_sposors))
-        {
-            echo '<a target="_blank" href="'.base_url().'sponsor-admin/VchatRoom/join/'.$sponsor->sponsors_id.'"><img src="'.base_url().'front_assets/sponsor/images/tx_flag_75.png"></a>';
+        <?php
+        $meeting_room_allowed_sposors = array('22', '15', '36', '9', '7');
+        if (in_array($sponsor->sponsors_id, $meeting_room_allowed_sposors)) {
+            echo '<a target="_blank" href="' . base_url() . 'sponsor-admin/VchatRoom/join/' . $sponsor->sponsors_id . '"><img src="' . base_url() . 'front_assets/sponsor/images/tx_flag_75.png"></a>';
         }
         ?>
         <hr>
@@ -216,23 +215,25 @@ $sponsor_cover = ($sponsor->sponsor_cover == '') ? 'tiada_default_cover.jpg' : $
             </div>
         </div>
     </div>
-<!--    <div class="modal fade" id="push_notification" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left; right: unset;">
-        <input type="hidden" id="push_notification_id" value="">
-        <div class="modal-dialog">
-            <div class="modal-content" style="border: 1px solid #ae0201;">
-                <div class="modal-body">
-                    <div class="row" style="padding-top: 10px; padding-bottom: 20px;">
-                        <div class="col-sm-12">
-                            <div style="color:#ae0201; font-size: 16px; font-weight: 800; " id="push_notification_message"></div>
+    <!--    
+    <div class="modal fade" id="push_notification" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left; right: unset;">
+            <input type="hidden" id="push_notification_id" value="">
+            <div class="modal-dialog">
+                <div class="modal-content" style="border: 1px solid #ae0201;">
+                    <div class="modal-body">
+                        <div class="row" style="padding-top: 10px; padding-bottom: 20px;">
+                            <div class="col-sm-12">
+                                <div style="color:#ae0201; font-size: 16px; font-weight: 800; " id="push_notification_message"></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="close" style="padding: 10px; color: #fff; background-color: #ae0201; opacity: 1;" data-dismiss="modal" aria-hidden="true">Close</button>
+                    <div class="modal-footer">
+                        <button type="button" class="close" style="padding: 10px; color: #fff; background-color: #ae0201; opacity: 1;" data-dismiss="modal" aria-hidden="true">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>-->
+    -->
     <div class="modal fade" id="push_notification_sponsor" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left; right: unset;">
         <input type="hidden" id="push_notification_sponsor_id" value="">
         <div class="modal-dialog">

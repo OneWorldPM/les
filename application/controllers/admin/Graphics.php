@@ -17,7 +17,7 @@ class Graphics extends CI_Controller {
     }
 
     public function update_background() {
-        
+
         if ($_FILES['main_background']['name'] != "") {
             $config = array(
                 'upload_path' => "./front_assets/images/",
@@ -34,7 +34,7 @@ class Graphics extends CI_Controller {
             $this->upload->initialize($config);
             $this->upload->do_upload("main_background");
         }
-        
+
         if ($_FILES['sub_background']['name'] != "") {
             $config = array(
                 'upload_path' => "./front_assets/images/",
@@ -50,6 +50,23 @@ class Graphics extends CI_Controller {
             $config['file_name'] = 'bubble_bg_1920.jpg';
             $this->upload->initialize($config);
             $this->upload->do_upload("sub_background");
+        }
+
+        if ($_FILES['expo_background']['name'] != "") {
+            $config = array(
+                'upload_path' => "./front_assets/images/",
+                'allowed_types' => "jpg|png|jpeg",
+                'overwrite' => TRUE
+            );
+            $this->load->library('upload', $config);
+            $_FILES["expo_background"]['name'] = $_FILES['expo_background']['name'];
+            $_FILES["expo_background"]['type'] = $_FILES['expo_background']['type'];
+            $_FILES["expo_background"]['tmp_name'] = $_FILES['expo_background']['tmp_name'];
+            $_FILES["expo_background"]['error'] = $_FILES['expo_background']['error'];
+            $_FILES["expo_background"]['size'] = $_FILES['expo_background']['size'];
+            $config['file_name'] = 'expo_background.jpg';
+            $this->upload->initialize($config);
+            $this->upload->do_upload("expo_background");
         }
         redirect('admin/graphics');
     }

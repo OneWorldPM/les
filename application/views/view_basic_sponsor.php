@@ -1,6 +1,6 @@
 <?php
 $sponsors_logo = ($sponsor->sponsors_logo == '') ? 'logo_placeholder.png' : $sponsor->sponsors_logo;
-$sponsor_cover = ($sponsor->sponsor_cover == '') ? 'tiada_default_cover.jpg' : $sponsor->sponsor_cover;
+$sponsor_cover = ($sponsor->sponsor_cover == '') ? 'expo_background.jpg' : $sponsor->sponsor_cover;
 ?>
 
 <link rel="stylesheet" href="https://www.yourconference.live/demo//assets/css/sponsor_02.css" type="text/css">

@@ -88,7 +88,7 @@
         }
     }
 </style>
-<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/lounge-bg.jpg); top: 0; padding-top: 20px;">
+<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/expo_background.jpg); top: 0; padding-top: 20px;">
     <div class="container container-fullscreen" id="home_first_section">
             <div class="row">
                 <div class="col-md-12" style="text-align: -webkit-center; text-align: -moz-center; margin-left: 45px;">
