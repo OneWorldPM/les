@@ -161,7 +161,7 @@ class M_presenters extends CI_Model {
                                 $pid = $this->db->insert_id();
                                 if ($val['profile'] != "") {
                                     $file_name = 'presenter_' . $this->generateRandomString() . '.jpg';
-                                    $url = 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80';
+                                    $url = $val['profile'];
                                     $img = './uploads/presenter_photo/' . $file_name;
                                     file_put_contents($img, file_get_contents($url));
                                     $this->db->update('presenter', array('presenter_photo' => $file_name), array('presenter_id' => $pid));
