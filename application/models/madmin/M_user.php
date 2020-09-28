@@ -157,7 +157,7 @@ class M_user extends CI_Model {
                                     'first_name' => trim($val['First_Name']),
                                     'last_name' => trim($val['Last_Name']),
                                     'email' => trim($val['Email_Address']),
-                                    'username' => "",
+                                    'username' => trim($val['Username']),
                                     'password' => base64_encode($val['Password']),
                                     'specialty' => trim($val['Specialty']),
                                     'address' => trim($val['Address']),
