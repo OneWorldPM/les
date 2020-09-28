@@ -57,4 +57,13 @@ class Presenters extends CI_Controller {
         }
     }
 
+    function import_presenter() {
+        $result = $this->mpresenters->import_presenter();
+        if ($result) {
+            header('location:' . base_url() . 'admin/presenters');
+        } else {
+            header('location:' . base_url() . 'admin/presenters');
+        }
+    }
+
 }

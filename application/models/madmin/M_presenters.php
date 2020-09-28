@@ -121,4 +121,73 @@ class M_presenters extends CI_Model {
         return $config;
     }
 
+    function import_presenter() {
+        $this->load->library('csvimport');
+        if ($_FILES['import_file']['error'] != 4) {
+            $pathMain = FCPATH . "/uploads/csv/";
+            $filename = $this->generateRandomString() . '_' . $_FILES['import_file']['name'];
+            $result = $this->common->do_upload('import_file', $pathMain, $filename);
+            $file_path = $result['upload_data']['full_path'];
+            if ($this->csvimport->get_array($file_path)) {
+                $csv_array = $this->csvimport->get_array($file_path);
+                if (!empty($csv_array)) {
+                    foreach ($csv_array as $val) {
+                        if ($val['email'] != "" && $val['password'] != "") {
+                            $or_where = '(email = "' . trim($val['email']) . '")';
+                            $this->db->where($or_where);
+                            $presenter = $this->db->get('presenter');
+                            if ($presenter->num_rows() > 0) { //Check Email or Phone exist with new User 
+                                continue;
+                            } else {
+                                $data = array(
+                                    'first_name' => $val['first_name'],
+                                    'last_name' => $val['last_name'],
+                                    'presenter_name' => $val['first_name'] . ' ' . $val['last_name'],
+                                    'title' => $val['title'],
+                                    'degree' => $val['degree'],
+                                    'specialty' => $val['specialty'],
+                                    'designation' => $val['designation'],
+                                    'phone' => $val['phone'],
+                                    'bio' => $val['bio'],
+                                    'company_name' => $val['company_name'],
+                                    'email' => $val['email'],
+                                    'password' => $val['password'],
+                                    'facebook' => $val['facebook'],
+                                    'linkin' => $val['linkin'],
+                                    'twitter' => $val['twitter'],
+                                    'reg_date' => date("Y-m-d h:i:s")
+                                );
+                                $this->db->insert('presenter', $data);
+                                $pid = $this->db->insert_id();
+                                if ($val['profile'] != "") {
+                                    $file_name = 'presenter_' . $this->generateRandomString() . '.jpg';
+                                    $url = 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80';
+                                    $img = './uploads/presenter_photo/' . $file_name;
+                                    file_put_contents($img, file_get_contents($url));
+                                    $this->db->update('presenter', array('presenter_photo' => $file_name), array('presenter_id' => $pid));
+                                }
+                                return TRUE;
+                            }
+                        }
+                    }
+                } else {
+                    return FALSE;
+                }
+            } else {
+                return FALSE;
+            }
+        } else {
+            return FALSE;
+        }
+    }
+
+    function generateRandomString($length = 6) {
+        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, strlen($characters) - 1)];
+        }
+        return $randomString;
+    }
+
 }

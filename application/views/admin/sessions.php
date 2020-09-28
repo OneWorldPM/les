@@ -11,6 +11,37 @@
         <!-- end: PAGE TITLE -->
         <!-- start: DYNAMIC TABLE -->
         <div class="container-fluid container-fullw">
+<!--            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel panel-primary" id="panel5">
+                        <div class="panel-heading">
+                            <h4 class="panel-title text-white">Import CSV for Sessions</h4>
+                        </div>
+                        <form class="form-login" id="frm_import_sessions" name="frm_import_sessions" enctype="multipart/form-data" method="post" action="<?= base_url() ?>admin/sessions/import_sessions">
+                            <div class="panel-body bg-white" style="border: 1px solid #b2b7bb;">
+                                <div class="form-body">
+                                    <div class="form-group">
+                                        <a href="<?= base_url() ?>uploads/presenter_import_example.csv" download>Download Sample CSV</a>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-large">Select Choose File :</label>
+                                        <label id="projectinput8" class="file center-block">
+                                            <input type="file" name="import_file" accept=".csv" id="import_file">
+                                            <span class="file-custom"></span>
+                                        </label><br>
+                                        <span id="errorimport_file" style="color:red;"></span>
+                                    </div>
+                                </div>
+                                <div class="form-actions center">
+                                    <button type="submit" id="btn_import" class="btn btn-info">
+                                        <i class="la la-check-square-o"></i> Import
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>-->
             <div class="row">
                 <div class="panel panel-primary" id="panel5">
                     <div class="panel-heading">
@@ -38,15 +69,15 @@
                                         <select name="session_type" id="session_type" class="form-control">
                                             <option value="">Select</option>
                                             <?php
-                                                if(!empty($session_types)){
-                                                    foreach ($session_types as $type) {
-                                                        if($type->sessions_type != ''){
-                                                            ?>
-                                                                <option value="<?= $type->sessions_type_id ?>"><?= $type->sessions_type ?></option>
-                                                            <?php
-                                                        }
+                                            if (!empty($session_types)) {
+                                                foreach ($session_types as $type) {
+                                                    if ($type->sessions_type != '') {
+                                                        ?>
+                                                        <option value="<?= $type->sessions_type_id ?>"><?= $type->sessions_type ?></option>
+                                                        <?php
                                                     }
                                                 }
+                                            }
                                             ?>
                                         </select>
                                     </div>
@@ -59,8 +90,8 @@
                     </div>
                 </div>
             </div>
-			
-			<div class="row">
+
+            <div class="row">
                 <div class="panel panel-primary" id="panel5">
                     <div class="panel-heading">
                         <h4 class="panel-title text-white">Sessions</h4>
@@ -183,10 +214,21 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
+
+        $("#btn_import").on("click", function () {
+            if ($('#import_file').val() == '') {
+                alertify.error('Select File');
+                return false;
+            } else {
+                return true; //submit form
+            }
+            return false; //Prevent form to submitting
+        });
+
         $("#sessions_table").dataTable({
             "ordering": false,
         });
-		
-		$('.datepicker').datepicker();
+
+        $('.datepicker').datepicker();
     });
 </script>

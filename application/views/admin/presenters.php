@@ -1,171 +1,199 @@
 <div class="main-content" >
     <div class="wrap-content container" id="container">
-        <form name="frm_credit" id="frm_credit" method="POST" action="" enctype="multipart/form-data">
-            <div class="container-fluid container-fullw bg-white">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="panel panel-primary" id="panel5">
-                            <div class="panel-heading">
-                                <h4 class="panel-title text-white">Add Presenters</h4>
-                            </div>
-                            <div class="panel-body bg-white" style="border: 1px solid #b2b7bb;">
-                                <div class="row">
-                                    <div class="col-md-8 col-md-offset-2">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="text-large">First Name:</label>
-                                                    <input type="text" name="first_name" id="first_name" placeholder="First Name" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="text-large">Last Name:</label>
-                                                    <input type="text" name="last_name" id="last_name" placeholder="Last Name" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                                <label class="text-large">Cell Phone :</label>
-                                                <input type="text" name="phone" id="phone" placeholder="Cell Phone" class="form-control">
-                                                <input type="hidden" name="presenter_id" id="presenter_id" value="0">
-                                                <input type="hidden" name="cr_type" id="cr_type" value="save">
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="text-large">Title:</label>
-                                                    <input type="text" name="title" id="title" placeholder="Title" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="text-large">Degree:</label>
-                                                    <input type="text" name="degree" id="degree" placeholder="Degree" class="form-control">
-                                                </div>
-                                            </div>
-<!--                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label class="text-large">Specialty:</label>
-                                                    <input type="text" name="specialty" id="specialty" placeholder="Specialty" class="form-control">
-                                                </div>
-                                            </div>-->
-                                        </div>
 
-                                        <div class="form-group">
-                                            <label class="text-large">Bio:</label>
-                                            <textarea class="form-control" style="color: #000;" name="bio" id="bio" placeholder="Bio"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="text-large">Company Name:</label>
-                                            <input type="text" name="company_name" id="company_name" placeholder="Company Name" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="text-large">Email:</label>
-                                            <input type="email" name="email" id="email" placeholder="Email" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="text-large">Set Password:</label>
-                                            <input type="text" name="password" id="password" placeholder="Password" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Presenter Profile</label>
-                                            <input type="file" class="form-control" name="presenter_photo" id="presenter_photo">
-                                            <img src="" id="presenter_profile" style="height: 100px; width: 100px; display: none;">
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label class="text-large">Facebook:</label>
-                                                    <input type="text" name="facebook" id="facebook" placeholder="Facebook" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label class="text-large">Linkin:</label>
-                                                    <input type="text" name="linkin" id="linkin" placeholder="Linkin" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label class="text-large">Twitter:</label>
-                                                    <input type="text" name="twitter" id="twitter" placeholder="Twitter" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <h5 class="over-title margin-bottom-15">
-                                            <button type="button" id="save_presenter" name="save_presenter" class="btn btn-green add-row">
-                                                Submit
-                                            </button>
-                                        </h5>
+        <div class="container-fluid container-fullw bg-white">
+            <div class="row">
+                <div class="col-md-5 col-md-offset-1">
+                    <div class="panel panel-primary" id="panel5">
+                        <div class="panel-heading">
+                            <h4 class="panel-title text-white">Import CSV for Presenters</h4>
+                        </div>
+                        <form class="form-login" id="frm_import_presenters" name="frm_import_presenters" enctype="multipart/form-data" method="post" action="<?= base_url() ?>admin/presenters/import_presenter">
+                            <div class="panel-body bg-white" style="border: 1px solid #b2b7bb;">
+                                <div class="form-body">
+                                    <div class="form-group">
+                                        <a href="<?= base_url() ?>uploads/presenter_import_example.csv" download>Download Sample CSV</a>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-large">Select Choose File :</label>
+                                        <label id="projectinput8" class="file center-block">
+                                            <input type="file" name="import_file" accept=".csv" id="import_file">
+                                            <span class="file-custom"></span>
+                                        </label><br>
+                                        <span id="errorimport_file" style="color:red;"></span>
                                     </div>
                                 </div>
+                                <div class="form-actions center">
+                                    <button type="submit" id="btn_import" class="btn btn-info">
+                                        <i class="la la-check-square-o"></i> Import
+                                    </button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
-                <div class="row">                     
-                    <div class="col-md-12">
-                        <div class="panel panel-light-primary" id="panel5">
-                            <div class="panel-heading">
-                                <h4 class="panel-title text-white">Presenter</h4>
-                            </div>
-                            <div class="panel-body bg-white" style="border: 1px solid #b2b7bb;">
-                                <span id="errortxtsendemail" style="color:red;"></span>
-                                <h5 class="over-title margin-bottom-15 margin-top-5">Presenter Login Link : <span class="text-bold"><a href="<?= base_url() ?>presenter"><?= base_url() ?>presenter</a></span></h5>
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered table-hover table-full-width" id="presenter_table">
-                                        <thead>
-                                            <tr>
-                                                <th>Photo</th>
-                                                <th>Presenter Name</th> 
-                                                <th>Title</th>
-                                                <th>Company Name</th>
-                                                <th>Email</th>
-                                                <th>Password</th>
-                                                <th>Action</th>                          
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            if (!empty($presenters)) {
-                                                foreach ($presenters as $val) {
-                                                    ?>
-                                                    <tr>
-                                                        <td>
-                                                            <?php if ($val->presenter_photo != "") { ?>
-                                                                <img src="<?= base_url() ?>uploads/presenter_photo/<?= $val->presenter_photo ?>" style="height: 40px; width: 40px;">
-                                                            <?php } ?>
-                                                        </td>
-                                                        <td><?= $val->first_name . ' ' . $val->last_name ?></td>
-                                                        <td><?= $val->title ?></td>
-                                                        <td><?= $val->company_name ?></td>
-                                                        <td><?= $val->email ?></td>
-                                                        <td><?= $val->password ?></td>
-                                                        <td> 
-                                                            <a class="btn btn-primary btn-sm edit_presenter" data-id="<?= $val->presenter_id ?>" href="#">
-                                                                <i class="fa fa-pencil"></i> Edit
-                                                            </a>
-                                                            <a class="btn btn-danger btn-sm delete_presenter" href="<?= base_url() . 'admin/presenters/deletePresenter/' . $val->presenter_id ?>">
-                                                                <i class="fa fa-trash-o"></i> Delete
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <?php
-                                                }
-                                            }
-                                            ?>
-                                        </tbody>
-                                    </table>
+                <div class="col-md-5 col-md-offset-0">
+                    <div class="panel panel-primary" id="panel5">
+                        <div class="panel-heading">
+                            <h4 class="panel-title text-white">Add Presenters</h4>
+                        </div>
+                        <div class="panel-body bg-white" style="border: 1px solid #b2b7bb;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-large">First Name:</label>
+                                                <input type="text" name="first_name" id="first_name" placeholder="First Name" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-large">Last Name:</label>
+                                                <input type="text" name="last_name" id="last_name" placeholder="Last Name" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <label class="text-large">Cell Phone :</label>
+                                            <input type="text" name="phone" id="phone" placeholder="Cell Phone" class="form-control">
+                                            <input type="hidden" name="presenter_id" id="presenter_id" value="0">
+                                            <input type="hidden" name="cr_type" id="cr_type" value="save">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-large">Title:</label>
+                                                <input type="text" name="title" id="title" placeholder="Title" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-large">Degree:</label>
+                                                <input type="text" name="degree" id="degree" placeholder="Degree" class="form-control">
+                                            </div>
+                                        </div>
+                                        <!--                                            <div class="col-md-4">
+                                                                                        <div class="form-group">
+                                                                                            <label class="text-large">Specialty:</label>
+                                                                                            <input type="text" name="specialty" id="specialty" placeholder="Specialty" class="form-control">
+                                                                                        </div>
+                                                                                    </div>-->
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="text-large">Bio:</label>
+                                        <textarea class="form-control" style="color: #000;" name="bio" id="bio" placeholder="Bio"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-large">Company Name:</label>
+                                        <input type="text" name="company_name" id="company_name" placeholder="Company Name" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-large">Email:</label>
+                                        <input type="email" name="email" id="email" placeholder="Email" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-large">Set Password:</label>
+                                        <input type="text" name="password" id="password" placeholder="Password" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Presenter Profile</label>
+                                        <input type="file" class="form-control" name="presenter_photo" id="presenter_photo">
+                                        <img src="" id="presenter_profile" style="height: 100px; width: 100px; display: none;">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="text-large">Facebook:</label>
+                                                <input type="text" name="facebook" id="facebook" placeholder="Facebook" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="text-large">Linkin:</label>
+                                                <input type="text" name="linkin" id="linkin" placeholder="Linkin" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="text-large">Twitter:</label>
+                                                <input type="text" name="twitter" id="twitter" placeholder="Twitter" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h5 class="over-title margin-bottom-15">
+                                        <button type="button" id="save_presenter" name="save_presenter" class="btn btn-green add-row">
+                                            Submit
+                                        </button>
+                                    </h5>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </form>   
+            <div class="row">                     
+                <div class="col-md-12">
+                    <div class="panel panel-light-primary" id="panel5">
+                        <div class="panel-heading">
+                            <h4 class="panel-title text-white">Presenter</h4>
+                        </div>
+                        <div class="panel-body bg-white" style="border: 1px solid #b2b7bb;">
+                            <span id="errortxtsendemail" style="color:red;"></span>
+                            <h5 class="over-title margin-bottom-15 margin-top-5">Presenter Login Link : <span class="text-bold"><a href="<?= base_url() ?>presenter"><?= base_url() ?>presenter</a></span></h5>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover table-full-width" id="presenter_table">
+                                    <thead>
+                                        <tr>
+                                            <th>Photo</th>
+                                            <th>Presenter Name</th> 
+                                            <th>Title</th>
+                                            <th>Company Name</th>
+                                            <th>Email</th>
+                                            <th>Password</th>
+                                            <th>Action</th>                          
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        if (!empty($presenters)) {
+                                            foreach ($presenters as $val) {
+                                                ?>
+                                                <tr>
+                                                    <td>
+                                                        <?php if ($val->presenter_photo != "") { ?>
+                                                            <img src="<?= base_url() ?>uploads/presenter_photo/<?= $val->presenter_photo ?>" style="height: 40px; width: 40px;">
+                                                        <?php } ?>
+                                                    </td>
+                                                    <td><?= $val->first_name . ' ' . $val->last_name ?></td>
+                                                    <td><?= $val->title ?></td>
+                                                    <td><?= $val->company_name ?></td>
+                                                    <td><?= $val->email ?></td>
+                                                    <td><?= $val->password ?></td>
+                                                    <td> 
+                                                        <a class="btn btn-primary btn-sm edit_presenter" data-id="<?= $val->presenter_id ?>" href="#">
+                                                            <i class="fa fa-pencil"></i> Edit
+                                                        </a>
+                                                        <a class="btn btn-danger btn-sm delete_presenter" href="<?= base_url() . 'admin/presenters/deletePresenter/' . $val->presenter_id ?>">
+                                                            <i class="fa fa-trash-o"></i> Delete
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <?php
+                                            }
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- end: DYNAMIC TABLE -->
     </div>
 </div>
@@ -207,6 +235,17 @@ switch ($msg) {
         $('#presenter_table').dataTable({
             "aaSorting": []
         });
+
+        $("#btn_import").on("click", function () {
+            if ($('#import_file').val() == '') {
+                alertify.error('Select File');
+                return false;
+            } else {
+                return true; //submit form
+            }
+            return false; //Prevent form to submitting
+        });
+
 
         $('#save_presenter').click(function () {
             if ($('#first_name').val() == '') {
