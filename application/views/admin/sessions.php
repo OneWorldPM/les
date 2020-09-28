@@ -21,7 +21,7 @@
                             <div class="panel-body bg-white" style="border: 1px solid #b2b7bb;">
                                 <div class="form-body">
                                     <div class="form-group">
-                                        <a href="<?= base_url() ?>uploads/presenter_import_example.csv" download>Download Sample CSV</a>
+                                        <a href="<?= base_url() ?>uploads/sessions_import_example.csv" download>Download Sample CSV</a>
                                     </div>
                                     <div class="form-group">
                                         <label class="text-large">Select Choose File :</label>

@@ -22,23 +22,13 @@
                 <div class="col-md-5 col-md-offset-1">
                     <div class="panel panel-primary" id="panel5">
                         <div class="panel-heading">
-                            <h4 class="panel-title text-white">Import CSV for Non-Member</h4>
+                            <h4 class="panel-title text-white">Import CSV for User</h4>
                         </div>
                         <div class="panel-body bg-white" style="border: 1px solid #b2b7bb;">
                             <form class="form-login" id="frm_import_full_conference_with_roundtables" name="frm_import_full_conference_with_roundtables" enctype="multipart/form-data" method="post" action="<?= base_url() ?>admin/user/import_user">
                                 <div class="form-body">
                                     <div class="form-group">
                                         <a href="<?= base_url() ?>uploads/user_import_sample.csv" download>Download Sample CSV</a>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="text-large">Select Member Type :</label>
-                                        <select class="form-control" id="member_type" name="member_type">
-                                            <option value="">Select Member Type</option>
-                                            <option value="full_conference_with_roundtables">Import for Full Conference - with roundtables</option>
-                                            <option value="full_conference_no_roundtables">Import for Full Conference - no roundtables</option>
-                                            <option value="expo_only">Expo only</option>
-                                        </select>
-                                        <span id="errormember_type" style="color:red;"></span>
                                     </div>
                                     <div class="form-group">
                                         <label class="text-large">Select Choose File :</label>
@@ -72,9 +62,11 @@
                                             <label class="text-large">Select Member Type :</label>
                                             <select class="form-control" id="member_type_manualy" name="member_type">
                                                 <option value="">Select Member Type</option>
-                                                <option value="full_conference_with_roundtables">Import for Full Conference - with roundtables</option>
-                                                <option value="full_conference_no_roundtables">Import for Full Conference - no roundtables</option>
-                                                <option value="expo_only">Expo Only</option>
+                                                <option value="LES Member">LES Member</option>
+                                                <option value="New Member and Meeting Combo">New Member and Meeting Combo</option>
+                                                <option value="Non-Member">Non-Member</option>
+                                                <option value="Corporate & Non-profit - Group Deal">Corporate & Non-profit - Group Deal</option>
+                                                <option value="Speaker">Speaker</option>
                                             </select>
                                             <span id="errormember_type_manualy" style="color:red;"></span>
                                         </div>
@@ -125,7 +117,6 @@
                                             <th>Username</th>
                                             <th>Password</th>
                                             <th>Address</th>
-                                            <th>Address Type</th>
                                             <th>City</th>
                                             <th>State</th>
                                             <th>Country</th>
@@ -155,7 +146,6 @@
                                                     <td><?= $val->username ?></td>
                                                     <td><?= base64_decode($val->password) ?></td>
                                                     <td><?= $val->address ?></td>
-                                                    <td><?= $val->address_cont ?></td>
                                                     <td><?= $val->city ?></td>
                                                     <td><?= $val->state ?></td>
                                                     <td><?= $val->country ?></td>
@@ -228,10 +218,7 @@ switch ($msg) {
             "ordering": true,
         });
         $("#btn_import").on("click", function () {
-            if ($('#member_type').val() == '') {
-                alertify.error('Select Import Member Type');
-                return false;
-            } else if ($('#import_file').val() == '') {
+            if ($('#import_file').val() == '') {
                 alertify.error('Select File');
                 return false;
             } else {

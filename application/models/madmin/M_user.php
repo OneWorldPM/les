@@ -135,9 +135,9 @@ class M_user extends CI_Model {
                 $csv_array = $this->csvimport->get_array($file_path);
                 if (!empty($csv_array)) {
                     foreach ($csv_array as $val) {
-                        if ($val['registrant_email'] != "" && $val['tiada_member_username'] != "" && $val['registrant_password'] != "") {
+                        if ($val['Email_Address'] != "" && $val['Password'] != "") {
                             $post = $this->input->post();
-                            $or_where = '(username = "' . trim($val['tiada_member_username']) . '")';
+                            $or_where = '(email = "' . trim($val['Email_Address']) . '")';
                             $this->db->where($or_where);
                             $customer = $this->db->get('customer_master');
                             if ($customer->num_rows() > 0) { //Check Email or Phone exist with new User 
@@ -153,21 +153,47 @@ class M_user extends CI_Model {
                                 }
                                 $set = array(
                                     "register_id" => $register_id,
-                                    'first_name' => "",
-                                    'last_name' => "",
-                                    'email' => trim($val['registrant_email']),
-                                    'username' => trim($val['tiada_member_username']),
-                                    'password' => base64_encode($val['registrant_password']),
-                                    'customer_type' => $post['member_type'],
-                                    'member_status' => "non-member",
+                                    "user_id" => trim($val['Registration_Badge_ID']),
+                                    'first_name' => trim($val['First_Name']),
+                                    'last_name' => trim($val['Last_Name']),
+                                    'email' => trim($val['Email_Address']),
+                                    'username' => "",
+                                    'password' => base64_encode($val['Password']),
+                                    'specialty' => trim($val['Specialty']),
+                                    'address' => trim($val['Address']),
+                                    'address_cont' => trim($val['Address_cont']),
+                                    'city' => trim($val['City']),
+                                    'state' => trim($val['State']),
+                                    'country' => trim($val['Country']),
+                                    'phone' => trim($val['Phone']),
+                                    'company_name' => trim($val['Organization']),
+                                    'title' => trim($val['Title']),
+                                    'twitter_id' => trim($val['twitter_id']),
+                                    'facebook_id' => trim($val['facebook_id']),
+                                    'instagram_id' => trim($val['instagram_id']),
+                                    'customer_type' => $val['Attendee_Type_Name'],
+                                    'member_status' => $val['Attendee_Type_Name'],
+                                    'website' => $val['Website'],
+                                    'status' => 1,
+                                    'event_date' => date("Y-m-d", strtotime($val['Event_Date'])),
                                     'register_date' => date("Y-m-d h:i")
                                 );
                                 $this->db->insert("customer_master", $set);
+                                $cid = $this->db->insert_id();
+                                if ($val['Profile'] != "") {
+                                    $file_name = 'member_' . $this->generateRandomString() . '.jpg';
+                                    $url = $val['Profile'];
+                                    $img = './uploads/customer_profile/' . $file_name;
+                                    file_put_contents($img, file_get_contents($url));
+                                    $this->db->update('customer_master', array('profile' => $file_name), array('cust_id' => $cid));
+                                }
                             }
                         }
                     }
+                    return TRUE;
+                } else {
+                    return FALSE;
                 }
-                return TRUE;
             } else {
                 return FALSE;
             }

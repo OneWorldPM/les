@@ -403,4 +403,13 @@ class Sessions extends CI_Controller {
         $this->load->view('admin/footer');
     }
 
+    function import_sessions() {
+        $result = $this->msessions->import_sessions();
+        if ($result) {
+            header('location:' . base_url() . 'admin/sessions?msg=S');
+        } else {
+            header('location:' . base_url() . 'admin/sessions?msg=E');
+        }
+    }
+
 }

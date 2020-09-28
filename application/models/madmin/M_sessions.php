@@ -878,5 +878,30 @@ class M_sessions extends CI_Model {
             return '';
         }
     }
+    
+    function import_user() {
+        $this->load->library('csvimport');
+        if ($_FILES['import_file']['error'] != 4) {
+            $pathMain = FCPATH . "/uploads/csv/";
+            $filename = $this->generateRandomString() . '_' . $_FILES['import_file']['name'];
+            $result = $this->common->do_upload('import_file', $pathMain, $filename);
+            $file_path = $result['upload_data']['full_path'];
+            if ($this->csvimport->get_array($file_path)) {
+                $csv_array = $this->csvimport->get_array($file_path);
+                if (!empty($csv_array)) {
+                    foreach ($csv_array as $val) {
+                        
+                    }
+                    return TRUE;
+                } else {
+                    return FALSE;
+                }
+            } else {
+                return FALSE;
+            }
+        } else {
+            return FALSE;
+        }
+    }
 
 }
