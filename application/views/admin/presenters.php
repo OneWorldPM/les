@@ -38,99 +38,101 @@
                             <h4 class="panel-title text-white">Add Presenters</h4>
                         </div>
                         <div class="panel-body bg-white" style="border: 1px solid #b2b7bb;">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="text-large">First Name:</label>
-                                                <input type="text" name="first_name" id="first_name" placeholder="First Name" class="form-control">
+                            <form class="form-login" id="frm_credit" name="frm_credit" enctype="multipart/form-data" method="post">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="text-large">First Name:</label>
+                                                    <input type="text" name="first_name" id="first_name" placeholder="First Name" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="text-large">Last Name:</label>
+                                                    <input type="text" name="last_name" id="last_name" placeholder="Last Name" class="form-control">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="text-large">Last Name:</label>
-                                                <input type="text" name="last_name" id="last_name" placeholder="Last Name" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
                                         <div class="form-group">
-                                            <label class="text-large">Cell Phone :</label>
-                                            <input type="text" name="phone" id="phone" placeholder="Cell Phone" class="form-control">
-                                            <input type="hidden" name="presenter_id" id="presenter_id" value="0">
-                                            <input type="hidden" name="cr_type" id="cr_type" value="save">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="text-large">Title:</label>
-                                                <input type="text" name="title" id="title" placeholder="Title" class="form-control">
+                                                <label class="text-large">Cell Phone :</label>
+                                                <input type="text" name="phone" id="phone" placeholder="Cell Phone" class="form-control">
+                                                <input type="hidden" name="presenter_id" id="presenter_id" value="0">
+                                                <input type="hidden" name="cr_type" id="cr_type" value="save">
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="text-large">Degree:</label>
-                                                <input type="text" name="degree" id="degree" placeholder="Degree" class="form-control">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="text-large">Title:</label>
+                                                    <input type="text" name="title" id="title" placeholder="Title" class="form-control">
+                                                </div>
                                             </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="text-large">Degree:</label>
+                                                    <input type="text" name="degree" id="degree" placeholder="Degree" class="form-control">
+                                                </div>
+                                            </div>
+                                            <!--                                            <div class="col-md-4">
+                                                                                            <div class="form-group">
+                                                                                                <label class="text-large">Specialty:</label>
+                                                                                                <input type="text" name="specialty" id="specialty" placeholder="Specialty" class="form-control">
+                                                                                            </div>
+                                                                                        </div>-->
                                         </div>
-                                        <!--                                            <div class="col-md-4">
-                                                                                        <div class="form-group">
-                                                                                            <label class="text-large">Specialty:</label>
-                                                                                            <input type="text" name="specialty" id="specialty" placeholder="Specialty" class="form-control">
-                                                                                        </div>
-                                                                                    </div>-->
-                                    </div>
 
-                                    <div class="form-group">
-                                        <label class="text-large">Bio:</label>
-                                        <textarea class="form-control" style="color: #000;" name="bio" id="bio" placeholder="Bio"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="text-large">Company Name:</label>
-                                        <input type="text" name="company_name" id="company_name" placeholder="Company Name" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="text-large">Email:</label>
-                                        <input type="email" name="email" id="email" placeholder="Email" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="text-large">Set Password:</label>
-                                        <input type="text" name="password" id="password" placeholder="Password" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Presenter Profile</label>
-                                        <input type="file" class="form-control" name="presenter_photo" id="presenter_photo">
-                                        <img src="" id="presenter_profile" style="height: 100px; width: 100px; display: none;">
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="text-large">Facebook:</label>
-                                                <input type="text" name="facebook" id="facebook" placeholder="Facebook" class="form-control">
+                                        <div class="form-group">
+                                            <label class="text-large">Bio:</label>
+                                            <textarea class="form-control" style="color: #000;" name="bio" id="bio" placeholder="Bio"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="text-large">Company Name:</label>
+                                            <input type="text" name="company_name" id="company_name" placeholder="Company Name" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="text-large">Email:</label>
+                                            <input type="email" name="email" id="email" placeholder="Email" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="text-large">Set Password:</label>
+                                            <input type="text" name="password" id="password" placeholder="Password" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Presenter Profile</label>
+                                            <input type="file" class="form-control" name="presenter_photo" id="presenter_photo">
+                                            <img src="" id="presenter_profile" style="height: 100px; width: 100px; display: none;">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="text-large">Facebook:</label>
+                                                    <input type="text" name="facebook" id="facebook" placeholder="Facebook" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="text-large">Linkin:</label>
+                                                    <input type="text" name="linkin" id="linkin" placeholder="Linkin" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="text-large">Twitter:</label>
+                                                    <input type="text" name="twitter" id="twitter" placeholder="Twitter" class="form-control">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="text-large">Linkin:</label>
-                                                <input type="text" name="linkin" id="linkin" placeholder="Linkin" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="text-large">Twitter:</label>
-                                                <input type="text" name="twitter" id="twitter" placeholder="Twitter" class="form-control">
-                                            </div>
-                                        </div>
+                                        <h5 class="over-title margin-bottom-15">
+                                            <button type="button" id="save_presenter" name="save_presenter" class="btn btn-green add-row">
+                                                Submit
+                                            </button>
+                                        </h5>
                                     </div>
-                                    <h5 class="over-title margin-bottom-15">
-                                        <button type="button" id="save_presenter" name="save_presenter" class="btn btn-green add-row">
-                                            Submit
-                                        </button>
-                                    </h5>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>

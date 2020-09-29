@@ -11,8 +11,8 @@
         <!-- end: PAGE TITLE -->
         <!-- start: DYNAMIC TABLE -->
         <div class="container-fluid container-fullw">
-<!--            <div class="row">
-                <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
                     <div class="panel panel-primary" id="panel5">
                         <div class="panel-heading">
                             <h4 class="panel-title text-white">Import CSV for Sessions</h4>
@@ -41,7 +41,7 @@
                         </form>
                     </div>
                 </div>
-            </div>-->
+            </div>
             <div class="row">
                 <div class="panel panel-primary" id="panel5">
                     <div class="panel-heading">
