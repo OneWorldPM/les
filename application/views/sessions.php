@@ -28,8 +28,6 @@
         background-color: #444;
         border-radius: 20px;
         background: rgb(223 223 223 / 60%);
-        max-width: 250px;
-        min-width: 250px;
         min-height: 150px;
         max-height: 150px;
         padding: 15px;
@@ -39,8 +37,6 @@
     .box_home_active {
         background-color: #ae0201;
         border-radius: 20px;
-        max-width: 250px;
-        min-width: 250px;
         min-height: 150px;
         max-height: 150px;
         padding: 15px;
@@ -70,7 +66,7 @@
                     if (isset($all_sessions_week) && !empty($all_sessions_week)) {
                         foreach ($all_sessions_week as $val) {
                             ?>
-                            <div class="col-md-3 col-sm-12" style="margin-bottom:30px;">
+                            <div class="col-md-2 col-sm-12" style="margin-bottom:30px;">
                                 <a class="icon-home" href="<?= base_url() ?>sessions/getsessions_data/<?= $val->sessions_date ?>"> 
                                     <?php
                                     $current_date = $this->uri->segment(3);
@@ -170,7 +166,7 @@
                                                                 </div>
                                                                 <div class="post-description">
                                                                     <p style="margin-bottom: 10px; color: black;"><?= $val->sessions_description ?></p>
-                                                                     <a class="button black-light button-3d rounded right" style="margin: 0px 0px 0px 5px; " href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
+                                                                    <a class="button black-light button-3d rounded right" style="margin: 0px 0px 0px 5px; " href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
                                                                     <a class="button black-light button-3d rounded right btn_unregister" style="margin: 0px 0;" data-sessions_id="<?= $val->sessions_id ?>" ><span>Unregister</span></a>
                                                                     <a class="button black-light button-3d rounded right save_to_swag_bag" data-sessions_id="<?= $val->sessions_id ?>" data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"><?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>
                                                                 </div>
@@ -189,17 +185,17 @@
                                                             </div>
                                                             <div class="post-description">
                                                                 <p style="margin-bottom: 10px; color: black;"><?= $val->sessions_description ?></p>
-                                                                <?php 
-                                                                    if ($val->status_sign_up_sessions == 1){
-                                                                        ?>
-                                                                            <a class="button black-light button-3d rounded right" style="margin: 0px 0px 0px 5px; " href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
-                                                                            <a class="button black-light button-3d rounded right btn_unregister" style="margin: 0px 0;" data-sessions_id="<?= $val->sessions_id ?>" ><span>Unregister</span></a>
-                                                                        <?php
-                                                                    }else{
-                                                                        ?>
-                                                                            <a class="button black-light button-3d rounded right" style="margin: 0px 0;"><span>Roundtable Full</span></a>
-                                                                        <?php
-                                                                    }
+                                                                <?php
+                                                                if ($val->status_sign_up_sessions == 1) {
+                                                                    ?>
+                                                                    <a class="button black-light button-3d rounded right" style="margin: 0px 0px 0px 5px; " href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
+                                                                    <a class="button black-light button-3d rounded right btn_unregister" style="margin: 0px 0;" data-sessions_id="<?= $val->sessions_id ?>" ><span>Unregister</span></a>
+                                                                    <?php
+                                                                } else {
+                                                                    ?>
+                                                                    <a class="button black-light button-3d rounded right" style="margin: 0px 0;"><span>Roundtable Full</span></a>
+                                                                    <?php
+                                                                }
                                                                 ?>
                                                                 <a class="button black-light button-3d rounded right save_to_swag_bag" data-sessions_id="<?= $val->sessions_id ?>" data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"><?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>
                                                             </div>
@@ -242,7 +238,7 @@
                                                     <div class="post-description">
                                                         <p style="margin-bottom: 10px; color: black;"><?= $val->sessions_description ?></p>
                                                         <a class="button black-light button-3d rounded right" style="margin: 0px 0;" href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>View</span></a>
-<!--                                                        <a class="button black-light button-3d rounded right save_to_swag_bag" data-sessions_id=" //= $val->sessions_id ?> " data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"> //= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>-->
+                                                        <!--                                                        <a class="button black-light button-3d rounded right save_to_swag_bag" data-sessions_id=" //= $val->sessions_id ?> " data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"> //= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>-->
                                                     </div>
                                                 </div>
                                             </div>

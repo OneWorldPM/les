@@ -17,6 +17,11 @@ class User extends CI_Controller {
 
     public function index() {
         $data['user'] = $this->muser->getUserData();
+        $import_user_session = $this->session->userdata("session_users");
+        if (!empty($import_user_session)) {
+            $data['import_user_session'] = $this->session->userdata("session_users");
+            $this->session->unset_userdata('session_users');
+        }
         $this->load->view('admin/header');
         $this->load->view('admin/user', $data);
         $this->load->view('admin/footer');

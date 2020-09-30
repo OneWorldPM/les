@@ -17,6 +17,11 @@ class Presenters extends CI_Controller {
 
     public function index() {
         $data['presenters'] = $this->mpresenters->get_presenters();
+        $import_presenter_session = $this->session->userdata("session_presenter");
+        if (!empty($import_presenter_session)) {
+            $data['import_presenter_session'] = $this->session->userdata("session_presenter");
+            $this->session->unset_userdata('session_presenter');
+        }
         $this->load->view('admin/header');
         $this->load->view('admin/presenters', $data);
         $this->load->view('admin/footer');

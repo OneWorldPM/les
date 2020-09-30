@@ -90,7 +90,50 @@
                     </div>
                 </div>
             </div>
-
+            <?php if (isset($import_sessions_details) && !empty($import_sessions_details)) { ?>
+                <div class="row">
+                    <div class="panel panel-primary" id="panel5">
+                        <div class="panel-heading">
+                            <h4 class="panel-title text-red">Import Fail Sessions</h4>
+                        </div>
+                        <div class="panel-body bg-white" style="border: 1px solid #b2b7bb!important;">
+                            <div class="row">
+                                <div class="col-md-12 table-responsive">
+                                    <table class="table table-bordered table-striped text-center" id="user">
+                                        <thead class="th_center">
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Session Title</th>
+                                                <th>Sessions Description</th>
+                                                <th>Sessions Date</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            if (isset($import_sessions_details) && !empty($import_sessions_details)) {
+                                                foreach ($import_sessions_details as $key => $val) {
+                                                    $key++;
+                                                    ?>
+                                                    <tr>
+                                                        <td><?= $key ?></td>
+                                                        <td><?= $val['session_title'] ?></td>
+                                                        <td><?= $val['sessions_description'] ?></td>
+                                                        <td><?= $val['sessions_date'] ?></td>
+                                                        <td><b style="color: red"><?= $val['status'] ?></b></td>
+                                                    </tr>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
             <div class="row">
                 <div class="panel panel-primary" id="panel5">
                     <div class="panel-heading">

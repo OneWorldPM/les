@@ -137,11 +137,21 @@ class M_user extends CI_Model {
                     foreach ($csv_array as $val) {
                         if ($val['Email_Address'] != "" && $val['Password'] != "") {
                             $post = $this->input->post();
-                            $or_where = '(email = "' . trim($val['Email_Address']) . '")';
-                            $this->db->where($or_where);
-                            $customer = $this->db->get('customer_master');
-                            if ($customer->num_rows() > 0) { //Check Email or Phone exist with new User 
-                                continue;
+                            $email = trim($val['Email_Address']);
+                            $username = trim($val['Username']);
+                            $this->db->select('*');
+                            $this->db->from('customer_master');
+                            $this->db->where("(email = '$email' OR username = '$username')");
+                            $customer = $this->db->get();
+                            if ($customer->num_rows() > 0) {
+                                $import_fail_record['session_users'][] = array(
+                                    'first_name' => trim($val['First_Name']),
+                                    'last_name' => trim($val['Last_Name']),
+                                    'username' => $username,
+                                    'email' => $email,
+                                    'status' => "This User Already Exists"
+                                );
+                                $this->session->set_userdata($import_fail_record);
                             } else {
                                 $this->db->order_by("cust_id", "desc");
                                 $row_data = $this->db->get("customer_master")->row();
@@ -188,6 +198,15 @@ class M_user extends CI_Model {
                                     $this->db->update('customer_master', array('profile' => $file_name), array('cust_id' => $cid));
                                 }
                             }
+                        } else {
+                            $import_fail_record['session_users'][] = array(
+                                'first_name' => trim($val['First_Name']),
+                                'last_name' => trim($val['Last_Name']),
+                                'username' => $username,
+                                'email' => $email,
+                                'status' => "Import Fail"
+                            );
+                            $this->session->set_userdata($import_fail_record);
                         }
                     }
                     return TRUE;

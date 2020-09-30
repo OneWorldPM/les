@@ -96,6 +96,50 @@
                     </div>
                 </div>
             </div>
+            <?php if (isset($import_user_session) && !empty($import_user_session)) { ?>
+                <div class="row">
+                    <div class="panel panel-primary" id="panel5">
+                        <div class="panel-heading">
+                            <h4 class="panel-title text-red">Import Fail User</h4>
+                        </div>
+                        <div class="panel-body bg-white" style="border: 1px solid #b2b7bb!important;">
+                            <div class="row">
+                                <div class="col-md-12 table-responsive">
+                                    <table class="table table-bordered table-striped text-center" id="user">
+                                        <thead class="th_center">
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Full Name</th>
+                                                <th>Email</th>
+                                                <th>Username</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            if (isset($import_user_session) && !empty($import_user_session)) {
+                                                foreach ($import_user_session as $key => $val) {
+                                                    $key++;
+                                                    ?>
+                                                    <tr>
+                                                        <td><?= $key ?></td>
+                                                        <td><?= $val['first_name'] . " " . $val['last_name'] ?></td>
+                                                        <td><?= $val['username'] ?></td>
+                                                        <td><?= $val['email'] ?></td>
+                                                        <td><b style="color: red"><?= $val['status'] ?></b></td>
+                                                    </tr>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
             <div class="row">
                 <div class="panel panel-primary" id="panel5">
                     <div class="panel-heading">

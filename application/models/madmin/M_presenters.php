@@ -137,7 +137,14 @@ class M_presenters extends CI_Model {
                             $this->db->where($or_where);
                             $presenter = $this->db->get('presenter');
                             if ($presenter->num_rows() > 0) { //Check Email or Phone exist with new User 
-                                continue;
+                                $import_fail_record['session_presenter'][] = array(
+                                    'first_name' => trim($val['first_name']),
+                                    'last_name' => trim($val['last_name']),
+                                    'phone' => $val['phone'],
+                                    'email' => $val['email'],
+                                    'status' => "This Presenter Already Exists"
+                                );
+                                $this->session->set_userdata($import_fail_record);
                             } else {
                                 $data = array(
                                     'first_name' => $val['first_name'],
@@ -166,10 +173,19 @@ class M_presenters extends CI_Model {
                                     file_put_contents($img, file_get_contents($url));
                                     $this->db->update('presenter', array('presenter_photo' => $file_name), array('presenter_id' => $pid));
                                 }
-                                return TRUE;
                             }
+                        } else {
+                            $import_fail_record['session_presenter'][] = array(
+                                'first_name' => trim($val['first_name']),
+                                'last_name' => trim($val['last_name']),
+                                'phone' => $val['phone'],
+                                'email' => $val['email'],
+                                'status' => "Import Fail"
+                            );
+                            $this->session->set_userdata($import_fail_record);
                         }
                     }
+                    return TRUE;
                 } else {
                     return FALSE;
                 }

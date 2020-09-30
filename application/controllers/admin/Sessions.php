@@ -18,6 +18,11 @@ class Sessions extends CI_Controller {
     public function index() {
         $data['sessions'] = $this->msessions->getSessionsAll();
         $data['session_types'] = $this->msessions->getSessionTypes();
+        $import_sessions = $this->session->userdata("session_sessions_data");
+        if (!empty($import_sessions)) {
+            $data['import_sessions_details'] = $this->session->userdata("session_sessions_data");
+            $this->session->unset_userdata('session_sessions_data');
+        }
         $this->load->view('admin/header');
         $this->load->view('admin/sessions', $data);
         $this->load->view('admin/footer');
@@ -26,6 +31,7 @@ class Sessions extends CI_Controller {
     public function filter() {
         $data['sessions'] = $this->msessions->getSessionsFilter();
         $data['session_types'] = $this->msessions->getSessionTypes();
+
         $this->load->view('admin/header');
         $this->load->view('admin/sessions', $data);
         $this->load->view('admin/footer');

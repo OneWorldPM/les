@@ -26,6 +26,7 @@ class Sessions extends CI_Controller {
         }
 
         $data['sessions_tracks'] = $this->objsessions->get_sessions_tracks();
+      
         $this->load->view('header');
         $this->load->view('sessions', $data);
         $this->load->view('footer');

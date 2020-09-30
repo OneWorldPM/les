@@ -889,153 +889,163 @@ class M_sessions extends CI_Model {
                 $csv_array = $this->csvimport->get_array($file_path);
                 if (!empty($csv_array)) {
                     foreach ($csv_array as $val) {
-                        if ($val['moderator'] != "") {
-                            $moderator = explode(",", $val['moderator']);
-                            $this->db->select("*");
-                            $this->db->from("presenter");
-                            $this->db->where_in("email", $moderator);
-                            $result_presenter = $this->db->get();
-                            if ($result_presenter->num_rows() > 0) {
-                                $moderator_id = array();
-                                foreach ($result_presenter->result() as $value) {
-                                    $moderator_id[] = $value->presenter_id;
+                        if ($val['moderator'] != "" && $val['presenter_id'] != "" && $val['session_title'] != "" && $val['sessions_description'] != "") {
+                            if ($val['moderator'] != "") {
+                                $moderator = explode(",", $val['moderator']);
+                                $this->db->select("*");
+                                $this->db->from("presenter");
+                                $this->db->where_in("email", $moderator);
+                                $result_presenter = $this->db->get();
+                                if ($result_presenter->num_rows() > 0) {
+                                    $moderator_id = array();
+                                    foreach ($result_presenter->result() as $value) {
+                                        $moderator_id[] = $value->presenter_id;
+                                    }
+                                    $moderator_id = implode(",", $moderator_id);
+                                } else {
+                                    $moderator_id = "";
                                 }
-                                $moderator_id = implode(",", $moderator_id);
                             } else {
                                 $moderator_id = "";
                             }
-                        } else {
-                            $moderator_id = "";
-                        }
-                        if ($val['presenter_id'] != "") {
-                            $presenter = explode(",", $val['presenter_id']);
-                            $this->db->select("*");
-                            $this->db->from("presenter");
-                            $this->db->where_in("email", $presenter);
-                            $result_presenter = $this->db->get();
-                            if ($result_presenter->num_rows() > 0) {
-                                $presenter_id = array();
-                                foreach ($result_presenter->result() as $value) {
-                                    $presenter_id[] = $value->presenter_id;
+                            if ($val['presenter_id'] != "") {
+                                $presenter = explode(",", $val['presenter_id']);
+                                $this->db->select("*");
+                                $this->db->from("presenter");
+                                $this->db->where_in("email", $presenter);
+                                $result_presenter = $this->db->get();
+                                if ($result_presenter->num_rows() > 0) {
+                                    $presenter_id = array();
+                                    foreach ($result_presenter->result() as $value) {
+                                        $presenter_id[] = $value->presenter_id;
+                                    }
+                                    $presenter_id = implode(",", $presenter_id);
+                                } else {
+                                    $presenter_id = "";
                                 }
-                                $presenter_id = implode(",", $presenter_id);
                             } else {
                                 $presenter_id = "";
                             }
-                        } else {
-                            $presenter_id = "";
-                        }
 
-                        if ($val['sessions_type_id'] != "") {
-                            $sessions_type = explode(",", $val['sessions_type_id']);
-                            $this->db->select("*");
-                            $this->db->from("sessions_type");
-                            $this->db->where_in("sessions_type", $sessions_type);
-                            $sessions_type_result = $this->db->get();
-                            if ($sessions_type_result->num_rows() > 0) {
-                                $sessions_type_id = array();
-                                foreach ($sessions_type_result->result() as $value) {
-                                    $sessions_type_id[] = $value->sessions_type_id;
+                            if ($val['sessions_type_id'] != "") {
+                                $sessions_type = explode(",", $val['sessions_type_id']);
+                                $this->db->select("*");
+                                $this->db->from("sessions_type");
+                                $this->db->where_in("sessions_type", $sessions_type);
+                                $sessions_type_result = $this->db->get();
+                                if ($sessions_type_result->num_rows() > 0) {
+                                    $sessions_type_id = array();
+                                    foreach ($sessions_type_result->result() as $value) {
+                                        $sessions_type_id[] = $value->sessions_type_id;
+                                    }
+                                    $sessions_type_id = implode(",", $sessions_type_id);
+                                } else {
+                                    $sessions_type_id = "";
                                 }
-                                $sessions_type_id = implode(",", $sessions_type_id);
                             } else {
                                 $sessions_type_id = "";
                             }
-                        } else {
-                            $sessions_type_id = "";
-                        }
 
-                        if ($val['sessions_tracks_id'] != "") {
-                            $sessions_tracks = explode(",", $val['sessions_tracks_id']);
-                            $this->db->select("*");
-                            $this->db->from("sessions_tracks");
-                            $this->db->where_in("sessions_tracks", $sessions_tracks);
-                            $sessions_tracks_result = $this->db->get();
-                            if ($sessions_tracks_result->num_rows() > 0) {
-                                $sessions_tracks_id = array();
-                                foreach ($sessions_tracks_result->result() as $value) {
-                                    $sessions_tracks_id[] = $value->sessions_tracks_id;
+                            if ($val['sessions_tracks_id'] != "") {
+                                $sessions_tracks = explode(",", $val['sessions_tracks_id']);
+                                $this->db->select("*");
+                                $this->db->from("sessions_tracks");
+                                $this->db->where_in("sessions_tracks", $sessions_tracks);
+                                $sessions_tracks_result = $this->db->get();
+                                if ($sessions_tracks_result->num_rows() > 0) {
+                                    $sessions_tracks_id = array();
+                                    foreach ($sessions_tracks_result->result() as $value) {
+                                        $sessions_tracks_id[] = $value->sessions_tracks_id;
+                                    }
+                                    $sessions_tracks_id = implode(",", $sessions_tracks_id);
+                                } else {
+                                    $sessions_tracks_id = "";
                                 }
-                                $sessions_tracks_id = implode(",", $sessions_tracks_id);
                             } else {
                                 $sessions_tracks_id = "";
                             }
-                        } else {
-                            $sessions_tracks_id = "";
-                        }
 
-                        if ($val['presenter_title'] != "") {
-                            $presenter = explode(",", $val['presenter_title']);
-                            $this->db->select("*");
-                            $this->db->from("presenter");
-                            $this->db->where_in("email", $presenter);
-                            $result_presenter = $this->db->get();
-                            if ($result_presenter->num_rows() > 0) {
-                                $presenter_title = array();
-                                foreach ($result_presenter->result() as $value) {
-                                    $presenter_title[] = $value->presenter_id;
+                            if ($val['presenter_title'] != "") {
+                                $presenter = explode(",", $val['presenter_title']);
+                                $this->db->select("*");
+                                $this->db->from("presenter");
+                                $this->db->where_in("email", $presenter);
+                                $result_presenter = $this->db->get();
+                                if ($result_presenter->num_rows() > 0) {
+                                    $presenter_title = array();
+                                    foreach ($result_presenter->result() as $value) {
+                                        $presenter_title[] = $value->presenter_id;
+                                    }
+                                    $presenter_title = implode(",", $presenter_title);
+                                } else {
+                                    $presenter_title = "";
                                 }
-                                $presenter_title = implode(",", $presenter_title);
                             } else {
                                 $presenter_title = "";
                             }
+
+                            $set = array(
+                                'presenter_id' => $presenter_id,
+                                'moderator_id' => $moderator_id,
+                                'session_title' => trim($val['session_title']),
+                                'sessions_description' => trim($val['sessions_description']),
+                                'sessions_date' => date("Y-m-d", strtotime($val['sessions_date'])),
+                                'time_slot' => date("H:i", strtotime($val['start_time'])),
+                                'end_time' => date("H:i", strtotime($val['end_time'])),
+                                'embed_html_code' => trim($val['embed_html_code']),
+                                'embed_html_code_presenter' => trim($val['embed_html_code_presenter']),
+                                'sessions_type_id' => $sessions_type_id,
+                                'sessions_tracks_id' => $sessions_tracks_id,
+                                'sessions_type_status' => trim($val['status']),
+                                'sessions_visibility' => trim($val['sessions_visibility']),
+                                "reg_date" => date("Y-m-d h:i")
+                            );
+
+                            $this->db->insert("sessions", $set);
+                            $sessions_id = $this->db->insert_id();
+                            if ($val['sessions_photo'] != "") {
+                                $file_name = 'sessions_' . $this->generateRandomString() . '.jpg';
+                                $url = $val['sessions_photo'];
+                                $img = './uploads/sessions/' . $file_name;
+                                file_put_contents($img, file_get_contents($url));
+                                $this->db->update('sessions', array('sessions_photo' => $file_name), array('sessions_id' => $sessions_id));
+                            }
+
+                            if ($val['sponsor_logo'] != "") {
+                                $file_name = 'sponsor_' . $this->generateRandomString() . '.jpg';
+                                $url = $val['sponsor_logo'];
+                                $img = './uploads/sponsor_log/' . $file_name;
+                                file_put_contents($img, file_get_contents($url));
+                                $this->db->update('sessions', array('sponsor_log' => $file_name), array('sessions_id' => $sessions_id));
+                            }
+
+                            $set_array = array(
+                                'sessions_id' => $sessions_id,
+                                'order_index_no' => trim($val['order_no']),
+                                'select_presenter_id' => $presenter_title,
+                                'presenter_title' => trim($val['p_title']),
+                                'presenter_time_slot' => date("H:i", strtotime($val['presenter_start_time'])),
+                                'presenter_resource_link' => trim($val['resource_links']),
+                                'upload_published_name' => trim($val['upload_published_name']),
+                                'link_published_name' => trim($val['link_published_name'])
+                            );
+                            $this->db->insert("sessions_add_presenter", $set_array);
+                            $sessions_add_presenter_id = $this->db->insert_id();
+                            if ($sessions_add_presenter_id > 0) {
+                                $file_name = 'resource_' . $this->generateRandomString() . '.jpg';
+                                $url = $val['resource_uploads'];
+                                $img = './uploads/presenter_resource/' . $file_name;
+                                file_put_contents($img, file_get_contents($url));
+                                $this->db->update('sessions_add_presenter', array('presenter_resource' => $file_name), array('sessions_add_presenter_id' => $sessions_add_presenter_id));
+                            }
                         } else {
-                            $presenter_title = "";
-                        }
-
-                        $set = array(
-                            'presenter_id' => $presenter_id,
-                            'moderator_id' => $moderator_id,
-                            'session_title' => trim($val['session_title']),
-                            'sessions_description' => trim($val['sessions_description']),
-                            'sessions_date' => date("Y-m-d", strtotime($val['sessions_date'])),
-                            'time_slot' => date("H:i", strtotime($val['start_time'])),
-                            'end_time' => date("H:i", strtotime($val['end_time'])),
-                            'embed_html_code' => trim($val['embed_html_code']),
-                            'embed_html_code_presenter' => trim($val['embed_html_code_presenter']),
-                            'sessions_type_id' => $sessions_type_id,
-                            'sessions_tracks_id' => $sessions_tracks_id,
-                            'sessions_type_status' => trim($val['status']),
-                            'sessions_visibility' => trim($val['sessions_visibility']),
-                            "reg_date" => date("Y-m-d h:i")
-                        );
-                      
-                        $this->db->insert("sessions", $set);
-                        $sessions_id = $this->db->insert_id();
-                        if ($val['sessions_photo'] != "") {
-                            $file_name = 'sessions_' . $this->generateRandomString() . '.jpg';
-                            $url = $val['sessions_photo'];
-                            $img = './uploads/sessions/' . $file_name;
-                            file_put_contents($img, file_get_contents($url));
-                            $this->db->update('sessions', array('sessions_photo' => $file_name), array('sessions_id' => $sessions_id));
-                        }
-
-                        if ($val['sponsor_logo'] != "") {
-                            $file_name = 'sponsor_' . $this->generateRandomString() . '.jpg';
-                            $url = $val['sponsor_logo'];
-                            $img = './uploads/sponsor_log/' . $file_name;
-                            file_put_contents($img, file_get_contents($url));
-                            $this->db->update('sessions', array('sponsor_log' => $file_name), array('sessions_id' => $sessions_id));
-                        }
-
-                        $set_array = array(
-                            'sessions_id' => $sessions_id,
-                            'order_index_no' => trim($val['order_no']),
-                            'select_presenter_id' => $presenter_title,
-                            'presenter_title' => trim($val['p_title']),
-                            'presenter_time_slot' => date("H:i", strtotime($val['presenter_start_time'])),
-                            'presenter_resource_link' => trim($val['resource_links']),
-                            'upload_published_name' => trim($val['upload_published_name']),
-                            'link_published_name' => trim($val['link_published_name'])
-                        );
-                        $this->db->insert("sessions_add_presenter", $set_array);
-                        $sessions_add_presenter_id = $this->db->insert_id();
-                        if ($sessions_add_presenter_id > 0) {
-                            $file_name = 'resource_' . $this->generateRandomString() . '.jpg';
-                            $url = $val['resource_uploads'];
-                            $img = './uploads/presenter_resource/' . $file_name;
-                            file_put_contents($img, file_get_contents($url));
-                            $this->db->update('sessions_add_presenter', array('presenter_resource' => $file_name), array('sessions_add_presenter_id' => $sessions_add_presenter_id));
+                            $import_fail_record['session_sessions_data'][] = array(
+                                'session_title' => trim($val['session_title']),
+                                'sessions_description' => trim($val['sessions_description']),
+                                'sessions_date' => date("Y-m-d", strtotime($val['sessions_date'])),
+                                'status' => "Import Fail"
+                            );
+                            $this->session->set_userdata($import_fail_record);
                         }
                     }
                     return TRUE;
