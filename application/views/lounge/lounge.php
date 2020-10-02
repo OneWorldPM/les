@@ -4,7 +4,7 @@
 <link href="<?= base_url() ?>assets/lounge/lounge.css?v=<?= rand(200, 300) ?>" rel="stylesheet">
 <style>
     .icon-home {
-        color: #ef9d45;
+        color: #ae0201;
         font-size: 1.5em;
         font-weight: 700;
         vertical-align: middle;
