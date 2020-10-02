@@ -139,7 +139,7 @@
                         <div class="navbar-collapse collapse main-menu-collapse navigation-wrap">
                             <div class="container">
                                 <nav id="mainMenu" class="main-menu mega-menu">
-                                    <ul class="main-menu nav nav-pills navbar-left" id="main_menu_top_bar" style="margin-right: 50px;">
+                                  <ul class="main-menu nav nav-pills navbar-left" id="main_menu_top_bar" style="margin-right: 50px;">
                                         <li><a href="#" target="_blank" style="color: #ef9d45">AGENDA</a></li>
                                         <li><a href="<?= base_url() ?>home" style="color: #ef9d45">MAIN HALL</a></li>
                                             <li><a href="<?= base_url()?>sessions" style="color: #ef9d45">Sessions</a></li>
