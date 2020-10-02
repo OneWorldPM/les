@@ -7,7 +7,7 @@ var connections = [];
 
 var config = {'host': 'https://socket.yourconference.live'};
 
-var ROUND_TABLE = 'cco_lounge_meeting_room_'+round_table_id;
+var ROUND_TABLE = 'les_lounge_meeting_room_'+round_table_id;
 
 var peerConnectionConfig = {
     'iceServers': [
@@ -25,6 +25,52 @@ var peerConnectionConfig = {
         }
     ]
 };
+
+$(function() {
+
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-bottom-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+
+    $('.share-screen-btn').on('click', function () {
+        toastr["warning"]("Screen share feature is not enabled!");
+    });
+
+    $('.mute-mic-btn').on('click', function () {
+        toastr["warning"]("Muting option is not enabled!");
+    });
+
+    $('.leave-btn').on('click', function () {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You are about to leave the meeting but you can always comeback!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, leave!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.top.close();
+            }
+        });
+    });
+
+});
 
 function pageReady() {
 
@@ -99,30 +145,6 @@ function pageReady() {
     } else {
         alert('Your browser does not support getUserMedia API');
     }
-
-    $('.share-screen-btn').on('click', function () {
-
-    });
-
-    $('.mute-mic-btn').on('click', function () {
-
-    });
-
-    $('.leave-btn').on('click', function () {
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You are about to leave the meeting but you can always comeback!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, leave!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.top.close();
-            }
-        });
-    });
 }
 
 function getUserMediaSuccess(stream) {
