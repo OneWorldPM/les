@@ -23,6 +23,7 @@ $(function() {
     };
 
     $('.lounge-meetings-btn').on('click', function () {
+        listMeetings();
         $('#meetings-modal').modal('show');
     });
 
