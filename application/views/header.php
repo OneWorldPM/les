@@ -140,7 +140,7 @@
                             <div class="container">
                                 <nav id="mainMenu" class="main-menu mega-menu">
                                     <ul class="main-menu nav nav-pills navbar-left" id="main_menu_top_bar" style="margin-right: 50px;">
-                                        <li><a href="https://tiadaannualconference.com/agenda/" target="_blank" style="color: #ef9d45">AGENDA</a></li>
+                                        <li><a href="#" target="_blank" style="color: #ef9d45">AGENDA</a></li>
                                         <li><a href="<?= base_url() ?>home" style="color: #ef9d45">MAIN HALL</a></li>
                                             <li><a href="<?= base_url()?>sessions" style="color: #ef9d45">Sessions</a></li>
                                             <li><a href="<?= base_url() ?>sponsor" style="color: #ef9d45">Sponsors</a></li>
@@ -149,7 +149,7 @@
                                                 <span class="unread-msg-count badge badge-notify" style="font-size:10px;">0</span>
                                                 <i class="fa fa-envelope" style="color:#8286C5;font-size: 25px;"></i>
                                             </a>
-                                            <div class="unread-msgs-list dropdown-menu dropdown-menu-lg-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5" style="overflow: hidden;"><a target="_blank" class="dropdown-item waves-effect waves-light" href="#">Message from TIADA</a>
+                                            <div class="unread-msgs-list dropdown-menu dropdown-menu-lg-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5" style="overflow: hidden;"><a target="_blank" class="dropdown-item waves-effect waves-light" href="#">Message from LES</a>
                                             </div>
                                         </li>
                                     </ul>
