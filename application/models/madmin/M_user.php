@@ -240,8 +240,8 @@ class M_user extends CI_Model {
                     }
                     $set = array(
                         "register_id" => $register_id,
-                        'first_name' => "",
-                        'last_name' => "",
+                        'first_name' => $post['first_name'],
+                        'last_name' => $post['last_name'],
                         'email' => $post['email'],
                         'username' => $post['username'],
                         'password' => base64_encode($post['password']),

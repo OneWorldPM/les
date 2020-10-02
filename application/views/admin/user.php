@@ -70,6 +70,14 @@
                                             </select>
                                             <span id="errormember_type_manualy" style="color:red;"></span>
                                         </div>
+                                        <div class="form-group">
+                                            <label class="text-large">First name:</label>
+                                            <input type="text" name="first_name" id="first_name" placeholder="First name" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="text-large">Last name:</label>
+                                            <input type="text" name="last_name" id="last_name" placeholder="Last name" class="form-control">
+                                        </div>
                                         <div class="form-group" id="email_section">
                                             <label class="text-large">Email:</label>
                                             <input type="email" name="email" id="email" placeholder="Email" class="form-control">
@@ -326,6 +334,12 @@ switch ($msg) {
             if ($('#cr_type').val() == "save") {
                 if ($('#member_type_manualy').val() == '') {
                     alertify.error('Select Import Member Type');
+                    return false;
+                } else if ($('#first_name').val() == '') {
+                    alertify.error('Please Enter First Name');
+                    return false;
+                } else if ($('#last_name').val() == '') {
+                    alertify.error('Please Enter Last Name');
                     return false;
                 } else if ($('#email').val() == '') {
                     alertify.error('Please Enter Email');
