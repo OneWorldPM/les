@@ -39,6 +39,10 @@ if ($meeting_status['status'] == false)
                 <div class="share-screen-btn" style="display: inline;">
                     <i class="fa fa-desktop fa-3x share-screen-btn-icon" aria-hidden="true" style="color:#6f8de3;"></i>
                 </div>
+
+                <div class="leave-btn" style="display: inline;">
+                    <i class="fa fa-sign-out fa-3x leave-btn-icon" aria-hidden="true" style="color:#6f8de3;"></i>
+                </div>
             </div>
         </div>
 
@@ -65,6 +69,10 @@ if ($meeting_status['status'] == false)
             pageReady();
         });
     </script>
+
+
+    <!--- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.3.5/dist/sweetalert2.all.min.js"></script>
 
     <script src="<?= base_url() ?>assets/lounge/video-meet/video-meet.js?v=<?= rand(1, 100) ?>"></script>
 

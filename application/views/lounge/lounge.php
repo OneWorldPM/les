@@ -128,7 +128,7 @@
                             <span class="panel-title">
                                 Attendees
                                 <button type="button" class="lounge-meetings-btn btn btn-success btn-xs pull-right">
-                                    <i class="fa fa-calendar" aria-hidden="true"></i> Meetings
+                                    <i class="fa fa-calendar" aria-hidden="true"></i> Meetings <span class="number-of-meet-badge badge badge-warning"></span>
                                 </button>
                             </span>
                         </div>

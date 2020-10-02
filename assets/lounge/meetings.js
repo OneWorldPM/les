@@ -173,6 +173,8 @@ function listMeetings() {
         if (result.length == 0)
             return;
 
+        $('.number-of-meet-badge').html(result.length);
+
         $('.meetings-table-items').html('');
 
         $.each( result, function( row, meeting ) {

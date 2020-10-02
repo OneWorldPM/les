@@ -107,6 +107,22 @@ function pageReady() {
     $('.mute-mic-btn').on('click', function () {
 
     });
+
+    $('.leave-btn').on('click', function () {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You are about to leave the meeting but you can always comeback!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, leave!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.top.close();
+            }
+        });
+    });
 }
 
 function getUserMediaSuccess(stream) {

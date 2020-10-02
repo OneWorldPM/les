@@ -29,6 +29,7 @@ h1{
     padding: 8px 0 0 2px;
     width: 75px;
     height: 53px;
+    margin-right: 5px;
 }
 
 .name-tag{
@@ -57,4 +58,14 @@ h1{
 .fullscreen-btn-fullscreen{
     padding: 7px 15px 7px 15px;
     margin-left: -4%;
+}
+
+.leave-btn-icon{
+    display: inline-block;
+    border-radius: 60px;
+    box-shadow: 0px 0px 2px #888;
+    cursor: pointer;
+    padding: 8px 0 0 2px;
+    width: 75px;
+    height: 53px;
 }
