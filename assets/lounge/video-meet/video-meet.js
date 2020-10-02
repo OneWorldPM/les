@@ -7,7 +7,7 @@ var connections = [];
 
 var config = {'host': 'https://socket.yourconference.live'};
 
-var ROUND_TABLE = 'les_lounge_meeting_room_'+round_table_id;
+var MEETING_ROOM = socket_lounge_video_meet_room+'_'+meeting_id;
 
 var peerConnectionConfig = {
     'iceServers': [
@@ -87,7 +87,7 @@ function pageReady() {
             .then(function(){
 
                 socket = io.connect(config.host, {secure: true});
-                socket.emit('joinRoundTable', ROUND_TABLE, user_name, user_id);
+                socket.emit('joinRoundTable', MEETING_ROOM, user_name, user_id);
                 socket.on('signal', gotMessageFromServer);
 
                 socket.on('joinRoundTable', function(){
@@ -105,7 +105,7 @@ function pageReady() {
 
 
                     socket.on('user-joined-roundtable', function(id, count, clients, table, attendees_list){
-                        if (table != ROUND_TABLE)
+                        if (table != MEETING_ROOM)
                             return;
                         clients.forEach(function(socketListId) {
                             if(!connections[socketListId]){

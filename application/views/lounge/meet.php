@@ -57,7 +57,7 @@ if ($meeting_status['status'] == false)
         var user_name = "<?= $this->session->userdata('fullname') ?>";
         user_name = (user_name == '') ? 'No Name' : user_name;
 
-        var round_table_id = "<?=$meeting->id?>";
+        var meeting_id = "<?=$meeting->id?>";
 
         <?php
         foreach ($socket_config as $config_name => $config_value)
