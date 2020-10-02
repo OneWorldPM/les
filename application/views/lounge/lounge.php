@@ -235,7 +235,7 @@
 
                 <div class="form-group">
                     <div class='input-group date' id='datetimepicker6'>
-                        <span class="input-group-addon" id="sizing-addon2">Start Time</span>
+                        <span class="input-group-addon" id="sizing-addon2">Start Time &nbsp; &nbsp; &nbsp; </span>
                         <input type='text' class="meeting-from form-control" placeholder="Use the icon on the right side to choose starting time" aria-describedby="sizing-addon2"/>
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
@@ -245,7 +245,7 @@
 
                 <div class="form-group">
                     <div class='input-group date' id='datetimepicker7'>
-                        <span class="input-group-addon" id="sizing-addon2">End Time &nbsp; &nbsp; &nbsp;</span>
+                        <span class="input-group-addon" id="sizing-addon2">End Time &nbsp; &nbsp; &nbsp; &nbsp;</span>
                         <input type='text' class="meeting-to form-control" placeholder="Use the icon on the right side to choose ending time" aria-describedby="sizing-addon2"/>
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
