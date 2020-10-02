@@ -34,7 +34,6 @@ class Login extends CI_Controller {
                 $session = array(
                     'cid' => $data['cust_id'],
                     'cname' => $data['first_name'],
-                    'fullname' => $data['first_name'].' '.$data['last_name'],
                     'email' => $data['email'],
                     'token' => $token,
                     'userType' => 'user'
@@ -55,7 +54,6 @@ class Login extends CI_Controller {
             $session = array(
                 'cid' => $data['cust_id'],
                 'cname' => $data['first_name'],
-                'fullname' => $data['first_name'].' '.$data['last_name'],
                 'email' => $data['email'],
                 'token' => $token,
                 'userType' => 'user'

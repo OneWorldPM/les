@@ -40,22 +40,8 @@
         });
     }
 
-    var user_id = <?= $this->session->userdata("cid") ?>;
-    var user_name = "<?= $this->session->userdata('fullname') ?>";
-    function extract(variable) {
-        for (var key in variable) {
-            window[key] = variable[key];
-        }
-    }
-
-    $.get( "<?=base_url()?>socket_config.php", function( data ) {
-        var config = JSON.parse(data);
-        extract(config);
-    });
-
 
     $(function () {
-
         fillUnreadMessages();
 
         var socketServer = "https://socket.yourconference.live:443";
@@ -65,35 +51,19 @@
             fillUnreadMessages();
         });
 
-        socket.on('serverStatus', function (data) {
-            socket.emit('addMeToActiveListPerApp', {'user_id':user_id, 'app': socket_app_name, 'room': socket_active_user_list});
-        });
-
-        // Active again
+        // If theres no activity for 30 seconds set inactive
+        var activityTimeout = setTimeout(inActive, 30 * 1000);
         function resetActive(){
-            socket.emit('userActiveChangeInApp', {"app":socket_app_name, "room":socket_active_user_list, "name":user_name, "userId":user_id, "status":true});
+            socket.emit('userActiveChange', {"name":user_name, "userId":user_id, "status":true});
+            clearTimeout(activityTimeout);
+            activityTimeout = setTimeout(inActive, 30 * 1000);
         }
         // No activity let everyone know
         function inActive(){
-            socket.emit('userActiveChangeInApp', {"app":socket_app_name, "room":socket_active_user_list, "name":user_name, "userId":user_id, "status":false});
+            socket.emit('userActiveChange', {"name":user_name, "userId":user_id, "status":false});
         }
-
-        $(window).on("blur focus", function(e) {
-            var prevType = $(this).data("prevType");
-
-            if (prevType != e.type) {   //  reduce double fire issues
-                switch (e.type) {
-                    case "blur":
-                        inActive();
-                        break;
-                    case "focus":
-                        resetActive();
-                        break;
-                }
-            }
-
-            $(this).data("prevType", e.type);
-        });
+        // Check for mousemove, could add other events here such as checking for key presses ect.
+        $(document).bind('mousemove', function(){resetActive()});
     });
 </script>
 
