@@ -274,4 +274,16 @@ class M_user extends CI_Model {
         }
     }
 
+    public function alldelete($ids) {
+        foreach ($ids as $id) {
+            $did = intval($id) . '<br>';
+            $this->db->delete("customer_master", array("cust_id" => $did));
+        }
+        if ($this->db->affected_rows()) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
 }

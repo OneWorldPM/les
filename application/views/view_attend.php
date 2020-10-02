@@ -140,17 +140,19 @@
                                         <?php
                                         if (isset($sessions) && !empty($sessions)) {
                                             if ($sessions->sponsor_log != "") {
-                                                ?>
-                                                <img src="<?= base_url() ?>uploads/sponsor_log/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sponsor_log : "" ?>" style="width: 100%;">
-                                                <?php
+                                                if (file_exists('./uploads/sponsor_log/'.$sessions->sponsor_log)) {
+                                                    ?>
+                                                    <img src="<?= base_url() ?>uploads/sponsor_log/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sponsor_log : "" ?>" style="width: 100%;">
+                                                    <?php
+                                                }
                                             }
                                         }
                                         ?>
                                     </div>
                                     <div class="col-md-3" style="text-align: center; text-align: center; padding: 10px; border: 1px solid; margin-right: 10px;">
                                         <p><i class="fa fa-volume-up" aria-hidden="true" style="font-size: 20px;"></i></p>
-                                        <p style="color: #ae0201; margin-bottom: 0px;">SESSION AUDIO</p>
-                                        <p style="color: #ae0201; text-align: left;">You may need to turn the audio on the session recording.  Hover your mouse over the bottom left hand corner of the  video in the next page and adjust the audio.</p>
+                                        <p style="color: #ef9d45; margin-bottom: 0px;">SESSION AUDIO</p>
+                                        <p style="color: #ef9d45; text-align: left;">You may need to turn the audio on the session recording.  Hover your mouse over the bottom left hand corner of the  video in the next page and adjust the audio.</p>
                                     </div>
                                     <div class="col-md-4" style="text-align: center; text-align: center; padding: 10px; background-color: #fff; border: 1px solid;">
                                         <p><i class="fa fa-info-circle" aria-hidden="true" style="font-size: 20px;"></i></p>
@@ -165,9 +167,9 @@
                                 </div>
                                 <div class="col-md-12">
                                     <?php if ($sessions->sessions_type_status == "Private") { ?>
-                                                                                                                        <!--<a class="button black-light button-3d rounded right" style="margin: 0px 0;" href="<?= base_url() ?>private_sessions/view/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_id : "" ?>"><span>Take me there</span></a>-->
+                                                                                                                                        <!--<a class="button black-light button-3d rounded right" style="margin: 0px 0;" href="<?= base_url() ?>private_sessions/view/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_id : "" ?>"><span>Take me there</span></a>-->
                                     <?php } else { ?>
-                                                                                                                        <!--<a class="button black-light button-3d rounded right" style="margin: 0px 0;" href="<?= base_url() ?>sessions/view/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_id : "" ?>"><span>Take me there</span></a>-->
+                                                                                                                                        <!--<a class="button black-light button-3d rounded right" style="margin: 0px 0;" href="<?= base_url() ?>sessions/view/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_id : "" ?>"><span>Take me there</span></a>-->
                                     <?php } ?>
                                 </div>
                             </div>
@@ -205,16 +207,16 @@
 <div class="modal fade" id="push_notification" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left; right: unset;">
     <input type="hidden" id="push_notification_id" value="">
     <div class="modal-dialog">
-        <div class="modal-content" style="border: 1px solid #ae0201;">
+        <div class="modal-content" style="border: 1px solid #ef9d45;">
             <div class="modal-body">
                 <div class="row" style="padding-top: 10px; padding-bottom: 20px;">
                     <div class="col-sm-12">
-                        <div style="color:#ae0201; font-size: 16px; font-weight: 800; " id="push_notification_message"></div>
+                        <div style="color:#ef9d45; font-size: 16px; font-weight: 800; " id="push_notification_message"></div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="close push_notification_close" style="padding: 10px; color: #fff; background-color: #ae0201; opacity: 1;" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button type="button" class="close push_notification_close" style="padding: 10px; color: #fff; background-color: #ef9d45; opacity: 1;" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
         </div>
     </div>

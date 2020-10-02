@@ -358,6 +358,20 @@ class M_sessions extends CI_Model {
         return TRUE;
     }
 
+    public function alldelete($ids) {
+        foreach ($ids as $id) {
+            $did = intval($id) . '<br>';
+            $this->db->delete("sessions", array("sessions_id" => $did));
+            $this->db->delete("sessions_poll_question", array("sessions_id" => $did));
+            $this->db->delete("poll_question_option", array("sessions_id" => $did));
+        }
+        if ($this->db->affected_rows()) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
     function add_poll_data() {
         $post = $this->input->post();
         $set = array(

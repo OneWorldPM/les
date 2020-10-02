@@ -76,7 +76,7 @@
             }
 
             .button.black-light {
-                border-color: #ae0201;
+                border-color: #ef9d45;
             }
         </style> 
         <?php if ($this->uri->segment(1) == "home" && $this->uri->segment(2) != "notes") { ?>
@@ -144,12 +144,12 @@
                                 <nav id="mainMenu" class="main-menu mega-menu">
                                     <?php if ($this->session->userdata('sponsors_id') != "") { ?>
                                         <ul class="main-menu nav nav-pills navbar-left" id="main_menu_top_bar" style="margin-right: 50px;">
-                                            <li><a href="<?= base_url() ?>sponsor-admin/" style="color: #ae0201">Dashboard</a></li>
-                                            <li><a href="https://tiadaannualconference.com/agenda/" target="_blank" style="color: #ae0201">AGENDA</a></li>
-											<li><a target="_blank" href="<?= base_url() ?>sponsor-admin/VchatRoom/join/<?=$this->session->userdata('sponsors_id')?>" style="color: #ae0201">Video Room</a></li>
-                                            <li><a href="<?= base_url() ?>sponsor-admin/booth_tracking" style="color: #ae0201">BOOTH TRACKING</a></li>
-                                            <li><a href="<?= base_url() ?>sponsor-admin/push_notifications" style="color: #ae0201">Push Notifications</a></li>
-                                            <li><a href="<?= base_url() ?>sponsor-admin/fishbowl" style="color: #ae0201">Fishbowl</a></li>
+                                            <li><a href="<?= base_url() ?>sponsor-admin/" style="color: #ef9d45">Dashboard</a></li>
+                                            <li><a href="https://tiadaannualconference.com/agenda/" target="_blank" style="color: #ef9d45">AGENDA</a></li>
+											<li><a target="_blank" href="<?= base_url() ?>sponsor-admin/VchatRoom/join/<?=$this->session->userdata('sponsors_id')?>" style="color: #ef9d45">Video Room</a></li>
+                                            <li><a href="<?= base_url() ?>sponsor-admin/booth_tracking" style="color: #ef9d45">BOOTH TRACKING</a></li>
+                                            <li><a href="<?= base_url() ?>sponsor-admin/push_notifications" style="color: #ef9d45">Push Notifications</a></li>
+                                            <li><a href="<?= base_url() ?>sponsor-admin/fishbowl" style="color: #ef9d45">Fishbowl</a></li>
                                         </ul>
                                     <?php } ?>
                                     <ul id="mainMenuItems" class="main-menu nav nav-pills navbar-left">

@@ -118,7 +118,7 @@
                                 <!--                                <div class="col-md-3">
                                                                     <input type="hidden" name="last_sessions_cust_question_id" id="last_sessions_cust_question_id" value="0">
                                                                     <div id="question_answer_section" style="padding: 0px 12px 0px 12px; margin-top: 20px; background-color: #fff; border-radius: 5px; overflow-y: scroll; height: 400px;">
-                                                                        <h2 style="margin-bottom: 0px; color: #ae0201; font-weight: 700; font-size: 18px; text-align: center; border-bottom: 1px solid #696f6f;">Question & Answer</h2>
+                                                                        <h2 style="margin-bottom: 0px; color: #ef9d45; font-weight: 700; font-size: 18px; text-align: center; border-bottom: 1px solid #696f6f;">Question & Answer</h2>
                                                                         <div id="question_answer_section_list" style="padding: 10px 0px 10px 0px;"></div>
                                                                     </div>
                                                                 </div>-->
@@ -237,16 +237,16 @@
     <div class="modal fade" id="push_notification" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left; right: unset;">
         <input type="hidden" id="push_notification_id" value="">
         <div class="modal-dialog">
-            <div class="modal-content" style="border: 1px solid #ae0201;">
+            <div class="modal-content" style="border: 1px solid #ef9d45;">
                 <div class="modal-body">
                     <div class="row" style="padding-top: 10px; padding-bottom: 20px;">
                         <div class="col-sm-12">
-                            <div style="color:#ae0201; font-size: 16px; font-weight: 800; " id="push_notification_message"></div>
+                            <div style="color:#ef9d45; font-size: 16px; font-weight: 800; " id="push_notification_message"></div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="close push_notification_close" style="padding: 10px; color: #fff; background-color: #ae0201; opacity: 1;" data-dismiss="modal" aria-hidden="true">Close</button>
+                    <button type="button" class="close push_notification_close" style="padding: 10px; color: #fff; background-color: #ef9d45; opacity: 1;" data-dismiss="modal" aria-hidden="true">Close</button>
                 </div>
             </div>
         </div>

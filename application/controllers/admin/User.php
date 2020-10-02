@@ -100,5 +100,15 @@ class User extends CI_Controller {
         }
         echo json_encode($data);
     }
+    
+    public function alldelete($id) {
+        $ids = (explode(',', $id));
+        $query = $this->muser->alldelete($ids);
+        if ($query) {
+            header("location:" . base_url() . "admin/user?msg=D");
+        } else {
+            header("location:" . base_url() . "admin/user?msg=E");
+        }
+    }
 
 }

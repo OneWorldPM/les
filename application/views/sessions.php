@@ -18,7 +18,7 @@
     }
 
     .icon-home {
-        color: #ae0201;
+        color: #ef9d45;
         font-size: 1.5em;
         font-weight: 700;
         vertical-align: middle;
@@ -35,7 +35,7 @@
     }
 
     .box_home_active {
-        background-color: #ae0201;
+        background-color: #ef9d45;
         border-radius: 20px;
         min-height: 150px;
         max-height: 150px;
@@ -45,11 +45,11 @@
     }
 
     .box-home:hover {
-        background-color: #ae0201;
+        background-color: #ef9d45;
         color: #fff !important;
     }
     .presenter_open_modul:hover{
-        color: #ae0201 !important; 
+        color: #ef9d45 !important; 
     }
 
     .alertify {
@@ -145,7 +145,7 @@
                                                             <div class="post-content-details col-md-9 m-t-30">
                                                                 <div class="post-title">
                                                                     <h6 style="font-weight: 600; font-size: 15px;"><?= $val->sessions_date . ' ' . date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></h6>
-                                                                    <h3><a style="color: #ae0201; font-weight: 900;"><?= $val->session_title ?></a></h3>
+                                                                    <h3><a style="color: #ef9d45; font-weight: 900;"><?= $val->session_title ?></a></h3>
                                                                 </div>
                                                                 <div class="post-description">
                                                                     <p style="margin-bottom: 10px; color: black;"><?= $val->sessions_description ?></p>
@@ -162,7 +162,7 @@
                                                             <div class="post-content-details col-md-9 m-t-30">
                                                                 <div class="post-title">
                                                                     <h6 style="font-weight: 600; font-size: 15px;"><?= $val->sessions_date . ' ' . date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></h6>
-                                                                    <h3><a href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>" style="color: #ae0201; font-weight: 900;"><?= $val->session_title ?></a></h3>
+                                                                    <h3><a href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>" style="color: #ef9d45; font-weight: 900;"><?= $val->session_title ?></a></h3>
                                                                 </div>
                                                                 <div class="post-description">
                                                                     <p style="margin-bottom: 10px; color: black;"><?= $val->sessions_description ?></p>
@@ -181,7 +181,7 @@
                                                         <div class="post-content-details col-md-9 m-t-30">
                                                             <div class="post-title">
                                                                 <h6 style="font-weight: 600; font-size: 15px;"><?= $val->sessions_date . ' ' . date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></h6>
-                                                                <h3><a style="color: #ae0201; font-weight: 900;"><?= $val->session_title ?></a></h3>
+                                                                <h3><a style="color: #ef9d45; font-weight: 900;"><?= $val->session_title ?></a></h3>
                                                             </div>
                                                             <div class="post-description">
                                                                 <p style="margin-bottom: 10px; color: black;"><?= $val->sessions_description ?></p>
@@ -211,11 +211,10 @@
                                                     <a href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"> <?php if ($val->sessions_photo != "") { ?> <img alt="" src="<?= base_url() ?>uploads/sessions/<?= $val->sessions_photo ?>"> <?php } else { ?>  <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg"> <?php } ?>  </a> 
                                                 </div>
                                                 <div class="post-content-details col-md-9 m-t-30">
-
                                                     <div class="post-title">
                                                         <h6 style="font-weight: 600; font-size: 15px;"><?= $val->sessions_date . ' ' . date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></h6>
-                                                        <h3><a href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>" style="color: #ae0201; font-weight: 900;"><?= $val->session_title ?></a> 
-                                                            <span style="float: right; font-size: 15px; font-weight: 700;">Track: <?php
+                                                        <h3><a href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>" style="color: #ef9d45; font-weight: 900;"><?= $val->session_title ?></a> 
+                                                            <span style="float: right; font-size: 15px; font-weight: 700;"><?php
                                                                 if (isset($val->sessions_tracks_data) && !empty($val->sessions_tracks_data)) {
                                                                     foreach ($val->sessions_tracks_data as $value) {
                                                                         ?> <?= $value->sessions_tracks ?> <?php
@@ -306,16 +305,16 @@
 <div class="modal fade" id="push_notification" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left; right: unset;">
     <input type="hidden" id="push_notification_id" value="">
     <div class="modal-dialog">
-        <div class="modal-content" style="border: 1px solid #ae0201;">
+        <div class="modal-content" style="border: 1px solid #ef9d45;">
             <div class="modal-body">
                 <div class="row" style="padding-top: 10px; padding-bottom: 20px;">
                     <div class="col-sm-12">
-                        <div style="color:#ae0201; font-size: 16px; font-weight: 800; " id="push_notification_message"></div>
+                        <div style="color:#ef9d45; font-size: 16px; font-weight: 800; " id="push_notification_message"></div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="close push_notification_close" style="padding: 10px; color: #fff; background-color: #ae0201; opacity: 1;" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button type="button" class="close push_notification_close" style="padding: 10px; color: #fff; background-color: #ef9d45; opacity: 1;" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
         </div>
     </div>

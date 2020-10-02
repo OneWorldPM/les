@@ -13,7 +13,7 @@
 
     @media (min-width: 768px) and (max-width: 100000px)  {
         #tiada_members{
-            margin-left: 327px;
+            margin-left: 440px;
         }
         #tiada_non_members{
             margin-left: 28px;  
@@ -25,9 +25,8 @@
     <div class="container container-fullscreen" style="margin-top: 20px;">
         <div class="text-middle">
             <div class="row">
-                <div class="col-md-6 col-xs-12 col-sm-12 center p-60 background-white" style="border-radius: 10px;">
+                <div class="col-md-4 col-xs-12 col-sm-12 center p-50 background-white" style="border-radius: 10px; margin-top: 180px; ">
                     <div class="row">
-                        <div class="col-md-6 col-xs-12 col-sm-12" style="border-right: 1px solid #696f6f;"> 
                             <h4>Welcome Back!</h4>
                             <p>Sign in Below</p>
                             <?php
@@ -51,13 +50,8 @@
                                     <button type="submit" id="btn_login" class="btn btn-primary">Login</button>
                                 </div>
                             </form>
-                        </div>
-                        <div class="col-md-6 col-xs-12 col-sm-12">
-                            <h4>Register Now!</h4>
-                            <p class="text-left"><a href="<?= base_url() ?>register">Click here to start your registration</a> </p>
-                        </div>
+                       
                     </div>
-
                 </div>
             </div>
         </div>
@@ -81,5 +75,3 @@
         });
     });
 </script>
-
-

@@ -3,25 +3,27 @@ $(function() {
     var socketServer = "https://socket.yourconference.live:443";
     let socket = io(socketServer);
     socket.on('serverStatus', function(data) {
-        console.log(data);
+        //console.log(data);
     });
 
-    socket.emit('joinLoungeGroupChat', {"room":socket_lounge_room, "name":user_name});
-    socket.on('newLoungeGroupText', function(data) {
+    var LOUNGE_OTO_CHAT_ROOM = 'TIADA_LOUNGE_OTO';
+    var LOUNGE_GROUP_CHAT_ROOM = "TIADA_LOUNGE_GROUP";
 
-        if (data.user_id == user_id)
+    socket.emit('joinGroupChat', {"room":LOUNGE_GROUP_CHAT_ROOM, "name":user_name});
+    socket.on('newGroupText', function(data) {
+        if (data.userType == 'sponsor')
         {
             $('.group-chat').append(
                 '<li class="grp-chat right clearfix">\n' +
                 '   <span class="chat-img pull-right">\n' +
-                '     <img src="'+user_logo_url+'" alt="User DP" class="img-circle" />\n' +
+                '     <img src="'+base_url+'uploads/sponsors/'+sponsor_logo+'" alt="Sponsor Logo" class="img-circle" />\n' +
                 '   </span>\n' +
                 '   <div class="chat-body clearfix">\n' +
                 '     <div class="header">\n' +
-                '       <small class="pull-left text-muted"><span class="glyphicon glyphicon-time"></span>'+data.datetime+'</small>\n' +
-                '       <strong class="pull-right primary-font">'+user_name+'</strong>\n' +
+                '       <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>'+data.datetime+'</small>\n' +
+                '       <strong class="pull-right primary-font">'+company_name_orig+'</strong>\n' +
                 '     </div>\n' +
-                '     <br><p class="pull-right">\n' +
+                '     <p class="pull-right">\n' +
                 '      '+data.chat_text+'\n' +
                 '     </p>\n' +
                 '   </div>\n' +
@@ -29,18 +31,23 @@ $(function() {
             );
             $('#grp-chat-body').scrollTop($('#grp-chat-body')[0].scrollHeight);
         }else{
+            var nameAcronym = data.name.match(/\b(\w)/g).join('');
+            var color = md5(nameAcronym+data.user_id).slice(0, 6);
+
+            var userAvatarSrc = (data.profile != '' && data.profile != null)?'/tiadaannualconference/uploads/customer_profile/'+data.profile:'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
+            var userAvatarAlt = 'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
 
             $('.group-chat').append(
                 '<li class="grp-chat left clearfix">\n' +
                 '   <span class="chat-img pull-left">\n' +
-                '     <img src="'+data.profile+'" alt="User Avatar" class="img-circle">\n' +
+                '     <img src="'+userAvatarSrc+'" alt="User Avatar" onerror=this.src="'+userAvatarAlt+'" class="img-circle">\n' +
                 '   </span>\n' +
                 '   <div class="chat-body clearfix">\n' +
                 '      <div class="header">\n' +
-                '         <strong class="primary-font pull-left">'+data.name+'</strong> <small class="pull-right text-muted">\n' +
-                '         <span class="glyphicon glyphicon-time pull-right"></span>'+data.datetime+'</small>\n' +
+                '         <strong class="primary-font">'+data.name+'</strong> <small class="pull-right text-muted">\n' +
+                '         <span class="glyphicon glyphicon-time"></span>'+data.datetime+'</small>\n' +
                 '      </div>\n' +
-                '      <br><p class="pull-left">\n' +
+                '      <p>\n' +
                 '       '+data.chat_text+'\n' +
                 '      </p>\n' +
                 '    </div>\n' +
@@ -50,29 +57,29 @@ $(function() {
         }
     });
 
-    socket.on('newLoungeGroupJoin', function(data) {
+    socket.on('newJoin', function(data) {
     });
 
-    $.get( base_url+"LoungeGroupChat/getAllChats", function(chatJson) {
+    $.get( "/tiadaannualconference/sponsor-admin/GroupChat/getAllChats/"+user_id, function(chatJson) {
         var chats = JSON.parse(chatJson);
 
         if (chats == 0)
             $('.group-chat').append('<p>No messages!</p>');
 
         $.each( chats, function( number, chat ) {
-            if (chat.chat_from == user_id)
+            if (chat.chat_from == 'sponsor')
             {
                 $('.group-chat').append(
                     '<li class="grp-chat right clearfix">\n' +
                     '   <span class="chat-img pull-right">\n' +
-                    '     <img src="'+user_logo_url+'" alt="Sponsor Logo" class="img-circle" />\n' +
+                    '     <img src="'+base_url+'uploads/sponsors/'+sponsor_logo+'" alt="Sponsor Logo" class="img-circle" />\n' +
                     '   </span>\n' +
                     '   <div class="chat-body clearfix">\n' +
                     '     <div class="header">\n' +
-                    '       <small class="pull-left text-muted"><span class="glyphicon glyphicon-time"></span>'+chat.datetime+'</small>\n' +
-                    '       <strong class="pull-right primary-font">'+user_name+'</strong>\n' +
+                    '       <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>'+chat.datetime+'</small>\n' +
+                    '       <strong class="pull-right primary-font">'+company_name_orig+'</strong>\n' +
                     '     </div>\n' +
-                    '     <br><p class="pull-right">\n' +
+                    '     <p class="pull-right">\n' +
                     '      '+chat.chat_text+'\n' +
                     '     </p>\n' +
                     '   </div>\n' +
@@ -82,7 +89,7 @@ $(function() {
                 var nameAcronym = chat.from_name.match(/\b(\w)/g).join('');
                 var color = md5(nameAcronym+chat.chat_from).slice(0, 6);
 
-                var userAvatarSrc = (chat.profile != '' && chat.profile != null)?'uploads/customer_profile/'+chat.profile:'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
+                var userAvatarSrc = (chat.profile != '' && chat.profile != null)?'/tiadaannualconference/uploads/customer_profile/'+chat.profile:'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
                 var userAvatarAlt = 'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
 
                 $('.group-chat').append(
@@ -92,10 +99,10 @@ $(function() {
                     '   </span>\n' +
                     '   <div class="chat-body clearfix">\n' +
                     '      <div class="header">\n' +
-                    '         <strong class="primary-font pull-left">'+chat.from_name+'</strong> <small class="pull-right text-muted">\n' +
+                    '         <strong class="primary-font">'+chat.from_name+'</strong> <small class="pull-right text-muted">\n' +
                     '         <span class="glyphicon glyphicon-time"></span>'+chat.datetime+'</small>\n' +
                     '      </div>\n' +
-                    '      <br><p class="pull-left">\n' +
+                    '      <p>\n' +
                     '       '+chat.chat_text+'\n' +
                     '      </p>\n' +
                     '    </div>\n' +
@@ -112,7 +119,7 @@ $(function() {
         if(e.which == 13){//Enter key pressed
             $('.send-grp-chat-btn').click();//Trigger search button click event
         }else{
-            socket.emit('isTyping', {"room":socket_lounge_room, "someone":user_name});
+            socket.emit('isTyping', {"room":GROUP_CHAT_ROOM, "someone":user_name});
         }
     });
 
@@ -130,9 +137,10 @@ $(function() {
         if (text == '')
             return;
 
-        $.post(base_url+"LoungeGroupChat/newText",
+        $.post("/tiadaannualconference/sponsor-admin/GroupChat/newText",
             {
-                'chat_text': text
+                'chat_text': text,
+                'sponsor_id': sponsor_id
             },
             function(data, status){
                 if(status == 'success')
@@ -141,15 +149,19 @@ $(function() {
 
                     $('#groupChatText').val('');
 
-                    socket.emit('newLoungeGroupText',
-                        {
-                            "room":socket_lounge_room,
-                            "name":user_name,
-                            "chat_text":text,
-                            "user_id":user_id,
-                            "datetime":dataFromDb.datetime,
-                            "profile":user_logo_url
-                        });
+                    $.get( "/tiadaannualconference/sponsor-admin/UserDetails/getProfileById/"+user_id, function(profile) {
+
+                        socket.emit('newGroupText',
+                            {
+                                "room":GROUP_CHAT_ROOM,
+                                "name":user_name,
+                                "userType":user_type,
+                                "chat_text":text,
+                                "user_id":user_id,
+                                "datetime":dataFromDb.datetime,
+                                "profile":profile
+                            });
+                    });
 
                 }else{
                     toastr["error"]("Network problem!");
@@ -174,7 +186,7 @@ $(function() {
         }).then((result) => {
             if (result.value) {
 
-                $.post("sponsor-admin/GroupChat/clearChat",
+                $.post("/tiadaannualconference/sponsor-admin/GroupChat/clearChat",
                     {
 
                     },
@@ -201,179 +213,137 @@ $(function() {
         toastr["warning"]("Under development!")
     });
 
-    $.get( base_url+"LoungeOtoChat/checkForUnreadChat/"+user_id, function(unreadMsgsFrom) {
-        unreadMsgsFrom = JSON.parse(unreadMsgsFrom);
-        $.get( base_url+"user/UserDetails/getAllUsers", function(allUsers) {
-            var users = JSON.parse(allUsers);
+    $.get( "/tiadaannualconference/sponsor-admin/UserDetails/getAllUsers", function(allUsers) {
+        var users = JSON.parse(allUsers);
 
-            $.each( users, function( number, user ) {
+        $.each( users, function( number, user ) {
 
-                socket.emit('joinLoungeOtoChat', {"room":socket_lounge_oto_chat_group, "name":user_name, "userId":user_id, "userType":user_type});
+            //socket.emit('joinSponsorOtoChat', {"room":LOUNGE_OTO_CHAT_ROOM, "name":user_name, "userId":user_id, "userType":user_type});
 
-                var fullname = user.first_name+' '+user.last_name;
-                if (fullname == ' ')
-                {
-                    var fullname = 'Name Unavailable';
-                }
+            var fullname = user.first_name+' '+user.last_name;
+            if (fullname == ' ')
+            {
+                var fullname = 'Name Unavailable';
+            }
 
-                var nameAcronym = fullname.match(/\b(\w)/g).join('');
-                var color = md5(nameAcronym+user.cust_id).slice(0, 6);
+            var nameAcronym = fullname.match(/\b(\w)/g).join('');
+            var color = md5(nameAcronym+user.cust_id).slice(0, 6);
 
-                var userAvatarSrc = (user.profile != '' && user.profile != null)?'uploads/customer_profile/'+user.profile:'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
-                var userAvatarAlt = 'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
+            var userAvatarSrc = (user.profile != '' && user.profile != null)?'/tiadaannualconference/uploads/customer_profile/'+user.profile:'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
+            var userAvatarAlt = 'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
 
-                var company_name_html = '';
-                if (user.company_name && (user.company_name != null || user.company_name != '')){
-                    company_name_html = '<small style="position: absolute;margin-top: 27px;margin-left: -63px;">'+user.company_name+'</small>';
-                    var company_name = user.company_name;
-                }else{
-                    var company_name = '';
-                }
-
-                if(unreadMsgsFrom != 0 && unreadMsgsFrom.includes(user.cust_id))
-                {
-                    var newTextBadge = 1;
-                    var badgeIcon = '';
-                }else{
-                    var newTextBadge = 0;
-                    var badgeIcon = 'display: none;';
-                }
-
-
-                $('.attendees-chat-list').append(
-                    '<li class="attendees-chat-list-item list-group-item text-left" userName="'+fullname+'" userId="'+user.cust_id+'" company_name="'+company_name+'" status="offline" new-text="'+newTextBadge+'">\n' +
-                    '<img src="'+userAvatarSrc+'" alt="User Avatar" onerror=this.src="'+userAvatarAlt+'" class="img-circle"> \n' +
-                    '<span class="oto-chat-user-list-name" style="font-weight: bold;"> '+fullname+' <span class="badge new-text" style="background-color: #ff0a0a; '+badgeIcon+'">new</span> </span> \n' +
-                    //company_name_html +
-                    '<i class="active-icon fa fa-circle" style="color: #454543;" aria-hidden="true" userId="'+user.cust_id+'"></i> \n' +
-                    '<!--<h5 class="attendee-profile-btn pull-right" userId="'+user.cust_id+'" onclick="userProfileModal('+user.cust_id+')">\n' +
-                    '   <span class="label label-info">\n' +
-                    '      <i class="fa fa-user" aria-hidden="true"></i>\n' +
-                    '   </span>\n' +
-                    '</h5>-->' +
-                    '</li>\n'
-                );
-            });
-
-            $('.attendees-chat-list-item').on("click", function () {
-
-                $(this).children('.oto-chat-user-list-name').children('.new-text').hide();
-                $(this).attr('new-text', '0');
-                $(".attendees-chat-list li").sort(active_change_asc_sort).appendTo('.attendees-chat-list');
-                $(".attendees-chat-list li").sort(newtext_dec_sort).appendTo('.attendees-chat-list');
-
-                $(".attendees-chat-list>li.selected").removeClass("selected");
-                $(this).addClass('selected');
-
-                var fullname = $(this).attr('userName');
-                var company_name = $(this).attr('company_name');
-                var otherUserId = $(this).attr('userId');
-                var nameAcronym = fullname.match(/\b(\w)/g).join('');
-                var color = md5(nameAcronym+otherUserId).slice(0, 6);
-                var activeStatus = $(this).attr('status');
-                var statusColour = (activeStatus == 'active')?'#26ff49':(activeStatus == 'inactive')?'#ff9a41':'#454543';
-
-                var company_name_html = '';
-                if (company_name && (company_name != null || company_name != ''))
-                    company_name_html = '<small style="position: absolute;margin-top: 27px;margin-left: -75px;">'+company_name+'</small>';
-
-                var userAvatar = $(this).children('img').attr('src');
-                var userAvatarAlt = 'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
-
-                $('.send-oto-chat-btn').attr('send-to', otherUserId);
-                $('.one-to-one-chat-heading > .attendee-profile-btn').attr('userId', otherUserId);
-
-                $('.selected-user-name-area').html(
-                    '<img src="'+userAvatar+'" alt="User Avatar" onerror=this.src="'+userAvatarAlt+'" class="img-circle"> '+
-                    fullname +
-                    ' <i class="active-icon fa fa-circle" style="color: '+statusColour+';" aria-hidden="true" userId="'+otherUserId+'"></i>' +
-                    company_name_html
-                );
-
-                $('.selected-user-name-area').attr('userId', otherUserId);
-                $('.selected-user-name-area').attr('room', socket_lounge_oto_chat_group);
-
-                $('.oto-messages').html('');
-
-                $.post(base_url+"LoungeOtoChat/getChatsUserToUser/"+otherUserId,
-                    {
-                    },
-                    function(data, status){
-                        if(status == 'success')
-                        {
-                            if (data == 'false'){
-                                $('.oto-messages').append('No chats further!');
-                                return false;
-                            }
-                            var dataFromDb = JSON.parse(data);
-
-                            if (user_logo == '')
-                            {
-                                var nameAcronym = user_name.match(/\b(\w)/g).join('');
-                                var color = md5(nameAcronym+user_id).slice(0, 6);
-
-                                user_logo_url = 'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
-                            }else{
-                                user_logo_url = base_url+'uploads/customer_profile/'+user_logo;
-                            }
-
-                            $.each( dataFromDb, function( number, text ) {
-                                if (text.from_id == user_id)
-                                {
-                                    var nameAcronym = text.from_name.match(/\b(\w)/g).join('');
-                                    var color = md5(nameAcronym+text.user_id).slice(0, 6);
-
-                                    $('.oto-messages').append(
-                                        '<li class="grp-chat text-right clearfix">\n' +
-                                        '   <span class="chat-img pull-right">\n' +
-                                        '     <img src="'+user_logo_url+'" alt="Sponsor Logo" class="img-circle" />\n' +
-                                        '   </span>\n' +
-                                        '   <div class="chat-body clearfix">\n' +
-                                        '     <div class="header">\n' +
-                                        '       <small class="pull-left text-muted"><span class="glyphicon glyphicon-time"></span>'+text.datetime+'</small>\n' +
-                                        '       <strong class="pull-right primary-font">'+text.from_name+'</strong>\n' +
-                                        '     </div>\n' +
-                                        '     <br><p class="pull-right">\n' +
-                                        '      '+text.text+' \n' +
-                                        '     </p>\n' +
-                                        '   </div>\n' +
-                                        '</li>'
-                                    );
-                                    $('.oto-chat-body').scrollTop($('.oto-chat-body')[0].scrollHeight);
-                                }else{
-                                    var nameAcronym = text.from_name.match(/\b(\w)/g).join('');
-                                    var color = md5(nameAcronym+text.from_id).slice(0, 6);
-
-                                    $('.oto-messages').append(
-                                        '<li class="grp-chat text-left clearfix">\n' +
-                                        '   <span class="chat-img pull-left">\n' +
-                                        '     <img src="'+userAvatar+'" alt="User Avatar" onerror=this.src="'+userAvatarAlt+'" class="img-circle">\n' +
-                                        '   </span>\n' +
-                                        '   <div class="chat-body clearfix">\n' +
-                                        '      <div class="header">\n' +
-                                        '         <strong class="primary-font">'+text.from_name+'</strong> <small class="pull-right text-muted">\n' +
-                                        '         <span class="glyphicon glyphicon-time"></span>'+text.datetime+'</small>\n' +
-                                        '      </div>\n' +
-                                        '      <p>\n' +
-                                        '       '+text.text+' \n' +
-                                        '      </p>\n' +
-                                        '    </div>\n' +
-                                        '</li>'
-                                    );
-                                    $('.oto-chat-body').scrollTop($('.oto-chat-body')[0].scrollHeight);
-                                }
-                            });
-
-                            $.get( base_url+"LoungeOtoChat/readAllTextsOf/"+otherUserId, function() {});
-
-                        }else{
-                            toastr["error"]("Network problem!");
-                        }
-                    });
-            });
-
-            $(".attendees-chat-list li:first-child").click();
+            $('.attendees-chat-list').append(
+                '<li class="attendees-chat-list-item list-group-item text-left" userName="'+fullname+'" userId="'+user.cust_id+'" status="offline" new-text="0">\n' +
+                '<img src="'+userAvatarSrc+'" alt="User Avatar" onerror=this.src="'+userAvatarAlt+'" class="img-circle"> \n' +
+                '<span class="oto-chat-user-list-name" style="font-weight: bold;"> '+fullname+' <span class="badge new-text" style="background-color: #ff0a0a; display: none;">new</span> </span> \n' +
+                '<i class="active-icon fa fa-circle" style="color: #454543;" aria-hidden="true" userId="'+user.cust_id+'"></i> \n' +
+                '<!--<h5 class="attendee-profile-btn pull-right" userId="'+user.cust_id+'" onclick="userProfileModal('+user.cust_id+')">\n' +
+                '   <span class="label label-info">\n' +
+                '      <i class="fa fa-user" aria-hidden="true"></i>\n' +
+                '   </span>\n' +
+                '</h5>-->' +
+                '</li>\n'
+            );
         });
+
+        $('.attendees-chat-list-item').on("click", function () {
+
+            $(this).children('.oto-chat-user-list-name').children('.new-text').hide();
+            $(this).attr('new-text', '0');
+
+            $(".attendees-chat-list>li.selected").removeClass("selected");
+            $(this).addClass('selected');
+
+            var fullname = $(this).attr('userName');
+            var otherUserId = $(this).attr('userId');
+            var nameAcronym = fullname.match(/\b(\w)/g).join('');
+            var color = md5(nameAcronym+otherUserId).slice(0, 6);
+            var activeStatus = $(this).attr('status');
+            var statusColour = (activeStatus == 'active')?'#26ff49':(activeStatus == 'inactive')?'#ff9a41':'#454543';
+
+            var userAvatar = $(this).children('img').attr('src');
+            var userAvatarAlt = 'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
+
+            $('.send-oto-chat-btn').attr('send-to', otherUserId);
+            $('.one-to-one-chat-heading > .attendee-profile-btn').attr('userId', otherUserId);
+
+            $('.selected-user-name-area').html(
+                '<img src="'+userAvatar+'" alt="User Avatar" onerror=this.src="'+userAvatarAlt+'" class="img-circle"> '+
+                fullname +
+                ' <i class="active-icon fa fa-circle" style="color: '+statusColour+';" aria-hidden="true" userId="'+otherUserId+'"></i>'
+            );
+
+            var LOUNGE_OTO_CHAT_ROOM = 'TIADA_LOUNGE_OTO_';
+            var LOUNGE_GROUP_CHAT_ROOM = "TIADA_LOUNGE_GROUP";
+
+            $('.selected-user-name-area').attr('userId', otherUserId);
+            $('.selected-user-name-area').attr('room', LOUNGE_OTO_CHAT_ROOM);
+
+            $('.oto-messages').html('');
+
+            $.post("/tiadaannualconference/sponsor-admin/OtoChat/getChatsUserToSponsor/"+otherUserId,
+                {
+                    'sponsor_id': user_id
+                },
+                function(data, status){
+                    if(status == 'success')
+                    {
+                        var dataFromDb = JSON.parse(data);
+
+                        $.each( dataFromDb, function( number, text ) {
+                            if (text.from_id == user_id)
+                            {
+                                var nameAcronym = text.from_name.match(/\b(\w)/g).join('');
+                                var color = md5(nameAcronym+text.user_id).slice(0, 6);
+
+                                $('.oto-messages').append(
+                                    '<li class="grp-chat text-right clearfix">\n' +
+                                    '   <span class="chat-img pull-right">\n' +
+                                    '     <img src="'+base_url+'uploads/customer_profile/'+user_logo+'" alt="Sponsor Logo" class="img-circle" />\n' +
+                                    '   </span>\n' +
+                                    '   <div class="chat-body clearfix">\n' +
+                                    '     <div class="header">\n' +
+                                    '       <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>'+text.datetime+'</small>\n' +
+                                    '       <strong class="pull-right primary-font">'+text.from_name+'</strong>\n' +
+                                    '     </div>\n' +
+                                    '     <p class="pull-right">\n' +
+                                    '      '+text.text+' \n' +
+                                    '     </p>\n' +
+                                    '   </div>\n' +
+                                    '</li>'
+                                );
+                                $('.oto-chat-body').scrollTop($('.oto-chat-body')[0].scrollHeight);
+                            }else{
+                                var nameAcronym = text.from_name.match(/\b(\w)/g).join('');
+                                var color = md5(nameAcronym+text.from_id).slice(0, 6);
+
+                                $('.oto-messages').append(
+                                    '<li class="grp-chat text-left clearfix">\n' +
+                                    '   <span class="chat-img pull-left">\n' +
+                                    '     <img src="'+userAvatar+'" alt="User Avatar" onerror=this.src="'+userAvatarAlt+'" class="img-circle">\n' +
+                                    '   </span>\n' +
+                                    '   <div class="chat-body clearfix">\n' +
+                                    '      <div class="header">\n' +
+                                    '         <strong class="primary-font">'+text.from_name+'</strong> <small class="pull-right text-muted">\n' +
+                                    '         <span class="glyphicon glyphicon-time"></span>'+text.datetime+'</small>\n' +
+                                    '      </div>\n' +
+                                    '      <p>\n' +
+                                    '       '+text.text+' \n' +
+                                    '      </p>\n' +
+                                    '    </div>\n' +
+                                    '</li>'
+                                );
+                                $('.oto-chat-body').scrollTop($('.oto-chat-body')[0].scrollHeight);
+                            }
+                        });
+
+                    }else{
+                        toastr["error"]("Network problem!");
+                    }
+                });
+        });
+
+        $(".attendees-chat-list li:first-child").click();
     });
 
 
@@ -394,10 +364,10 @@ $(function() {
         if (text == '')
             return;
 
-        $.post(base_url+"LoungeOtoChat/newText",
+        $.post("/tiadaannualconference/sponsor-admin/OtoChat/newText",
             {
                 'chat_text': text,
-                'chat_from': user_id,
+                'sponsor_id': user_id,
                 'chat_to': chat_to
             },
             function(data, status){
@@ -407,17 +377,19 @@ $(function() {
 
                     $('#one-to-one-ChatText').val('');
 
-                    socket.emit('newLoungeOtoText',
+                    var LOUNGE_OTO_CHAT_ROOM = 'TIADA_LOUNGE_OTO';
+
+                    socket.emit('newSponsorOtoText',
                         {
-                            "room":socket_lounge_oto_chat_group,
+                            "room":LOUNGE_OTO_CHAT_ROOM,
                             "name":user_name,
-                            "from_id": user_id,
+                            "from_id": "sponsor",
+                            "userType":user_type,
                             "chat_text":text,
-                            "chat_to":chat_to,
+                            "user_id":chat_to,
                             "datetime":dataFromDb.datetime,
-                            "profile": user_logo_url
+                            "profile":''
                         });
-                    console.log(user_logo_url);
 
                 }else{
                     toastr["error"]("Network problem!");
@@ -425,59 +397,66 @@ $(function() {
             });
     });
 
-    socket.on('newLoungeOtoText', function(data) {
+    socket.on('newSponsorOtoText', function(data) {
 
-        var selectedUser = $('.selected-user-name-area').attr('userid');
+        var selectedUser = $('.selected-user-name-area').attr('userId');
 
-        if ((user_id == data.to_id) && selectedUser != data.from_id)
+        if (selectedUser == data.user_id)
         {
-            $('.attendees-chat-list > li[userid="' + data.from_id + '"] > .oto-chat-user-list-name > .new-text').show();
-            $('.attendees-chat-list > li[userid="' + data.from_id + '"]').attr('new-text', '1');
-
-            $(".attendees-chat-list li").sort(newtext_dec_sort).appendTo('.attendees-chat-list');
-            return;
-        }
-
-        if ((selectedUser == data.to_id && user_id == data.from_id) || (selectedUser == data.from_id && user_id == data.to_id))
-        {
-            if (data.from_id == user_id) {
-
+            if (data.from_id == 'sponsor')
+            {
                 $('.oto-messages').append(
                     '<li class="grp-chat text-right clearfix">\n' +
                     '   <span class="chat-img pull-right">\n' +
-                    '     <img src="' + user_logo_url + '" alt="User DP" class="img-circle" />\n' +
+                    '     <img src="'+base_url+'uploads/sponsors/'+sponsor_logo+'" alt="Sponsor Logo" class="img-circle" />\n' +
                     '   </span>\n' +
                     '   <div class="chat-body clearfix">\n' +
                     '     <div class="header">\n' +
-                    '       <small class="pull-left text-muted"><span class="glyphicon glyphicon-time"></span>' + data.datetime + '</small>\n' +
-                    '       <strong class="pull-right primary-font">' + data.name + '</strong>\n' +
+                    '       <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>'+data.datetime+'</small>\n' +
+                    '       <strong class="pull-right primary-font">'+data.name+'</strong>\n' +
                     '     </div>\n' +
-                    '     <br><p class="pull-right">\n' +
-                    '      ' + data.chat_text + ' \n' +
+                    '     <p class="pull-right">\n' +
+                    '      '+data.chat_text+' \n' +
                     '     </p>\n' +
                     '   </div>\n' +
                     '</li>'
                 );
                 $('.oto-chat-body').scrollTop($('.oto-chat-body')[0].scrollHeight);
-            } else {
+            }else{
+                var nameAcronym = data.name.match(/\b(\w)/g).join('');
+                var color = md5(nameAcronym+data.from_id).slice(0, 6);
+
+                var userAvatarSrc = (data.profile != '' && data.profile != null)?'/tiadaannualconference/uploads/customer_profile/'+data.profile:'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
+                var userAvatarAlt = 'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
 
                 $('.oto-messages').append(
                     '<li class="grp-chat text-left clearfix">\n' +
                     '   <span class="chat-img pull-left">\n' +
-                    '     <img src="' + data.profile + '" alt="User Avatar" class="img-circle" />\n' +
+                    '     <img src="'+userAvatarSrc+'" alt="User Avatar" onerror=this.src="'+userAvatarAlt+'" class="img-circle" />\n' +
                     '   </span>\n' +
                     '   <div class="chat-body clearfix">\n' +
                     '      <div class="header">\n' +
-                    '         <strong class="primary-font">' + data.name + '</strong> <small class="pull-right text-muted">\n' +
-                    '         <span class="glyphicon glyphicon-time"></span>' + data.datetime + '</small>\n' +
+                    '         <strong class="primary-font">'+data.name+'</strong> <small class="pull-right text-muted">\n' +
+                    '         <span class="glyphicon glyphicon-time"></span>'+data.datetime+'</small>\n' +
                     '      </div>\n' +
                     '      <p>\n' +
-                    '       ' + data.chat_text + ' \n' +
+                    '       '+data.chat_text+' \n' +
                     '      </p>\n' +
                     '    </div>\n' +
                     '</li>'
                 );
                 $('.oto-chat-body').scrollTop($('.oto-chat-body')[0].scrollHeight);
+            }
+        }else{
+            $('.attendees-chat-list > li[userid="'+data.user_id+'"] > .oto-chat-user-list-name > .new-text').show();
+            $('.attendees-chat-list > li[userid="'+data.user_id+'"]').attr('new-text', '1');
+
+            $(".attendees-chat-list li").sort(dec_sort).appendTo('.attendees-chat-list');
+            function asc_sort(a, b){
+                return ($(b).attr('new-text')) < ($(a).attr('new-text')) ? 1 : -1;
+            }
+            function dec_sort(a, b){
+                return ($(b).attr('new-text')) > ($(a).attr('new-text')) ? 1 : -1;
             }
         }
     });
@@ -494,48 +473,19 @@ $(function() {
         }
     });
 
-
-
-    /*********************** user active status **************************/
-
-    socket.emit('getActiveUserListPerApp', socket_app_name);
-    socket.on('activeUserListPerApp', function(data) {
-        if (data == null)
-            return;
-        $.each(data, function( number, userId ) {
-            $('.active-icon[userId="'+userId+'"]').css('color', '#26ff49');
-            $('.attendees-chat-list-item[userId="'+userId+'"]').attr('status', 'active');
-        });
-
-        $(".attendees-chat-list li").sort(active_change_asc_sort).appendTo('.attendees-chat-list');
-        $(".attendees-chat-list li").sort(newtext_dec_sort).appendTo('.attendees-chat-list');
-    });
-
-    socket.on('userActiveChangeInApp', function(data) {
-        socket.emit('getActiveUserListPerApp', socket_app_name);
-        if (data.app == socket_app_name)
+    socket.on('userActiveChange', function(data) {
+        if (data.status == true)
         {
-            if (data.status == true)
-            {
-                var color = '#26ff49';
-                var status = 'active';
-            }else{
-                var color = '#ffc500';
-                var status = 'inactive';
-            }
-
-            $('.active-icon[userId="'+data.userId+'"]').css('color', color);
-            $('.attendees-chat-list-item[userId="'+data.userId+'"]').attr('status', status);
-
-            $(".attendees-chat-list li").sort(active_change_asc_sort).appendTo('.attendees-chat-list');
-            $(".attendees-chat-list li").sort(newtext_dec_sort).appendTo('.attendees-chat-list');
+            var color = '#26ff49';
+            var status = 'active';
+        }else{
+            var color = '#ffc500';
+            var status = 'inactive';
         }
 
+        $('.active-icon[userId="'+data.userId+'"]').css('color', color);
+        $('.attendees-chat-list-item[userId="'+data.userId+'"]').attr('status', status);
     });
-
-    /******************* end of user active status *****************************/
-
-
 
     $(".oto-attendee-search").keyup(function () {
         var filter = $(this).val();
@@ -548,24 +498,26 @@ $(function() {
         });
     });
 
+    setInterval(function() {
+        socket.emit('getActiveUserList');
+    }, 60 * 1000); // 60 * 1000 milsec
+    socket.emit('getActiveUserList');
+    socket.on('activeUserList', function(data) {
+        $.each(data, function( socketId, userId ) {
+            $('.active-icon[userId="'+userId+'"]').css('color', '#26ff49');
+            $('.attendees-chat-list-item[userId="'+userId+'"]').attr('status', 'active');
+        });
+        $(".attendees-chat-list li").sort(asc_sort).appendTo('.attendees-chat-list');
+        function asc_sort(a, b){
+            return ($(b).attr('status')) < ($(a).attr('status')) ? 1 : -1;
+        }
+        function dec_sort(a, b){
+            return ($(b).attr('status')) > ($(a).attr('status')) ? 1 : -1;
+        }
+    });
 
     $(".attendee-profile-btn").on( "click", function() {
         var userId = $(this).attr('userId');
         userProfileModal(userId);
     });
-
-
-    function newtext_asc_sort(a, b) {
-        return ($(b).attr('new-text')) < ($(a).attr('new-text')) ? 1 : -1;
-    }
-    function newtext_dec_sort(a, b) {
-        return ($(b).attr('new-text')) > ($(a).attr('new-text')) ? 1 : -1;
-    }
-
-    function active_change_asc_sort(a, b){
-        return ($(b).attr('status')) < ($(a).attr('status')) ? 1 : -1;
-    }
-    function active_change_dec_sort(a, b){
-        return ($(b).attr('status')) > ($(a).attr('status')) ? 1 : -1;
-    }
 });

@@ -3,7 +3,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
 <style>
     .icon-home {
-        color: #ae0201;
+        color: #ef9d45;
         font-size: 1.5em;
         font-weight: 700;
         vertical-align: middle;
@@ -134,9 +134,9 @@
                                     <br>
                                     <?php if ($user_detias->customer_type == "Dummy users" || $user_detias->customer_type == "full_conference_no_roundtables" || $user_detias->customer_type == "Associate - Full Payment" || $user_detias->customer_type == "Associate Branch" || $user_detias->customer_type == "Associate - Monthly") { ?>
                                         <br>
-                                        <span>Sessions On Demand</span>
+                                        <span>Sessions</span>
                                     <?php } else { ?>
-                                        <span>Sessions On Demand</span>
+                                        <span>Sessions</span>
                                     <?php } ?>
                                 </div>
                             </a>
@@ -147,31 +147,31 @@
                                 <div class="col-lg box-home p-5 text-center">
                                     <img src="<?= base_url() ?>front_assets/images/Session.png" alt="welcome" class="m-t-40" style="height: 150px; width: 160px;">
                                     <br>
-                                    <span>Sessions on Demand Coming Soon!</span>
+                                    <span>Sessions</span>
                                 </div>
                             </a>
                         </div>
                     <?php } ?>
-                    <div class="col-md-3  col-sm-12">
-                        <a class="icon-home" href="#"> 
+                    <div class="col-md-3 col-sm-12">
+                        <a class="icon-home" href="<?= base_url() ?>sponsor"> 
                             <div class="col-lg box-home ml-5 mr-5 p-5 text-center">
                                 <img src="<?= base_url() ?>front_assets/images/sponsor.png" alt="welcome" class="m-t-40" style="height: 150px; width: 160px;">
                                 <br>
                                 <br>
-                                <span>EXPO now closed</span>
+                                <span>Sponsors</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3  col-sm-12">
+                        <a class="icon-home" href="<?= base_url() ?>lounge" id="btn_lounge">
+                            <div class="col-lg box-home p-5 text-center">
+                                <img src="<?= base_url() ?>front_assets/images/lounge.png" alt="welcome" class="m-t-20" style="height: 170px; width: 170px;">
+                                <br>
+                                <br>
+                                <span>LOUNGE</span>
                             </div>
                         </a>
                     </div> 
-                    <!--                    <div class="col-md-3  col-sm-12">-->
-                    <!--                        <a class="icon-home" href="--><?//= base_url() ?><!--lounge" id="btn_lounge">-->
-                    <!--                            <div class="col-lg box-home p-5 text-center">-->
-                    <!--                                <img src="--><?//= base_url() ?><!--front_assets/images/lounge.png" alt="welcome" class="m-t-20" style="height: 170px; width: 170px;">-->
-                    <!--                                <br>-->
-                    <!--                                <br>-->
-                    <!--                                <span>LOUNGE</span>-->
-                    <!--                            </div>-->
-                    <!--                        </a>-->
-                    <!--                    </div> -->
                     <div class="col-md-1  col-sm-12" id="TECHNICAL_HELP">
                         <a class="icon-home" target="_blank" href="https://yourconference.live/support"> 
                             <div class="col-lg box-home_2 p-0 p-b-25 text-center">
@@ -204,16 +204,16 @@
 <div class="modal fade" id="push_notification" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left; right: unset;">
     <input type="hidden" id="push_notification_id" value="">
     <div class="modal-dialog">
-        <div class="modal-content" style="border: 1px solid #ae0201;">
+        <div class="modal-content" style="border: 1px solid #ef9d45;">
             <div class="modal-body">
                 <div class="row" style="padding-top: 10px; padding-bottom: 20px;">
                     <div class="col-sm-12">
-                        <div style="color:#ae0201; font-size: 16px; font-weight: 800; " id="push_notification_message"></div>
+                        <div style="color:#ef9d45; font-size: 16px; font-weight: 800; " id="push_notification_message"></div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="close push_notification_close" style="padding: 10px; color: #fff; background-color: #ae0201; opacity: 1;" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button type="button" class="close push_notification_close" style="padding: 10px; color: #fff; background-color: #ef9d45; opacity: 1;" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
         </div>
     </div>

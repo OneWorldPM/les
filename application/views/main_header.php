@@ -76,7 +76,7 @@
             }
 
             .button.black-light {
-                border-color: #ae0201;
+                border-color: #ef9d45;
             }
             
            .fullscreen{

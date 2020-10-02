@@ -417,5 +417,15 @@ class Sessions extends CI_Controller {
             header('location:' . base_url() . 'admin/sessions?msg=E');
         }
     }
+    
+     public function alldelete($id) {
+        $ids = (explode(',', $id));
+        $query = $this->msessions->alldelete($ids);
+        if ($query) {
+            header("location:" . base_url() . "admin/sessions?msg=D");
+        } else {
+            header("location:" . base_url() . "admin/sessions?msg=E");
+        }
+    }
 
 }

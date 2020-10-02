@@ -2,7 +2,7 @@
     <div class="container container-fullscreen">
         <div class="text-middle">
             <div class="row">
-                <div class="col-md-3 center p-40 background-white" style="border-radius: 10px;">
+                <div class="col-md-3 center p-40 background-white" style="border-radius: 10px; margin-top: 180px;">
                     <div class="row">
                         <h4>Forgot Password</h4>
                         <?php
@@ -48,7 +48,7 @@
                                 success: function (data, textStatus, jqXHR) {
                                     if (data.msg == 'sendemail') {
                                         //alertify.success("Send Confirmation Emails,Please Check Your Email...!!!"); 
-                                        $('.smsg').html("<p>Check your email for instructions on how to recover your password</p>");
+                                        $('.smsg').html("<p style='color:green'>Check your email for instructions on how to recover your password</p>");
                                         window.setTimeout('location.reload()', 5000);
                                     } else {
                                         alertify.error("Email does not exist, Please try again!!!");
