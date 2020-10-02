@@ -184,26 +184,13 @@ function listMeetings() {
                 '  <td>'+meeting.meeting_to+'</td>\n' +
                 '  <td>' +
                 '<button class="btn btn-xs btn-warning">Attendees</button>' +
-                '<button class="meeting-room-btn btn btn-xs btn-info" meeting-id="'+meeting.id+'">Meeting Room</button>' +
+                '<a class="m-l-5" href="'+base_url+'lounge/meet/'+meeting.id+'" target="_blank"><button class="meeting-room-btn btn btn-xs btn-info" meeting-id="'+meeting.id+'">Meeting Room</button></a>' +
                 '</td>\n' +
                 '</tr>'
             );
         });
 
         $('#meetings_table').DataTable();
-    });
-
-
-    $(".meetings-table-items").on('click', '.meeting-room-btn', function () {
-        var meeting_id = $(this).attr('meeting-id');
-        var win = window.open(base_url+'lounge/meet/'+meeting_id, '_blank');
-        if (win) {
-            //Browser has allowed it to be opened
-            win.focus();
-        } else {
-            //Browser has blocked it
-            toastr["error"]("Please allow popups for this website");
-        }
     });
 
 }
