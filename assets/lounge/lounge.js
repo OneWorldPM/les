@@ -498,7 +498,10 @@ $(function() {
 
     /*********************** user active status **************************/
 
-    socket.emit('getActiveUserListPerApp', socket_app_name);
+    setTimeout(function () {
+        socket.emit('getActiveUserListPerApp', socket_app_name);
+    }, 4000); // Wait 4 seconds and request for new list of active users
+
     socket.on('activeUserListPerApp', function(data) {
         if (data == null)
             return;

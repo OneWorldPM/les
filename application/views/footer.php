@@ -67,6 +67,10 @@
 
         socket.on('serverStatus', function (data) {
             socket.emit('addMeToActiveListPerApp', {'user_id':user_id, 'app': socket_app_name, 'room': socket_active_user_list});
+
+            setTimeout(function () {
+                socket.emit('getActiveUserListPerApp', socket_app_name);
+            }, 5000); // Wait 5 seconds and request for new list of active users
         });
 
         // Active again
