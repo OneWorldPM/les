@@ -6,8 +6,12 @@ class M_login extends CI_Model {
         parent::__construct();
     }
 
-    public function user_login($login_data) {
-        $result = $this->db->select('*')->get_where('customer_master', $login_data);
+    public function user_login($username, $password) {
+        $this->db->select('*');
+        $this->db->from('customer_master');
+        $this->db->where("(email = '$username' OR username = '$username')");
+        $this->db->where("password", $password);
+        $result = $this->db->get();
         if ($result->num_rows() > 0) {
             return $result->row_array();
         } else {
@@ -43,7 +47,7 @@ class M_login extends CI_Model {
 
     public function update_user_token($cust_id) {
         $token = $this->generateRandomString();
-        $this->db->update("customer_master", array("token" => $token), array("cust_id" =>$cust_id));
+        $this->db->update("customer_master", array("token" => $token), array("cust_id" => $cust_id));
         return $token;
     }
 
