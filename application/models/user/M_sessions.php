@@ -31,7 +31,7 @@ class M_sessions extends CI_Model {
         //   $this->db->where('DATE_FORMAT(s.sessions_date, "%Y-%m-%d") >=', date('Y-m-d'));
 //        $this->db->where('DATE_FORMAT(s.sessions_date, "%Y-%m-%d") >=', date('Y-m-d',strtotime("-5 days")));
 //        $this->db->where('DATE_FORMAT(s.sessions_date, "%Y-%m-%d") <=', date('Y-m-d', strtotime("+1 month")));
-        $this->db->where('sessions_type_status !=', 'Private');
+        //    $this->db->where('sessions_type_status !=', 'Private');
         $this->db->group_by('dayname');
         $this->db->order_by("s.sessions_date", "asc");
         $result = $this->db->get();
@@ -46,7 +46,7 @@ class M_sessions extends CI_Model {
         $this->db->select('*');
         $this->db->from('sessions s');
         $this->db->where("DATE_FORMAT(s.sessions_date,'%Y-%m-%d') =", date('Y-m-d', strtotime($date)));
-        $this->db->where('sessions_type_status !=', 'Private');
+        //   $this->db->where('sessions_type_status !=', 'Private');
         $this->db->order_by("s.sessions_date", "asc");
         $this->db->order_by("s.time_slot", "asc");
         $sessions = $this->db->get();
@@ -71,7 +71,7 @@ class M_sessions extends CI_Model {
         $this->db->select('*');
         $this->db->from('sessions s');
         $this->db->where("DATE_FORMAT(s.sessions_date,'%Y-%m-%d') =", date('Y-m-d', strtotime($post['selectd_date'])));
-        $this->db->where('sessions_type_status !=', 'Private');
+        //    $this->db->where('sessions_type_status !=', 'Private');
         if ($post['sessions_tracks'] != "") {
             $this->db->like("s.sessions_tracks_id", $post['sessions_tracks']);
         }
@@ -100,7 +100,7 @@ class M_sessions extends CI_Model {
         $this->db->from('sessions s');
         // $this->db->join('presenter p', 'p.presenter_id=s.presenter_id');
         $this->db->where("DATE_FORMAT(s.sessions_date,'%Y-%m-%d') =", date('Y-m-d', strtotime('this Sunday')));
-        $this->db->where('sessions_type_status !=', 'Private');
+        //  $this->db->where('sessions_type_status !=', 'Private');
         $this->db->order_by("s.sessions_date", "asc");
         $this->db->order_by("s.time_slot", "asc");
         $sessions = $this->db->get();
@@ -121,7 +121,7 @@ class M_sessions extends CI_Model {
         $this->db->from('sessions s');
         // $this->db->join('presenter p', 'p.presenter_id=s.presenter_id');
         $this->db->where("DATE_FORMAT(s.sessions_date,'%Y-%m-%d') =", date('Y-m-d', strtotime('this Monday')));
-        $this->db->where('sessions_type_status !=', 'Private');
+        //  $this->db->where('sessions_type_status !=', 'Private');
         $this->db->order_by("s.sessions_date", "asc");
         $this->db->order_by("s.time_slot", "asc");
         $sessions = $this->db->get();
@@ -316,7 +316,7 @@ class M_sessions extends CI_Model {
 
     function addBriefcase() {
         $post = $this->input->post();
-        $resource_type = (isset($post['type']))?$post['type']:'note';
+        $resource_type = (isset($post['type'])) ? $post['type'] : 'note';
         $insert_array = array(
             'cust_id' => $this->session->userdata("cid"),
             'sessions_id' => $post['sessions_id'],
