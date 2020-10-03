@@ -27,30 +27,30 @@
             <div class="row">
                 <div class="col-md-4 col-xs-12 col-sm-12 center p-50 background-white" style="border-radius: 10px; margin-top: 180px; ">
                     <div class="row">
-                            <h4>Welcome Back!</h4>
-                            <p>Sign in Below</p>
-                            <?php
-                            echo ($this->session->flashdata('msg')) ? $this->session->flashdata('msg') : '';
-                            ?> 
-                            <form id="login-form" name="frm_login" method="post" action="<?= base_url() ?>login/authentication">
-                                <div class="form-group">
-                                    <label class="sr-only">Email Address</label>
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
-                                    <span id="erroremail" style="color:red"></span>
-                                </div>
-                                <div class="form-group m-b-5">
-                                    <label class="sr-only">Password</label>
-                                    <input type="password" id="password" name="password" class="form-control" placeholder="Password">
-                                    <span id="errorpassword" style="color:red"></span>
-                                </div>
-                                <div class="form-group form-inline text-left ">
-                                    <a href="<?= base_url() ?>forgotpassword" class="right"><small>Forgot Password?</small></a>
-                                </div>
-                                <div class="text-left form-group">
-                                    <button type="submit" id="btn_login" class="btn btn-primary">Login</button>
-                                </div>
-                            </form>
-                       
+                        <h4>Welcome Back!</h4>
+                        <p>Sign in Below</p>
+                        <?php
+                        echo ($this->session->flashdata('msg')) ? $this->session->flashdata('msg') : '';
+                        ?> 
+                        <form id="login-form" name="frm_login" method="post" action="<?= base_url() ?>login/authentication">
+                            <div class="form-group">
+                                <label class="sr-only">Username</label>
+                                <input type="text" class="form-control" id="email" name="email" placeholder="Username">
+                                <span id="erroremail" style="color:red"></span>
+                            </div>
+                            <div class="form-group m-b-5">
+                                <label class="sr-only">Password</label>
+                                <input type="password" id="password" name="password" class="form-control" placeholder="Password">
+                                <span id="errorpassword" style="color:red"></span>
+                            </div>
+                            <div class="form-group form-inline text-left ">
+                                <a href="<?= base_url() ?>forgotpassword" class="right"><small>Forgot Password?</small></a>
+                            </div>
+                            <div class="text-left form-group">
+                                <button type="submit" id="btn_login" class="btn btn-primary">Login</button>
+                            </div>
+                        </form>
+
                     </div>
                 </div>
             </div>
@@ -62,7 +62,7 @@
     $(document).ready(function () {
         $("#btn_login").on("click", function () {
             if ($("#email").val().trim() == "") {
-                $("#erroremail").text("Please Enter Email").fadeIn('slow').fadeOut(5000);
+                $("#erroremail").text("Please Enter Username").fadeIn('slow').fadeOut(5000);
 
                 return false;
             } else if ($("#password").val() == "") {

@@ -153,7 +153,7 @@
                         </div>
                     <?php } ?>
                     <div class="col-md-3 col-sm-12">
-                        <a class="icon-home" href="<?= base_url() ?>sponsor"> 
+                        <a class="icon-home" href="<?= base_url() ?>sponsor/other_sponsor"> 
                             <div class="col-lg box-home ml-5 mr-5 p-5 text-center">
                                 <img src="<?= base_url() ?>front_assets/images/sponsor.png" alt="welcome" class="m-t-40" style="height: 150px; width: 160px;">
                                 <br>

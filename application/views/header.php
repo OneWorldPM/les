@@ -143,7 +143,7 @@
                                         <li><a href="#" target="_blank" style="color: #ef9d45">AGENDA</a></li>
                                         <li><a href="<?= base_url() ?>home" style="color: #ef9d45">MAIN HALL</a></li>
                                             <li><a href="<?= base_url()?>sessions" style="color: #ef9d45">Sessions</a></li>
-                                            <li><a href="<?= base_url() ?>sponsor" style="color: #ef9d45">Sponsors</a></li>
+                                            <li><a href="<?= base_url() ?>sponsor/other_sponsor" style="color: #ef9d45">Sponsors</a></li>
                                             <li><a href="<?= base_url() ?>lounge" style="color: #ef9d45">Lounge</a></li>
                                         <li class="nav-item avatar dropdown">
                                             <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
