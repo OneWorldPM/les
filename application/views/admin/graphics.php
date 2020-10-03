@@ -17,7 +17,7 @@
                                     <img src="<?= base_url() ?>front_assets/images/tiada.jpg" alt="les" style="width:30%">
                                 </div>
                                 <div class="form-group">
-                                    <label>Session List / Session View / My Backpack / Attend View</label>
+                                    <label>Session List / Session View / My Briefcase / Attend View</label>
                                     <span class="input-icon">
                                         <input type="file" class="form-control" name="sub_background" id="sub_background">
                                         <i class="fa fa-user"></i> 

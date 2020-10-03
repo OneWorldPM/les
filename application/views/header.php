@@ -192,7 +192,7 @@
                                                     </li>
                                                     <li>
                                                         <a href="<?= base_url() ?>home/notes">
-                                                            My Backpack
+                                                            My Briefcase
                                                         </a>
                                                     </li>
                                                     <li>
