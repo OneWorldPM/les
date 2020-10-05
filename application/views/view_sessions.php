@@ -6,14 +6,16 @@
         background: rgb(200, 201, 202);
         box-shadow: none;
     }
+
     .progress-bar_1 {
         height: 100%;
         padding: 3px;
         background: rgb(108, 108, 108);
-        box-shadow: none; 
+        box-shadow: none;
         color: #fff;
         padding-top: 0px;
     }
+
     .progress_bar_new {
         height: 100%;
         padding: 3px;
@@ -34,28 +36,30 @@
         padding-top: 0px;
     }
 
-    .option_section_css{
+    .option_section_css {
         background-color: #f1f1f1;
         padding-top: 4px;
         padding-left: 6px;
         border-radius: 9px;
         margin-bottom: 10px;
     }
-    .option_section_css_selected{
+
+    .option_section_css_selected {
         background-color: #e1f6ff;
         padding-top: 4px;
         padding-left: 6px;
         border-radius: 9px;
         margin-bottom: 10px;
     }
+
     .progress {
         height: 26px;
         margin-bottom: 10px;
         overflow: hidden;
         background-color: #e6edf3;
         border-radius: 5px;
-        -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
-        box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
     }
 
     .progress_1 {
@@ -64,194 +68,477 @@
         overflow: hidden;
         background-color: #55c4534f;
         border-radius: 5px;
-        -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
-        box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
     }
 
-    section{
+    section {
         padding: 25px 0px;
     }
 </style>
-<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/bubble_bg_1920.jpg); top: 0; padding-top: 0px;">
-<!--<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/Sessions_BG_screened.jpg); top: 0; padding-top: 0px;">-->
-    <div class="container container-fullscreen" style="min-height: 900px;">
-        <div class="">
-            <div class="row">
-                <div class="col-md-12">
-                    <!-- CONTENT -->
-                    <section class="content">
-                        <div class="container" style=" background: rgb(223 223 223 / 60%);"> 
-                            <div class="row p-b-40">
-                                <div class="col-md-12" style="background-color: #B2B7BB; margin-bottom: 10px;">
-                                    <h3 style="margin-bottom: 5px; color: #fff; font-weight: 700; text-transform: uppercase;"><?= isset($sessions) ? $sessions->session_title : "" ?></h3>
-                                </div>
-                                <div id="embededVideo" class="col-md-12" style="text-align: center; width: 80% !important;">
-                                    <div class="row"><i id="btnFS" class="fa fa-arrows-alt" aria-hidden="true"></i></div>
-                                    <div id="iframeDiv" class="row" style="width: 112%; height: 97%;">
-                                        <?= isset($sessions) ? $sessions->embed_html_code : "" ?>
+<style>
+
+    .progress-bar {
+        height: 100%;
+        padding: 3px;
+        background: rgb(200, 201, 202);
+        box-shadow: none;
+    }
+
+    .progress-bar_1 {
+        height: 100%;
+        padding: 3px;
+        background: rgb(108, 108, 108);
+        box-shadow: none;
+        color: #fff;
+        padding-top: 0px;
+    }
+
+    .progress_bar_new {
+        height: 100%;
+        padding: 3px;
+        background: #99d9ea;
+        box-shadow: none;
+        text-align: center;
+        color: #fff;
+        padding-top: 0px;
+    }
+
+    .progress_bar_new_1 {
+        height: 100%;
+        padding: 3px;
+        background: #5c915b;
+        box-shadow: none;
+        text-align: center;
+        color: #fff;
+        padding-top: 0px;
+    }
+
+    .option_section_css {
+        background-color: #f1f1f1;
+        padding-top: 4px;
+        padding-left: 6px;
+        border-radius: 9px;
+        margin-bottom: 10px;
+        display: flex;
+        display: flex;
+    }
+
+    .option_section_css_selected {
+        background-color: #e1f6ff;
+        padding-top: 4px;
+        padding-left: 6px;
+        border-radius: 9px;
+        margin-bottom: 10px;
+        display: flex;
+        display: flex;
+    }
+
+    .progress {
+        height: 26px;
+        margin-bottom: 10px;
+        overflow: hidden;
+        background-color: #e6edf3;
+        border-radius: 5px;
+        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
+    }
+
+    .progress_1 {
+        height: 26px;
+        margin-bottom: 10px;
+        overflow: hidden;
+        background-color: #55c4534f;
+        border-radius: 5px;
+        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
+    }
+
+    section {
+        padding: 0;
+    }
+
+    .embed-responsive-item {
+        height: 91% !important;
+    }
+
+    .embed-responsive {
+        position: unset !important;
+        padding-bottom: 0 !important;
+    }
+
+    #embededVideo {
+        height: 959px;
+        margin-top: -2px;
+        position: relative;
+    }
+
+    .currentTime {
+        font-weight: 600;
+        position: relative;
+        width: 100%;
+        bottom: 156px;
+        line-height: 64px;
+    }
+
+    .currentTimeButton {
+        border: none;
+        padding: 15px 7px;
+        float: right;
+        opacity: 0.4;
+        background-color: transparent !important;
+    }
+
+    .currentTimeButton:hover {
+        opacity: 1;
+    }
+
+    .rightSticykPopup .open > .dropdown-menu {
+        left: -125px;
+    }
+
+    .rightSticykPopup .open > .dropdown-menu li a {
+        cursor: pointer;
+    }
+
+    #briefcase_send {
+        position: absolute;
+        width: 96%;
+        padding: 15px 0px !important;
+        bottom: -5px;
+    }
+
+
+    #briefcase {
+        height: 160px;
+    }
+
+    #briefcase_section {
+        height: 74% !important;
+    }
+
+    .videoContent {
+        height: 909px;
+        overflow: hidden;
+    }
+
+    .parallax {
+        height: 909px;
+    }
+
+    .questionElement {
+        max-height: 230px;
+        overflow: auto;
+    }
+
+    .questionElement p {
+        background-color: #b2b7bb;
+        color: black;
+        text-align: center;
+        margin-top: 5px;
+        margin-bottom: 0;
+    }
+
+    .option_lable {
+        margin-left: 5px;
+    }
+
+    .borderFooter {
+        position: absolute;
+        display: block !important;
+        background-color: #F15A23;
+        width: 100%;
+        height: 24px;
+        z-index: 124124124;
+        top: 40px;
+    }
+
+    .button.color, .btn.btn-primary{
+        background-color: #f05d1f;
+        border-color: #f05d1f;
+    }
+
+    @media only screen and (max-width: 1548px) {
+        .borderFooter {
+            display: none !important;
+        }
+    } @media only screen and (max-width: 601px) {
+        #briefcase_section {
+            height: 87% !important;
+        }
+        #error_briefcase{
+            margin-top: 45px;
+        }
+    }
+
+
+
+</style>
+<?php
+if(false){
+    ?>
+    <section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/bubble_bg_1920.jpg); top: 0; padding-top: 0px;">
+        <!--<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/Sessions_BG_screened.jpg); top: 0; padding-top: 0px;">-->
+        <div class="container container-fullscreen" style="min-height: 900px;">
+            <div class="">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- CONTENT -->
+                        <section class="content">
+                            <div class="container" style=" background: rgb(223 223 223 / 60%);">
+                                <div class="row p-b-40">
+                                    <div class="col-md-12" style="background-color: #B2B7BB; margin-bottom: 10px;">
+                                        <h3 style="margin-bottom: 5px; color: #fff; font-weight: 700; text-transform: uppercase;"><?= isset($sessions) ? $sessions->session_title : "" ?></h3>
                                     </div>
-                                    <img alt="" src="<?= base_url() ?>front_assets/images/hovermouse.png" style="float: left; width: 10%; margin-top: -80px; margin-left: -10px;">
-                                    <div class="modal fade" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left;">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header" style="padding: 0px;">
-                                                    <img class="kent_logo" src="<?= base_url() ?>assets/images/logo.png" alt="MLG">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="row" style="padding-top: 10px; padding-bottom: 20px;">
-                                                        <div class="col-sm-12">
-                                                            <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
+                                    <div id="embededVideo" class="col-md-12" style="text-align: center; width: 80% !important;">
+                                        <div class="row"><i id="btnFS" class="fa fa-arrows-alt" aria-hidden="true"></i></div>
+                                        <div id="iframeDiv" class="row" style="width: 112%; height: 97%;">
+                                            <?= isset($sessions) ? $sessions->embed_html_code : "" ?>
+                                        </div>
+                                        <img alt="" src="<?= base_url() ?>front_assets/images/hovermouse.png" style="float: left; width: 10%; margin-top: -80px; margin-left: -10px;">
+                                        <div class="modal fade" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left;">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header" style="padding: 0px;">
+                                                        <img class="kent_logo" src="<?= base_url() ?>assets/images/logo.png" alt="MLG">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row" style="padding-top: 10px; padding-bottom: 20px;">
+                                                            <div class="col-sm-12">
+                                                                <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row" id="timer_sectiom" style="padding-top: 20px; padding-bottom: 20px; display: none;">
+                                                            <div class="col-md-12" style="text-align: center;">
+                                                                <span id="id_day_time" style="border:1px solid #000; border-radius: 100px; font-size: 76px; font-weight: 700; color: green; padding: 10px 30px 10px 30px;"></span>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row" id="timer_sectiom" style="padding-top: 20px; padding-bottom: 20px; display: none;">
-                                                        <div class="col-md-12" style="text-align: center;">
-                                                            <span id="id_day_time" style="border:1px solid #000; border-radius: 100px; font-size: 76px; font-weight: 700; color: green; padding: 10px 30px 10px 30px;"></span>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!--                                <div class="col-md-3">
-                                                                    <input type="hidden" name="last_sessions_cust_question_id" id="last_sessions_cust_question_id" value="0">
-                                                                    <div id="question_answer_section" style="padding: 0px 12px 0px 12px; margin-top: 20px; background-color: #fff; border-radius: 5px; overflow-y: scroll; height: 400px;">
-                                                                        <h2 style="margin-bottom: 0px; color: #ef9d45; font-weight: 700; font-size: 18px; text-align: center; border-bottom: 1px solid #696f6f;">Question & Answer</h2>
-                                                                        <div id="question_answer_section_list" style="padding: 10px 0px 10px 0px;"></div>
-                                                                    </div>
-                                                                </div>-->
-                                <div class="col-md-12">
-                                    <input type="hidden" id="view_sessions_history_id" value="">
-                                    <input type="hidden" id="sessions_id" value=" <?= isset($sessions) ? $sessions->sessions_id : "" ?>">
-                                    <input type="hidden" id="poll_vot_section_id_status" value="0">
-                                    <input type="hidden" id="poll_vot_section_last_status" value="0">
-                                    <!--                                    <div class="col-md-3">
-                                                                            <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
-                                                                            </div>
-                                                                        </div>-->
-<!--                                    <div class="col-md-3">-->
-<!--                                        <div id="ask_questions_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">-->
-<!--                                            <div>-->
-<!--                                                <h2 style='margin-bottom: 0px; color: #ffffff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'><i class="fa fa-question-circle" style="font-size: 18px; color: #ee5d26;"></i> Questions</h2>-->
-<!--                                            </div>-->
-<!--                                            <div style="padding: 15px 15px 15px 15px;">-->
-<!--                                                <div style="text-align: center; display: flex; " id="questions_section">-->
-<!--                                                    <div class="col-md-12 input-group">-->
-<!--                                                        <span class="input-group-addon" style="padding: 5px 6px"><img src="--><?//= base_url() ?><!--front_assets/images/emoji/happy.png"  id="questions_emjis_section_show" title="Check to Show Emoji" data-questions_emjis_section_show_status="0" style="width: 20px; height: 20px;" alt=""/></span>-->
-<!--                                                        <input type="text" id="questions" class="form-control" placeholder="Enter Question" value="">-->
-<!--                                                    </div>-->
-<!--                                                    <a class="button color" style="margin: 0px; padding: 15px 7px; background-color: #c3c3c3; border-color: #c3c3c3;" id="ask_questions_send"><span>Send</span></a>-->
-<!--                                                </div>-->
-<!--                                                <div style="text-align: left; padding-left: 10px; display: flex;" id="questions_emojis_section">-->
-<!--                                                    <img src="--><?//= base_url() ?><!--front_assets/images/emoji/happy.png" title="Happy" id="questions_happy" data-title_name="&#128578;" style="width: 40px; height: 40px; padding: 5px;" alt=""/>-->
-<!--                                                    <img src="--><?//= base_url() ?><!--front_assets/images/emoji/sad.png" title="Sad" id="questions_sad" data-title_name="&#128543" style="width: 40px; height: 40px; padding: 5px;" alt=""/>-->
-<!--                                                    <img src="--><?//= base_url() ?><!--front_assets/images/emoji/laughing.png" title="Laughing" id="questions_laughing"  data-title_name="😁" style="width: 40px; height: 40px; padding: 5px;" alt=""/>-->
-<!--                                                    <img src="--><?//= base_url() ?><!--front_assets/images/emoji/thumbs_up.png" title="Thumbs Up" id="questions_thumbs_up" data-title_name="&#128077;" style="width: 40px; height: 40px; padding: 5px;" alt=""/>-->
-<!--                                                    <img src="--><?//= base_url() ?><!--front_assets/images/emoji/thumbs_down.png" title="Thumbs Down" id="questions_thumbs_down" data-title_name="&#128078" style="width: 40px; height: 40px; padding: 5px;" alt=""/>-->
-<!--                                                    <img src="--><?//= base_url() ?><!--front_assets/images/emoji/clapping.png" title="Clapping" id="questions_clapping" data-title_name="&#128079;" style="width: 40px; height: 40px; padding: 5px;" alt=""/>-->
-<!--                                                </div>-->
-<!--                                                <span id='error_questions' style='color:red;'></span>-->
-<!--                                                <span id='success_questions' style='color:green;'></span>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-                                    <div class="col-md-3">
-                                        <div id="briefcase_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
-                                            <div>
-                                                <h2 style='margin-bottom: 0px; color: #ffffff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'><i class="fa fa-question-circle" style="font-size: 18px; color: #ee5d26;"></i> Notes</h2>
-                                            </div>
-                                            <div style="padding: 15px 15px 15px 15px;">
-                                                <div style="text-align: center; display: flex; " id="briefcase_section">
-                                                    <div class="col-md-12 input-group">
-                                                        <textarea type="text" id="briefcase" class="form-control" placeholder="Enter Note" value=""></textarea>
-                                                    </div>
-                                                    <a class="button color" style="margin: 0px; padding: 24px 7px; background-color: #c3c3c3; border-color: #c3c3c3;" id="briefcase_send"><span>Save</span></a>
-                                                </div>
-                                                <span id='error_briefcase' style='color:red;'></span>
-                                                <span id='success_briefcase' style='color:green;'></span>
-                                            </div>
-                                        </div>
+                                    <!--                                <div class="col-md-3">
+                                                                        <input type="hidden" name="last_sessions_cust_question_id" id="last_sessions_cust_question_id" value="0">
+                                                                        <div id="question_answer_section" style="padding: 0px 12px 0px 12px; margin-top: 20px; background-color: #fff; border-radius: 5px; overflow-y: scroll; height: 400px;">
+                                                                            <h2 style="margin-bottom: 0px; color: #ef9d45; font-weight: 700; font-size: 18px; text-align: center; border-bottom: 1px solid #696f6f;">Question & Answer</h2>
+                                                                            <div id="question_answer_section_list" style="padding: 10px 0px 10px 0px;"></div>
+                                                                        </div>
+                                                                    </div>-->
+                                    <div class="col-md-12">
+                                        <input type="hidden" id="view_sessions_history_id" value="">
+                                        <input type="hidden" id="sessions_id" value=" <?= isset($sessions) ? $sessions->sessions_id : "" ?>">
+                                        <input type="hidden" id="poll_vot_section_id_status" value="0">
+                                        <input type="hidden" id="poll_vot_section_last_status" value="0">
+
                                     </div>
-                                    <div class="col-md-3">
-                                        <div id="resource_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
-                                            <div>
-                                                <h2 style='margin-bottom: 0px; color: #ffffff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'> <i class="fa fa-paperclip" style="font-size: 18px; color: #ee5d26;"></i> Resources <i class="fa fa-caret-down" id="resource_show" data-resource_show_status="1" style="float: right; font-size: 16px;"></i></h2>
-                                            </div>
-                                            <div style="padding: 15px 15px 15px 15px; overflow-y: auto; height: 150px;" id="resource_display_status">
-                                                <?php
-                                                if (!empty($session_resource)) {
-                                                    foreach ($session_resource as $val) {
-                                                        ?>
-                                                        <div class="row" style="margin-bottom: 10px; padding-bottom: 5px;">
-                                                            <div class="col-md-12"><a href="<?= $val->resource_link ?>" target="_blank"><?= $val->link_published_name ?></a></div>
-                                                            <div class="col-md-12"><a href="<?= base_url() ?>uploads/resource_sessions/<?= $val->resource_file ?>" download> <?= $val->upload_published_name ?> </a></div>
-                                                            <a class="button color small resource_save" style="margin: 0px; background-color: #c3c3c3; border-color: #c3c3c3; float: right;" data-session_resource_id="<?= $val->session_resource_id ?>" id="resource_send"><span>Add to My Briefcase</span></a>
-                                                        </div>
-                                                        <?php
-                                                    }
-                                                }
-                                                ?>
-                                                <span id='success_resource' style='color:green;'></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--                                    <div class="col-md-3">
-                                                                            <div id="group_chat_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px; display: none">
-                                                                                <div>
-                                                                                    <h2 style='margin-bottom: 0px; color: #fff; font-weight: 700; font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'><i class="fa fa-comment" style="font-size: 18px; color: #ee5d26;"></i> Group Chat</h2>
-                                                                                </div>
-                                                                                <div class="row" id="message_list" style="padding-top: 10px; padding-bottom: 10px; overflow-y: auto; height: 250px;">
-                                                                                </div>
-                                                                                <input type="hidden" id="sessions_group_chat_id" value="">
-                                                                                <div style="text-align: center; display: flex;" id="send_message_section">
-                                                                                    <div class="col-md-12 input-group">
-                                                                                        <span class="input-group-addon" style="padding: 5px 6px"><img src="<?= base_url() ?>front_assets/images/emoji/happy.png"  id="emjis_section_show" title="Check to Show Emoji" data-emjis_section_show_status="0" style="width: 20px; height: 20px;" alt=""/></span>
-                                                                                        <input type="text" id="send_message" class="form-control" placeholder="Message..." value="">
-                                                                                    </div>
-                                                                                    <a class="button color" style="margin: 0px; padding: 15px 7px; background-color: #c3c3c3; border-color: #c3c3c3;" id="send_message_btn"><span>Send</span></a>
-                                                                                </div>
-                                                                                <div style="text-align: left; padding-left: 10px; display: flex;" id="emojis_section">
-                                                                                    <img src="<?= base_url() ?>front_assets/images/emoji/happy.png" title="Happy" id="happy" data-title_name="&#128578;" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
-                                                                                    <img src="<?= base_url() ?>front_assets/images/emoji/sad.png" title="Sad" id="sad" data-title_name="&#128543" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
-                                                                                    <img src="<?= base_url() ?>front_assets/images/emoji/laughing.png" title="Laughing" id="laughing"  data-title_name="😁" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
-                                                                                    <img src="<?= base_url() ?>front_assets/images/emoji/thumbs_up.png" title="Thumbs Up" id="thumbs_up" data-title_name="&#128077;" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
-                                                                                    <img src="<?= base_url() ?>front_assets/images/emoji/thumbs_down.png" title="Thumbs Down" id="thumbs_down" data-title_name="&#128078" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
-                                                                                    <img src="<?= base_url() ?>front_assets/images/emoji/clapping.png" title="Clapping" id="clapping" data-title_name="&#128079;" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
-                                                                                </div>
-                                                                                <span id='error_send_message' style='color:red;'></span>
-                                                                                <span id='success_send_message' style='color:green;'></span>
-                                                                            </div>
-                                                                        </div>-->
                                 </div>
+                                <p style="font-weight: 600;">CURRENT TIME : <span id="show_time"></span> CT</p>
                             </div>
-                            <p style="font-weight: 600;">CURRENT TIME : <span id="show_time"></span> CT</p>
-                        </div>
-                    </section>
-                    <!-- END: SECTION --> 
-                </div>
-            </div> 
-        </div>
-    </div>
-    <div class="modal fade" id="push_notification" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left; right: unset;">
-        <input type="hidden" id="push_notification_id" value="">
-        <div class="modal-dialog">
-            <div class="modal-content" style="border: 1px solid #ef9d45;">
-                <div class="modal-body">
-                    <div class="row" style="padding-top: 10px; padding-bottom: 20px;">
-                        <div class="col-sm-12">
-                            <div style="color:#ef9d45; font-size: 16px; font-weight: 800; " id="push_notification_message"></div>
-                        </div>
+                        </section>
+                        <!-- END: SECTION -->
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="close push_notification_close" style="padding: 10px; color: #fff; background-color: #ef9d45; opacity: 1;" data-dismiss="modal" aria-hidden="true">Close</button>
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="push_notification" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left; right: unset;">
+            <input type="hidden" id="push_notification_id" value="">
+            <div class="modal-dialog">
+                <div class="modal-content" style="border: 1px solid #ef9d45;">
+                    <div class="modal-body">
+                        <div class="row" style="padding-top: 10px; padding-bottom: 20px;">
+                            <div class="col-sm-12">
+                                <div style="color:#ef9d45; font-size: 16px; font-weight: 800; " id="push_notification_message"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="close push_notification_close" style="padding: 10px; color: #fff; background-color: #ef9d45; opacity: 1;" data-dismiss="modal" aria-hidden="true">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<?php
+}
+?>
+
+<section class="parallax" style="background: url('<?= base_url() ?>front_assets/images/bubble_bg_1920.jpg') no-repeat;">
+    <!--<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/Sessions_BG_screened.jpg); top: 0; padding-top: 0px;">-->
+    <div class="container-fullscreen">
+        <!-- CONTENT -->
+        <section class="content">
+            <div>
+                <div class="videContent">
+                    <div style="background-color: #B2B7BB;">
+                        <h3 style="margin-bottom: 2px; color: #fff; font-weight: 700; text-transform: uppercase;"><?= isset($sessions) ? $sessions->session_title : "" ?></h3>
+                    </div>
+                    <div id="embededVideo">
+                        <div class="row"><i id="btnFS" class="fa fa-arrows-alt" aria-hidden="true"></i></div>
+                        <div id="iframeDiv" class="row embed-responsive embed-responsive-16by9"><?= isset($sessions) ? $sessions->embed_html_code : "" ?></div>
+                        <div class="modal fade" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left;">
+                            <div class="modal-dialog">
+                                <div class="modal-content" style="padding: 0px; border: 0px solid #999; border-radius: 15px;">
+                                    <!--                                                <div class="modal-header" style="padding: 0px;">
+                                                                                                    <img class="kent_logo" src="<?= base_url() ?>assets/images/logo.png" alt="MLG">
+                                                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                                                                </div>-->
+                                    <div class="modal-body" style="padding: 0px;">
+                                        <div class="row" style="padding-top: 0px; padding-bottom: 20px;">
+                                            <div class="col-sm-12">
+                                                <div class="" id="timer_sectiom" style="padding-top: 0px; padding-bottom: 0px; display: none; border-top-right-radius: 15px; border-top-left-radius: 15px; background-color: #ebeaea; ">
+                                                    <div class="" style="text-align: right; font-size: 20px; font-weight: 700; border-top-right-radius: 15px; border-top-left-radius: 15px;  ">
+                                                        TIME LEFT : <span id="id_day_time" style=" font-size: 20px; font-weight: 700; color: #ef5e25; padding: 0px 10px 0px 0px;"></span>
+                                                    </div>
+                                                </div>
+                                                <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 0px; background-color: #fff; border-radius: 5px;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="currentTime">
+                        CURRENT TIME : <span id="show_time"></span> EDT <a class="button color currentTimeButton" id="close_session"><span>Close the Session</span></a>
+                        <span class="borderFooter">test</span>
+                    </p>
+                    <div class="col-md-12">
+                        <?php
+                        if (isset($music_setting)) {
+                            if ($music_setting->music_setting != "") {
+                                ?>
+                                <audio allow="autoplay" id="audio" src="<?= base_url() ?>uploads/music/<?= $music_setting->music_setting ?>"></audio>
+                                <?php
+                            }
+                        }
+                        ?>
+                        <input type="hidden" id="view_sessions_history_id" value="">
+                        <input type="hidden" id="sessions_id" value=" <?= isset($sessions) ? $sessions->sessions_id : "" ?>">
+                        <input type="hidden" id="poll_vot_section_id_status" value="0">
+                        <input type="hidden" id="poll_vot_section_is_ended" value="0">
+                        <input type="hidden" id="poll_vot_section_last_status" value="0">
+                        <!--                                    <div class="col-md-3">
+                                                                <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
+                                                                </div>
+                                                            </div>-->
+
+                        <div class="row" style="display:none">
+
+                            <div class="col-md-3">
+                                <div id="resource_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
+                                    <div>
+                                        <h2 style='margin-bottom: 0px; color: #ffffff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'><i class="fa fa-paperclip" style="font-size: 18px; color: #ee5d26;"></i> Resources <i class="fa fa-caret-down" id="resource_show" data-resource_show_status="1" style="float: right; font-size: 16px;"></i></h2>
+                                    </div>
+                                    <div style="padding: 15px 15px 15px 15px; overflow-y: auto; height: 150px;" id="resource_display_status">
+                                        <?php
+                                        if (!empty($session_resource)) {
+                                            foreach ($session_resource as $val) {
+                                                ?>
+                                                <div class="row" style="margin-bottom: 10px; padding-bottom: 5px; border-bottom: 1px solid;">
+                                                    <div class="col-md-12"><a href="<?= $val->resource_link ?>" target="_blank"><?= $val->link_published_name ?></a></div>
+                                                    <div class="col-md-12"><a href="<?= base_url() ?>uploads/resource_sessions/<?= $val->resource_file ?>" download> <?= $val->upload_published_name ?> </a></div>
+                                                    <a class="button color small resource_save" style="margin: 0px; background-color: #c3c3c3; border-color: #c3c3c3; float: right;" data-session_resource_id="<?= $val->session_resource_id ?>" id="resource_send"><span>Save</span></a>
+                                                </div>
+                                                <?php
+                                            }
+                                        }
+                                        ?>
+                                        <span id='success_resource' style='color:green;'></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END: SECTION -->
     </div>
 </section>
+
+
+
+
+<div class="rightSticky" data-screen="customer">
+    <ul>
+        <li data-type="notesSticky"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <span>TAKE NOTES</span></li>
+        <li data-type="resourcesSticky"><i class="fa fa-paperclip" aria-hidden="true"></i> <span>RESOURCES</span></li>
+    </ul>
+</div>
+
+
+<div class="rightSticykPopup notesSticky" style="display: none">
+    <div class="header"><span></span>
+        <div class="rightTool">
+            <i class="fa fa-minus" aria-hidden="true"></i>
+            <div class="dropdown">
+                <span class="glyphicon glyphicon-option-vertical" aria-hidden="true" data-toggle="dropdown"></span>
+                <ul class="dropdown-menu">
+                    <li data-type="resourcesSticky"><a data-type2="off">Resources</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="contentHeader">Take Notes</div>
+        <div id="briefcase_section" style="background-color: #fff; border-radius: 5px; padding: 5px; position: absolute; top: 36px; width: 100%;">
+            <div style="text-align: center; display: flex; " id="briefcase_section">
+                <div class="col-md-12 input-group">
+                    <textarea type="text" id="briefcase" class="form-control" placeholder="Enter Note" value=""></textarea>
+                </div>
+                <a class="button color btn" style="margin: 0px; padding: 24px 7px;" id="briefcase_send"><span>Save</span></a>
+            </div>
+            <span id='error_briefcase' style='color:red;'></span>
+            <span id='success_briefcase' style='color:green;'></span>
+        </div>
+    </div>
+
+</div>
+<div class="rightSticykPopup resourcesSticky" style="display: none">
+    <div class="header"><span></span>
+        <div class="rightTool">
+            <i class="fa fa-minus" aria-hidden="true"></i>
+            <div class="dropdown">
+                <span class="glyphicon glyphicon-option-vertical" aria-hidden="true" data-toggle="dropdown"></span>
+                <ul class="dropdown-menu">
+                    <li data-type="notesSticky"><a data-type2="off">Take Notes</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="contentHeader">
+            Resources
+        </div>
+        <div id="resource_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
+            <div style="padding: 15px 15px 15px 15px; overflow-y: auto; height: 150px;" id="resource_display_status">
+                <?php
+                if (!empty($session_resource)) {
+                    foreach ($session_resource as $val) {
+                        ?>
+                        <div class="row" style="margin-bottom: 10px; padding-bottom: 5px; border-bottom: 1px solid;">
+                            <div class="col-md-12"><a href="<?= $val->resource_link ?>" target="_blank"><?= $val->link_published_name ?></a></div>
+                            <div class="col-md-12"><a href="<?= base_url() ?>uploads/resource_sessions/<?= $val->resource_file ?>" download> <?= $val->upload_published_name ?> </a></div>
+                            <a class="button color small resource_save" style="margin: 0px; background-color: #c3c3c3; border-color: #c3c3c3; float: right;" data-session_resource_id="<?= $val->session_resource_id ?>" id="resource_send"><span>Save</span></a>
+                        </div>
+                        <?php
+                    }
+                }
+                ?>
+                <span id='success_resource' style='color:green;'></span>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+
 <script type="text/javascript">
     $(document).ready(function () {
         var url = $(location).attr('href');
@@ -290,10 +577,22 @@
             if (emjis_section_show_status == 0) {
                 $("#questions_emojis_section").show();
                 $("#questions_emjis_section_show").attr('data-questions_emjis_section_show_status', 1);
-            } else {
+            }
+            else {
                 $("#questions_emojis_section").hide();
                 $("#questions_emjis_section_show").attr('data-questions_emjis_section_show_status', 0);
             }
+        });
+        $(document).on("click", "#close_session", function () {
+            $.ajax({
+                url: "<?= base_url() ?>sessions/update_viewsessions_history_open",
+                type: "post",
+                data: {'view_sessions_history_id': $("#view_sessions_history_id").val()},
+                dataType: "json",
+                success: function (data) {
+                    window.location.replace("<?= site_url() ?>home");
+                }
+            });
         });
 
         $("#emojis_section").hide();
@@ -302,7 +601,8 @@
             if (emjis_section_show_status == 0) {
                 $("#emojis_section").show();
                 $("#emjis_section_show").attr('data-emjis_section_show_status', 1);
-            } else {
+            }
+            else {
                 $("#emojis_section").hide();
                 $("#emjis_section_show").attr('data-emjis_section_show_status', 0);
             }
@@ -313,7 +613,8 @@
             var questions = $("#questions").val();
             if (questions != "") {
                 $("#questions").val(questions + ' ' + value);
-            } else {
+            }
+            else {
                 $("#questions").val(value);
             }
         });
@@ -323,7 +624,8 @@
             var questions = $("#questions").val();
             if (questions != "") {
                 $("#questions").val(questions + ' ' + value);
-            } else {
+            }
+            else {
                 $("#questions").val(value);
             }
         });
@@ -333,7 +635,8 @@
             var questions = $("#questions").val();
             if (questions != "") {
                 $("#questions").val(questions + ' ' + value);
-            } else {
+            }
+            else {
                 $("#questions").val(value);
             }
         });
@@ -343,7 +646,8 @@
             var questions = $("#questions").val();
             if (questions != "") {
                 $("#questions").val(questions + ' ' + value);
-            } else {
+            }
+            else {
                 $("#questions").val(value);
             }
         });
@@ -353,7 +657,8 @@
             var questions = $("#questions").val();
             if (questions != "") {
                 $("#questions").val(questions + ' ' + value);
-            } else {
+            }
+            else {
                 $("#questions").val(value);
             }
         });
@@ -363,7 +668,8 @@
             var questions = $("#questions").val();
             if (questions != "") {
                 $("#questions").val(questions + ' ' + value);
-            } else {
+            }
+            else {
                 $("#questions").val(value);
             }
         });
@@ -373,7 +679,8 @@
             var send_message = $("#send_message").val();
             if (send_message != "") {
                 $("#send_message").val(send_message + ' ' + value);
-            } else {
+            }
+            else {
                 $("#send_message").val(value);
             }
         });
@@ -383,7 +690,8 @@
             var questions = $("#send_message").val();
             if (questions != "") {
                 $("#send_message").val(questions + ' ' + value);
-            } else {
+            }
+            else {
                 $("#send_message").val(value);
             }
         });
@@ -393,7 +701,8 @@
             var send_message = $("#send_message").val();
             if (send_message != "") {
                 $("#send_message").val(send_message + ' ' + value);
-            } else {
+            }
+            else {
                 $("#send_message").val(value);
             }
         });
@@ -403,7 +712,8 @@
             var send_message = $("#send_message").val();
             if (send_message != "") {
                 $("#send_message").val(send_message + ' ' + value);
-            } else {
+            }
+            else {
                 $("#send_message").val(value);
             }
         });
@@ -413,7 +723,8 @@
             var send_message = $("#send_message").val();
             if (send_message != "") {
                 $("#send_message").val(send_message + ' ' + value);
-            } else {
+            }
+            else {
                 $("#send_message").val(value);
             }
         });
@@ -423,7 +734,8 @@
             var questions = $("#send_message").val();
             if (questions != "") {
                 $("#send_message").val(questions + ' ' + value);
-            } else {
+            }
+            else {
                 $("#send_message").val(value);
             }
         });
@@ -448,7 +760,8 @@
                 $("#resource_show").removeClass('fa-caret-right');
                 $("#resource_show").addClass('fa-caret-down');
                 $("#resource_show").attr('data-resource_show_status', 1);
-            } else {
+            }
+            else {
                 $("#resource_display_status").hide();
                 $("#resource_show").addClass('fa-caret-right');
                 $("#resource_show").removeClass('fa-caret-down');
@@ -460,7 +773,8 @@
         $(document).on("click", "#send_message_btn", function () {
             if ($("#send_message").val() == "") {
                 $("#error_send_message").text("Enter Message").fadeIn('slow').fadeOut(5000);
-            } else {
+            }
+            else {
                 var send_message = $("#send_message").val();
                 var sessions_id = $("#sessions_id").val();
                 var sessions_group_chat_id = $("#sessions_group_chat_id").val();
@@ -482,7 +796,8 @@
         $(document).on("click", "#ask_questions_send", function () {
             if ($("#questions").val() == "") {
                 $("#error_questions").text("Enter Questions").fadeIn('slow').fadeOut(5000);
-            } else {
+            }
+            else {
                 var questions = $("#questions").val();
                 var sessions_id = $("#sessions_id").val();
                 $.ajax({
@@ -506,7 +821,8 @@
             {
                 if ($("#questions").val() == "") {
                     $("#error_questions").text("Enter Questions").fadeIn('slow').fadeOut(5000);
-                } else {
+                }
+                else {
                     var questions = $("#questions").val();
                     var sessions_id = $("#sessions_id").val();
                     $.ajax({
@@ -542,11 +858,11 @@
         });
 
 
-
         $(document).on("click", "#briefcase_send", function () {
             if ($("#briefcase").val() == "") {
                 $("#error_briefcase").text("Enter Notes").fadeIn('slow').fadeOut(5000);
-            } else {
+            }
+            else {
                 var briefcase = $("#briefcase").val();
                 var sessions_id = $("#sessions_id").val();
                 $.ajax({
@@ -570,7 +886,8 @@
             {
                 if ($("#briefcase").val() == "") {
                     $("#error_briefcase").text("Enter Notes").fadeIn('slow').fadeOut(5000);
-                } else {
+                }
+                else {
                     var briefcase = $("#briefcase").val();
                     var sessions_id = $("#sessions_id").val();
                     $.ajax({
@@ -610,7 +927,8 @@
                         }
                     }
                 });
-            } else {
+            }
+            else {
                 $("#error_vote").text("Please Select Voting Option").fadeIn('slow').fadeOut(5000);
             }
         });
@@ -642,8 +960,7 @@
         });
     }
 
-    function get_poll_vot_section()
-    {
+    function get_poll_vot_section() {
         var poll_vot_section_id_status = $("#poll_vot_section_id_status").val();
         var poll_vot_section_last_status = $("#poll_vot_section_last_status").val();
         var sessions_id = $("#sessions_id").val();
@@ -657,7 +974,6 @@
                 if (data.status == "success") {
 
 
-
                     if (poll_vot_section_id_status == "0") {
                         $("#poll_vot_section_id_status").val(data.result.sessions_poll_question_id);
                     }
@@ -668,11 +984,13 @@
                         if (poll_vot_section_id_status != data.result.sessions_poll_question_id) {
                             $("#timer_sectiom").show();
                             timer(0);
-                        } else {
+                        }
+                        else {
                             $("#timer_sectiom").show();
                             timer(1);
                         }
-                    } else {
+                    }
+                    else {
                         $("#timer_sectiom").hide();
                     }
 
@@ -696,11 +1014,13 @@
                                     key++;
                                     if (data.result.select_option_id == val.poll_question_option_id) {
                                         $("#option_section").append("<div class='option_section_css_selected'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option' checked> <label for='option_" + key + "'>" + val.option + "</label></div>");
-                                    } else {
+                                    }
+                                    else {
                                         $("#option_section").append("<div class='option_section_css'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label for='option_" + key + "'>" + val.option + "</label></div>");
                                     }
                                 });
-                            } else {
+                            }
+                            else {
 
                                 $.each(data.result.option, function (key, val) {
                                     key++;
@@ -714,7 +1034,8 @@
                                 $('#btn_vote_label').html('VOTED <i class="fa fa-check" id="fa_fa_check" style="font-size: 13px;"></i>');
 
                             }
-                        } else {
+                        }
+                        else {
                             $('#modal').modal('show');
                             $("#poll_vot_section").html("<div class='row'><div class='col-md-12'><h2 style='margin-bottom: 0px; color: #fff; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'>Live Poll Results</h2></div><div class='col-md-12'><div class='col-md-12'><h5 style='letter-spacing: 0px; padding-top: 10px; font-size: 13px; border-bottom: 1px solid #b1b1b1; padding-bottom: 10px;'>" + data.result.question + "</h5>\n\
                                                         \n\<div id='result_section' style='padding-bottom: 10px;'></div></div></div></div>");
@@ -731,31 +1052,36 @@
                                 key++;
                                 if (total_vote == 0) {
                                     var result_calculate = 0;
-                                } else {
+                                }
+                                else {
                                     var result_calculate = (val.total_vot * 100) / total_vote;
                                 }
                                 if (data.result.max_value == val.total_vot) {
                                     $("#result_section").append("<label>" + val.option + "</label><div class='progress'><div class='progress_bar_new' role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='width:" + result_calculate.toFixed(0) + "%'>" + result_calculate.toFixed(0) + "%</div></div>");
-                                } else {
+                                }
+                                else {
                                     $("#result_section").append("<label>" + val.option + "</label><div class='progress'><div class='progress-bar' role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='width:" + result_calculate.toFixed(0) + "%'>" + result_calculate.toFixed(0) + "%</div></div>");
                                 }
 
                                 if (typeof (val.compere_option) != "undefined" && val.compere_option !== null) {
                                     if (total_vote_compere_option == 0) {
                                         var result_calculate_compere = 0;
-                                    } else {
+                                    }
+                                    else {
                                         var result_calculate_compere = (val.compere_option * 100) / total_vote_compere_option;
                                     }
                                     if (data.result.compere_max_value == val.compere_option) {
                                         $("#result_section").append("<div class='progress_1'><div class='progress_bar_new_1' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='width:" + result_calculate_compere.toFixed(0) + "%'>" + result_calculate_compere.toFixed(0) + "%</div></div>");
-                                    } else {
+                                    }
+                                    else {
                                         $("#result_section").append("<div class='progress_1'><div class='progress-bar_1' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='width:" + result_calculate_compere.toFixed(0) + "%'>" + result_calculate_compere.toFixed(0) + "%</div></div>");
                                     }
                                 }
                             });
                         }
                     }
-                } else {
+                }
+                else {
                     $('#modal').modal('hide');
                     $("#timer_sectiom").hide();
                     $.ajax({
@@ -780,14 +1106,16 @@
                                     key++;
                                     if (data.result.select_option_id == val.poll_question_option_id) {
                                         $("#option_section").append("<div class='option_section_css_selected'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option' checked> <label for='option_" + key + "'>" + val.option + "</label></div>");
-                                    } else {
+                                    }
+                                    else {
                                         $("#option_section").append("<div class='option_section_css'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label for='option_" + key + "'>" + val.option + "</label></div>");
                                     }
                                 });
 
                                 $(':radio:not(:checked)').attr('disabled', true);
                                 $('#fa_fa_check_close_poll').show();
-                            } else {
+                            }
+                            else {
                                 $("#poll_vot_section").html("");
                             }
                         }
@@ -809,7 +1137,8 @@
                 if (resultdata.status == 'success') {
                     $("#group_chat_section").show();
                     $("#sessions_group_chat_id").val(resultdata.result.sessions_group_chat_id);
-                } else {
+                }
+                else {
                     $("#group_chat_section").hide();
                 }
             }
@@ -833,8 +1162,8 @@
     $(document).ready(function () {
         setInterval(ajaxcall, 1000);
     });
-    function ajaxcall()
-    {
+
+    function ajaxcall() {
         $.ajax({
             url: '<?= base_url() ?>sessions/gettimenow',
             type: "POST",
@@ -863,19 +1192,23 @@
 
     var upgradeTime = 15;
     var seconds = upgradeTime;
+
     function timer(status) {
         if (status == 0) {
             seconds = 15;
         }
         var remainingSeconds = seconds % 60;
+
         function pad(n) {
             return (n < 10 ? "0" + n : n);
         }
+
         document.getElementById('id_day_time').innerHTML = pad(remainingSeconds);
         if (seconds <= 0) {
             $("#btn_vote").hide();
             $("#id_day_time").css("color", "red");
-        } else {
+        }
+        else {
             seconds--;
         }
     }
@@ -898,8 +1231,7 @@
             });
         });
 
-        function push_notification_admin()
-        {
+        function push_notification_admin() {
             var push_notification_id = $("#push_notification_id").val();
 
             $.ajax({
@@ -926,7 +1258,8 @@
                                 }
                             });
                         }
-                    } else {
+                    }
+                    else {
                         $('#push_notification').modal('hide');
                     }
                 }
