@@ -23,9 +23,10 @@ if ($meeting_status['status'] == false)
 
         <div class="row m-t-20 camera-feeds">
 
-            <div class="col-md-3">
+            <div class="col-md-3 localvideo-div">
                 <video id="localVideo" autoplay muted playsinline width="100%"></video>
                 <span class="name-tag">You</span>
+                <span class="muted-tag"></span>
                 <!-- <div class="soundbar"><span class="currentVolume"></span></div> -->
             </div>
         </div>
@@ -33,7 +34,6 @@ if ($meeting_status['status'] == false)
             <div class="feed-control-icons" style="display: inline;">
 
                 <div class="mute-mic-btn" style="display: inline;">
-<!--                    <i class="fa fa-microphone-slash fa-3x mute-mic-btn-icon" aria-hidden="true" style="color:#ff422b;"></i>-->
                     <i class="fa fa-microphone fa-3x mute-mic-btn-icon" aria-hidden="true" style="color:#12b81c;"></i>
 
                 </div>
@@ -49,6 +49,8 @@ if ($meeting_status['status'] == false)
         </div>
 
     </main>
+
+    <input id="muteStatus" type="hidden" value="unmuted">
 
     <script>
         var page_link = $(location).attr('href');

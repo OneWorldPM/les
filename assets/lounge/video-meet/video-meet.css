@@ -41,6 +41,14 @@ h1{
     padding: 1px 10px 1px 32px;
 }
 
+.muted-tag{
+    position: absolute;
+    margin-left: -18%;
+    margin-top: -9%;
+    background-color: #ffffff6e;
+    padding: 0px 4px 0px 4px;
+}
+
 .fullscreen-btn{
     position: absolute;
     margin-left: -9%;
@@ -68,4 +76,10 @@ h1{
     padding: 8px 0 0 2px;
     width: 75px;
     height: 53px;
+}
+
+.muteIndicator-icon{
+    position: absolute;
+    margin-top: 61%;
+    margin-left: -7%;
 }

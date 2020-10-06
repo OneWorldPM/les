@@ -28,6 +28,10 @@ var peerConnectionConfig = {
 
 $(function() {
 
+    $("html").on("contextmenu",function(){
+        return false;
+    });
+
     toastr.options = {
         "closeButton": false,
         "debug": false,
@@ -50,9 +54,6 @@ $(function() {
         toastr["warning"]("Screen share feature is not enabled!");
     });
 
-    $('.mute-mic-btn').on('click', function () {
-        toastr["warning"]("Muting option is not enabled!");
-    });
 
     $('.leave-btn').on('click', function () {
         Swal.fire({
@@ -82,11 +83,10 @@ function pageReady() {
     };
 
     if(navigator.mediaDevices.getUserMedia) {
+        socket = io.connect(config.host, {secure: true});
         navigator.mediaDevices.getUserMedia(constraints)
             .then(getUserMediaSuccess)
             .then(function(){
-
-                socket = io.connect(config.host, {secure: true});
                 socket.emit('joinRoundTable', MEETING_ROOM, user_name, user_id);
                 socket.on('signal', gotMessageFromServer);
 
@@ -142,6 +142,39 @@ function pageReady() {
                 })
 
             });
+
+
+        // Muting functionality
+        $('.mute-mic-btn').on('click', function () {
+            toastr["warning"]("Muting option is not enabled!");
+
+            if ($('#muteStatus').val() == 'unmuted')
+            {
+                $('#muteStatus').val('muted');
+                socket.emit('mute-me', MEETING_ROOM);
+            }else{
+                $('#muteStatus').val('unmuted');
+                socket.emit('unmute-me', MEETING_ROOM);
+            }
+        });
+        socket.on('mute-me', function(user_socket){
+            $('video[data-socket="'+user_socket+'"]').prop('muted', true);
+            $('.muteIndicator-icon[data-socket="'+user_socket+'"]').css('display', '');
+            socket.emit('add-to-mute-list', user_socket);
+            $('.mute-mic-btn').html('<i class="fa fa-microphone-slash fa-3x mute-mic-btn-icon" aria-hidden="true" style="color:#ff422b;"></i>');
+            $('.muted-tag').html('You are muted!');
+        });
+
+        socket.on('unmute-me', function(user_socket){
+            $('video[data-socket="'+user_socket+'"]').prop('muted', false);
+            $('.muteIndicator-icon[data-socket="'+user_socket+'"]').css('display', 'none');
+            socket.emit('remove-from-mute-list', user_socket);
+            $('.mute-mic-btn').html('<i class="fa fa-microphone fa-3x mute-mic-btn-icon" aria-hidden="true" style="color:#12b81c;"></i>');
+            $('.muted-tag').html('');
+        });
+
+        // End of muting functionality
+
     } else {
         alert('Your browser does not support getUserMedia API');
     }
@@ -164,29 +197,38 @@ function gotRemoteStream(event, id, attendee) {
     if(id == socketId)
         return;
 
-    console.log(attendee['name']);
-
     var videos = document.querySelectorAll('camera-feeds'),
         video  = document.createElement('video'),
         div    = document.createElement('div'),
         nameTag = document.createElement('span'),
-        fullscreenBtn = document.createElement('span');
+        fullscreenBtn = document.createElement('span'),
+        muteIndicator = document.createElement('span');
 
     div.setAttribute('class', 'col-md-3');
+
     nameTag.setAttribute('class', 'name-tag');
     nameTag.innerHTML = attendee['name'];
+
     fullscreenBtn.setAttribute('class', 'fullscreen-btn');
     fullscreenBtn.innerHTML = '<i class="fa fa-arrows" aria-hidden="true" style="border: 1px solid;"></i>';
+
+    muteIndicator.setAttribute('class', 'muteIndicator-icon');
+    muteIndicator.setAttribute('data-socket', id);
+    muteIndicator.style.display = (attendee.muteStatus == 'muted')?'':'none';
+    muteIndicator.innerHTML = '<i class="fa fa-microphone-slash fa-2x" aria-hidden="true" style="color: red"></i>';
+
     video.setAttribute('data-socket', id);
     video.setAttribute('width', '100%');
     video.srcObject   = event.stream;
     video.autoplay    = true;
-    //video.muted       = true;
+    if (attendee.muteStatus == 'muted')
+        video.muted       = true;
     video.playsinline = true;
 
     div.appendChild(video);
     div.appendChild(nameTag);
     div.appendChild(fullscreenBtn);
+    div.appendChild(muteIndicator);
     document.querySelector('.camera-feeds').prepend(div);
 }
 
