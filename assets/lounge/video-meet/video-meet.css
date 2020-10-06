@@ -21,6 +21,17 @@ h1{
     margin-right: 5px;
 }
 
+.cam-btn-icon{
+    display: inline-block;
+    border-radius: 60px;
+    box-shadow: 0px 0px 2px #888;
+    cursor: pointer;
+    padding: 7px 0 0 3px;
+    width: 74px;
+    height: 50px;
+    margin-right: 5px;
+}
+
 .share-screen-btn-icon{
     display: inline-block;
     border-radius: 60px;
@@ -34,11 +45,9 @@ h1{
 
 .name-tag{
     position: absolute;
-    margin-left: -98%;
-    margin-top: 0%;
     background-color: #ffffff6e;
     font-weight: bold;
-    padding: 1px 10px 1px 32px;
+    padding: 1px 7px 1px 12px;
 }
 
 .muted-tag{
@@ -51,10 +60,12 @@ h1{
 
 .fullscreen-btn{
     position: absolute;
-    margin-left: -9%;
+    margin-left: 84%;
     background-color: #ffffff63;
     padding: 0px 10px 0px 10px;
     cursor: pointer;
+    margin-top: 63%;
+    z-index: 2;
 }
 
 .nametag-fullscreen{
@@ -80,12 +91,12 @@ h1{
 
 .muteIndicator-icon{
     position: absolute;
-    margin-top: 61%;
-    margin-left: -7%;
+    margin-top: 5px;
+    margin-left: 85%;
 }
 
 .my-muteIndicator-icon{
     position: absolute;
-    margin-top: 61%;
-    margin-left: -7%;
+    margin-top: 5px;
+    margin-left: 85%;
 }

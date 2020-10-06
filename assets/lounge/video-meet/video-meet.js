@@ -154,11 +154,13 @@ function shareCam() {
                 socket.emit('mute-me', MEETING_ROOM);
                 $('.mute-mic-btn').html('<i class="fa fa-microphone-slash fa-3x mute-mic-btn-icon" aria-hidden="true" style="color:#ff422b;"></i>');
                 $('.my-muteIndicator-icon').html('<i class="fa fa-microphone-slash fa-2x" aria-hidden="true" style="color: #ff422b"></i>');
+                $('.localvideo-div > .name-tag').text('You(Muted)');
             }else{
                 $('#muteStatus').val('unmuted');
                 socket.emit('unmute-me', MEETING_ROOM);
                 $('.mute-mic-btn').html('<i class="fa fa-microphone fa-3x mute-mic-btn-icon" aria-hidden="true" style="color:#12b81c;"></i>');
                 $('.my-muteIndicator-icon').html('<i class="fa fa-microphone fa-2x" aria-hidden="true" style="color: #12b81c"></i>');
+                $('.localvideo-div > .name-tag').text('You');
             }
         });
         socket.on('mute-me', function(user_socket){
@@ -170,8 +172,31 @@ function shareCam() {
             $('video[data-socket="'+user_socket+'"]').prop('muted', false);
             $('.muteIndicator-icon[data-socket="'+user_socket+'"]').css('display', 'none');
         });
-
         // End of muting functionality
+
+        // Turn off/on cam functionality
+        $('.cam-btn').on('click', function () {
+            if ($('#camStatus').val() == 'on')
+            {
+                $('#camStatus').val('off');
+                socket.emit('cam-off', MEETING_ROOM);
+                $('.cam-btn').html('<i class="fa fa-video-camera fa-3x cam-btn-icon" aria-hidden="true" style="color:#ff422b;"></i>');
+            }else{
+                $('#camStatus').val('on');
+                socket.emit('cam-on', MEETING_ROOM);
+                $('.cam-btn').html('<i class="fa fa-video-camera fa-3x cam-btn-icon" aria-hidden="true" style="color:#12b81c;"></i>');
+            }
+        });
+        socket.on('cam-off', function(user_socket){
+            //$('video[data-socket="'+user_socket+'"]').prop('muted', true);
+            //$('.muteIndicator-icon[data-socket="'+user_socket+'"]').css('display', '');
+        });
+
+        socket.on('cam-on', function(user_socket){
+            //$('video[data-socket="'+user_socket+'"]').prop('muted', false);
+            //$('.muteIndicator-icon[data-socket="'+user_socket+'"]').css('display', 'none');
+        });
+        // End of turn off/on cam functionality
 
     } else {
         alert('Your browser does not support getUserMedia API');
@@ -189,7 +214,7 @@ function getUserMediaSuccess(stream) {
         localVideo.srcObject = stream;
     }, logError);
 
-    $('.localvideo-div').append('<span class="my-muteIndicator-icon" ><i class="fa fa-microphone-slash fa-2x" aria-hidden="true" style="color: #12b81c"></i></span>');
+    $('.localvideo-div').prepend('<span class="my-muteIndicator-icon" ><i class="fa fa-microphone-slash fa-2x" aria-hidden="true" style="color: #12b81c"></i></span>');
 }
 
 function gotRemoteStream(event, id, attendee) {
@@ -229,10 +254,10 @@ function gotRemoteStream(event, id, attendee) {
         video.muted       = true;
     video.playsinline = true;
 
-    div.appendChild(video);
     div.appendChild(nameTag);
     div.appendChild(fullscreenBtn);
     div.appendChild(muteIndicator);
+    div.appendChild(video);
     document.querySelector('.camera-feeds').prepend(div);
 }
 
