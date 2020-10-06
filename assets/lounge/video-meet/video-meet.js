@@ -153,12 +153,12 @@ function shareCam() {
                 $('#muteStatus').val('muted');
                 socket.emit('mute-me', MEETING_ROOM);
                 $('.mute-mic-btn').html('<i class="fa fa-microphone-slash fa-3x mute-mic-btn-icon" aria-hidden="true" style="color:#ff422b;"></i>');
-                $('.muted-tag').html('You are muted!');
+                $('.my-muteIndicator-icon').html('<i class="fa fa-microphone-slash fa-2x" aria-hidden="true" style="color: #ff422b"></i>');
             }else{
                 $('#muteStatus').val('unmuted');
                 socket.emit('unmute-me', MEETING_ROOM);
                 $('.mute-mic-btn').html('<i class="fa fa-microphone fa-3x mute-mic-btn-icon" aria-hidden="true" style="color:#12b81c;"></i>');
-                $('.muted-tag').html('');
+                $('.my-muteIndicator-icon').html('<i class="fa fa-microphone fa-2x" aria-hidden="true" style="color: #12b81c"></i>');
             }
         });
         socket.on('mute-me', function(user_socket){
@@ -188,6 +188,8 @@ function getUserMediaSuccess(stream) {
     }, function (stream) {
         localVideo.srcObject = stream;
     }, logError);
+
+    $('.localvideo-div').append('<span class="my-muteIndicator-icon" ><i class="fa fa-microphone-slash fa-2x" aria-hidden="true" style="color: #12b81c"></i></span>');
 }
 
 function gotRemoteStream(event, id, attendee) {

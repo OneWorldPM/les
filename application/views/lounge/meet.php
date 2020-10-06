@@ -26,7 +26,6 @@ if ($meeting_status['status'] == false)
             <div class="col-md-3 localvideo-div">
                 <video id="localVideo" autoplay muted playsinline width="100%"></video>
                 <span class="name-tag">You</span>
-                <span class="muted-tag"></span>
                 <!-- <div class="soundbar"><span class="currentVolume"></span></div> -->
             </div>
         </div>
