@@ -151,13 +151,11 @@ function pageReady() {
             {
                 $('#muteStatus').val('muted');
                 socket.emit('mute-me', MEETING_ROOM);
-                socket.emit('add-to-mute-list', user_socket);
                 $('.mute-mic-btn').html('<i class="fa fa-microphone-slash fa-3x mute-mic-btn-icon" aria-hidden="true" style="color:#ff422b;"></i>');
                 $('.muted-tag').html('You are muted!');
             }else{
                 $('#muteStatus').val('unmuted');
                 socket.emit('unmute-me', MEETING_ROOM);
-                socket.emit('remove-from-mute-list', user_socket);
                 $('.mute-mic-btn').html('<i class="fa fa-microphone fa-3x mute-mic-btn-icon" aria-hidden="true" style="color:#12b81c;"></i>');
                 $('.muted-tag').html('');
             }
