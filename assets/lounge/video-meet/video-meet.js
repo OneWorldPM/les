@@ -146,7 +146,6 @@ function pageReady() {
 
         // Muting functionality
         $('.mute-mic-btn').on('click', function () {
-            toastr["warning"]("Muting option is not enabled!");
 
             if ($('#muteStatus').val() == 'unmuted')
             {
