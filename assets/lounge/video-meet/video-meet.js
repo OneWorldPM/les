@@ -151,25 +151,25 @@ function pageReady() {
             {
                 $('#muteStatus').val('muted');
                 socket.emit('mute-me', MEETING_ROOM);
+                socket.emit('add-to-mute-list', user_socket);
+                $('.mute-mic-btn').html('<i class="fa fa-microphone-slash fa-3x mute-mic-btn-icon" aria-hidden="true" style="color:#ff422b;"></i>');
+                $('.muted-tag').html('You are muted!');
             }else{
                 $('#muteStatus').val('unmuted');
                 socket.emit('unmute-me', MEETING_ROOM);
+                socket.emit('remove-from-mute-list', user_socket);
+                $('.mute-mic-btn').html('<i class="fa fa-microphone fa-3x mute-mic-btn-icon" aria-hidden="true" style="color:#12b81c;"></i>');
+                $('.muted-tag').html('');
             }
         });
         socket.on('mute-me', function(user_socket){
             $('video[data-socket="'+user_socket+'"]').prop('muted', true);
             $('.muteIndicator-icon[data-socket="'+user_socket+'"]').css('display', '');
-            socket.emit('add-to-mute-list', user_socket);
-            $('.mute-mic-btn').html('<i class="fa fa-microphone-slash fa-3x mute-mic-btn-icon" aria-hidden="true" style="color:#ff422b;"></i>');
-            $('.muted-tag').html('You are muted!');
         });
 
         socket.on('unmute-me', function(user_socket){
             $('video[data-socket="'+user_socket+'"]').prop('muted', false);
             $('.muteIndicator-icon[data-socket="'+user_socket+'"]').css('display', 'none');
-            socket.emit('remove-from-mute-list', user_socket);
-            $('.mute-mic-btn').html('<i class="fa fa-microphone fa-3x mute-mic-btn-icon" aria-hidden="true" style="color:#12b81c;"></i>');
-            $('.muted-tag').html('');
         });
 
         // End of muting functionality
