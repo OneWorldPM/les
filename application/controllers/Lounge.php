@@ -165,7 +165,7 @@ class Lounge extends CI_Controller
             $minutesDiff   = round($interval / 60);
             $diff = $this->convertToHoursMins($minutesDiff, '%02d hours %02d minutes');
 
-            $meeting_status = array('status' => false, 'message' => "Meeting starts at {$meeting->meeting_from}(CT) ie; in {$diff}, please comeback!");
+            $meeting_status = array('status' => false, 'message' => "Meeting starts at {$meeting->meeting_from}(CT) ie; in {$diff}, please return at that time!");
         }elseif ($meeting && $meeting->meeting_to < $now){
             $datetime1 = strtotime($meeting->meeting_to);
             $datetime2 = strtotime($now);
