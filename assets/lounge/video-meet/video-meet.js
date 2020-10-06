@@ -50,9 +50,11 @@ $(function() {
         "hideMethod": "fadeOut"
     };
 
-    $('.share-screen-btn').on('click', function () {
-        toastr["warning"]("Screen share feature is not enabled!");
-    });
+    shareCam();
+
+    // $('.share-screen-btn').on('click', function () {
+    //
+    // });
 
 
     $('.leave-btn').on('click', function () {
@@ -73,7 +75,7 @@ $(function() {
 
 });
 
-function pageReady() {
+function shareCam() {
 
     localVideo = document.getElementById('localVideo');
 
@@ -81,13 +83,12 @@ function pageReady() {
         video: true,
         audio: true,
     };
-
     if(navigator.mediaDevices.getUserMedia) {
         socket = io.connect(config.host, {secure: true});
         navigator.mediaDevices.getUserMedia(constraints)
             .then(getUserMediaSuccess)
             .then(function(){
-                socket.emit('joinRoundTable', MEETING_ROOM, user_name, user_id);
+                socket.emit('joinRoundTable', MEETING_ROOM, user_name, user_id, 'cam');
                 socket.on('signal', gotMessageFromServer);
 
                 socket.on('joinRoundTable', function(){
@@ -204,7 +205,11 @@ function gotRemoteStream(event, id, attendee) {
     div.setAttribute('class', 'col-md-3');
 
     nameTag.setAttribute('class', 'name-tag');
-    nameTag.innerHTML = attendee['name'];
+    if (attendee.sharingType == 'screen'){
+        nameTag.innerHTML = attendee.name+' (Screen)';
+    }else{
+        nameTag.innerHTML = attendee.name;
+    }
 
     fullscreenBtn.setAttribute('class', 'fullscreen-btn');
     fullscreenBtn.innerHTML = '<i class="fa fa-arrows" aria-hidden="true" style="border: 1px solid;"></i>';
