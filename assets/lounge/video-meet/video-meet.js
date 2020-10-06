@@ -181,20 +181,21 @@ function shareCam() {
                 $('#camStatus').val('off');
                 socket.emit('cam-off', MEETING_ROOM);
                 $('.cam-btn').html('<i class="fa fa-video-camera fa-3x cam-btn-icon" aria-hidden="true" style="color:#ff422b;"></i>');
+
+                $('.localvideo-div > .videoCover').css('display', '');
             }else{
                 $('#camStatus').val('on');
                 socket.emit('cam-on', MEETING_ROOM);
                 $('.cam-btn').html('<i class="fa fa-video-camera fa-3x cam-btn-icon" aria-hidden="true" style="color:#12b81c;"></i>');
+                $('.localvideo-div > .videoCover').css('display', 'none');
             }
         });
         socket.on('cam-off', function(user_socket){
-            //$('video[data-socket="'+user_socket+'"]').prop('muted', true);
-            //$('.muteIndicator-icon[data-socket="'+user_socket+'"]').css('display', '');
+            $('.videoCover[data-socket="'+user_socket+'"]').css('display', '');
         });
 
         socket.on('cam-on', function(user_socket){
-            //$('video[data-socket="'+user_socket+'"]').prop('muted', false);
-            //$('.muteIndicator-icon[data-socket="'+user_socket+'"]').css('display', 'none');
+            $('.videoCover[data-socket="'+user_socket+'"]').css('display', 'none');
         });
         // End of turn off/on cam functionality
 
@@ -227,7 +228,8 @@ function gotRemoteStream(event, id, attendee) {
         div    = document.createElement('div'),
         nameTag = document.createElement('span'),
         fullscreenBtn = document.createElement('span'),
-        muteIndicator = document.createElement('span');
+        muteIndicator = document.createElement('span'),
+        videoCover = document.createElement('div');
 
     div.setAttribute('class', 'col-md-3');
 
@@ -237,6 +239,10 @@ function gotRemoteStream(event, id, attendee) {
     }else{
         nameTag.innerHTML = attendee.name;
     }
+
+    videoCover.setAttribute('class', 'videoCover');
+    videoCover.setAttribute('data-socket', id);
+    videoCover.style.display = (attendee.camStatus == 'off')?'':'none';
 
     fullscreenBtn.setAttribute('class', 'fullscreen-btn');
     fullscreenBtn.innerHTML = '<i class="fa fa-arrows" aria-hidden="true" style="border: 1px solid;"></i>';
@@ -254,6 +260,7 @@ function gotRemoteStream(event, id, attendee) {
         video.muted       = true;
     video.playsinline = true;
 
+    div.appendChild(videoCover);
     div.appendChild(nameTag);
     div.appendChild(fullscreenBtn);
     div.appendChild(muteIndicator);

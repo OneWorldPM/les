@@ -24,6 +24,7 @@ if ($meeting_status['status'] == false)
         <div class="row m-t-20 camera-feeds">
 
             <div class="col-md-3 localvideo-div">
+                <div class="videoCover" style="display: none;"></div>
                 <span class="name-tag">You</span>
                 <video id="localVideo" autoplay muted playsinline width="100%"></video>
                 <!-- <div class="soundbar"><span class="currentVolume"></span></div> -->
@@ -37,9 +38,9 @@ if ($meeting_status['status'] == false)
 
                 </div>
 
-<!--                <div class="cam-btn" style="display: inline;">-->
-<!--                    <i class="fa fa-video-camera fa-3x cam-btn-icon" aria-hidden="true" style="color:#12b81c;"></i>-->
-<!--                </div>-->
+                <div class="cam-btn" style="display: inline;">
+                    <i class="fa fa-video-camera fa-3x cam-btn-icon" aria-hidden="true" style="color:#12b81c;"></i>
+                </div>
 
                 <div class="share-screen-btn" style="display: inline;" onclick="window.open('<?=base_url()?>lounge/sharescreen/<?=$meeting->id?>', '_blank');">
                     <i class="fa fa-desktop fa-3x share-screen-btn-icon" aria-hidden="true" style="color:#6f8de3;"></i>

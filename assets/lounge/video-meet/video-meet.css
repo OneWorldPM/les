@@ -93,10 +93,19 @@ h1{
     position: absolute;
     margin-top: 5px;
     margin-left: 85%;
+    z-index: 3;
 }
 
 .my-muteIndicator-icon{
     position: absolute;
     margin-top: 5px;
     margin-left: 85%;
+    z-index: 3;
+}
+
+.videoCover{
+    position: absolute;
+    width: 99%;
+    height: 99%;
+    background-color: black;
 }
