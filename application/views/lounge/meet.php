@@ -30,7 +30,7 @@ if ($meeting_status['status'] == false)
                 <!-- <div class="soundbar"><span class="currentVolume"></span></div> -->
             </div>
         </div>
-        <div class="col-md-12 control-icons-col">
+        <div class="col-md-12 control-icons-col" style="display: none;">
             <div class="feed-control-icons" style="display: inline;">
 
                 <div class="mute-mic-btn" style="display: inline;">

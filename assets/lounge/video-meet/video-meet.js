@@ -205,6 +205,7 @@ function shareCam() {
 }
 
 function getUserMediaSuccess(stream) {
+
     localStream = stream;
 
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
@@ -222,6 +223,8 @@ function gotRemoteStream(event, id, attendee) {
 
     if(id == socketId)
         return;
+
+    $('.control-icons-col').css('display', '');
 
     var videos = document.querySelectorAll('camera-feeds'),
         video  = document.createElement('video'),
