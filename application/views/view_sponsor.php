@@ -80,6 +80,21 @@ $sponsor_cover = ($sponsor->sponsor_cover == '') ? 'expo_background.jpg' : $spon
                 }
                 ?>
             </div>
+            <div class="col-md-4">
+                <?php
+                if ($sponsor->embed_code != '' && $sponsor->video_position == '1') {
+                    ?>
+                    <div id="tv-container">
+                        <div id="monitor">
+                            <div id="monitorscreen">
+                                <?= $sponsor->embed_code ?>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                }
+                ?>
+            </div>
 
             <div class="col-md-4">
                 <div class="grpchat-margin"></div>
@@ -87,13 +102,13 @@ $sponsor_cover = ($sponsor->sponsor_cover == '') ? 'expo_background.jpg' : $spon
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">
-                            Chat with <?= substr($sponsor->company_name, 0, 18) . '...' ?>
+                            Send <?= substr($sponsor->company_name, 0, 18) . ' a message' ?>
                             <span class="schedule-meet-btn small-edit-btn badge badge-primary pull-right">
                                 <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Schedule a meet
                             </span>
-                            <span class="video-call-btn badge badge-primary pull-right">
+<!--                            <span class="video-call-btn badge badge-primary pull-right">
                                 <i class="fa fa-video-camera" aria-hidden="true"></i> Call
-                            </span>
+                            </span>-->
                         </h3>
                     </div>
                     <div id="chat-body" class="panel-body">
@@ -128,32 +143,32 @@ $sponsor_cover = ($sponsor->sponsor_cover == '') ? 'expo_background.jpg' : $spon
                 </div>
             </div>
 
-            <div class="col-md-4">
-                <div class="grpchat-margin"></div>
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
-                            <?= $sponsor->company_name ?> Group Chat
-                        </h3>
-                    </div>
-                    <div id="grp-chat-body" class="panel-body">
-                        <ul class="group-chat">
-
-                        </ul>
-                    </div>
-                    <div class="panel-footer">
-                        <span class="is-typing"></span><br>
-                        <div class="input-group">
-                            <input type="text" id="groupChatText" class="form-control" placeholder="You can also press enter key to send">
-                            <span class="input-group-btn">
-                                <button class="btn btn-blue send-grp-chat-btn" type="button">
-                                    <i class="fa fa-paper-plane" aria-hidden="true"></i> Send
-                                </button>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!--            <div class="col-md-4">
+                            <div class="grpchat-margin"></div>
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+            <?= $sponsor->company_name ?> Group Chat
+                                    </h3>
+                                </div>
+                                <div id="grp-chat-body" class="panel-body">
+                                    <ul class="group-chat">
+            
+                                    </ul>
+                                </div>
+                                <div class="panel-footer">
+                                    <span class="is-typing"></span><br>
+                                    <div class="input-group">
+                                        <input type="text" id="groupChatText" class="form-control" placeholder="You can also press enter key to send">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-blue send-grp-chat-btn" type="button">
+                                                <i class="fa fa-paper-plane" aria-hidden="true"></i> Send
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
 
         </div>
         <?php
