@@ -333,12 +333,25 @@
                         </div>
                     </div>
                 </div>
+                <span style="margin-right: 25px;" class="pull-right text-red totalAttende totalAttende<?=getAppName($sessions->sessions_id) ?>">Total attendees: <b>0</b></span>
+
             </div>
         </div>
         <!-- end: DYNAMIC TABLE -->
     </div>
+    
 </div>
 </div>
+
+<script>
+    socket.emit("getSessionViewUsers", "<?=getAppName($sessions->sessions_id) ?>", function (resp) {
+        if (resp) {
+            var totalUsers = resp.users ? resp.users.length : 0;
+            var sessionId = resp.sessionId;
+            $(".totalAttende" + sessionId + " b").html(totalUsers);
+        }
+    })
+</script>
 <script type="text/javascript">
     $(document).ready(function () {
         $(document).on("click", "#btn_view_poll", function () {
