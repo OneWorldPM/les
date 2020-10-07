@@ -5,7 +5,7 @@
 <script src="<?= base_url() ?>assets/support-chat/support-chat-admin.js?v=<?=rand(1, 100)?>"></script>
 
 
-<div class="support-chat-boxes" style="position: absolute;right: 5px;bottom: 35px;">
+<div class="support-chat-boxes" style="position: fixed;right: 5px;bottom: 35px;z-index: 99999999999999">
 
 </div>
 
