@@ -303,6 +303,7 @@ $(function() {
                 var userAvatarAlt = 'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
 
                 $('.lounge-video-call-btn').attr('user-id', otherUserId);
+                $('.lounge-video-call-btn').attr('user-name', fullname);
 
                 $('.send-oto-chat-btn').attr('send-to', otherUserId);
                 $('.one-to-one-chat-heading > .attendee-profile-btn').attr('userId', otherUserId);

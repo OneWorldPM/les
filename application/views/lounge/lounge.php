@@ -281,6 +281,27 @@
     </div>
 </div>
 
+<div id="video-call-modal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Calling <span class="user-to-call-title-name"></span>... </h5>
+            </div>
+            <div class="modal-body" style="text-align: center">
+                <div class="oto-video-call-div">
+                    <video class="myVideoTagOTOLounge" id="myVideoTagOTOLounge" autoplay muted="muted"></video>
+                    <video class="theirVideoTagOTOLounge" id="theirVideoTagOTOLounge" autoplay></video>
+                </div>
+            </div>
+            <div class="modal-footer text-center">
+                <div class="hang-up-btn" style="display: inline;">
+                    <i class="fa fa-times-circle fa-3x leave-btn-icon" aria-hidden="true" style="color:#e3491b;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="https://blueimp.github.io/JavaScript-MD5/js/md5.js"></script>
 <script>
     var page_link = $(location).attr('href');
