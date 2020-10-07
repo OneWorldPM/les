@@ -44,8 +44,8 @@ if (isset($status) && $status == 1){
 
 <script>
     $(function() {
-        // var firstUrl="/tiadaannualconference";
-        var firstUrl="";
+        var firstUrl="/tiadaannualconference";
+        // var firstUrl="";
 
         $.get(firstUrl+"/home/getSupportChatStatus", function (status) {
 
