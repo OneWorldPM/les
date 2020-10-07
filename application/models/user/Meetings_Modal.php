@@ -15,7 +15,7 @@ class Meetings_Modal extends CI_Model {
         $meeting_to_time->add(new DateInterval('PT' . $meetings_time_limit . 'M'));
         $meeting_to_time_string = $meeting_to_time->format('Y-m-d H:i');
 
-        echo($meeting_to_time_string); exit;
+
         $host = $this->session->userdata('cid');
         $topic = $this->input->post('topic');
         $from = $this->input->post('from');
