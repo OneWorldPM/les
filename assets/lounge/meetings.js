@@ -100,7 +100,7 @@ $(function() {
 
         var topic = $('.meeting-topic').val();
         var from = $('.meeting-from').val();
-        var to = $('.meeting-to').val();
+        // var to = $('.meeting-to').val();
 
         if (topic == ''){
             toastr["warning"]("Please enter a meeting topic!");
@@ -112,10 +112,10 @@ $(function() {
             return;
         }
 
-        if (to == ''){
-            toastr["warning"]("Please choose an ending time!");
-            return;
-        }
+        // if (to == ''){
+        //     toastr["warning"]("Please choose an ending time!");
+        //     return;
+        // }
 
         if (newMeetingSelectedAttendees.length == 0){
             toastr["warning"]("You need to add at least one attendee!");

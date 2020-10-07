@@ -9,10 +9,17 @@ class Meetings_Modal extends CI_Model {
 
     public function newMeeting()
     {
+        $meetings_time_limit = 30; //in minutes
+
+        $meeting_to_time = new DateTime($this->input->post('from'));
+        $meeting_to_time->add(new DateInterval('PT' . $meetings_time_limit . 'M'));
+        $meeting_to_time_string = $meeting_to_time->format('Y-m-d H:i');
+
+
         $host = $this->session->userdata('cid');
         $topic = $this->input->post('topic');
         $from = $this->input->post('from');
-        $to = $this->input->post('to');
+        $to = $meeting_to_time_string;
         $attendees = $this->input->post('attendees');
 
         $data = array(
