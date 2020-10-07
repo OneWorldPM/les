@@ -1,9 +1,9 @@
-// var firstUrl="/tiadaannualconference";
-var firstUrl = "";
+var firstUrl="/tiadaannualconference";
+// var firstUrl = "";
 
 
-// var socketServer = "https://socket.yourconference.live:443";
-var socketServer = "https://127.0.0.1:3080";
+var socketServer = "https://socket.yourconference.live:443";
+// var socketServer = "https://127.0.0.1:3080";
 
 
 let socket = io(socketServer);
