@@ -32,7 +32,7 @@ function addChat(data,type) {
         '            <h3>Support Chat</h3>\n' +
         '\n' +
         '            <label for="msg"><b class="person-name">' + attendee_name + '</b></label>\n' +
-        '            <div class="support-chat-body">\n' +
+        '            <div class="support-chat-body support-chat-body_'+attendee_id+'">\n' +
         '                <ul class="support-chat-list support-chat-list_' + attendee_id + '">\n' +
         '\n' +
         '                </ul>\n' +
@@ -67,7 +67,7 @@ function addChat(data,type) {
         });
 
         setTimeout(function () {
-            $('.support-chat-body').scrollTop($('.support-chat-body')[0].scrollHeight);
+            $('.support-chat-body_'+attendee_id).scrollTop($('.support-chat-body_'+attendee_id)[0].scrollHeight);
         })
         $('#chat_box_' + attendee_id).css('display', 'inline-block');
     });
@@ -104,9 +104,9 @@ socket.on('newSupportText', function (data) {
 
     }
 
-
+console.log()
     setTimeout(function () {
-        $('.support-chat-body').scrollTop( $('.support-chat-body .support-chat-list').height()+100)
+        $('.support-chat-body_'+data.attendee_id).scrollTop( $('.support-chat-body_'+data.attendee_id+ ' .support-chat-list').height()+100)
 
    })
 });
