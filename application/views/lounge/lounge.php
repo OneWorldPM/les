@@ -315,7 +315,7 @@
         });
 
         $('#datetimepicker6').datetimepicker({
-            format: 'Y-M-D H:mm',
+            format: 'MMM-D h:mm a',
             showClose: true
         });
         // $('#datetimepicker7').datetimepicker({

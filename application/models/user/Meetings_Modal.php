@@ -11,11 +11,16 @@ class Meetings_Modal extends CI_Model {
     {
         $meetings_time_limit = 30; //in minutes
 
+        //echo($this->input->post('from')); exit;
+
         $meeting_to_time = new DateTime($this->input->post('from'));
         $meeting_to_time->add(new DateInterval('PT' . $meetings_time_limit . 'M'));
         $meeting_to_time_string = $meeting_to_time->format('Y-m-d H:i');
 
+        $meeting_from_time = new DateTime($this->input->post('from'));
+        $meeting_from_time_string = $meeting_from_time->format('Y-m-d H:i');
 
+        //echo($meeting_from_time_string); exit;
         $host = $this->session->userdata('cid');
         $topic = $this->input->post('topic');
         $from = $this->input->post('from');
