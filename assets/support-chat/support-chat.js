@@ -1,5 +1,11 @@
 $(function() {
-    var socketServer = "https://socket.yourconference.live:443";
+    // var firstUrl="/tiadaannualconference";
+    var firstUrl="";
+
+
+    // var socketServer = "https://socket.yourconference.live:443";
+    var socketServer = "https://127.0.0.1:3080";
+
     let socket = io(socketServer);
     socket.on('serverStatus', function(data) {
         //console.log(data);
@@ -9,7 +15,7 @@ $(function() {
 
     $('.support-chat').on('click', function () {
 
-        $.get("/tiadaannualconference/home/getSupportChatStatus", function (status) {
+        $.get(firstUrl+"/home/getSupportChatStatus", function (status) {
             if (status == 0)
             {
                 Swal.fire({
@@ -23,7 +29,7 @@ $(function() {
         });
 
         socket.on('contacting-support', function() {
-            $.get( "/tiadaannualconference/user/SupportChat/getAllChats/"+user_id, function(chats) {
+            $.get( firstUrl+"/user/SupportChat/getAllChats/"+user_id, function(chats) {
 
                 chats = JSON.parse(chats);
 
@@ -61,14 +67,17 @@ $(function() {
     });
 
     socket.on('newSupportText', function(data) {
+        var attendee_id=data.attendee_id;
+        console.log("geldi");
+        console.log(data);
         if (data.message_from == 'admin')
         {
-            $('.support-chat-list').append('' +
+            $('.support-chat-list_'+attendee_id).append('' +
                 '<li class="support-chat-item admin clearfix">\n' +
                 '  '+data.message+' <span class="support-chat-name">Admin</span>\n' +
                 '</li>');
         }else{
-            $('.support-chat-list').append('' +
+            $('.support-chat-list_'+attendee_id).append('' +
                 '<li class="support-chat-item left clearfix">\n' +
                 '  <span class="support-chat-name">'+data.attendee_name+'</span> '+data.message+'\n' +
                 '</li>');
@@ -89,7 +98,7 @@ $(function() {
             return;
         }
 
-        $.post("/tiadaannualconference/user/SupportChat/sendMessage",
+        $.post(firstUrl+"/user/SupportChat/sendMessage",
             {
                 'message': message,
                 'attendee_id': user_id,

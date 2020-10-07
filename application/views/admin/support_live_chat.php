@@ -44,8 +44,10 @@ if (isset($status) && $status == 1){
 
 <script>
     $(function() {
+        // var firstUrl="/tiadaannualconference";
+        var firstUrl="";
 
-        $.get("/tiadaannualconference/home/getSupportChatStatus", function (status) {
+        $.get(firstUrl+"/home/getSupportChatStatus", function (status) {
             if (status == 0)
             {
                 $('#status-btn').bootstrapToggle('off');
@@ -67,7 +69,7 @@ if (isset($status) && $status == 1){
                 $('.status-text').html('Support is disabled');
             }
 
-            $.get("/tiadaannualconference/admin/Support_Live_Chat/chageStatus/"+status, function (status) {
+            $.get(firstUrl+"/admin/Support_Live_Chat/chageStatus/"+status, function (status) {
                 console.log(status);
             });
         })
