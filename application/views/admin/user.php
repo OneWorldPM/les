@@ -114,7 +114,7 @@
 
                             <div class="row">
                                 <div class="col-md-12 table-responsive">
-                                    <table class="table table-bordered table-striped text-center" id="user">
+                                    <table class="table table-bordered table-striped text-center" id="user_tbl2">
                                         <thead class="th_center">
                                             <tr>
                                                 <th>ID</th>
@@ -205,6 +205,7 @@
                                                             <?php } else { ?>
                                                                 <img src="<?= base_url() ?>assets/images/Avatar.png" style="height: 40px; width: 40px;">
                                                             <?php } ?>
+                                                        </td>
                                                         <td><?= $val->first_name . ' ' . $val->last_name ?></td>
                                                         <td><?= $val->phone ?></td>
                                                         <td><?= $val->email ?></td>
@@ -217,27 +218,27 @@
                                                         <td><?= $val->website ?></td>
                                                         <td><?= $val->member_status ?></td> 
                                                         <td>
-                                                            <a class="btn btn-danger btn-sm delete_presenter" href="<?= base_url() . 'admin/user/deleteuser/' . $val->cust_id ?>">
+                                                            <a class="btn btn-danger btn-sm delete_presenter" href="<?= base_url() . 'admin/user/deleteuser/' . $val->cust_id ?>" style="margin-bottom: 2px;">
                                                                 <i class="fa fa-trash-o"></i> Delete
                                                             </a>
-                                                            <a class="btn btn-primary btn-sm" href="<?= base_url() . 'admin/user/user_activity/' . $val->cust_id ?>">
+                                                            <a class="btn btn-primary btn-sm" href="<?= base_url() . 'admin/user/user_activity/' . $val->cust_id ?>" style="margin-bottom: 2px;">
                                                                 Activity
                                                             </a>
                                                             <?php if ($val->v_card != "") { ?>
-                                                                <a download class="btn btn-info btn-sm" href="<?= base_url() . 'uploads/upload_vcard/' . $val->v_card ?>">
+                                                                <a download class="btn btn-info btn-sm" href="<?= base_url() . 'uploads/upload_vcard/' . $val->v_card ?>" style="margin-bottom: 2px;">
                                                                     vCard
                                                                 </a>
                                                             <?php } else { ?>
-                                                                <a class="btn btn-info btn-sm" href="<?= base_url() . 'admin/exportvcard/' . $val->cust_id ?>">
+                                                                <a class="btn btn-info btn-sm" href="<?= base_url() . 'admin/exportvcard/' . $val->cust_id ?>" style="margin-bottom: 2px;">
                                                                     vCard
                                                                 </a>
                                                             <?php } ?>
-
-                                                            <?php if ($val->member_status == "non-member") { ?>
-                                                                <a class="btn btn-primary btn-sm edit_user" data-id="<?= $val->cust_id ?>" href="#">
-                                                                    <i class="fa fa-pencil"></i> Edit
-                                                                </a>
-                                                            <?php } ?>
+                                                            <a class="btn btn-primary btn-sm" href="<?= base_url() . 'admin/user/editUser/' . $val->cust_id ?>" style="margin-bottom: 2px;">
+                                                                <i class="fa fa-pencil"></i> Edit
+                                                            </a>
+        <!--                                                            <a class="btn btn-primary btn-sm edit_user" data-id="<?= $val->cust_id ?>" href="#" style="margin-bottom: 2px;">
+                                                                <i class="fa fa-pencil"></i> Edit
+                                                            </a>-->
                                                         </td>
                                                     </tr>
                                                     <?php
@@ -261,6 +262,10 @@ $msg = $this->input->get('msg');
 switch ($msg) {
     case "D":
         $m = "User Delete Successfully...!!!";
+        $t = "success";
+        break;
+    case "U":
+        $m = "User Update Successfully...!!!";
         $t = "success";
         break;
     case "E":
