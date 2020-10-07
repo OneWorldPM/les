@@ -23,7 +23,7 @@ socket.on('new-support-chat-request', function(data) {
         '        </form>\n' +
         '    </div>');
 
-    $.get( "/tiadaannualconference/user/SupportChat/getAllChats/"+data.attendee.id, function(chats) {
+    $.get( "/LES/user/SupportChat/getAllChats/"+data.attendee.id, function(chats) {
 
         chats = JSON.parse(chats);
 
@@ -89,7 +89,7 @@ $('body').on('click', 'button.chat_send_btn', function () {
         return;
     }
 
-    $.post("/tiadaannualconference/user/SupportChat/sendMessage",
+    $.post("/LES/user/SupportChat/sendMessage",
         {
             'message': message,
             'attendee_id': attendee_id,

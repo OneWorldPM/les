@@ -9,7 +9,7 @@ $(function() {
 
     $('.support-chat').on('click', function () {
 
-        $.get("/tiadaannualconference/home/getSupportChatStatus", function (status) {
+        $.get("/LES/home/getSupportChatStatus", function (status) {
             if (status == 0)
             {
                 Swal.fire({
@@ -23,7 +23,7 @@ $(function() {
         });
 
         socket.on('contacting-support', function() {
-            $.get( "/tiadaannualconference/user/SupportChat/getAllChats/"+user_id, function(chats) {
+            $.get( "/LES/user/SupportChat/getAllChats/"+user_id, function(chats) {
 
                 chats = JSON.parse(chats);
 
@@ -89,7 +89,7 @@ $(function() {
             return;
         }
 
-        $.post("/tiadaannualconference/user/SupportChat/sendMessage",
+        $.post("/LES/user/SupportChat/sendMessage",
             {
                 'message': message,
                 'attendee_id': user_id,

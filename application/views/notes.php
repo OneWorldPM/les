@@ -36,7 +36,7 @@
                                     <div class="col-md-6 m-b-10 resource-item-div" resource-id="<?= $item->session_resource_id ?>">
                                         <li class="list-group-item">
                                             <h3><i class="fa fa-file-pdf-o " aria-hidden="true"></i><?= $item->item_name ?></h3>
-                                            <a class="btn btn-sm btn-success" href="/tiadaannualconference/front_assets/sponsor/resources/<?= $item->file_name ?>" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i> Open</a>
+                                            <a class="btn btn-sm btn-success" href="/LES/front_assets/sponsor/resources/<?= $item->file_name ?>" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i> Open</a>
                                         </li>
                                     </div>
                                 <?php } ?>
