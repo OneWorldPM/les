@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
 <link href="<?= base_url() ?>assets/lounge/lounge.css?v=<?= rand(200, 300) ?>" rel="stylesheet">
+<link href="<?= base_url() ?>assets/lounge/one-to-one/one-to-one.css?v=<?= rand(200, 300) ?>" rel="stylesheet">
 <style>
     .icon-home {
         color: #ae0201;
@@ -155,7 +156,7 @@
                                                 <i class="fa fa-user" aria-hidden="true"></i> Profile
                                             </span>
                                         </h3>-->
-<!--                                        <button type="button" class="btn btn-info btn-xs pull-right lounge-video-call-btn"><i class="fa fa-video-camera" aria-hidden="true"></i></button>-->
+                                        <button type="button" class="btn btn-info btn-xs pull-right lounge-video-call-btn"><i class="fa fa-video-camera" aria-hidden="true"></i></button>
                                     </div>
                                     <div class="oto-chat-body panel-body">
                                         <ul class="oto-messages">
@@ -355,3 +356,4 @@
 
 <script src="<?= base_url() ?>assets/lounge/lounge.js?v=<?= rand(1, 100) ?>"></script>
 <script src="<?= base_url() ?>assets/lounge/meetings.js?v=<?= rand(1, 100) ?>"></script>
+<script src="<?= base_url() ?>assets/lounge/one-to-one/one-to-one.js?v=<?= rand(1, 100) ?>"></script>

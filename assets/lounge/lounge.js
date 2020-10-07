@@ -1,7 +1,26 @@
+var socketServer = "https://socket.yourconference.live:443";
+let socket = io(socketServer);
+
+toastr.options = {
+    "closeButton": false,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": false,
+    "positionClass": "toast-bottom-right",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+};
+
 $(function() {
 
-    var socketServer = "https://socket.yourconference.live:443";
-    let socket = io(socketServer);
     socket.on('serverStatus', function(data) {
         console.log(data);
     });
@@ -79,6 +98,9 @@ $(function() {
                     '</li>'
                 );
             }else{
+
+                if (chat.from_name == null)
+                    chat.from_name = 'Name Unavailable';
                 var nameAcronym = chat.from_name.match(/\b(\w)/g).join('');
                 var color = md5(nameAcronym+chat.chat_from).slice(0, 6);
 
@@ -206,9 +228,9 @@ $(function() {
         $.get( base_url+"user/UserDetails/getAllUsers", function(allUsers) {
             var users = JSON.parse(allUsers);
 
-            $.each( users, function( number, user ) {
+            socket.emit('joinLoungeOtoChat', {"room":socket_lounge_oto_chat_group, "name":user_name, "userId":user_id, "userType":user_type});
 
-                socket.emit('joinLoungeOtoChat', {"room":socket_lounge_oto_chat_group, "name":user_name, "userId":user_id, "userType":user_type});
+            $.each( users, function( number, user ) {
 
                 var fullname = user.first_name+' '+user.last_name;
                 if (fullname == ' ')
@@ -279,6 +301,8 @@ $(function() {
 
                 var userAvatar = $(this).children('img').attr('src');
                 var userAvatarAlt = 'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
+
+                $('.lounge-video-call-btn').attr('user-id', otherUserId);
 
                 $('.send-oto-chat-btn').attr('send-to', otherUserId);
                 $('.one-to-one-chat-heading > .attendee-profile-btn').attr('userId', otherUserId);
