@@ -81,19 +81,19 @@ $sponsor_cover = ($sponsor->sponsor_cover == '') ? 'expo_background.jpg' : $spon
                 ?>
             </div>
             <div class="col-md-4">
-                <?php
-                if ($sponsor->embed_code != '' && $sponsor->video_position == '1') {
-                    ?>
-                    <div id="tv-container">
-                        <div id="monitor">
-                            <div id="monitorscreen">
-                                <?= $sponsor->embed_code ?>
-                            </div>
-                        </div>
+                <div class="grpchat-margin"></div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            Resources
+                        </h3>
                     </div>
-                    <?php
-                }
-                ?>
+                    <div class="panel-body">
+                        <ul class="list-group list-group-flush resources-list">
+
+                        </ul>
+                    </div>
+                </div>
             </div>
 
             <div class="col-md-4">
@@ -102,7 +102,7 @@ $sponsor_cover = ($sponsor->sponsor_cover == '') ? 'expo_background.jpg' : $spon
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">
-                            Send <?= substr($sponsor->company_name, 0, 18) . ' a message' ?>
+                            Send a Message to <?= substr($sponsor->company_name, 0, 18) ?>
                             <span class="schedule-meet-btn small-edit-btn badge badge-primary pull-right">
                                 <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Schedule a meet
                             </span>
@@ -129,18 +129,6 @@ $sponsor_cover = ($sponsor->sponsor_cover == '') ? 'expo_background.jpg' : $spon
                     </div>
                 </div>
 
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
-                            Resources
-                        </h3>
-                    </div>
-                    <div class="panel-body">
-                        <ul class="list-group list-group-flush resources-list">
-
-                        </ul>
-                    </div>
-                </div>
             </div>
 
             <!--            <div class="col-md-4">
