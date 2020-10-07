@@ -65,6 +65,8 @@ class Meetings_Modal extends CI_Model {
             foreach ($meetings->result() as $meeting)
             {
                 $meeting->attendees = $this->getAttendeesPerMeet($meeting->id);
+                $meeting->meeting_from = (new DateTime($meeting->meeting_from))->format('M-d h:ia');
+                $meeting->meeting_to = (new DateTime($meeting->meeting_to))->format('M-d h:ia');
             }
             return $meetings->result();
         } else {
