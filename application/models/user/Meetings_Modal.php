@@ -23,7 +23,7 @@ class Meetings_Modal extends CI_Model {
         //echo($meeting_from_time_string); exit;
         $host = $this->session->userdata('cid');
         $topic = $this->input->post('topic');
-        $from = $this->input->post('from');
+        $from = $meeting_from_time_string;
         $to = $meeting_to_time_string;
         $attendees = $this->input->post('attendees');
 
