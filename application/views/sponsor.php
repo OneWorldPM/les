@@ -33,6 +33,25 @@
         -moz-box-shadow: #fdff44;
         box-shadow: #fdff44;
     }
+    .sponsorDownload{
+        padding-top: 65px;
+    }
+    .sponsorDownload a{
+        background-color: #3e5189;
+        width: 100px;
+        height: 50px;
+        color: white;
+        border-radius: 10px;
+        padding: 1px 40px;
+    }
+    .sponsorDownload a:hover{
+        background-color: #27418e;
+    }
+    @media only screen and (max-width: 1199px) {
+        .sponsorDownload{
+            padding-top: 0;
+        }
+    }
 
 </style>
 <section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/expo_background.jpg); top: 0; padding-top: 0px;">
@@ -95,11 +114,16 @@
                             foreach ($platinum_sponsors as $val) {
                                 ?>
                                 <div class="col-md-3 col-sm-12" style="margin-bottom:40px;">
-                                    <a class="icon-home" href="<?= base_url() ?>sponsor/view/<?= $val->sponsors_id ?>">
-                                        <div class="col-lg box-home text-center">
-                                            <img src="<?= base_url() ?>uploads/sponsors/<?= $val->sponsors_logo ?>" alt="welcome" style="max-width: 200px; max-height: 130px">
-                                        </div>
-                                    </a>
+                                    <div class="col-lg-9">
+                                        <a class="icon-home" href="<?= base_url() ?>sponsor/view/<?= $val->sponsors_id ?>">
+                                            <div class="col-lg box-home text-center">
+                                                <img src="<?= base_url() ?>uploads/sponsors/<?= $val->sponsors_logo ?>" alt="welcome" style="max-width: 200px; max-height: 130px">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-3 sponsorDownload">
+                                        <a href="<?= base_url() ?>sponsor/sponsor_resources/<?=$val->sponsors_id?>" class="">Download</a>
+                                    </div>
                                 </div>
                                 <?php
                             }
@@ -111,12 +135,17 @@
                         foreach ($gold_sponsors as $val) {
                             ?>
                             <div class="col-md-3 col-sm-12" style="margin-bottom:40px;">
-                                <a class="icon-home" href="<?= base_url() ?>sponsor/view/<?= $val->sponsors_id ?>"> 
-                                    <div class="col-lg box-home text-center">
-                                        <img src="<?= base_url() ?>uploads/sponsors/<?= $val->sponsors_logo ?>" alt="welcome" style="max-width: 100px">
-                                        <h4><?= $val->company_name ?></h4>
-                                    </div>
-                                </a>
+                                <div class="col-lg-9">
+                                    <a class="icon-home" href="<?= base_url() ?>sponsor/view/<?= $val->sponsors_id ?>">
+                                        <div class="col-lg box-home text-center">
+                                            <img src="<?= base_url() ?>uploads/sponsors/<?= $val->sponsors_logo ?>" alt="welcome" style="max-width: 100px">
+                                            <h4><?= $val->company_name ?></h4>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-3 sponsorDownload">
+                                    <a href="<?= base_url() ?>sponsor/sponsor_resources/<?=$val->sponsors_id?>" class="">Download</a>
+                                </div>
                             </div>
                             <?php
                         }
@@ -127,12 +156,17 @@
                         foreach ($silver_sponsors as $val) {
                             ?>
                             <div class="col-md-3 col-sm-12" style="margin-bottom:40px;">
-                                <a class="icon-home" href="<?= base_url() ?>sponsor/view/<?= $val->sponsors_id ?>"> 
-                                    <div class="col-lg box-home text-center">
-                                        <img src="<?= base_url() ?>uploads/sponsors/<?= $val->sponsors_logo ?>" alt="welcome" style="max-width: 100px">
-                                        <h4><?= $val->company_name ?></h4>
-                                    </div>
-                                </a>
+                                <div class="col-lg-9">
+                                    <a class="icon-home" href="<?= base_url() ?>sponsor/view/<?= $val->sponsors_id ?>">
+                                        <div class="col-lg box-home text-center">
+                                            <img src="<?= base_url() ?>uploads/sponsors/<?= $val->sponsors_logo ?>" alt="welcome" style="max-width: 100px">
+                                            <h4><?= $val->company_name ?></h4>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-3 sponsorDownload">
+                                    <a href="<?= base_url() ?>sponsor/sponsor_resources/<?=$val->sponsors_id?>" class="">Download</a>
+                                </div>
                             </div>
                             <?php
                         }
@@ -143,12 +177,17 @@
                         foreach ($bronze_sponsors as $val) {
                             ?>
                             <div class="col-md-3 col-sm-12" style="margin-bottom:40px;">
-                                <a class="icon-home" href="<?= base_url() ?>sponsor/view/<?= $val->sponsors_id ?>"> 
-                                    <div class="col-lg box-home text-center">
-                                        <img src="<?= base_url() ?>uploads/sponsors/<?= $val->sponsors_logo ?>" alt="welcome" style="max-width: 100px">
-                                        <h4><?= $val->company_name ?></h4>
-                                    </div>
-                                </a>
+                              <div class="col-lg-9">
+                                  <a class="icon-home" href="<?= base_url() ?>sponsor/view/<?= $val->sponsors_id ?>">
+                                      <div class="col-lg box-home text-center">
+                                          <img src="<?= base_url() ?>uploads/sponsors/<?= $val->sponsors_logo ?>" alt="welcome" style="max-width: 100px">
+                                          <h4><?= $val->company_name ?></h4>
+                                      </div>
+                                  </a>
+                              </div>
+                                <div class="col-lg-3 sponsorDownload">
+                                    <a href="<?= base_url() ?>sponsor/sponsor_resources/<?=$val->sponsors_id?>" class="">Download</a>
+                                </div>
                             </div>
                             <?php
                         }
@@ -170,7 +209,7 @@
                         }
                     }*/
                     ?>
-                </div> 
+                </div>
             </div>
         </div>
     </div>
@@ -214,10 +253,10 @@
 //            $("#frm_search_data").submit();
 //        });
 
-        var glower = $('.glow');
-        window.setInterval(function () {
-            glower.toggleClass('active');
-        }, 200);
+        // var glower = $('.glow');
+        // window.setInterval(function () {
+        //     glower.toggleClass('active');
+        // }, 200);
 
     });
 </script>

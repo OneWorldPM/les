@@ -17,6 +17,7 @@ class Sponsor extends CI_Controller {
            redirect('login');   
         }
         $this->load->model('user/m_sponsor', 'objsponsor');
+        $this->load->model('sponsor/SponsorResources', 'sponsor_resources');
     }
 
     public function index() {
@@ -35,6 +36,15 @@ class Sponsor extends CI_Controller {
         $data["sponsors_category"] = $this->objsponsor->getSponsorsCategoryData();
         $this->load->view('header');
         $this->load->view('sponsor', $data);
+        $this->load->view('footer');
+    }
+    public function sponsor_resources($id){
+
+        
+        $resources=$this->sponsor_resources->getResources($id);
+        $data["resources"]=$resources;
+        $this->load->view('header');
+        $this->load->view('sponsor_resources', $data);
         $this->load->view('footer');
     }
 
