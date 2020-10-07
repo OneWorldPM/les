@@ -60,7 +60,7 @@ $(function() {
     $('.leave-btn').on('click', function () {
         Swal.fire({
             title: 'Are you sure?',
-            text: "You are about to leave the meeting but you can always comeback!",
+            text: "You are about to leave the meeting but you can always come back!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -68,7 +68,14 @@ $(function() {
             confirmButtonText: 'Yes, leave!'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.top.close();
+                if(!window.top.close())
+                {
+                    Swal.fire(
+                        'Problem!',
+                        "Since you didn't open this meeting tab from our app, we are unable to automatically make you leave but you can simply close this browser tab and you will leave the meeting!",
+                        'error'
+                    )
+                }
             }
         });
     });
@@ -214,17 +221,19 @@ function getUserMediaSuccess(stream) {
         'video': true
     }, function (stream) {
         localVideo.srcObject = stream;
+        setTimeout(function () {
+            $('.control-icons-col').css('display', '');
+        }, 5000);
     }, logError);
 
     $('.localvideo-div').prepend('<span class="my-muteIndicator-icon" ><i class="fa fa-microphone-slash fa-2x" aria-hidden="true" style="color: #12b81c"></i></span>');
+
 }
 
 function gotRemoteStream(event, id, attendee) {
 
     if(id == socketId)
         return;
-
-    $('.control-icons-col').css('display', '');
 
     var videos = document.querySelectorAll('camera-feeds'),
         video  = document.createElement('video'),
