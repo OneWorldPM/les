@@ -243,15 +243,15 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <div class='input-group date' id='datetimepicker7'>
-                        <span class="input-group-addon" id="sizing-addon2">End Time &nbsp; &nbsp; &nbsp; &nbsp;</span>
-                        <input type='text' class="meeting-to form-control" placeholder="Use the icon on the right side to choose ending time" aria-describedby="sizing-addon2"/>
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                    </div>
-                </div>
+<!--                <div class="form-group">-->
+<!--                    <div class='input-group date' id='datetimepicker7'>-->
+<!--                        <span class="input-group-addon" id="sizing-addon2">End Time &nbsp; &nbsp; &nbsp; &nbsp;</span>-->
+<!--                        <input type='text' class="meeting-to form-control" placeholder="Use the icon on the right side to choose ending time" aria-describedby="sizing-addon2"/>-->
+<!--                        <span class="input-group-addon">-->
+<!--                            <span class="glyphicon glyphicon-calendar"></span>-->
+<!--                        </span>-->
+<!--                    </div>-->
+<!--                </div>-->
 
                 <div class="input-group m-b-10">
                     <span class="input-group-addon" id="sizing-addon2">Attendees &nbsp; &nbsp; &nbsp;</span>
@@ -269,7 +269,8 @@
                 </div>
 
                 <small>Only invited attendees except you will be allowed to the meeting, hence no password is required!</small><br>
-                <small>All date and times are in Central Time Zone(CT)</small>
+                <small>All date and times are in Central Time Zone(CT)</small><br>
+                <small>Meetings are limited to maximum 30 minutes.</small>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
@@ -314,18 +315,20 @@
         });
 
         $('#datetimepicker6').datetimepicker({
-            format: 'Y-M-D H:mm'
+            format: 'Y-M-D H:mm',
+            showClose: true
         });
-        $('#datetimepicker7').datetimepicker({
-            useCurrent: false, //Important! See issue #1075
-            format: 'Y-M-D H:mm'
-        });
-        $("#datetimepicker6").on("dp.change", function (e) {
-            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
-        });
-        $("#datetimepicker7").on("dp.change", function (e) {
-            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
-        });
+        // $('#datetimepicker7').datetimepicker({
+        //     useCurrent: false, //Important! See issue #1075
+        //     format: 'Y-M-D H:mm',
+        //     showClose: true
+        // });
+        // $("#datetimepicker6").on("dp.change", function (e) {
+        //     $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+        // });
+        // $("#datetimepicker7").on("dp.change", function (e) {
+        //     $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+        // });
 
 
     });
