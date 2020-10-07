@@ -126,7 +126,6 @@ $(function() {
             {
                 'topic': topic,
                 'from': from,
-                'to': to,
                 'attendees': newMeetingSelectedAttendees
             },
             function(data, status){
