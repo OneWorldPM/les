@@ -1,5 +1,5 @@
 <!-- Support Chat -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script> -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@9.17.0/dist/sweetalert2.all.min.js"></script>
 <link href="<?= base_url() ?>assets/support-chat/support-chat-admin.css?v=<?=rand(1, 100)?>" rel="stylesheet">
 <script src="<?= base_url() ?>assets/support-chat/support-chat-admin.js?v=<?=rand(1, 100)?>"></script>

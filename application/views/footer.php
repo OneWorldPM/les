@@ -11,7 +11,7 @@
 <script src="<?= base_url() ?>assets/alertify/alertify.min.js" type="text/javascript"></script>
 
 
-<script src="https://meet.yourconference.live/socket.io/socket.io.js"></script>
+<!-- <script src="https://meet.yourconference.live/socket.io/socket.io.js"></script> -->
 <script>
 
     var user_name = "<?= $this->session->userdata('fullname') ?>";
