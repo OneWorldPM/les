@@ -41,7 +41,7 @@ $(function() {
         {
             Swal.fire(
                 'Problem!',
-                'User you are trying to call is offline!',
+                userName+' is offline!',
                 'error'
             );
             return;
