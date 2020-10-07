@@ -48,6 +48,7 @@ if (isset($status) && $status == 1){
         var firstUrl="";
 
         $.get(firstUrl+"/home/getSupportChatStatus", function (status) {
+
             if (status == 0)
             {
                 $('#status-btn').bootstrapToggle('off');
@@ -70,6 +71,7 @@ if (isset($status) && $status == 1){
             }
 
             $.get(firstUrl+"/admin/Support_Live_Chat/chageStatus/"+status, function (status) {
+
                 console.log(status);
             });
         })

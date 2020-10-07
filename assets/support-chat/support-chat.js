@@ -16,6 +16,7 @@ $(function() {
     $('.support-chat').on('click', function () {
 
         $.get(firstUrl+"/home/getSupportChatStatus", function (status) {
+
             if (status == 0)
             {
                 Swal.fire({
@@ -30,6 +31,7 @@ $(function() {
 
         socket.on('contacting-support', function() {
             $.get( firstUrl+"/user/SupportChat/getAllChats/"+user_id, function(chats) {
+
 
                 chats = JSON.parse(chats);
 
@@ -99,6 +101,7 @@ $(function() {
         }
 
         $.post(firstUrl+"/user/SupportChat/sendMessage",
+
             {
                 'message': message,
                 'attendee_id': user_id,

@@ -147,6 +147,16 @@
                                                                     <h6 style="font-weight: 600; font-size: 15px;"><?= $val->sessions_date . ' ' . date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></h6>
                                                                     <h3><a style="color: #ef9d45; font-weight: 900;"><?= $val->session_title ?></a></h3>
                                                                 </div>
+                                                                <?php
+                                                                if (isset($val->presenter) && !empty($val->presenter)) {
+                                                                    foreach ($val->presenter as $value) {
+                                                                        ?>
+                                                                        <div class="post-info" style="color: #000 !important; font-size: larger; font-weight: 700;"><span class="post-autor"><a href="#" data-presenter_photo="<?= $value->presenter_photo ?>" data-presenter_name="<?= $value->presenter_name ?>" data-designation="<?= $value->designation ?>" data-email="<?= $value->email ?>" data-company_name="<?= $value->company_name ?>" data-twitter_link="<?= $value->twitter ?>" data-facebook_link="<?= $value->facebook ?>" data-linkedin_link="<?= $value->linkin ?>" data-bio="<?= $value->bio ?>"  class="presenter_open_modul" style="color: #337ab7;"><u><?= $value->presenter_name ?></u>, </a></span> <span class="post-category"> <?= $value->title ?></span> </div>
+                                                                        <div class="post-info" style="color: #000 !important; font-size: larger; font-weight: 700;"><span class="post-category"> <?= $value->company_name ?></span> </div>
+                                                                        <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <div class="post-description">
                                                                     <p style="margin-bottom: 10px; color: black;"><?= $val->sessions_description ?></p>
                                                                     <a class="button black-light button-3d rounded right btn_sign_up" style="margin: 0px 0;" data-sessions_id="<?= $val->sessions_id ?>" data-user_limit="<?= $val->total_sign_up_sessions_user ?>"><span>Sign up</span></a>
@@ -164,6 +174,16 @@
                                                                     <h6 style="font-weight: 600; font-size: 15px;"><?= $val->sessions_date . ' ' . date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></h6>
                                                                     <h3><a href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>" style="color: #ef9d45; font-weight: 900;"><?= $val->session_title ?></a></h3>
                                                                 </div>
+                                                                <?php
+                                                                if (isset($val->presenter) && !empty($val->presenter)) {
+                                                                    foreach ($val->presenter as $value) {
+                                                                        ?>
+                                                                        <div class="post-info" style="color: #000 !important; font-size: larger; font-weight: 700;"><span class="post-autor"><a href="#" data-presenter_photo="<?= $value->presenter_photo ?>" data-presenter_name="<?= $value->presenter_name ?>" data-designation="<?= $value->designation ?>" data-email="<?= $value->email ?>" data-company_name="<?= $value->company_name ?>" data-twitter_link="<?= $value->twitter ?>" data-facebook_link="<?= $value->facebook ?>" data-linkedin_link="<?= $value->linkin ?>" data-bio="<?= $value->bio ?>"  class="presenter_open_modul" style="color: #337ab7;"><u><?= $value->presenter_name ?></u>, </a></span> <span class="post-category"> <?= $value->title ?></span> </div>
+                                                                        <div class="post-info" style="color: #000 !important; font-size: larger; font-weight: 700;"><span class="post-category"> <?= $value->company_name ?></span> </div>
+                                                                        <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <div class="post-description">
                                                                     <p style="margin-bottom: 10px; color: black;"><?= $val->sessions_description ?></p>
                                                                     <a class="button black-light button-3d rounded right" style="margin: 0px 0px 0px 5px; " href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
@@ -183,6 +203,16 @@
                                                                 <h6 style="font-weight: 600; font-size: 15px;"><?= $val->sessions_date . ' ' . date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></h6>
                                                                 <h3><a style="color: #ef9d45; font-weight: 900;"><?= $val->session_title ?></a></h3>
                                                             </div>
+                                                            <?php
+                                                            if (isset($val->presenter) && !empty($val->presenter)) {
+                                                                foreach ($val->presenter as $value) {
+                                                                    ?>
+                                                                    <div class="post-info" style="color: #000 !important; font-size: larger; font-weight: 700;"><span class="post-autor"><a href="#" data-presenter_photo="<?= $value->presenter_photo ?>" data-presenter_name="<?= $value->presenter_name ?>" data-designation="<?= $value->designation ?>" data-email="<?= $value->email ?>" data-company_name="<?= $value->company_name ?>" data-twitter_link="<?= $value->twitter ?>" data-facebook_link="<?= $value->facebook ?>" data-linkedin_link="<?= $value->linkin ?>" data-bio="<?= $value->bio ?>"  class="presenter_open_modul" style="color: #337ab7;"><u><?= $value->presenter_name ?></u>, </a></span> <span class="post-category"> <?= $value->title ?></span> </div>
+                                                                    <div class="post-info" style="color: #000 !important; font-size: larger; font-weight: 700;"><span class="post-category"> <?= $value->company_name ?></span> </div>
+                                                                    <?php
+                                                                }
+                                                            }
+                                                            ?>
                                                             <div class="post-description">
                                                                 <p style="margin-bottom: 10px; color: black;"><?= $val->sessions_description ?></p>
                                                                 <?php

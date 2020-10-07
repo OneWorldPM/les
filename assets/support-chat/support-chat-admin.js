@@ -46,6 +46,7 @@ function addChat(data,type) {
 
     $.get(firstUrl + "/user/SupportChat/getAllChats/" + attendee_id, function (chats) {
 
+
         chats = JSON.parse(chats);
 
         $('.support-chat-list_' + attendee_id).html('');
@@ -134,6 +135,7 @@ $('body').on('click', 'button.chat_send_btn', function () {
     }
 
     $.post(firstUrl + "/user/SupportChat/sendMessage",
+
         {
             'message': message,
             'attendee_id': attendee_id,

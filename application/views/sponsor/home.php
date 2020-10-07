@@ -425,7 +425,7 @@ $sponsors_cover = ($sponsor_cover == '') ? 'sponsor-cover-default.jpg' : $sponso
         $('.current-booking-person-name').text(user_name);
 
 
-        $.get("/tiadaannualconference/sponsor-admin/Schedules/getAllScheduledMeetings/" + sponsor_id + "/" + company_name, function (events) {
+        $.get("/LES/sponsor-admin/Schedules/getAllScheduledMeetings/" + sponsor_id + "/" + company_name, function (events) {
             events = JSON.parse(events);
 
             var calendarEl = document.getElementById('calendar');
@@ -448,7 +448,7 @@ $sponsors_cover = ($sponsor_cover == '') ? 'sponsor-cover-default.jpg' : $sponso
     });
 
     function userProfileModal(userId) {
-        $.get("/tiadaannualconference/sponsor-admin/UserDetails/userDataById/" + userId, function (profile) {
+        $.get("/LES/sponsor-admin/UserDetails/userDataById/" + userId, function (profile) {
 
             profile = JSON.parse(profile);
 
@@ -459,13 +459,13 @@ $sponsors_cover = ($sponsor_cover == '') ? 'sponsor-cover-default.jpg' : $sponso
             }
             var nameAcronym = fullname.match(/\b(\w)/g).join('');
             var color = md5(nameAcronym + profile.cust_id).slice(0, 6);
-            var userAvatarSrc = (profile.profile != '' && profile.profile != null) ? '/tiadaannualconference/uploads/customer_profile/' + profile.profile : 'https://placehold.it/50/' + color + '/fff&amp;text=' + nameAcronym;
+            var userAvatarSrc = (profile.profile != '' && profile.profile != null) ? '/LES/uploads/customer_profile/' + profile.profile : 'https://placehold.it/50/' + color + '/fff&amp;text=' + nameAcronym;
             var userAvatarAlt = 'https://placehold.it/50/' + color + '/fff&amp;text=' + nameAcronym;
 
 
             $('.attendeeProfileModal-name').html(
                     '<img src="' + userAvatarSrc + '" alt="User Avatar" onerror=this.src="' + userAvatarAlt + '" class="img-circle"> ' +
-                    fullname + '<a target="_blank" href="/tiadaannualconference/admin/exportvcard/'+profile.cust_id+'"> <button class="btn btn-info btn-xs">vCard</button></a>'
+                    fullname + '<a target="_blank" href="/LES/admin/exportvcard/'+profile.cust_id+'"> <button class="btn btn-info btn-xs">vCard</button></a>'
                     );
 
             $('.attendeeProfileModalSMIcons').html('');

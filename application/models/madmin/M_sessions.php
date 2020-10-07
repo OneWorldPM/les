@@ -903,7 +903,8 @@ class M_sessions extends CI_Model {
                 $csv_array = $this->csvimport->get_array($file_path);
                 if (!empty($csv_array)) {
                     foreach ($csv_array as $val) {
-                        if ($val['moderator'] != "" && $val['presenter_id'] != "" && $val['session_title'] != "" && $val['sessions_description'] != "") {
+                      
+                        if ($val['session_title'] != "") {
                             if ($val['moderator'] != "") {
                                 $moderator = explode(",", $val['moderator']);
                                 $this->db->select("*");
@@ -1025,6 +1026,7 @@ class M_sessions extends CI_Model {
                                 $this->db->update('sessions', array('sessions_photo' => $file_name), array('sessions_id' => $sessions_id));
                             }
 
+                            
                             if ($val['sponsor_logo'] != "") {
                                 $file_name = 'sponsor_' . $this->generateRandomString() . '.jpg';
                                 $url = $val['sponsor_logo'];
