@@ -138,30 +138,30 @@ class M_presenters extends CI_Model {
                             $presenter = $this->db->get('presenter');
                             if ($presenter->num_rows() > 0) { //Check Email or Phone exist with new User 
                                 $import_fail_record['session_presenter'][] = array(
-                                    'first_name' => trim($val['first_name']),
-                                    'last_name' => trim($val['last_name']),
-                                    'phone' => $val['phone'],
-                                    'email' => $val['email'],
+                                    'first_name' => isset($val['first_name']) ? $val['first_name'] : '',
+                                    'last_name' => isset($val['last_name']) ? $val['last_name'] : '',
+                                    'phone' => isset($val['phone']) ? $val['phone'] : '',
+                                    'email' => isset($val['email']) ? $val['email'] : '',
                                     'status' => "This Presenter Already Exists"
                                 );
                                 $this->session->set_userdata($import_fail_record);
                             } else {
                                 $data = array(
-                                    'first_name' => $val['first_name'],
-                                    'last_name' => $val['last_name'],
-                                    'presenter_name' => $val['first_name'] . ' ' . $val['last_name'],
-                                    'title' => $val['title'],
-                                    'degree' => $val['degree'],
-                                    'specialty' => $val['specialty'],
-                                    'designation' => $val['designation'],
-                                    'phone' => $val['phone'],
-                                    'bio' => $val['bio'],
-                                    'company_name' => $val['company_name'],
-                                    'email' => $val['email'],
-                                    'password' => $val['password'],
-                                    'facebook' => $val['facebook'],
-                                    'linkin' => $val['linkin'],
-                                    'twitter' => $val['twitter'],
+                                    'first_name' => isset($val['first_name']) ? $val['first_name'] : '',
+                                    'last_name' => isset($val['last_name']) ? $val['last_name'] : '',
+                                    'presenter_name' => isset($val['last_name']) ? $val['first_name'] . ' ' . $val['last_name'] : '',
+                                    'title' => isset($val['title']) ? $val['title'] : '',
+                                    'degree' => isset($val['degree']) ? $val['degree'] : '',
+                                    'specialty' => isset($val['specialty']) ? $val['specialty'] : '',
+                                    'designation' => isset($val['designation']) ? $val['designation'] : '',
+                                    'phone' => isset($val['phone']) ? $val['phone'] : '',
+                                    'bio' => isset($val['bio']) ? $val['bio'] : '',
+                                    'company_name' => isset($val['company_name']) ? $val['company_name'] : '',
+                                    'email' => isset($val['email']) ? $val['email'] : '',
+                                    'password' => isset($val['password']) ? $val['password'] : '',
+                                    'facebook' => isset($val['facebook_id']) ? $val['facebook_id'] : '',
+                                    'linkin' => isset($val['linkin_id']) ? $val['linkin_id'] : '',
+                                    'twitter' => isset($val['twitter_id']) ? $val['twitter_id'] : '',
                                     'reg_date' => date("Y-m-d h:i:s")
                                 );
                                 $this->db->insert('presenter', $data);

@@ -903,7 +903,8 @@ class M_sessions extends CI_Model {
                 $csv_array = $this->csvimport->get_array($file_path);
                 if (!empty($csv_array)) {
                     foreach ($csv_array as $val) {
-                        if ($val['moderator'] != "" && $val['presenter_id'] != "" && $val['session_title'] != "" && $val['sessions_description'] != "") {
+                       
+                        if ($val['moderator'] != "" && $val['presenter_id'] != "" && $val['﻿session_title'] != "") {
                             if ($val['moderator'] != "") {
                                 $moderator = explode(",", $val['moderator']);
                                 $this->db->select("*");
@@ -1001,7 +1002,7 @@ class M_sessions extends CI_Model {
                             $set = array(
                                 'presenter_id' => $presenter_id,
                                 'moderator_id' => $moderator_id,
-                                'session_title' => trim($val['session_title']),
+                                'session_title' => trim($val['﻿session_title']),
                                 'sessions_description' => trim($val['sessions_description']),
                                 'sessions_date' => date("Y-m-d", strtotime($val['sessions_date'])),
                                 'time_slot' => date("H:i", strtotime($val['start_time'])),
@@ -1054,7 +1055,7 @@ class M_sessions extends CI_Model {
                             }
                         } else {
                             $import_fail_record['session_sessions_data'][] = array(
-                                'session_title' => trim($val['session_title']),
+                                'session_title' => trim($val['﻿session_title']),
                                 'sessions_description' => trim($val['sessions_description']),
                                 'sessions_date' => date("Y-m-d", strtotime($val['sessions_date'])),
                                 'status' => "Import Fail"
