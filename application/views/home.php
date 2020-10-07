@@ -193,7 +193,7 @@
 
         <label for="msg"><b>Admin</b></label>
         <div class="support-chat-body">
-            <ul class="support-chat-list">
+            <ul class="support-chat-list support-chat-list_<?=$this->session->userdata('cid')?>">
             </ul>
         </div>
         <input type="text" class="form-control support-chat-message" placeholder="Enter your message here...">
