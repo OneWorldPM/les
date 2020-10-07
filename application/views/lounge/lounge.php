@@ -237,11 +237,12 @@
                 <div class="form-group">
                     <div class='input-group date' id='datetimepicker6'>
                         <span class="input-group-addon" id="sizing-addon2">Start Time &nbsp; &nbsp; &nbsp; </span>
-                        <input type='text' class="meeting-from form-control" placeholder="Use the icon on the right side to choose starting time" aria-describedby="sizing-addon2"/>
+                        <input id="meeting_start_time" type='text' class="meeting-from form-control" placeholder="Use the icon on the right side to choose starting time" aria-describedby="sizing-addon2"/>
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                         </span>
                     </div>
+                    <label for="meeting_start_time"><small>Meetings are limited to maximum 30 minutes.</small></label>
                 </div>
 
 <!--                <div class="form-group">-->
@@ -271,7 +272,6 @@
 
                 <small>Only invited attendees except you will be allowed to the meeting, hence no password is required!</small><br>
                 <small>All date and times are in Central Time Zone(CT)</small><br>
-                <small>Meetings are limited to maximum 30 minutes.</small>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
