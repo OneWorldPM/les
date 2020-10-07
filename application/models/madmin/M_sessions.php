@@ -1026,6 +1026,7 @@ class M_sessions extends CI_Model {
                                 $this->db->update('sessions', array('sessions_photo' => $file_name), array('sessions_id' => $sessions_id));
                             }
 
+                            
                             if ($val['sponsor_logo'] != "") {
                                 $file_name = 'sponsor_' . $this->generateRandomString() . '.jpg';
                                 $url = $val['sponsor_logo'];
