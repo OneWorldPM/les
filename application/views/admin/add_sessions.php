@@ -209,7 +209,7 @@
                                                                 <label> Resources Uploads</label>
                                                                 <input type ='file' class='form-control' name='presenter_resource[]' id='presenter_resource'>
                                                                 <?php if($value->presenter_resource != ""){ 
-                                                                    if(file_exists("./uploads/presenter_resource/".$value->presenter_resource)){
+                                                                    if(file_exists(base_url()."uploads/presenter_resource/".$value->presenter_resource)){
                                                                     ?>
                                                                 <img src="<?= base_url() ?>uploads/presenter_resource/<?= $value->presenter_resource ?>" style="height: 100px; width: 100px;">
                                                                     <?php } else { ?>
