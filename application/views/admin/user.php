@@ -168,7 +168,6 @@
                                             <tr>
                                                 <td style="width: 60px; text-align: center;"><input type="checkbox" id="select_all" name="select_all"></td>
                                                 <th>Date</th>
-                                                <th>User ID</th>
                                                 <th>Register ID</th>
                                                 <th>Profile</th>
                                                 <th>Full Name</th>
@@ -176,11 +175,9 @@
                                                 <th>Email</th>
                                                 <th>Username</th>
                                                 <th>Password</th>
-                                                <th>Address</th>
                                                 <th>City</th>
                                                 <th>State</th>
                                                 <th>Country</th>
-                                                <th>Website</th>
                                                 <th>Members</th>
                                                 <th>Action</th>
                                             </tr>
@@ -197,7 +194,6 @@
                                                             </div>
                                                         </td>
                                                         <td><?= date("Y-m-d", strtotime($val->register_date)) ?></td>
-                                                        <td><?= $val->user_id ?></td>
                                                         <td><?= $val->register_id ?></td>
                                                         <td>
                                                             <?php if ($val->profile != "") { ?>
@@ -206,16 +202,14 @@
                                                                 <img src="<?= base_url() ?>assets/images/Avatar.png" style="height: 40px; width: 40px;">
                                                             <?php } ?>
                                                         </td>
-                                                        <td><?= $val->first_name . ' ' . $val->last_name ?></td>
+                                                        <td><?= $val->last_name . ' ' . $val->first_name ?></td>
                                                         <td><?= $val->phone ?></td>
                                                         <td><?= $val->email ?></td>
                                                         <td><?= $val->username ?></td>
                                                         <td><?= base64_decode($val->password) ?></td>
-                                                        <td><?= $val->address ?></td>
                                                         <td><?= $val->city ?></td>
                                                         <td><?= $val->state ?></td>
                                                         <td><?= $val->country ?></td>
-                                                        <td><?= $val->website ?></td>
                                                         <td><?= $val->member_status ?></td> 
                                                         <td>
                                                             <a class="btn btn-danger btn-sm delete_presenter" href="<?= base_url() . 'admin/user/deleteuser/' . $val->cust_id ?>" style="margin-bottom: 2px;">
@@ -404,11 +398,3 @@ switch ($msg) {
 
     });
 </script>
-
-
-
-
-
-
-
-
