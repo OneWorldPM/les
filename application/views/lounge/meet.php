@@ -65,6 +65,8 @@ if ($meeting_status['status'] == false)
         user_name = (user_name == '') ? 'No Name' : user_name;
 
         var meeting_id = "<?=$meeting->id?>";
+        var meeting_to = "<?=$meeting->meeting_to?>";
+
 
         <?php
         foreach ($socket_config as $config_name => $config_value)

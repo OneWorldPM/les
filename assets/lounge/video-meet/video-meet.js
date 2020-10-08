@@ -4,6 +4,7 @@ var socketCount = 0;
 var socketId;
 var localStream;
 var connections = [];
+var timer;
 
 var config = {'host': 'https://socket.yourconference.live'};
 
@@ -31,6 +32,8 @@ $(function() {
     $("html").on("contextmenu",function(){
         return false;
     });
+
+    timer = setInterval(meetingTimer, 1000); //Countdown until meeting ends
 
     toastr.options = {
         "closeButton": false,
@@ -366,3 +369,25 @@ $(document).bind('fullscreenchange webkitfullscreenchange mozfullscreenchange ms
         //console.log('Entering full-screen mode...');
     }
 });
+
+// Meeting timer to force users out once allowed time is over
+var _second = 1000;
+var _minute = _second * 60;
+var _hour = _minute * 60;
+var _day = _hour * 24;
+var end = new Date(meeting_to);
+function meetingTimer() {
+    var now = new Date();
+    var now_ct = new Date(now.toLocaleString('en-US', { timeZone: 'America/Chicago' }));
+
+    var distance = end - now_ct;
+    if (distance < 0) {
+        clearInterval(timer);
+        location.reload();
+        return;
+    }
+    var days = Math.floor(distance / _day);
+    var hours = Math.floor((distance % _day) / _hour);
+    var minutes = Math.floor((distance % _hour) / _minute);
+    var seconds = Math.floor((distance % _minute) / _second);
+}
