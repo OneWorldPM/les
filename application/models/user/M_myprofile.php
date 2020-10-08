@@ -69,7 +69,7 @@ class M_myprofile extends CI_Model {
     {
         $this->db->select('*');
         $this->db->from('customer_master');
-        $this->db->order_by('first_name', 'ASC');
+        $this->db->order_by('last_name', 'ASC');
         $query = $this->db->get();
 
         if($query->num_rows() != 0)
