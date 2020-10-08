@@ -1,7 +1,8 @@
-$(function() {
+var videoCallEngaged = false;
+var myVideoArea = document.querySelector("#myVideoTagOTOLounge");
+var theirVideoArea = document.querySelector("#theirVideoTagOTOLounge");
 
-    var myVideoArea = document.querySelector("#myVideoTagOTOLounge");
-    var theirVideoArea = document.querySelector("#theirVideoTagOTOLounge");
+$(function() {
 
     var SIGNAL_ROOM = socket_lounge_oto_video;
     var configuration = {
@@ -20,6 +21,83 @@ $(function() {
             }
         ]
     };
+
+    socket.emit('joinLoungeOtoVideo', {"room":socket_lounge_oto_video, "name":user_name, "userId":user_id, "userType":user_type});
+
+    socket.on('incoming-call', function (fromId, fromName, to) {
+        if (to == user_id)
+        {
+            if (videoCallEngaged == false)
+            {
+                Swal.fire({
+                    title: 'Incoming Call',
+                    text: fromName+' is calling...',
+                    icon: 'info',
+                    showCancelButton: true,
+                    confirmButtonColor: '#15b015',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Accept',
+                    cancelButtonText: 'Reject'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        videoCallEngaged = true;
+
+                        // get a local stream, show it in our video tag and add it to be sent
+                        navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+                        navigator.getUserMedia({
+                            'audio': true,
+                            'video': true
+                        }, function (stream) {
+
+                            myVideoArea.srcObject = stream;
+
+                            $('.user-to-call-title-name').text('Connecting '+fromName+'...');
+
+                            //Send a first signaling message to anyone listening
+                            //This normally would be on a button click
+                            socket.emit('signal',{"type":"user_here", "message":"Are you ready for a call?", "room":socket_lounge_oto_video+'_'+fromId});
+
+
+                            $('#video-call-modal').modal('show');
+
+                            toastr['warning']('Network issue, please try after a while!');
+                        }, logOTOVideoCallError);
+
+                    }else{
+                        Swal.fire(
+                            'Done!',
+                            'Call Rejected!',
+                            'error'
+                        )
+                    }
+                })
+            }else{
+
+            }
+        }
+    });
+
+    socket.on('signaling_message', function(data) {
+        displaySignalMessage("Signal received: " + data.type);
+
+        //Setup the RTC Peer Connection object
+        if (!rtcPeerConn)
+            startSignaling();
+
+        if (data.type != "user_here") {
+            var message = JSON.parse(data.message);
+            if (message.sdp) {
+                rtcPeerConn.setRemoteDescription(new RTCSessionDescription(message.sdp), function () {
+                    // if we received an offer, we need to answer
+                    if (rtcPeerConn.remoteDescription.type == 'offer') {
+                        rtcPeerConn.createAnswer(sendLocalDesc, logError);
+                    }
+                }, logError);
+            } else {
+                rtcPeerConn.addIceCandidate(new RTCIceCandidate(message.candidate));
+            }
+        }
+    });
 
     $('.lounge-video-call-btn').on('click', function () {
 
@@ -49,7 +127,7 @@ $(function() {
 
         toastr['warning']('Network issue, please try after a while!');
 
-        $('.user-to-call-title-name').text(userName);
+        $('.user-to-call-title-name').text('Calling '+userName+'...');
 
         // get a local stream, show it in our video tag and add it to be sent
         navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
@@ -57,10 +135,17 @@ $(function() {
             'audio': true,
             'video': true
         }, function (stream) {
-            myVideoArea.srcObject = stream;
-        }, logOTOVideoCallError);
 
-        $('#video-call-modal').modal('show');
+            myVideoArea.srcObject = stream;
+
+            //Send a first signaling message to anyone listening
+            //This normally would be on a button click
+            socket.emit('signal',{"type":"user_here", "message":"Are you ready for a call?", "room":socket_lounge_oto_video+'_'+user_id});
+            socket.emit('ring', socket_app_name, socket_lounge_oto_video, user_id, user_name, userToCall);
+
+            $('#video-call-modal').modal('show');
+
+        }, logOTOVideoCallError);
     });
 
     $('.hang-up-btn').on('click', function () {
@@ -68,6 +153,98 @@ $(function() {
     });
 });
 
+
 function logOTOVideoCallError(error) {
     console.log(error.name + ': ' + error.message);
+}
+
+function startSignaling() {
+    displaySignalMessage("starting signaling...");
+
+    rtcPeerConn = new RTCPeerConnection(configuration);
+
+    // send any ice candidates to the other peer
+    rtcPeerConn.onicecandidate = function (evt) {
+        if (evt.candidate)
+            socket.emit('signal',{"type":"ice candidate", "message": JSON.stringify({ 'candidate': evt.candidate }), "room":SIGNAL_ROOM});
+        displaySignalMessage("completed that ice candidate...");
+    };
+
+    // let the 'negotiationneeded' event trigger offer generation
+    rtcPeerConn.onnegotiationneeded = function () {
+        displaySignalMessage("on negotiation called");
+        rtcPeerConn.createOffer(sendLocalDesc, logOTOVideoCallError);
+    }
+
+    // get a local stream, show it in our video tag and add it to be sent
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+    navigator.getUserMedia({
+        'audio': true,
+        'video': true
+    }, function (stream) {
+        displaySignalMessage("going to display my stream...");
+        rtcPeerConn.addStream(stream);
+    }, logError);
+
+    // once remote stream arrives, show it in the remote video element
+    rtcPeerConn.ontrack = function (evt) {
+        displaySignalMessage("going to add their stream...");
+        theirVideoArea.srcObject = evt.streams[0];
+
+        // if(evt.track.kind == 'video')
+        // {
+        //     var resolution = screen.width + "x " + screen.height + "y";
+        //     $.post("/tiadaannualconference/sponsor/add_viewsessions_history_open",
+        //         {
+        //             sponsor_id: sponsor_id,
+        //             resolution: resolution,
+        //             action: 'vcall started',
+        //         });
+        // }
+    };
+
+    rtcPeerConn.oniceconnectionstatechange = function() {
+        if(rtcPeerConn.iceConnectionState == 'disconnected') {
+            //Releasing previous connections on reload!
+            // $.post("/tiadaannualconference/sponsor-admin/VideoChatApi/releaseSponsor",
+            //     {
+            //         roomId: SIGNAL_ROOM,
+            //         sponsorId: sponsor_id
+            //     });
+
+            $('#videoCallModal').modal('hide');
+            Swal.fire(
+                'TIADA left the video chat!',
+                'if this was a connection problem, please try again!',
+                'warning'
+            ).then(function () {
+                location.reload();
+            });
+            location.reload();
+
+            // myVideoArea.srcObject.getVideoTracks().forEach(track => {
+            //     track.stop();
+            //     myVideoArea.srcObject.removeTrack(track);
+            // });
+            //
+            // theirVideoArea.srcObject.getVideoTracks().forEach(track => {
+            //     track.stop();
+            //     theirVideoArea.srcObject.removeTrack(track);
+            // });
+            //
+            // rtcPeerConn.close();
+        }
+    }
+
+}
+
+function sendLocalDesc(desc) {
+    rtcPeerConn.setLocalDescription(desc, function () {
+        displaySignalMessage("sending local description");
+        socket.emit('signal',{"type":"SDP", "message": JSON.stringify({ 'sdp': rtcPeerConn.localDescription }), "room":SIGNAL_ROOM});
+    }, logError);
+}
+
+function displaySignalMessage(message) {
+    console.log(message);
 }
