@@ -139,12 +139,12 @@
                         <div class="navbar-collapse collapse main-menu-collapse navigation-wrap">
                             <div class="container">
                                 <nav id="mainMenu" class="main-menu mega-menu">
-                                  <ul class="main-menu nav nav-pills navbar-left" id="main_menu_top_bar" style="margin-right: 50px;">
-                                        <li><a href="#" target="_blank" style="color: #ef9d45">AGENDA</a></li>
+                                    <ul class="main-menu nav nav-pills navbar-left" id="main_menu_top_bar" style="margin-right: 50px;">
+                                        <li><a href="https://lesmeetings.org/am20/agenda" target="_blank" style="color: #ef9d45">AGENDA</a></li>
                                         <li><a href="<?= base_url() ?>home" style="color: #ef9d45">MAIN HALL</a></li>
-                                            <li><a href="<?= base_url()?>sessions" style="color: #ef9d45">Sessions</a></li>
-                                            <li><a href="<?= base_url() ?>sponsor/other_sponsor" style="color: #ef9d45">Sponsors</a></li>
-                                            <li><a href="<?= base_url() ?>lounge" style="color: #ef9d45">Lounge</a></li>
+                                        <li><a href="<?= base_url() ?>sessions" style="color: #ef9d45">Sessions</a></li>
+                                        <li><a href="<?= base_url() ?>sponsor/other_sponsor" style="color: #ef9d45">Sponsors</a></li>
+                                        <li><a href="<?= base_url() ?>lounge" style="color: #ef9d45">Lounge</a></li>
                                         <li class="nav-item avatar dropdown">
                                             <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                                 <span class="unread-msg-count badge badge-notify" style="font-size:10px;">0</span>
