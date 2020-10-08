@@ -321,7 +321,7 @@
                     row.push($('<td>').append($('<a>').attr({ 'data-action': 'clear', 'title': options.tooltips.clear }).append($('<span>').addClass(options.icons.clear))));
                 }
                 if (options.showClose) {
-                    row.push($('<td>').append($('<a>').attr({ 'data-action': 'close', 'title': options.tooltips.close }).append($('<span>').addClass(options.icons.close))));
+                    row.push($('<td>').append($('<a>').attr({ 'data-action': 'close', 'title': options.tooltips.close }).append($('<span>').addClass(options.icons.close).css('color', 'green'))));
                 }
                 return $('<table>').addClass('table-condensed').append($('<tbody>').append($('<tr>').append(row)));
             },
@@ -2468,12 +2468,12 @@
             next: 'glyphicon glyphicon-chevron-right',
             today: 'glyphicon glyphicon-screenshot',
             clear: 'glyphicon glyphicon-trash',
-            close: 'glyphicon glyphicon-remove'
+            close: 'glyphicon glyphicon-ok'
         },
         tooltips: {
             today: 'Go to today',
             clear: 'Clear selection',
-            close: 'Close the picker',
+            close: 'Choose selected date and time',
             selectMonth: 'Select Month',
             prevMonth: 'Previous Month',
             nextMonth: 'Next Month',

@@ -45,9 +45,10 @@ if (isset($status) && $status == 1){
 <script>
     $(function() {
         // var firstUrl="/tiadaannualconference";
-        var firstUrl="";
+        var firstUrl="<?=base_url()?>";
 
         $.get(firstUrl+"/home/getSupportChatStatus", function (status) {
+
             if (status == 0)
             {
                 $('#status-btn').bootstrapToggle('off');
@@ -70,6 +71,7 @@ if (isset($status) && $status == 1){
             }
 
             $.get(firstUrl+"/admin/Support_Live_Chat/chageStatus/"+status, function (status) {
+
                 console.log(status);
             });
         })

@@ -14,6 +14,14 @@ class SupportChat_Model extends CI_Model
         $message_from = $this->input->post()['message_from'];
         $message = $this->input->post()['message'];
 
+        $this->db->select();
+        $this->db->from('customer_master');
+        $this->db->where('cust_id', $attendee_id);
+        $user = $this->db->get()->row();
+
+
+
+
         $data = array(
             'attendee_id' => $attendee_id,
             'message_from' => $message_from,
@@ -23,6 +31,7 @@ class SupportChat_Model extends CI_Model
 
         $this->db->insert('support_chat', $data);
 
+        $data["user_name"]=$user->first_name." ".$user->last_name;
         return $data;
     }
 
@@ -47,5 +56,6 @@ class SupportChat_Model extends CI_Model
         {
             return false;
         }
+        
     }
 }

@@ -7,7 +7,19 @@
                         <form class="form-register" id="frm_register" name="frm_register" method="post" action="<?= base_url() ?>admin/user/updateCustomer" enctype="multipart/form-data">
                             <fieldset>
                                 <input type="hidden" class="form-control" name="cid" id="cid" value="<?php echo (isset($user)) ? $user->cust_id : ''; ?>">
-                                <h3 class="box-title">Edit User</h3>
+                                <h3 class="box-title">Member</h3>
+                                <div class="form-group">
+                                    <label class="text-large">Select Member Type :</label>
+                                    <select class="form-control" id="member_type_manualy" name="member_type">
+                                        <option value="">Select Member Type</option>
+                                        <option value="LES Member" <?= (isset($user) && !empty($user) ) ? ($user->customer_type == "LES Member") ? "selected" : "" : "" ?>>LES Member</option>
+                                        <option value="New Member and Meeting Combo" <?= (isset($user) && !empty($user) ) ? ($user->customer_type == "New Member and Meeting Combo") ? "selected" : "" : "" ?>>New Member and Meeting Combo</option>
+                                        <option value="Non-Member" <?= (isset($user) && !empty($user) ) ? ($user->customer_type == "Non-Member") ? "selected" : "" : "" ?>>Non-Member</option>
+                                        <option value="Corporate & Non-profit - Group Deal" <?= (isset($user) && !empty($user) ) ? ($user->customer_type == "Corporate & Non-profit - Group Deal") ? "selected" : "" : "" ?>>Corporate & Non-profit - Group Deal</option>
+                                        <option value="Speaker" <?= (isset($user) && !empty($user) ) ? ($user->customer_type == "Speaker") ? "selected" : "" : "" ?>>Speaker</option>
+                                    </select>
+                                    <span id="errormember_type_manualy" style="color:red;"></span>
+                                </div>
                                 <div class="form-group">
                                     <span class="input-icon">
                                         <input type="text" class="form-control" name="first_name" id="first_name" value="<?php echo (isset($user)) ? $user->first_name : ''; ?>" placeholder="First Name">
@@ -22,15 +34,21 @@
                                 </div>
                                 <div class="form-group">
                                     <span class="input-icon">
-                                        <input type="text" class="form-control" name="address" id="address" value="<?php echo (isset($user)) ? $user->address : ''; ?>" placeholder="address">
+                                        <input type="text" class="form-control" name="phone" id="phone" value="<?php echo (isset($user)) ? $user->phone : ''; ?>" placeholder="Phone">
                                         <i class="fa fa-phone"></i> 
                                     </span><span id="errorphone" style="color:red;"></span>
                                 </div>
                                 <div class="form-group">
-                                    <span class="input-icon">
-                                        <input type="email" class="form-control" name="email" readonly='readonly' value="<?php echo (isset($user)) ? $user->email : ''; ?>" <?php if (isset($user)) { ?>readonly='readonly' <?php } ?> id="email" placeholder="Email">
-                                        <i class="fa fa-envelope"></i> 
-                                    </span><span id="erroremail" style="color:red;"></span>
+                                    <input type="text" class="form-control" name="address" id="address" value="<?php echo (isset($user)) ? $user->address : ''; ?>" placeholder="Address">
+                                    <span id="errorphone" style="color:red;"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="city" id="city" value="<?php echo (isset($user)) ? $user->city : ''; ?>" placeholder="City">
+                                    <span id="errorcity" style="color:red;"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="state" id="state" value="<?php echo (isset($user)) ? $user->state : ''; ?>" placeholder="State">
+                                    <span id="errorstate" style="color:red;"></span>
                                 </div>
 
                                 <div class="form-group">
@@ -278,6 +296,20 @@
                                         <option value="Zimbabwe" <?php echo (isset($user)) ? ($user->country == 'Zimbabwe') ? 'selected' : '' : ''; ?>>Zimbabwe</option>
                                     </select><span id="errorcountry" style="color:red;"></span>
                                 </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="company_name" id="company_name" value="<?php echo (isset($user)) ? $user->company_name : ''; ?>" placeholder="Company Name">
+                                    <span id="errorcompany_name" style="color:red;"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="title" id="title" value="<?php echo (isset($user)) ? $user->title : ''; ?>" placeholder="Title">
+                                    <span id="errortitle" style="color:red;"></span>
+                                </div>
+                                <div class="form-group">
+                                    <span class="input-icon">
+                                        <input type="email" class="form-control" name="email" readonly='readonly' value="<?php echo (isset($user)) ? $user->email : ''; ?>" <?php if (isset($user)) { ?>readonly='readonly' <?php } ?> id="email" placeholder="Email">
+                                        <i class="fa fa-envelope"></i> 
+                                    </span><span id="erroremail" style="color:red;"></span>
+                                </div>
                                 <div class="form-actions">
                                     <button type="submit" class="btn btn-primary form-control" id="btn_register">
                                         <?php echo (isset($user)) ? 'Update' : 'Save'; ?> <i class="fa fa-arrow-circle-right"></i>
@@ -324,30 +356,7 @@ switch ($msg) {
 
 
         $("#btn_register").on("click", function () {
-
-            if ($("#full_name").val().trim() == "")
-            {
-                $("#errorfull_name").text("Please Enter Full Name").fadeIn('slow').fadeOut(5000);
-                return false;
-            } else if (!full_name_patten.test(full_name)) {
-                $("#errorfull_name").text("Not allow special characters").fadeIn('slow').fadeOut(5000);
-                return false;
-            } else if ($("#phone").val().trim() == "") {
-                $("#errorphone").text("Please Enter Phone").fadeIn('slow').fadeOut(5000);
-                return false;
-            } else if (!phone_patten.test(phone)) {
-                $("#errorphone").text("Allow only Number").fadeIn('slow').fadeOut(5000);
-                return false;
-            } else if ($("#email").val().trim() == "") {
-                $("#erroremail").text("Please Enter Email").fadeIn('slow').fadeOut(5000);
-                return false;
-            } else if ($("#country").val() == "") {
-                $("#errorcountry").text("Please Select Country").fadeIn('slow').fadeOut(5000);
-                return false;
-            } else {
-                return true; //submit form
-            }
-            return false; //Prevent form to submitting
+            return true; //submit form
         });
     });
 </script>

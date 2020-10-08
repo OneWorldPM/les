@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
 <link href="<?= base_url() ?>assets/lounge/lounge.css?v=<?= rand(200, 300) ?>" rel="stylesheet">
+<link href="<?= base_url() ?>assets/lounge/one-to-one/one-to-one.css?v=<?= rand(200, 300) ?>" rel="stylesheet">
 <style>
     .icon-home {
         color: #ae0201;
@@ -155,7 +156,7 @@
                                                 <i class="fa fa-user" aria-hidden="true"></i> Profile
                                             </span>
                                         </h3>-->
-<!--                                        <button type="button" class="btn btn-info btn-xs pull-right lounge-video-call-btn"><i class="fa fa-video-camera" aria-hidden="true"></i></button>-->
+                                        <button type="button" class="btn btn-info btn-xs pull-right lounge-video-call-btn"><i class="fa fa-video-camera" aria-hidden="true"></i></button>
                                     </div>
                                     <div class="oto-chat-body panel-body">
                                         <ul class="oto-messages">
@@ -236,22 +237,23 @@
                 <div class="form-group">
                     <div class='input-group date' id='datetimepicker6'>
                         <span class="input-group-addon" id="sizing-addon2">Start Time &nbsp; &nbsp; &nbsp; </span>
-                        <input type='text' class="meeting-from form-control" placeholder="Use the icon on the right side to choose starting time" aria-describedby="sizing-addon2"/>
+                        <input id="meeting_start_time" type='text' class="meeting-from form-control" placeholder="Use the icon on the right side or type here manually" aria-describedby="sizing-addon2"/>
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                         </span>
                     </div>
+                    <label for="meeting_start_time"><small>Meetings are limited to maximum 30 minutes.</small></label>
                 </div>
 
-                <div class="form-group">
-                    <div class='input-group date' id='datetimepicker7'>
-                        <span class="input-group-addon" id="sizing-addon2">End Time &nbsp; &nbsp; &nbsp; &nbsp;</span>
-                        <input type='text' class="meeting-to form-control" placeholder="Use the icon on the right side to choose ending time" aria-describedby="sizing-addon2"/>
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                    </div>
-                </div>
+<!--                <div class="form-group">-->
+<!--                    <div class='input-group date' id='datetimepicker7'>-->
+<!--                        <span class="input-group-addon" id="sizing-addon2">End Time &nbsp; &nbsp; &nbsp; &nbsp;</span>-->
+<!--                        <input type='text' class="meeting-to form-control" placeholder="Use the icon on the right side to choose ending time" aria-describedby="sizing-addon2"/>-->
+<!--                        <span class="input-group-addon">-->
+<!--                            <span class="glyphicon glyphicon-calendar"></span>-->
+<!--                        </span>-->
+<!--                    </div>-->
+<!--                </div>-->
 
                 <div class="input-group m-b-10">
                     <span class="input-group-addon" id="sizing-addon2">Attendees &nbsp; &nbsp; &nbsp;</span>
@@ -269,11 +271,32 @@
                 </div>
 
                 <small>Only invited attendees except you will be allowed to the meeting, hence no password is required!</small><br>
-                <small>All date and times are in Central Time Zone(CT)</small>
+                <small>All date and times are in Central Time Zone(CT)</small><br>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
                 <button type="button" class="create-meeting btn btn-primary">Create</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="video-call-modal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Calling <span class="user-to-call-title-name"></span>... </h5>
+            </div>
+            <div class="modal-body" style="text-align: center">
+                <div class="oto-video-call-div">
+                    <video class="myVideoTagOTOLounge" id="myVideoTagOTOLounge" autoplay muted="muted"></video>
+                    <video class="theirVideoTagOTOLounge" id="theirVideoTagOTOLounge" autoplay></video>
+                </div>
+            </div>
+            <div class="modal-footer text-center">
+                <div class="hang-up-btn" style="display: inline;">
+                    <i class="fa fa-times-circle fa-3x leave-btn-icon" aria-hidden="true" style="color:#e3491b;"></i>
+                </div>
             </div>
         </div>
     </div>
@@ -314,18 +337,20 @@
         });
 
         $('#datetimepicker6').datetimepicker({
-            format: 'Y-M-D H:mm'
+            format: 'MMM-D h:mm a',
+            showClose: true
         });
-        $('#datetimepicker7').datetimepicker({
-            useCurrent: false, //Important! See issue #1075
-            format: 'Y-M-D H:mm'
-        });
-        $("#datetimepicker6").on("dp.change", function (e) {
-            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
-        });
-        $("#datetimepicker7").on("dp.change", function (e) {
-            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
-        });
+        // $('#datetimepicker7').datetimepicker({
+        //     useCurrent: false, //Important! See issue #1075
+        //     format: 'Y-M-D H:mm',
+        //     showClose: true
+        // });
+        // $("#datetimepicker6").on("dp.change", function (e) {
+        //     $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+        // });
+        // $("#datetimepicker7").on("dp.change", function (e) {
+        //     $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+        // });
 
 
     });
@@ -352,3 +377,4 @@
 
 <script src="<?= base_url() ?>assets/lounge/lounge.js?v=<?= rand(1, 100) ?>"></script>
 <script src="<?= base_url() ?>assets/lounge/meetings.js?v=<?= rand(1, 100) ?>"></script>
+<script src="<?= base_url() ?>assets/lounge/one-to-one/one-to-one.js?v=<?= rand(1, 100) ?>"></script>

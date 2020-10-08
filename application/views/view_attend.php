@@ -99,9 +99,9 @@
                                             <small><i class="fa fa-calendar" aria-hidden="true"></i> <?= date("M-d-Y", strtotime($sessions->sessions_date)) . ' ' . date("H:i", strtotime($sessions->time_slot)) . ' - ' . date("H:i", strtotime($sessions->end_time)) ?></small>
                                             <p class="m-t-20"><?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_description : "" ?></p>
                                             <?php if ($sessions->sessions_type_status == "Private") { ?>
-                                                <p class="m-t-20" style="border: 1px solid #000; padding: 5px; color: #000;"><b>Q&A During Sessions:</b> We will be monitoring the Q&A window during the session. Please submit questions as they arise, and we will do our best to answer all of those questions during the 5 min Q&A session that follows</p>
+                                                <p class="m-t-20" style="border: 1px solid #000; padding: 5px; color: #000;"><b>Q&A During Sessions:</b> We will be monitoring the Q&A window during the session. Please submit questions as they arise, and we will do our best to answer all of those questions during the Q&A session that follows</p>
                                             <?php } else { ?>
-                                                <p class="m-t-20" style="border: 1px solid #000; padding: 5px; color: #000;"><b>Q&A During Sessions:</b> We will be monitoring the Q&A window during the session. Please submit questions as they arise, and we will do our best to answer all of those questions during the 15 min Q&A session that follows</p>
+                                                <p class="m-t-20" style="border: 1px solid #000; padding: 5px; color: #000;"><b>Q&A During Sessions:</b> We will be monitoring the Q&A window during the session. Please submit questions as they arise, and we will do our best to answer all of those questions during the Q&A session that follows</p>
                                             <?php } ?>
                                         </div>    
                                     </div>
@@ -118,16 +118,14 @@
                                         <br>
                                     <?php } ?>
                                     <?php
-                                    if ($sessions->sessions_type_status != "Private") {
-                                        if (isset($sessions->presenter) && !empty($sessions->presenter)) {
-                                            foreach ($sessions->presenter as $value) {
-                                                ?>
-                                                <h3 style="margin-bottom: 0px;  cursor: pointer;" data-presenter_photo="<?= $value->presenter_photo ?>" data-presenter_name="<?= $value->presenter_name ?>" data-designation="<?= $value->designation ?>" data-email="<?= $value->email ?>" data-company_name="<?= $value->company_name ?>" class="presenter_open_modul" ><u style="color: #337ab7;"><?= $value->presenter_name ?></u>, <?= $value->title ?></h3>
-                                                <h3 style="margin-bottom: 0px;  cursor: pointer;"> <?= $value->company_name ?></h3>
-                                                <!--<p class="m-t-20"><?= (isset($sessions) && !empty($sessions)) ? $sessions->bio : "" ?></p>-->
-                                                <!--<img alt="" src="<?= base_url() ?>uploads/presenter_photo/<?= (isset($sessions) && !empty($sessions)) ? $sessions->presenter_photo : "" ?>" class="img-circle" height="100" width="100">-->
-                                                <?php
-                                            }
+                                    if (isset($sessions->presenter) && !empty($sessions->presenter)) {
+                                        foreach ($sessions->presenter as $value) {
+                                            ?>
+                                            <h3 style="margin-bottom: 0px;  cursor: pointer;" data-presenter_photo="<?= $value->presenter_photo ?>" data-presenter_name="<?= $value->presenter_name ?>" data-designation="<?= $value->designation ?>" data-email="<?= $value->email ?>" data-company_name="<?= $value->company_name ?>" class="presenter_open_modul" ><u style="color: #337ab7;"><?= $value->presenter_name ?></u>, <?= $value->title ?></h3>
+                                            <h3 style="margin-bottom: 0px;  cursor: pointer;"> <?= $value->company_name ?></h3>
+                                            <!--<p class="m-t-20"><?= (isset($sessions) && !empty($sessions)) ? $sessions->bio : "" ?></p>-->
+                                            <!--<img alt="" src="<?= base_url() ?>uploads/presenter_photo/<?= (isset($sessions) && !empty($sessions)) ? $sessions->presenter_photo : "" ?>" class="img-circle" height="100" width="100">-->
+                                            <?php
                                         }
                                     }
                                     ?>
@@ -140,7 +138,7 @@
                                         <?php
                                         if (isset($sessions) && !empty($sessions)) {
                                             if ($sessions->sponsor_log != "") {
-                                                if (file_exists('./uploads/sponsor_log/'.$sessions->sponsor_log)) {
+                                                if (file_exists('./uploads/sponsor_log/' . $sessions->sponsor_log)) {
                                                     ?>
                                                     <img src="<?= base_url() ?>uploads/sponsor_log/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sponsor_log : "" ?>" style="width: 100%;">
                                                     <?php
@@ -151,8 +149,8 @@
                                     </div>
                                     <div class="col-md-3" style="text-align: center; text-align: center; padding: 10px; border: 1px solid; margin-right: 10px;">
                                         <p><i class="fa fa-volume-up" aria-hidden="true" style="font-size: 20px;"></i></p>
-                                        <p style="color: #ef9d45; margin-bottom: 0px;">SESSION AUDIO</p>
-                                        <p style="color: #ef9d45; text-align: left;">You may need to turn the audio on the session recording.  Hover your mouse over the bottom left hand corner of the  video in the next page and adjust the audio.</p>
+                                        <p style="color: #000; margin-bottom: 0px;">SESSION AUDIO</p>
+                                        <p style="color: #000; text-align: left;">You may need to turn the audio on the session recording.  Hover your mouse over the bottom left hand corner of the  video in the next page and adjust the audio.</p>
                                     </div>
                                     <div class="col-md-4" style="text-align: center; text-align: center; padding: 10px; background-color: #fff; border: 1px solid;">
                                         <p><i class="fa fa-info-circle" aria-hidden="true" style="font-size: 20px;"></i></p>
@@ -167,9 +165,9 @@
                                 </div>
                                 <div class="col-md-12">
                                     <?php if ($sessions->sessions_type_status == "Private") { ?>
-                                                                                                                                        <!--<a class="button black-light button-3d rounded right" style="margin: 0px 0;" href="<?= base_url() ?>private_sessions/view/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_id : "" ?>"><span>Take me there</span></a>-->
+                                                                                                                                            <!--<a class="button black-light button-3d rounded right" style="margin: 0px 0;" href="<?= base_url() ?>private_sessions/view/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_id : "" ?>"><span>Take me there</span></a>-->
                                     <?php } else { ?>
-                                                                                                                                        <!--<a class="button black-light button-3d rounded right" style="margin: 0px 0;" href="<?= base_url() ?>sessions/view/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_id : "" ?>"><span>Take me there</span></a>-->
+                                                                                                                                            <!--<a class="button black-light button-3d rounded right" style="margin: 0px 0;" href="<?= base_url() ?>sessions/view/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_id : "" ?>"><span>Take me there</span></a>-->
                                     <?php } ?>
                                 </div>
                             </div>
@@ -235,7 +233,11 @@
             var designation = $(this).attr("data-designation");
             var company_name = $(this).attr("data-company_name");
             var email = $(this).attr("data-email");
-            $('#presenter_profile').attr('src', "<?= base_url() ?>uploads/presenter_photo/" + presenter_photo);
+            if (presenter_photo != ""  && presenter_photo != null) {
+                 $('#presenter_profile').attr('src', "<?= base_url() ?>uploads/presenter_photo/" + presenter_photo);
+            } else {
+                $('#presenter_profile').attr('src', "<?= base_url() ?>uploads/presenter_photo/presenter_avtar.png");
+            }
             $('#presenter_title').text(presenter_name + ", " + designation);
             $('#email').text(email);
             $('#company').text(company_name);

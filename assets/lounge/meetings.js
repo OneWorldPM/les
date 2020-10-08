@@ -1,26 +1,6 @@
 $(function() {
 
-    listMeetings();
-
     var newMeetingSelectedAttendees = [];
-
-    toastr.options = {
-        "closeButton": false,
-        "debug": false,
-        "newestOnTop": false,
-        "progressBar": false,
-        "positionClass": "toast-bottom-right",
-        "preventDuplicates": false,
-        "onclick": null,
-        "showDuration": "300",
-        "hideDuration": "1000",
-        "timeOut": "5000",
-        "extendedTimeOut": "1000",
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "showMethod": "fadeIn",
-        "hideMethod": "fadeOut"
-    };
 
     $('.lounge-meetings-btn').on('click', function () {
         listMeetings();
@@ -100,7 +80,7 @@ $(function() {
 
         var topic = $('.meeting-topic').val();
         var from = $('.meeting-from').val();
-        var to = $('.meeting-to').val();
+        // var to = $('.meeting-to').val();
 
         if (topic == ''){
             toastr["warning"]("Please enter a meeting topic!");
@@ -112,10 +92,10 @@ $(function() {
             return;
         }
 
-        if (to == ''){
-            toastr["warning"]("Please choose an ending time!");
-            return;
-        }
+        // if (to == ''){
+        //     toastr["warning"]("Please choose an ending time!");
+        //     return;
+        // }
 
         if (newMeetingSelectedAttendees.length == 0){
             toastr["warning"]("You need to add at least one attendee!");
@@ -126,7 +106,6 @@ $(function() {
             {
                 'topic': topic,
                 'from': from,
-                'to': to,
                 'attendees': newMeetingSelectedAttendees
             },
             function(data, status){
@@ -161,6 +140,8 @@ $(function() {
 
 
     });
+
+    listMeetings();
 });
 
 

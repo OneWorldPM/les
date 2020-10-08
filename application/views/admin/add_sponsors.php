@@ -252,7 +252,7 @@
 
             if (email != '' || password != '' || name != '')
             {
-                $.post("/tiadaannualconference/admin/Sponsors/addNewSponsorAdminUser",
+                $.post("/LES/admin/Sponsors/addNewSponsorAdminUser",
                         {
                             'name': name,
                             'email': email,
@@ -283,7 +283,7 @@
         $('.delete-admin-btn').on('click', function () {
             var adminId = $(this).attr('admin-id');
 
-            $.post("/tiadaannualconference/admin/Sponsors/deleteSponsorAdminUser",
+            $.post("/LES/admin/Sponsors/deleteSponsorAdminUser",
                     {
                         'adminId': adminId
                     },

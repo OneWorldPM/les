@@ -1,10 +1,8 @@
 $(function() {
-    // var firstUrl="/tiadaannualconference";
-    var firstUrl="";
+    var firstUrl=$("body").data("base-url");
 
-
-    // var socketServer = "https://socket.yourconference.live:443";
-    var socketServer = "https://127.0.0.1:3080";
+    var socketServer = "https://socket.yourconference.live:443";
+    // var socketServer = "https://127.0.0.1:3080";
 
     let socket = io(socketServer);
     socket.on('serverStatus', function(data) {
@@ -16,6 +14,7 @@ $(function() {
     $('.support-chat').on('click', function () {
 
         $.get(firstUrl+"/home/getSupportChatStatus", function (status) {
+
             if (status == 0)
             {
                 Swal.fire({
@@ -30,6 +29,7 @@ $(function() {
 
         socket.on('contacting-support', function() {
             $.get( firstUrl+"/user/SupportChat/getAllChats/"+user_id, function(chats) {
+
 
                 chats = JSON.parse(chats);
 
@@ -99,6 +99,7 @@ $(function() {
         }
 
         $.post(firstUrl+"/user/SupportChat/sendMessage",
+
             {
                 'message': message,
                 'attendee_id': user_id,
@@ -115,7 +116,7 @@ $(function() {
                         {
                             'message': dataFromDb.message,
                             'attendee_id': dataFromDb.attendee_id,
-                            'attendee_name': user_name,
+                            'attendee_name': dataFromDb.user_name,
                             'message_from': dataFromDb.message_from,
                             "datetime":dataFromDb.datetime
                         });

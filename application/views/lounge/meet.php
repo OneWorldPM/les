@@ -5,7 +5,7 @@ if ($meeting_status['status'] == false)
     <main role="main" class="container" style="text-align: center;">
 
         <div class="starter-template">
-            <h1>Sorry!</h1>
+<!--            <h1>Sorry!</h1>-->
             <p class="lead"><?=$meeting_status['message']?></p>
         </div>
 
@@ -23,22 +23,26 @@ if ($meeting_status['status'] == false)
 
         <div class="row m-t-20 camera-feeds">
 
-            <div class="col-md-3">
-                <video id="localVideo" autoplay muted playsinline width="100%"></video>
+            <div class="col-md-3 localvideo-div">
+                <div class="videoCover" style="display: none;"></div>
                 <span class="name-tag">You</span>
+                <video id="localVideo" autoplay muted playsinline width="100%"></video>
                 <!-- <div class="soundbar"><span class="currentVolume"></span></div> -->
             </div>
         </div>
-        <div class="col-md-12 control-icons-col">
+        <div class="col-md-12 control-icons-col" style="display: none;">
             <div class="feed-control-icons" style="display: inline;">
 
                 <div class="mute-mic-btn" style="display: inline;">
-<!--                    <i class="fa fa-microphone-slash fa-3x mute-mic-btn-icon" aria-hidden="true" style="color:#ff422b;"></i>-->
                     <i class="fa fa-microphone fa-3x mute-mic-btn-icon" aria-hidden="true" style="color:#12b81c;"></i>
 
                 </div>
 
-                <div class="share-screen-btn" style="display: inline;">
+                <div class="cam-btn" style="display: inline;">
+                    <i class="fa fa-video-camera fa-3x cam-btn-icon" aria-hidden="true" style="color:#12b81c;"></i>
+                </div>
+
+                <div class="share-screen-btn" style="display: inline;" onclick="window.open('<?=base_url()?>lounge/sharescreen/<?=$meeting->id?>', '_blank');">
                     <i class="fa fa-desktop fa-3x share-screen-btn-icon" aria-hidden="true" style="color:#6f8de3;"></i>
                 </div>
 
@@ -50,6 +54,9 @@ if ($meeting_status['status'] == false)
 
     </main>
 
+    <input id="muteStatus" type="hidden" value="unmuted">
+    <input id="camStatus" type="hidden" value="on">
+
     <script>
         var page_link = $(location).attr('href');
         var user_id = <?= $this->session->userdata("cid") ?>;
@@ -58,6 +65,8 @@ if ($meeting_status['status'] == false)
         user_name = (user_name == '') ? 'No Name' : user_name;
 
         var meeting_id = "<?=$meeting->id?>";
+        var meeting_to = "<?=$meeting->meeting_to?>";
+
 
         <?php
         foreach ($socket_config as $config_name => $config_value)
@@ -67,9 +76,6 @@ if ($meeting_status['status'] == false)
         echo"\n";
         ?>
 
-        $(function() {
-            pageReady();
-        });
     </script>
 
 

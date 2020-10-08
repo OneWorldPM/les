@@ -94,9 +94,17 @@ class M_user extends CI_Model {
 
     function updateCustomer($post) {
         $set = array(
-            'fullname' => trim($post['full_name']),
-            'phone' => trim($post['phone']),
+            'customer_type' => $post['member_type'],
+            'member_status' => $post['member_type'],
+            'first_name' => trim($post['first_name']),
+            'last_name' => trim($post['last_name']),
             'country' => trim($post['country']),
+            'city' => trim($post['city']),
+            'state' => trim($post['state']),
+            'address' => trim($post['address']),
+            'phone' => trim($post['phone']),
+            'company_name' => trim($post['company_name']),
+            'title' => trim($post['title']),
             'status' => 1
         );
         $this->db->update("customer_master", $set, array('cust_id' => $post['cid']));
