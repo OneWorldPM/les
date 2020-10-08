@@ -236,6 +236,13 @@ class M_sessions extends CI_Model {
 
     function updateSessions() {
         $post = $this->input->post();
+
+
+        $session_right_bar="";
+        if(isset($post["session_right_bar"])){
+            $session_right_bar=implode(",",$post["session_right_bar"]);
+        }
+
         if (isset($post['sessions_type'])) {
             $sessions_type_id = $post['sessions_type'];
         } else {
@@ -253,6 +260,7 @@ class M_sessions extends CI_Model {
             $moderator_id = "";
         }
 
+
         $set = array(
             'presenter_id' => (isset($post['select_presenter_id'])) ? implode(",", $post['select_presenter_id']) : '',
             'moderator_id' => $moderator_id,
@@ -266,7 +274,8 @@ class M_sessions extends CI_Model {
             'sessions_type_id' => $sessions_type_id,
             'sessions_tracks_id' => $sessions_tracks_id,
             'sessions_type_status' => trim($post['sessions_type_status']),
-            'sessions_visibility' => (isset($post['sessions_visibility'])) ? $post['sessions_visibility'] : ''
+            'sessions_visibility' => (isset($post['sessions_visibility'])) ? $post['sessions_visibility'] : '',
+            'right_bar' => $session_right_bar
         );
         $this->db->update("sessions", $set, array("sessions_id" => $post['sessions_id']));
         $sessions_id = $post['sessions_id'];
