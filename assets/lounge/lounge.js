@@ -281,7 +281,7 @@ $(function() {
 
                 $(this).children('.oto-chat-user-list-name').children('.new-text').hide();
                 $(this).attr('new-text', '0');
-                $(".attendees-chat-list li").sort(active_change_asc_sort).appendTo('.attendees-chat-list');
+                $(".attendees-chat-list li").sort(active_change_dec_sort).appendTo('.attendees-chat-list');
                 $(".attendees-chat-list li").sort(newtext_dec_sort).appendTo('.attendees-chat-list');
 
                 $(".attendees-chat-list>li.selected").removeClass("selected");
@@ -535,7 +535,7 @@ $(function() {
             $('.attendees-chat-list-item[userId="'+userId+'"]').attr('status', 'active');
         });
 
-        $(".attendees-chat-list li").sort(active_change_asc_sort).appendTo('.attendees-chat-list');
+        $(".attendees-chat-list li").sort(active_change_dec_sort).appendTo('.attendees-chat-list');
         $(".attendees-chat-list li").sort(newtext_dec_sort).appendTo('.attendees-chat-list');
     });
 
@@ -555,7 +555,7 @@ $(function() {
             $('.active-icon[userId="'+data.userId+'"]').css('color', color);
             $('.attendees-chat-list-item[userId="'+data.userId+'"]').attr('status', status);
 
-            $(".attendees-chat-list li").sort(active_change_asc_sort).appendTo('.attendees-chat-list');
+            $(".attendees-chat-list li").sort(active_change_dec_sort).appendTo('.attendees-chat-list');
             $(".attendees-chat-list li").sort(newtext_dec_sort).appendTo('.attendees-chat-list');
         }
 
@@ -594,6 +594,8 @@ $(function() {
         return ($(b).attr('status')) < ($(a).attr('status')) ? 1 : -1;
     }
     function active_change_dec_sort(a, b){
+        if ($.browser.mozilla)
+            return active_change_asc_sort(a, b);
         return ($(b).attr('status')) > ($(a).attr('status')) ? 1 : -1;
     }
 });
