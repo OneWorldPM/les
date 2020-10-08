@@ -1,26 +1,27 @@
 var videoCallEngaged = false;
 var myVideoArea = document.querySelector("#myVideoTagOTOLounge");
 var theirVideoArea = document.querySelector("#theirVideoTagOTOLounge");
+var rtcPeerConn;
+var nameOtherEnd;
+var SIGNAL_ROOM = socket_lounge_oto_video;
+var configuration = {
+    'iceServers': [
+        { 'urls': 'stun:stun.l.google.com:19302' },
+        { 'urls': 'stun:stun1.l.google.com:19302' },
+        {
+            url: 'turn:numb.viagenie.ca',
+            credential: 'muazkh',
+            username: 'webrtc@live.com'
+        },
+        {
+            url: 'turn:192.158.29.39:3478?transport=udp',
+            credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
+            username: '28224511:1379330808'
+        }
+    ]
+};
 
 $(function() {
-
-    var SIGNAL_ROOM = socket_lounge_oto_video;
-    var configuration = {
-        'iceServers': [
-            { 'urls': 'stun:stun.l.google.com:19302' },
-            { 'urls': 'stun:stun1.l.google.com:19302' },
-            {
-                url: 'turn:numb.viagenie.ca',
-                credential: 'muazkh',
-                username: 'webrtc@live.com'
-            },
-            {
-                url: 'turn:192.158.29.39:3478?transport=udp',
-                credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
-                username: '28224511:1379330808'
-            }
-        ]
-    };
 
     socket.emit('joinLoungeOtoVideo', {"room":socket_lounge_oto_video, "name":user_name, "userId":user_id, "userType":user_type});
 
@@ -55,12 +56,13 @@ $(function() {
 
                             //Send a first signaling message to anyone listening
                             //This normally would be on a button click
+                            socket.emit('joinPersonalVideoRoom', socket_lounge_oto_video+'_'+fromId);
                             socket.emit('signal',{"type":"user_here", "message":"Are you ready for a call?", "room":socket_lounge_oto_video+'_'+fromId});
 
+                            nameOtherEnd = fromName;
 
                             $('#video-call-modal').modal('show');
 
-                            toastr['warning']('Network issue, please try after a while!');
                         }, logOTOVideoCallError);
 
                     }else{
@@ -90,9 +92,9 @@ $(function() {
                 rtcPeerConn.setRemoteDescription(new RTCSessionDescription(message.sdp), function () {
                     // if we received an offer, we need to answer
                     if (rtcPeerConn.remoteDescription.type == 'offer') {
-                        rtcPeerConn.createAnswer(sendLocalDesc, logError);
+                        rtcPeerConn.createAnswer(sendLocalDesc, logOTOVideoCallError);
                     }
-                }, logError);
+                }, logOTOVideoCallError);
             } else {
                 rtcPeerConn.addIceCandidate(new RTCIceCandidate(message.candidate));
             }
@@ -104,6 +106,8 @@ $(function() {
         var userToCall = $(this).attr('user-id');
         var userName = $(this).attr('user-name');
         var userToCallActiveStatus = $('.attendees-chat-list > .attendees-chat-list-item[userid="'+userToCall+'"]').attr('status');
+
+        nameOtherEnd = userName;
 
         if (userToCall == user_id)
         {
@@ -125,8 +129,6 @@ $(function() {
             return;
         }
 
-        toastr['warning']('Network issue, please try after a while!');
-
         $('.user-to-call-title-name').text('Calling '+userName+'...');
 
         // get a local stream, show it in our video tag and add it to be sent
@@ -140,6 +142,7 @@ $(function() {
 
             //Send a first signaling message to anyone listening
             //This normally would be on a button click
+            socket.emit('joinPersonalVideoRoom', socket_lounge_oto_video+'_'+user_id);
             socket.emit('signal',{"type":"user_here", "message":"Are you ready for a call?", "room":socket_lounge_oto_video+'_'+user_id});
             socket.emit('ring', socket_app_name, socket_lounge_oto_video, user_id, user_name, userToCall);
 
@@ -184,12 +187,16 @@ function startSignaling() {
     }, function (stream) {
         displaySignalMessage("going to display my stream...");
         rtcPeerConn.addStream(stream);
-    }, logError);
+    }, logOTOVideoCallError);
 
     // once remote stream arrives, show it in the remote video element
     rtcPeerConn.ontrack = function (evt) {
         displaySignalMessage("going to add their stream...");
         theirVideoArea.srcObject = evt.streams[0];
+
+        $('.myVideoTagOTOLounge').addClass('otherUserPickedUp');
+
+        $('.user-to-call-title-name').text(nameOtherEnd);
 
         // if(evt.track.kind == 'video')
         // {
@@ -242,7 +249,7 @@ function sendLocalDesc(desc) {
     rtcPeerConn.setLocalDescription(desc, function () {
         displaySignalMessage("sending local description");
         socket.emit('signal',{"type":"SDP", "message": JSON.stringify({ 'sdp': rtcPeerConn.localDescription }), "room":SIGNAL_ROOM});
-    }, logError);
+    }, logOTOVideoCallError);
 }
 
 function displaySignalMessage(message) {
