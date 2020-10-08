@@ -8,6 +8,7 @@
                 </div>
             </div>
         </section>
+
         <!-- end: PAGE TITLE -->
         <!-- start: DYNAMIC TABLE -->
         <div class="container-fluid container-fullw">
@@ -35,13 +36,13 @@
                                         <label class="text-large">Moderator:</label>
                                         <select class="form-control" id="moderator_id" name="moderator_id[]" multiple>
                                             <?php if(!isset($sessions_edit)){ ?>
-                                            <option selected="" value="">Select Moderator</option> 
+                                            <option selected="" value="">Select Moderator</option>
                                             <?php } ?>
                                             <?php
                                             if (isset($presenter) && !empty($presenter)) {
                                                 foreach ($presenter as $val) {
                                                     ?>
-                                                    <option value="<?= $val->presenter_id ?>" <?= (isset($sessions_edit) && !empty($sessions_edit) ) ? in_array($val->presenter_id, explode(",", $sessions_edit->moderator_id)) ? "selected" : "" : "" ?>><?= $val->presenter_name ?></option> 
+                                                    <option value="<?= $val->presenter_id ?>" <?= (isset($sessions_edit) && !empty($sessions_edit) ) ? in_array($val->presenter_id, explode(",", $sessions_edit->moderator_id)) ? "selected" : "" : "" ?>><?= $val->presenter_name ?></option>
                                                     <?php
                                                 }
                                             }
@@ -119,7 +120,7 @@
                                         <label class="text-large">Select Sessions Status</label>
                                         <select class="form-control" id="sessions_type_status" name="sessions_type_status">
                                             <option <?= (isset($sessions_edit) && !empty($sessions_edit) ) ? ($sessions_edit->sessions_type_status == "Regular") ? "selected" : "" : "selected" ?> value="Regular">Regular Session</option>
-                                            <option <?= (isset($sessions_edit) && !empty($sessions_edit) ) ? ($sessions_edit->sessions_type_status == "Private") ? "selected" : "" : "" ?> value="Private">Private Session</option> 
+                                            <option <?= (isset($sessions_edit) && !empty($sessions_edit) ) ? ($sessions_edit->sessions_type_status == "Private") ? "selected" : "" : "" ?> value="Private">Private Session</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -182,10 +183,10 @@
                                                                             <?php
                                                                         }
                                                                     }
-                                                                    ?> 
+                                                                    ?>
                                                                 </select>
                                                             </div>
-                                                        </div> 
+                                                        </div>
 
                                                         <div class='col-md-6'>
                                                             <div class='form-group'>
@@ -193,7 +194,7 @@
                                                                 <input type ='text' name='presenter_title[]' placeholder= 'Title' id='presenter_title' value='<?= $value->presenter_title ?>' class='form-control'>
                                                             </div>
                                                         </div>
-                                                        <div class='col-md-6'> 
+                                                        <div class='col-md-6'>
                                                             <div class = 'form-group'>
                                                                 <label class='text-large'> Presenter Start Time: </label>
                                                                 <input type='text' name='presenter_time_slot[]' placeholder='Presenter Start Time' id='presenter_time_slot' placeholder='Ex: 7:00 - 7:10' value='<?= $value->presenter_time_slot ?>' class='form-control'>
@@ -214,7 +215,7 @@
                                                                 <img src="<?= base_url() ?>front_assets/images/session_avtar.jpg" style="height: 100px; width: 100px;">
                                                                 <?php } ?>
                                                             </div>
-                                                        </div> 
+                                                        </div>
                                                         <div class='col-md-6'>
                                                             <div class='form-group'>
                                                                 <label class='text-large'>Link published name:</label>
@@ -224,14 +225,14 @@
                                                                 <label class='text-large' >Resources Links: </label>
                                                                 <input type='text' name='presenter_resource_link[]' placeholder='Resource Link' id='presenter_resource_link' value = '<?= $value->presenter_resource_link ?>' class='form-control'>
                                                             </div>
-                                                        </div> 
+                                                        </div>
                                                          <div class='col-md-12'>
                                                             <div class="form-group">
-                                                                <button type="button" class="btn btn-danger btn-o next-step btn-wide btn_remove_presenter" data-sessions_add_presenter_id="<?= $value->sessions_add_presenter_id ?>" id="btn_remove_presenter">   
+                                                                <button type="button" class="btn btn-danger btn-o next-step btn-wide btn_remove_presenter" data-sessions_add_presenter_id="<?= $value->sessions_add_presenter_id ?>" id="btn_remove_presenter">
                                                                     <i class="fa fa-minus"></i>  Remove Presenter
                                                                 </button>
                                                             </div>
-                                                        </div> 
+                                                        </div>
                                                     </div>
                                                     </div>
                                                     <?php
@@ -240,17 +241,27 @@
                                         }
                                         ?>
                                     </div>
-                                  
+
+                                        <label class="col-md-12 text-large" style="padding:0">Select Session Properties</label>
+                                        <hr>
+                                        <div class="form-group">
+                                            <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=sessionRightBarControl($sessions_edit->right_bar, "resources", "checked")?> value="resources">Resources</label>
+                                            <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=sessionRightBarControl($sessions_edit->right_bar, "chat", "checked")?> value="chat">Chat</label>
+                                            <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=sessionRightBarControl($sessions_edit->right_bar, "notes", "checked")?> value="notes">Notes</label>
+                                            <label class="checkbox-inline"><input type="checkbox" name="session_right_bar[]" <?=sessionRightBarControl($sessions_edit->right_bar, "questions", "checked")?> value="questions">Questions</label>
+                                        </div>
+
+
                                     <div class="row" style="margin-top: 20px;">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <button type="button" class="btn btn-primary btn-o next-step btn-wide" id="btn_add_new_presenter">   
+                                                <button type="button" class="btn btn-primary btn-o next-step btn-wide" id="btn_add_new_presenter">
                                                     <i class="fa fa-plus"></i>  Add New Presenter
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <h5 class="over-title margin-bottom-15" style="text-align: center;">
                                             <button type="submit" id="btn_sessions" name="btn_sessions" class="btn btn-green add-row">Submit</button>
@@ -271,7 +282,7 @@
     $(document).ready(function ()
     {
          $('.datepicker').datepicker({dateFormat: 'mm/dd/yyyy' });
-        
+
         $("#btn_add_new_presenter").on("click", function () {
             $("#presenter_list").append("<div class='col-md-12 p-15' id='add_new_presenter_section' style='margin-bottom: 20px; padding: 10px; border: 1px solid #b2b7bb;'>\n\
                                         <div class='row'><input type='hidden' name='status[]' value='insert'><div class='col-md-6'><div class='form-group'>\n\
@@ -316,7 +327,7 @@
                                         </div></div></div>\n\
                                     </div>");
         });
-        
+
         $("#btn_sessions").on("click", function ()
         {
              var sum = 0;
@@ -341,13 +352,13 @@
 //                return false;
             }else if(sum > 15){
                 alertify.error("Maximum add 15 Presenter");
-                return false;    
+                return false;
             } else {
                 return true;
             }
             return false;
         });
-        
+
         $(document).on("click", ".btn_remove_presenter", function () {
                                                              var sessions_add_presenter_id = $(this).attr("data-sessions_add_presenter_id");
                                                             $.ajax({
@@ -362,7 +373,7 @@
                                                                 }
                                                             });
                                                         });
-                                                        
+
                                                         $(document).on("change", "#sessions_type_status", function () {
                                                            if($(this).val() == "Private"){
                                                             $("#btn_add_new_presenter").hide();
