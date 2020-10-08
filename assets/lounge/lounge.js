@@ -327,7 +327,7 @@ $(function() {
                         if(status == 'success')
                         {
                             if (data == 'false'){
-                                $('.oto-messages').append('No chats further!');
+                                $('.oto-messages').append('No chat!');
                                 return false;
                             }
                             var dataFromDb = JSON.parse(data);
