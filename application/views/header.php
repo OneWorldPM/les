@@ -99,7 +99,7 @@
             </style>  
         <?php } ?>
     </head>
-    <body class="wide">
+    <body class="wide" data-base-url='<?=base_url()?>'>
         <!-- WRAPPER -->
         <div class="wrapper">
             <header id="header" class="header-transparent">

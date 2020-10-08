@@ -93,7 +93,7 @@ $uri_segment1 = $this->uri->segment(3);
     </head>
 
     <!-- end: HEAD -->
-    <body>
+    <body data-base-url='<?=base_url()?>'>
         <div id="app">
             <!-- sidebar -->
             <div class="sidebar app-aside" id="sidebar">

@@ -1,6 +1,4 @@
-var firstUrl="/tiadaannualconference";
-// var firstUrl = "";
-
+var firstUrl=$("body").data("base-url");
 
 var socketServer = "https://socket.yourconference.live:443";
 // var socketServer = "https://127.0.0.1:3080";
