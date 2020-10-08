@@ -343,6 +343,9 @@ switch ($msg) {
                             if (cr_data.data.presenter_photo != null && cr_data.data.presenter_photo != "") {
                                 $('#presenter_profile').attr('src', "<?= base_url() ?>uploads/presenter_photo/" + cr_data.data.presenter_photo);
                                 $('#presenter_profile').show();
+                            } else {
+                                $('#presenter_profile').attr('src', "");
+                                $('#presenter_profile').hide();
                             }
                             $('#cr_type').val('update');
                         } else {
