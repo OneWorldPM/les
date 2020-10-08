@@ -18,6 +18,7 @@ class M_presenters extends CI_Model {
     }
 
     function add_presenters($post) {
+  
         if ($post['cr_type'] == 'save') {
             $or_where = '(email = "' . trim($post['email']) . '")';
             $this->db->where($or_where);
@@ -66,7 +67,7 @@ class M_presenters extends CI_Model {
         } else if ($post['cr_type'] == 'update') {
             $or_where = '(email = "' . trim($post['email']) . '")';
             $this->db->where($or_where);
-            $this->db->where("presenter_id <>", $post['presenter_id']);
+            $this->db->where("presenter_id !=", $post['presenter_id']);
             $presenter = $this->db->get('presenter');
             if ($presenter->num_rows() > 0) {
                 return '';
@@ -100,6 +101,7 @@ class M_presenters extends CI_Model {
                         $this->upload->initialize($this->set_upload_options());
                         $this->upload->do_upload('presenter_photo');
                         $file_upload_name = $this->upload->data();
+                       
                         $this->db->update('presenter', array('presenter_photo' => $file_upload_name['file_name']), array('presenter_id' => $post['presenter_id']));
                     }
                     return TRUE;
