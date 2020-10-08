@@ -6,9 +6,17 @@
         text-align: center;
     }
     .files{
-        width: 1000px;
+        width: 1300px;
         max-width: 100%;
         margin: 0 auto;
+    }
+    .files img{
+        object-fit: contain;
+        width: 90px;
+        height: 70px;
+    }
+    .files td{
+        vertical-align: middle !important;
     }
 </style>
 <section class="parallax">
@@ -18,6 +26,7 @@
             <table class="table">
                 <thead>
                 <tr>
+                    <th>Sponsor</th>
                     <th>Item Name</th>
                     <th>File Name</th>
                     <th>Operation</th>
@@ -28,6 +37,7 @@
                 foreach ($resources as $val){
                     ?>
                     <tr>
+                        <td><img src="<?= base_url() ?>uploads/sponsors/<?= $val["sponsors_logo"] ?>" alt="welcome"></td>
                         <td><?=$val["item_name"]?></td>
                         <td><?=$val["file_name"]?></td>
                         <td><a href="<?= base_url() ?><?=$val["file_name"]?>" download type="button" class="btn btn-info btn-sm">Download</a></td>

@@ -114,16 +114,11 @@
                             foreach ($platinum_sponsors as $val) {
                                 ?>
                                 <div class="col-md-3 col-sm-12" style="margin-bottom:40px;">
-                                    <div class="col-lg-9">
-                                        <a class="icon-home" href="<?= base_url() ?>sponsor/view/<?= $val->sponsors_id ?>">
-                                            <div class="col-lg box-home text-center">
-                                                <img src="<?= base_url() ?>uploads/sponsors/<?= $val->sponsors_logo ?>" alt="welcome" style="max-width: 200px; max-height: 130px">
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-3 sponsorDownload">
-                                        <a href="<?= base_url() ?>sponsor/sponsor_resources/<?=$val->sponsors_id?>" class="">Download</a>
-                                    </div>
+                                    <a class="icon-home" href="<?= base_url() ?>sponsor/view/<?= $val->sponsors_id ?>">
+                                        <div class="col-lg box-home text-center">
+                                            <img src="<?= base_url() ?>uploads/sponsors/<?= $val->sponsors_logo ?>" alt="welcome" style="max-width: 200px; max-height: 130px">
+                                        </div>
+                                    </a>
                                 </div>
                                 <?php
                             }
@@ -135,17 +130,12 @@
                         foreach ($gold_sponsors as $val) {
                             ?>
                             <div class="col-md-3 col-sm-12" style="margin-bottom:40px;">
-                                <div class="col-lg-9">
-                                    <a class="icon-home" href="<?= base_url() ?>sponsor/view/<?= $val->sponsors_id ?>">
-                                        <div class="col-lg box-home text-center">
-                                            <img src="<?= base_url() ?>uploads/sponsors/<?= $val->sponsors_logo ?>" alt="welcome" style="max-width: 100px">
-                                            <h4><?= $val->company_name ?></h4>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-lg-3 sponsorDownload">
-                                    <a href="<?= base_url() ?>sponsor/sponsor_resources/<?=$val->sponsors_id?>" class="">Download</a>
-                                </div>
+                                <a class="icon-home" href="<?= base_url() ?>sponsor/view/<?= $val->sponsors_id ?>">
+                                    <div class="col-lg box-home text-center">
+                                        <img src="<?= base_url() ?>uploads/sponsors/<?= $val->sponsors_logo ?>" alt="welcome" style="max-width: 100px">
+                                        <h4><?= $val->company_name ?></h4>
+                                    </div>
+                                </a>
                             </div>
                             <?php
                         }
@@ -156,17 +146,12 @@
                         foreach ($silver_sponsors as $val) {
                             ?>
                             <div class="col-md-3 col-sm-12" style="margin-bottom:40px;">
-                                <div class="col-lg-9">
-                                    <a class="icon-home" href="<?= base_url() ?>sponsor/view/<?= $val->sponsors_id ?>">
-                                        <div class="col-lg box-home text-center">
-                                            <img src="<?= base_url() ?>uploads/sponsors/<?= $val->sponsors_logo ?>" alt="welcome" style="max-width: 100px">
-                                            <h4><?= $val->company_name ?></h4>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-lg-3 sponsorDownload">
-                                    <a href="<?= base_url() ?>sponsor/sponsor_resources/<?=$val->sponsors_id?>" class="">Download</a>
-                                </div>
+                                <a class="icon-home" href="<?= base_url() ?>sponsor/view/<?= $val->sponsors_id ?>">
+                                    <div class="col-lg box-home text-center">
+                                        <img src="<?= base_url() ?>uploads/sponsors/<?= $val->sponsors_logo ?>" alt="welcome" style="max-width: 100px">
+                                        <h4><?= $val->company_name ?></h4>
+                                    </div>
+                                </a>
                             </div>
                             <?php
                         }
@@ -177,17 +162,12 @@
                         foreach ($bronze_sponsors as $val) {
                             ?>
                             <div class="col-md-3 col-sm-12" style="margin-bottom:40px;">
-                              <div class="col-lg-9">
-                                  <a class="icon-home" href="<?= base_url() ?>sponsor/view/<?= $val->sponsors_id ?>">
-                                      <div class="col-lg box-home text-center">
-                                          <img src="<?= base_url() ?>uploads/sponsors/<?= $val->sponsors_logo ?>" alt="welcome" style="max-width: 100px">
-                                          <h4><?= $val->company_name ?></h4>
-                                      </div>
-                                  </a>
-                              </div>
-                                <div class="col-lg-3 sponsorDownload">
-                                    <a href="<?= base_url() ?>sponsor/sponsor_resources/<?=$val->sponsors_id?>" class="">Download</a>
-                                </div>
+                                <a class="icon-home" href="<?= base_url() ?>sponsor/view/<?= $val->sponsors_id ?>">
+                                    <div class="col-lg box-home text-center">
+                                        <img src="<?= base_url() ?>uploads/sponsors/<?= $val->sponsors_logo ?>" alt="welcome" style="max-width: 100px">
+                                        <h4><?= $val->company_name ?></h4>
+                                    </div>
+                                </a>
                             </div>
                             <?php
                         }
