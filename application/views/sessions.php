@@ -151,13 +151,13 @@
                                                                 if (isset($val->presenter) && !empty($val->presenter)) {
                                                                     foreach ($val->presenter as $value) {
                                                                         ?>
-                                                                        <div class="post-info" style="color: #000 !important; font-size: larger; font-weight: 700;"><span class="post-autor"><a href="#" data-presenter_photo="<?= $value->presenter_photo ?>" data-presenter_name="<?= $value->presenter_name ?>" data-designation="<?= $value->designation ?>" data-email="<?= $value->email ?>" data-company_name="<?= $value->company_name ?>" data-twitter_link="<?= $value->twitter ?>" data-facebook_link="<?= $value->facebook ?>" data-linkedin_link="<?= $value->linkin ?>" data-bio="<?= $value->bio ?>"  class="presenter_open_modul" style="color: #337ab7;"><u><?= $value->presenter_name ?></u>, </a></span> <span class="post-category"> <?= $value->title ?></span> </div>
-                                                                        <div class="post-info" style="color: #000 !important; font-size: larger; font-weight: 700;"><span class="post-category"> <?= $value->company_name ?></span> </div>
+                                                                        <div class="post-info" style="color: #000 !important; font-size: larger; font-weight: 700;"><span class="post-autor"><a href="#" style="color: #000;" data-presenter_photo="<?= $value->presenter_photo ?>" data-presenter_name="<?= $value->presenter_name ?>" data-designation="<?= $value->designation ?>" data-email="<?= $value->email ?>" data-company_name="<?= $value->company_name ?>" data-twitter_link="<?= $value->twitter ?>" data-facebook_link="<?= $value->facebook ?>" data-linkedin_link="<?= $value->linkin ?>" data-bio="<?= $value->bio ?>"  class="presenter_open_modul" style="color: #337ab7;"><u><?= $value->presenter_name ?></u>, </a></span> <span class="post-category"> <?= $value->degree ?></span> </div>
+                                                                        <div class="post-info" style="color: #337aba !important; font-size: larger; font-weight: 700;"><span class="post-category"> <?= $value->company_name ?></span> </div>
                                                                         <?php
                                                                     }
                                                                 }
                                                                 ?>
-                                                                <div class="post-description">
+                                                                <div class="post-description" style="margin-top: 10px;">
                                                                     <p style="margin-bottom: 10px; color: black;"><?= $val->sessions_description ?></p>
                                                                     <a class="button black-light button-3d rounded right btn_sign_up" style="margin: 0px 0;" data-sessions_id="<?= $val->sessions_id ?>" data-user_limit="<?= $val->total_sign_up_sessions_user ?>"><span>Sign up</span></a>
                                                                     <a class="button black-light button-3d rounded right save_to_swag_bag" data-sessions_id="<?= $val->sessions_id ?>" data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"><?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>
@@ -178,13 +178,13 @@
                                                                 if (isset($val->presenter) && !empty($val->presenter)) {
                                                                     foreach ($val->presenter as $value) {
                                                                         ?>
-                                                                        <div class="post-info" style="color: #000 !important; font-size: larger; font-weight: 700;"><span class="post-autor"><a href="#" data-presenter_photo="<?= $value->presenter_photo ?>" data-presenter_name="<?= $value->presenter_name ?>" data-designation="<?= $value->designation ?>" data-email="<?= $value->email ?>" data-company_name="<?= $value->company_name ?>" data-twitter_link="<?= $value->twitter ?>" data-facebook_link="<?= $value->facebook ?>" data-linkedin_link="<?= $value->linkin ?>" data-bio="<?= $value->bio ?>"  class="presenter_open_modul" style="color: #337ab7;"><u><?= $value->presenter_name ?></u>, </a></span> <span class="post-category"> <?= $value->title ?></span> </div>
-                                                                        <div class="post-info" style="color: #000 !important; font-size: larger; font-weight: 700;"><span class="post-category"> <?= $value->company_name ?></span> </div>
+                                                                        <div class="post-info" style="color: #000 !important; font-size: larger; font-weight: 700;"><span class="post-autor"><a href="#" style="color: #000;" data-presenter_photo="<?= $value->presenter_photo ?>" data-presenter_name="<?= $value->presenter_name ?>" data-designation="<?= $value->designation ?>" data-email="<?= $value->email ?>" data-company_name="<?= $value->company_name ?>" data-twitter_link="<?= $value->twitter ?>" data-facebook_link="<?= $value->facebook ?>" data-linkedin_link="<?= $value->linkin ?>" data-bio="<?= $value->bio ?>"  class="presenter_open_modul" style="color: #337ab7;"><u><?= $value->presenter_name ?></u>, </a></span> <span class="post-category"> <?= $value->degree ?></span> </div>
+                                                                        <div class="post-info" style="color: #337aba !important; font-size: larger; font-weight: 700;"><span class="post-category"> <?= $value->company_name ?></span> </div>
                                                                         <?php
                                                                     }
                                                                 }
                                                                 ?>
-                                                                <div class="post-description">
+                                                                <div class="post-description" style="margin-top: 10px;">
                                                                     <p style="margin-bottom: 10px; color: black;"><?= $val->sessions_description ?></p>
                                                                     <a class="button black-light button-3d rounded right" style="margin: 0px 0px 0px 5px; " href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
                                                                     <a class="button black-light button-3d rounded right btn_unregister" style="margin: 0px 0;" data-sessions_id="<?= $val->sessions_id ?>" ><span>Unregister</span></a>
@@ -207,13 +207,13 @@
                                                             if (isset($val->presenter) && !empty($val->presenter)) {
                                                                 foreach ($val->presenter as $value) {
                                                                     ?>
-                                                                    <div class="post-info" style="color: #000 !important; font-size: larger; font-weight: 700;"><span class="post-autor"><a href="#" data-presenter_photo="<?= $value->presenter_photo ?>" data-presenter_name="<?= $value->presenter_name ?>" data-designation="<?= $value->designation ?>" data-email="<?= $value->email ?>" data-company_name="<?= $value->company_name ?>" data-twitter_link="<?= $value->twitter ?>" data-facebook_link="<?= $value->facebook ?>" data-linkedin_link="<?= $value->linkin ?>" data-bio="<?= $value->bio ?>"  class="presenter_open_modul" style="color: #337ab7;"><u><?= $value->presenter_name ?></u>, </a></span> <span class="post-category"> <?= $value->title ?></span> </div>
-                                                                    <div class="post-info" style="color: #000 !important; font-size: larger; font-weight: 700;"><span class="post-category"> <?= $value->company_name ?></span> </div>
+                                                                    <div class="post-info" style="color: #000 !important; font-size: larger; font-weight: 700;"><span class="post-autor"><a href="#" style="color: #000;" data-presenter_photo="<?= $value->presenter_photo ?>" data-presenter_name="<?= $value->presenter_name ?>" data-designation="<?= $value->designation ?>" data-email="<?= $value->email ?>" data-company_name="<?= $value->company_name ?>" data-twitter_link="<?= $value->twitter ?>" data-facebook_link="<?= $value->facebook ?>" data-linkedin_link="<?= $value->linkin ?>" data-bio="<?= $value->bio ?>"  class="presenter_open_modul" style="color: #337ab7;"><u><?= $value->presenter_name ?></u>, </a></span> <span class="post-category"> <?= $value->degree ?></span> </div>
+                                                                    <div class="post-info" style="color: #337aba !important; font-size: larger; font-weight: 700;"><span class="post-category"> <?= $value->company_name ?></span> </div>
                                                                     <?php
                                                                 }
                                                             }
                                                             ?>
-                                                            <div class="post-description">
+                                                            <div class="post-description" style="margin-top: 10px;">
                                                                 <p style="margin-bottom: 10px; color: black;"><?= $val->sessions_description ?></p>
                                                                 <?php
                                                                 if ($val->status_sign_up_sessions == 1) {
@@ -258,13 +258,13 @@
                                                     if (isset($val->presenter) && !empty($val->presenter)) {
                                                         foreach ($val->presenter as $value) {
                                                             ?>
-                                                            <div class="post-info" style="color: #000 !important; font-size: larger; font-weight: 700;"><span class="post-autor"><a href="#" data-presenter_photo="<?= $value->presenter_photo ?>" data-presenter_name="<?= $value->presenter_name ?>" data-designation="<?= $value->designation ?>" data-email="<?= $value->email ?>" data-company_name="<?= $value->company_name ?>" data-twitter_link="<?= $value->twitter ?>" data-facebook_link="<?= $value->facebook ?>" data-linkedin_link="<?= $value->linkin ?>" data-bio="<?= $value->bio ?>"  class="presenter_open_modul" style="color: #337ab7;"><u><?= $value->presenter_name ?></u>, </a></span> <span class="post-category"> <?= $value->title ?></span> </div>
-                                                            <div class="post-info" style="color: #000 !important; font-size: larger; font-weight: 700;"><span class="post-category"> <?= $value->company_name ?></span> </div>
+                                                            <div class="post-info" style="color: #000 !important; font-size: larger; font-weight: 700;"><span class="post-autor"><a href="#" style="color: #000;" data-presenter_photo="<?= $value->presenter_photo ?>" data-presenter_name="<?= $value->presenter_name ?>" data-designation="<?= $value->designation ?>" data-email="<?= $value->email ?>" data-company_name="<?= $value->company_name ?>" data-twitter_link="<?= $value->twitter ?>" data-facebook_link="<?= $value->facebook ?>" data-linkedin_link="<?= $value->linkin ?>" data-bio="<?= $value->bio ?>"  class="presenter_open_modul" style="color: #337ab7;"><u><?= $value->presenter_name ?></u>, </a></span> <span class="post-category"> <?= $value->degree ?></span> </div>
+                                                            <div class="post-info" style="color: #337aba !important; font-size: larger; font-weight: 700;"><span class="post-category"> <?= $value->company_name ?></span> </div>
                                                             <?php
                                                         }
                                                     }
                                                     ?>
-                                                    <div class="post-description">
+                                                            <div class="post-description" style="margin-top: 10px;">
                                                         <p style="margin-bottom: 10px; color: black;"><?= $val->sessions_description ?></p>
                                                         <a class="button black-light button-3d rounded right" style="margin: 0px 0;" href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
                                                         <a class="button black-light button-3d rounded right save_to_swag_bag" data-sessions_id="<?= $val->sessions_id ?> " data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"> <?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>
@@ -433,7 +433,7 @@
             var facebook_link = $(this).attr("data-facebook_link");
             var linkedin_link = $(this).attr("data-linkedin_link");
             var bio = $(this).attr('data-bio');
-            if (presenter_photo != ""  && presenter_photo != null) {
+            if (presenter_photo != "" && presenter_photo != null) {
                 $('#presenter_profile').attr('src', "<?= base_url() ?>uploads/presenter_photo/" + presenter_photo);
             } else {
                 $('#presenter_profile').attr('src', "<?= base_url() ?>uploads/presenter_photo/presenter_avtar.png");

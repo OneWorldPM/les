@@ -356,21 +356,7 @@ switch ($msg) {
 
 
         $("#btn_register").on("click", function () {
-
-            if ($("#first_name").val().trim() == "")
-            {
-                $("#errorfirst_name").text("Please Enter Full Name").fadeIn('slow').fadeOut(5000);
-                return false;
-            } else if ($("#phone").val().trim() == "") {
-                $("#errorphone").text("Please Enter Phone").fadeIn('slow').fadeOut(5000);
-                return false;
-            } else if ($("#country").val() == "") {
-                $("#errorcountry").text("Please Select Country").fadeIn('slow').fadeOut(5000);
-                return false;
-            } else {
-                return true; //submit form
-            }
-            return false; //Prevent form to submitting
+            return true; //submit form
         });
     });
 </script>
