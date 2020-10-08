@@ -121,7 +121,7 @@ class Lounge extends CI_Controller
 
             $meeting_to_formatted = (new DateTime($meeting->meeting_to))->format('M-d h:ia');
 
-            $meeting_status = array('status' => false, 'message' => "Meeting already finished at {$meeting_to_formatted}(CT) <br> ie; {$diff} ago!");
+            $meeting_status = array('status' => false, 'message' => "Meeting already finished at {$meeting_to_formatted} (CT) <br> ie; {$diff} ago!");
         }else{
             $meeting_status = array('status' => true);
         }
