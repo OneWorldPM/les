@@ -237,7 +237,7 @@
                 <div class="form-group">
                     <div class='input-group date' id='datetimepicker6'>
                         <span class="input-group-addon" id="sizing-addon2">Start Time &nbsp; &nbsp; &nbsp; </span>
-                        <input id="meeting_start_time" type='text' class="meeting-from form-control" placeholder="Use the icon on the right side to choose starting time" aria-describedby="sizing-addon2"/>
+                        <input id="meeting_start_time" type='text' class="meeting-from form-control" placeholder="Use the icon on the right side or type here manually" aria-describedby="sizing-addon2"/>
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                         </span>
