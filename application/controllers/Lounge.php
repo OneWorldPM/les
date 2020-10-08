@@ -144,10 +144,11 @@ class Lounge extends CI_Controller
 
     private function convertToHoursMins($time, $format = '%02d:%02d') {
         if ($time < 1) {
-            return;
+            return 'seconds';
         }
         $hours = floor($time / 60);
         $minutes = ($time % 60);
+
         return sprintf($format, $hours, $minutes);
     }
 
@@ -169,7 +170,9 @@ class Lounge extends CI_Controller
             $minutesDiff   = round($interval / 60);
             $diff = $this->convertToHoursMins($minutesDiff, '%02d hours %02d minutes');
 
-            $meeting_status = array('status' => false, 'message' => "Meeting starts at {$meeting->meeting_from}(CT) ie; in {$diff}, please return at that time!");
+            $meeting_from_formatted = (new DateTime($meeting->meeting_from))->format('M-d h:ia');
+
+            $meeting_status = array('status' => false, 'message' => "Meeting starts from {$meeting_from_formatted} (CT) <br> ie; in {$diff}, please return at that time!");
         }elseif ($meeting && $meeting->meeting_to < $now){
             $datetime1 = strtotime($meeting->meeting_to);
             $datetime2 = strtotime($now);
@@ -177,7 +180,9 @@ class Lounge extends CI_Controller
             $minutesDiff   = round($interval / 60);
             $diff = $this->convertToHoursMins($minutesDiff, '%02d hours %02d minutes');
 
-            $meeting_status = array('status' => false, 'message' => "Meeting already finished at {$meeting->meeting_to}(CT) ie; {$diff} ago!");
+            $meeting_to_formatted = (new DateTime($meeting->meeting_to))->format('M-d h:ia');
+
+            $meeting_status = array('status' => false, 'message' => "Meeting already finished at {$meeting_to_formatted} (CT) <br> ie; {$diff} ago!");
         }else{
             $meeting_status = array('status' => true);
         }
