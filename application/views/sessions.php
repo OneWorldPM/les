@@ -433,8 +433,13 @@
             var facebook_link = $(this).attr("data-facebook_link");
             var linkedin_link = $(this).attr("data-linkedin_link");
             var bio = $(this).attr('data-bio');
-            $('#presenter_profile').attr('src', "<?= base_url() ?>uploads/presenter_photo/" + presenter_photo);
+            if (presenter_photo != ""  && presenter_photo != null) {
+                $('#presenter_profile').attr('src', "<?= base_url() ?>uploads/presenter_photo/" + presenter_photo);
+            } else {
+                $('#presenter_profile').attr('src', "<?= base_url() ?>uploads/presenter_photo/presenter_avtar.png");
+            }
             $('#presenter_title').text(presenter_name + ", " + designation);
+
             $('#email').text(email);
             $('#company').text(company_name);
             $("#twitter_link").attr("href", twitter_link);

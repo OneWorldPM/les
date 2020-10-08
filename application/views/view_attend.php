@@ -99,9 +99,9 @@
                                             <small><i class="fa fa-calendar" aria-hidden="true"></i> <?= date("M-d-Y", strtotime($sessions->sessions_date)) . ' ' . date("H:i", strtotime($sessions->time_slot)) . ' - ' . date("H:i", strtotime($sessions->end_time)) ?></small>
                                             <p class="m-t-20"><?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_description : "" ?></p>
                                             <?php if ($sessions->sessions_type_status == "Private") { ?>
-                                                <p class="m-t-20" style="border: 1px solid #000; padding: 5px; color: #000;"><b>Q&A During Sessions:</b> We will be monitoring the Q&A window during the session. Please submit questions as they arise, and we will do our best to answer all of those questions during the 5 min Q&A session that follows</p>
+                                                <p class="m-t-20" style="border: 1px solid #000; padding: 5px; color: #000;"><b>Q&A During Sessions:</b> We will be monitoring the Q&A window during the session. Please submit questions as they arise, and we will do our best to answer all of those questions during the Q&A session that follows</p>
                                             <?php } else { ?>
-                                                <p class="m-t-20" style="border: 1px solid #000; padding: 5px; color: #000;"><b>Q&A During Sessions:</b> We will be monitoring the Q&A window during the session. Please submit questions as they arise, and we will do our best to answer all of those questions during the 15 min Q&A session that follows</p>
+                                                <p class="m-t-20" style="border: 1px solid #000; padding: 5px; color: #000;"><b>Q&A During Sessions:</b> We will be monitoring the Q&A window during the session. Please submit questions as they arise, and we will do our best to answer all of those questions during the Q&A session that follows</p>
                                             <?php } ?>
                                         </div>    
                                     </div>
@@ -149,8 +149,8 @@
                                     </div>
                                     <div class="col-md-3" style="text-align: center; text-align: center; padding: 10px; border: 1px solid; margin-right: 10px;">
                                         <p><i class="fa fa-volume-up" aria-hidden="true" style="font-size: 20px;"></i></p>
-                                        <p style="color: #ef9d45; margin-bottom: 0px;">SESSION AUDIO</p>
-                                        <p style="color: #ef9d45; text-align: left;">You may need to turn the audio on the session recording.  Hover your mouse over the bottom left hand corner of the  video in the next page and adjust the audio.</p>
+                                        <p style="color: #000; margin-bottom: 0px;">SESSION AUDIO</p>
+                                        <p style="color: #000; text-align: left;">You may need to turn the audio on the session recording.  Hover your mouse over the bottom left hand corner of the  video in the next page and adjust the audio.</p>
                                     </div>
                                     <div class="col-md-4" style="text-align: center; text-align: center; padding: 10px; background-color: #fff; border: 1px solid;">
                                         <p><i class="fa fa-info-circle" aria-hidden="true" style="font-size: 20px;"></i></p>
@@ -233,7 +233,11 @@
             var designation = $(this).attr("data-designation");
             var company_name = $(this).attr("data-company_name");
             var email = $(this).attr("data-email");
-            $('#presenter_profile').attr('src', "<?= base_url() ?>uploads/presenter_photo/" + presenter_photo);
+            if (presenter_photo != ""  && presenter_photo != null) {
+                 $('#presenter_profile').attr('src', "<?= base_url() ?>uploads/presenter_photo/" + presenter_photo);
+            } else {
+                $('#presenter_profile').attr('src', "<?= base_url() ?>uploads/presenter_photo/presenter_avtar.png");
+            }
             $('#presenter_title').text(presenter_name + ", " + designation);
             $('#email').text(email);
             $('#company').text(company_name);
