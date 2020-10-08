@@ -465,9 +465,29 @@ if(false){
 
 <div class="rightSticky" data-screen="customer">
     <ul>
-        <li data-type="notesSticky"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <span>TAKE NOTES</span></li>
-        <li data-type="resourcesSticky"><i class="fa fa-paperclip" aria-hidden="true"></i> <span>RESOURCES</span></li>
-        <li data-type="messagesSticky"><i class="fa fa-comments" aria-hidden="true"></i> <span class="notify notify<?=getAppName($sessions->sessions_id) ?> displayNone"></span> <span>MESSAGES</span></li>
+       <?php
+       if(sessionRightBarControl($sessions->right_bar, "notes")){
+           ?>
+           <li data-type="notesSticky"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <span>TAKE NOTES</span></li>
+           <?php
+       }
+       if(sessionRightBarControl($sessions->right_bar, "resources")){
+           ?>
+           <li data-type="resourcesSticky"><i class="fa fa-paperclip" aria-hidden="true"></i> <span>RESOURCES</span></li>
+           <?php
+       }
+       if(sessionRightBarControl($sessions->right_bar, "chat")){
+           ?>
+           <li data-type="messagesSticky"><i class="fa fa-comments" aria-hidden="true"></i> <span class="notify notify<?=getAppName($sessions->sessions_id) ?> displayNone"></span> <span>MESSAGES</span></li>
+           <?php
+       }
+       if(sessionRightBarControl($sessions->right_bar, "questions")){
+           ?>
+           <li data-type="questionsSticky"><i class="fa fa-question" aria-hidden="true"></i> <span>QUESTIONS</span></li>
+           <?php
+       }
+
+       ?>
 
     </ul>
 </div>
@@ -480,8 +500,24 @@ if(false){
             <div class="dropdown">
                 <span class="glyphicon glyphicon-option-vertical" aria-hidden="true" data-toggle="dropdown"></span>
                 <ul class="dropdown-menu">
-                    <li data-type="resourcesSticky"><a data-type2="off">Resources</a></li>
-                    <li data-type="messagesSticky"><a data-type2="off">Messages</a></li>
+                    <?php
+                    if(sessionRightBarControl($sessions->right_bar, "resources")){
+                        ?>
+                        <li data-type="resourcesSticky"><a data-type2="off">Resources</a></li>
+                        <?php
+                    }
+                    if(sessionRightBarControl($sessions->right_bar, "chat")){
+                        ?>
+                        <li data-type="messagesSticky"><a data-type2="off">Messages</a></li>
+                        <?php
+                    }
+                    if(sessionRightBarControl($sessions->right_bar, "questions")){
+                        ?>
+                        <li data-type="questionsSticky"><a data-type2="off">Questions</a></li>
+                        <?php
+                    }
+
+                    ?>
 
                 </ul>
             </div>
@@ -509,8 +545,23 @@ if(false){
             <div class="dropdown">
                 <span class="glyphicon glyphicon-option-vertical" aria-hidden="true" data-toggle="dropdown"></span>
                 <ul class="dropdown-menu">
-                    <li data-type="notesSticky"><a data-type2="off">Take Notes</a></li>
-                    <li data-type="messagesSticky"><a data-type2="off">Messages</a></li>
+                    <?php
+                    if(sessionRightBarControl($sessions->right_bar, "chat")){
+                        ?>
+                        <li data-type="messagesSticky"><a data-type2="off">Messages</a></li>
+                        <?php
+                    }
+                    if(sessionRightBarControl($sessions->right_bar, "questions")){
+                        ?>
+                        <li data-type="questionsSticky"><a data-type2="off">Questions</a></li>
+                        <?php
+                    }
+                    if(sessionRightBarControl($sessions->right_bar, "notes")){
+                        ?>
+                        <li data-type="notesSticky"><a data-type2="off">Take Notes</a></li>
+                        <?php
+                    }
+                    ?>
                 </ul>
             </div>
         </div>
@@ -549,8 +600,24 @@ if(false){
             <div class="dropdown">
                 <span class="glyphicon glyphicon-option-vertical" aria-hidden="true" data-toggle="dropdown"></span>
                 <ul class="dropdown-menu">
-                    <li data-type="notesSticky"><a data-type2="off">Take Notes</a></li>
-                    <li data-type="resourcesSticky"><a data-type2="off">Resources</a></li>
+                    <?php
+                    if(sessionRightBarControl($sessions->right_bar, "resources")){
+                        ?>
+                        <li data-type="resourcesSticky"><a data-type2="off">Resources</a></li>
+                        <?php
+                    }
+                    if(sessionRightBarControl($sessions->right_bar, "questions")){
+                        ?>
+                        <li data-type="questionsSticky"><a data-type2="off">Questions</a></li>
+                        <?php
+                    }
+                    if(sessionRightBarControl($sessions->right_bar, "notes")){
+                        ?>
+                        <li data-type="notesSticky"><a data-type2="off">Take Notes</a></li>
+                        <?php
+                    }
+                    ?>
+
                 </ul>
             </div>
         </div>
@@ -565,6 +632,67 @@ if(false){
 
         <input type="text" class="form-control" placeholder="Enter message" id='sendGroupChat'>
 
+    </div>
+
+</div>
+<div class="rightSticykPopup questionsSticky" style="display: none">
+    <div class="header"><span></span>
+        <div class="rightTool">
+            <i class="fa fa-minus" aria-hidden="true"></i>
+            <div class="dropdown">
+                <span class="glyphicon glyphicon-option-vertical" aria-hidden="true" data-toggle="dropdown"></span>
+                <ul class="dropdown-menu">
+                    <?php
+                    if(sessionRightBarControl($sessions->right_bar, "resources")){
+                        ?>
+                        <li data-type="resourcesSticky"><a data-type2="off">Resources</a></li>
+                        <?php
+                    }
+                    if(sessionRightBarControl($sessions->right_bar, "chat")){
+                        ?>
+                        <li data-type="messagesSticky"><a data-type2="off">Messages</a></li>
+                        <?php
+                    }
+           
+                    if(sessionRightBarControl($sessions->right_bar, "notes")){
+                        ?>
+                        <li data-type="notesSticky"><a data-type2="off">Take Notes</a></li>
+                        <?php
+                    }
+                    ?>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="contentHeader">
+            Questions
+        </div>
+        <div class="questionElement">
+        </div>
+        <div id="ask_questions_section" style="background-color: #fff; border-radius: 5px; position: absolute; bottom: 0; width: 100%;">
+            <div style="padding:5px;">
+                <div style="text-align: center; display: flex; " id="questions_section">
+
+                    <div class="col-md-12 input-group">
+                        <span class="input-group-addon" style="padding: 5px 6px"><img src="<?= base_url() ?>front_assets/images/emoji/happy.png" id="questions_emjis_section_show" title="Check to Show Emoji" data-questions_emjis_section_show_status="0" style="width: 20px; height: 20px;" alt=""/></span>
+                        <input type="text" id="questions" class="form-control" placeholder="Enter Question" value="">
+                    </div>
+                    <a class="button color btn" style="margin: 0px; padding: 15px 7px;" id="ask_questions_send"><span>Send</span></a>
+                </div>
+                <div style="text-align: left; padding-left: 10px; display: flex;" id="questions_emojis_section">
+                    <img src="<?= base_url() ?>front_assets/images/emoji/happy.png" title="Happy" id="questions_happy" data-title_name="&#128578;" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
+                    <img src="<?= base_url() ?>front_assets/images/emoji/sad.png" title="Sad" id="questions_sad" data-title_name="&#128543" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
+                    <img src="<?= base_url() ?>front_assets/images/emoji/laughing.png" title="Laughing" id="questions_laughing" data-title_name="😁" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
+                    <img src="<?= base_url() ?>front_assets/images/emoji/thumbs_up.png" title="Thumbs Up" id="questions_thumbs_up" data-title_name="&#128077;" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
+                    <img src="<?= base_url() ?>front_assets/images/emoji/thumbs_down.png" title="Thumbs Down" id="questions_thumbs_down" data-title_name="&#128078" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
+                    <img src="<?= base_url() ?>front_assets/images/emoji/clapping.png" title="Clapping" id="questions_clapping" data-title_name="&#128079;" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
+                </div>
+                <span id='error_questions' style='color:red;'></span>
+                <span id='success_questions' style='color:green;'></span>
+            </div>
+        </div>
     </div>
 
 </div>
@@ -953,6 +1081,8 @@ if(false){
                         dataType: "json",
                         success: function (data) {
                             if (data.status == "success") {
+                                $(".questionElement").append(`<p>${questions}</p>`)
+
                                 $("#questions").val("");
                                 $("#success_questions").text("Question Added Successfully").fadeIn('slow').fadeOut(5000);
                             }
