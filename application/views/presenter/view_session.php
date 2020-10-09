@@ -3,7 +3,7 @@
         background: #ffffff;
         border-radius: 0px;
         border-radius: 5px;
-        margin: 0px 0 0px 0; 
+        margin: 0px 0 0px 0;
         padding: 10px;
         position: relative;
     }
@@ -13,7 +13,7 @@
         height: 100%;
         padding: 3px;
         background: rgb(108, 108, 108);
-        box-shadow: none; 
+        box-shadow: none;
         color: #fff;
         padding-top: 0px;
     }
@@ -27,12 +27,14 @@
         color: #fff;
         padding-top: 0px;
     }
+
     .progress-bar {
         height: 100%;
         padding: 3px;
         background: rgb(200, 201, 202);
-        box-shadow: none; 
+        box-shadow: none;
     }
+
     .progress_bar_new {
         height: 100%;
         padding: 3px;
@@ -43,134 +45,285 @@
         padding-top: 0px;
     }
 
-    .option_section_css{
+    .option_section_css {
         background-color: #f1f1f1;
         padding-top: 4px;
         padding-left: 6px;
         border-radius: 9px;
         margin-bottom: 10px;
     }
-    .option_section_css_selected{
+
+    .option_section_css_selected {
         background-color: #e1f6ff;
         padding-top: 4px;
         padding-left: 6px;
         border-radius: 9px;
         margin-bottom: 10px;
     }
+
     .progress {
         height: 26px;
         margin-bottom: 10px;
         overflow: hidden;
         background-color: #e6edf3;
         border-radius: 5px;
-        -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
-        box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
     }
+
     .progress_1 {
         height: 26px;
         margin-bottom: 10px;
         overflow: hidden;
         background-color: #55c4534f;
         border-radius: 5px;
-        -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
-        box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
-    }
-    .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
-        background-color:#A9A9A9;
+        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
     }
 
-    @media only screen and (min-width: 300px) and (max-width: 568px)  {
-        #embed_html_code_section{
-            height: 400px
-        }
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+        background-color: #A9A9A9;
     }
 
-    @media only screen and (min-width: 568px) and (max-width: 768px)  {
-        #embed_html_code_section{
-            height: 400px
-        }
+    #embed_html_code_section {
+        border-right: 2px solid #9a9a9a;
     }
 
-    @media only screen and (min-width: 768px) and (max-width: 992px)  {
-        #embed_html_code_section{
-            height: 400px
+    @media only screen and (max-width: 991px) {
+        #orderContainer {
+            display: flex;
+            flex-wrap: wrap;
         }
+
+        #leftOrder {
+            order: 1;
+            width: 100%;
+        }
+
+        #embed_html_code_section {
+            order: 0;
+            width: 100%;
+        }
+
+        #rightOrder {
+            order: 2;
+            width: 100%;
+        }
+
+        #embed_html_code_section {
+            height: 356px !important;
+        }
+
     }
 
-    @media only screen and (min-width: 992px) and (max-width: 1200px)  {
-        #embed_html_code_section{
-            height: 500px
+    @media only screen and (min-width: 300px) and (max-width: 568px) {
+        #embed_html_code_section {
+            height: 495px
         }
-    }
 
-    @media only screen and (min-width: 1200px) and (max-width: 1400px)  {
-        #embed_html_code_section{
-            height: 500px
-        }
-    }
-
-    @media only screen and (min-width: 1400px) and (max-width: 1600px)  {
-        #embed_html_code_section{
-            height: 580px
-        }
-    }
-    @media only screen and (min-width: 1600px) and (max-width: 1800px)  {
-        #embed_html_code_section{
-            height: 620px
-        }
-    }
-    @media only screen and (min-width: 1800px) and (max-width: 2000px)  {
-        #embed_html_code_section{
-            height: 680px
+        #favorite_question_list {
+            overflow-y: auto;
+            height: 200px;
         }
     }
 
-    @media only screen and (min-width: 2000px) and (max-width: 2200px)  {
-        #embed_html_code_section{
-            height: 720px
+    @media only screen and (min-width: 568px) and (max-width: 768px) {
+        #embed_html_code_section {
+            height: 496px
+        }
+
+        #favorite_question_list {
+            overflow-y: auto;
+            height: 200px;
         }
     }
 
-    @media only screen and (min-width: 2200px) and (max-width: 2400px)  {
-        #embed_html_code_section{
-            height: 800px
+    @media only screen and (min-width: 768px) and (max-width: 992px) {
+        #embed_html_code_section {
+            height: 497px
+        }
+
+        #favorite_question_list {
+            overflow-y: auto;
+            height: 200px;
         }
     }
 
-    @media only screen and (min-width: 2400px) and (max-width: 2800px)  {
-        #embed_html_code_section{
-            height: 900px
+    @media only screen and (min-width: 992px) and (max-width: 1200px) {
+        #embed_html_code_section {
+            height: 595px
+        }
+
+        #favorite_question_list {
+            overflow-y: auto;
+            height: 200px;
         }
     }
+
+    @media only screen and (min-width: 1200px) and (max-width: 1400px) {
+        #embed_html_code_section {
+            height: 596px
+        }
+
+        #favorite_question_list {
+            overflow-y: auto;
+            height: 250px;
+        }
+    }
+
+    @media only screen and (min-width: 1400px) and (max-width: 1600px) {
+        #embed_html_code_section {
+            height: 675px
+        }
+
+        #favorite_question_list {
+            overflow-y: auto;
+            height: 300px;
+        }
+    }
+
+    @media only screen and (min-width: 1600px) and (max-width: 1800px) {
+        #embed_html_code_section {
+            height: 715px
+        }
+
+        #favorite_question_list {
+            overflow-y: auto;
+            height: 300px;
+        }
+    }
+
+    @media only screen and (min-width: 1800px) and (max-width: 2000px) {
+        #embed_html_code_section {
+            height: 830px
+        }
+
+        #favorite_question_list {
+            overflow-y: auto;
+            height: 350px;
+        }
+    }
+
+    @media only screen and (min-width: 2000px) and (max-width: 2200px) {
+        #embed_html_code_section {
+            height: 815px
+        }
+
+        #favorite_question_list {
+            overflow-y: auto;
+            height: 400px;
+        }
+    }
+
+    @media only screen and (min-width: 2200px) and (max-width: 2400px) {
+        #embed_html_code_section {
+            height: 895px
+        }
+
+        #favorite_question_list {
+            overflow-y: auto;
+            height: 450px;
+        }
+    }
+
+    @media only screen and (min-width: 2400px) and (max-width: 2800px) {
+        #embed_html_code_section {
+            height: 995px
+        }
+
+        #favorite_question_list {
+            overflow-y: auto;
+            height: 450px;
+        }
+    }
+
+
+    @media only screen and (min-width: 991px) and (max-width: 1539px) {
+        .nav-tabs > li{
+            width: 100%;
+        }
+    }
+
 
     @media only screen and (min-width: 2800px) {
-        #embed_html_code_section{
-            height: 1000px
+        #embed_html_code_section {
+            height: 1095px
+        }
+
+        #favorite_question_list {
+            overflow-y: auto;
+            height: 450px;
         }
     }
+
+
+    #favorite_question_list {
+        height: 310px;
+    }
+
+    .nav-tabs > li > a {
+        font-family: sans-serif;
+    }
+
+    .nav-tabs > li.active > a {
+        background-color: #5f5f5f !important;
+    }
+
+    .inbox .email-list,.inbox .wrap-list{
+        height: 280px;
+    }
+
+
 </style>
+
+<?php
+if (isset($_GET['testing']) && $_GET['testing'] == 1) {
+    echo date('yy-m-d h:m:i');
+    echo "<pre>";
+    print_r($sessions);
+    exit("</pre>");
+}
+?>
 <div class="main-content">
     <div class="wrap-content container" id="container">
         <div class="container-fluid container-fullw" style="padding: 6px;">
             <div class="panel panel-primary" id="panel5">
-                <div class="panel-heading">
-                    <h4 class="panel-title text-white"><?= $sessions->session_title ?></h4>
+                <div class="panel-heading" style="padding-bottom: 8px;">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4 class="panel-title text-white"><?= $sessions->session_title ?></h4>
+                        </div>
+                        <div class="col-md-4" style="text-align: center;">
+                            <!--                            <a id="btn_timer_start" style="background-color:#7b7b7c; border-color:#7b7b7c;" class="btn btn-grey btn-sm">START</a>-->
+                            <!--                            <a id="btn_timer_stop" style="background-color:#7b7b7c; border-color:#7b7b7c;" class="btn btn-grey btn-sm">STOP</a>-->
+                            <p id="id_day_time_clock" style="float: right; color: #1f860b; font-weight: 700; font-size:24px; margin:0;"></p>
+                        </div>
+                    </div>
                 </div>
                 <div class="panel-body bg-white" style="border: 1px solid #b2b7bb!important; padding: 10px;">
-                    <div class="row">
-                        <div class="col-md-2" style="padding-right: 0; padding-left: 8px;">
+                    <div class="row" id="orderContainer">
+                        <div class="col-lg-2 col-md-3" style="padding-right: 0; padding-left: 8px;" id="leftOrder">
+                            <?php
+                            if (isset($music_setting)) {
+                                if ($music_setting->music_setting != "") {
+                                    ?>
+                                    <audio allow="autoplay" id="audio" src="<?= base_url() ?>uploads/music/<?= $music_setting->music_setting ?>"></audio>
+                                    <?php
+                                }
+                            }
+                            ?>
                             <input type="hidden" id="time_second" value="3600">
-                            <input type="hidden" id="viewer_status" value="<?= $viewer_status ?>">
                             <input type="hidden" id="poll_vot_section_id_status" value="0">
+                            <input type="hidden" id="poll_vot_section_is_ended" value="0">
                             <input type="hidden" id="poll_vot_section_last_status" value="0">
                             <div class="col-md-12" id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 0px; background-color: #fff; border-radius: 5px;">
                             </div>
                             <div class="col-md-12" id="timer_sectiom" style="padding-top: 20px; padding-bottom: 20px; display: none;">
                                 <span id="id_day_time" style="border:1px solid #000; border-radius: 100px; font-size: 76px; font-weight: 700; color: green; padding: 10px 30px 10px 30px;"></span>
                             </div>
-                            <div class="col-md-12" id="resource_section" style="margin-top: 10px; background-color: #fff; border-radius: 5px;">
+                            <div class="col-md-12" id="resource_section" style="margin-top: 10px; background-color: #fff; border-radius: 5px;padding: 0">
                                 <div>
-                                    <h2 style='margin-bottom: 0px; color: #ffffff; font-weight: 700; font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'> <i class="fa fa-paperclip" style="font-size: 18px; color: #ee5d26;"></i> Resources <i class="fa fa-caret-right" id="resource_show" data-resource_show_status="1" style="float: right; font-size: 16px;"></i></h2>
+                                    <h2 style='margin-bottom: 0px; color: #ffffff; font-weight: 700; font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'><i class="fa fa-paperclip" style="font-size: 18px; color: #ee5d26;"></i> Resources <i class="fa fa-caret-right" id="resource_show" data-resource_show_status="1" style="float: right; font-size: 16px;"></i></h2>
                                 </div>
                                 <div style="padding: 15px 15px 15px 15px; overflow-y: auto; height: 150px;" id="resource_display_status">
                                     <?php
@@ -189,167 +342,80 @@
                             </div>
 
                         </div>
-                        <div class="col-md-8" id="embed_html_code_section" style="text-align: center; padding-right: 0; padding-left: 0;">
+                        <div class="col-lg-8 col-md-6" id="embed_html_code_section" style="text-align: center; padding-right: 0; padding-left: 0;margin-bottom: 14px">
                             <?= isset($sessions) ? $sessions->embed_html_code_presenter : "" ?>
                         </div>
-                        <div class="col-md-2" style="padding-left: 0;">
-                            <div class="row">
-                                <fieldset style="margin: 0px 0px 0px 0px; padding: 0px;">
-                                    <div>
-                                        <h2 style='margin-bottom: 5px; color: #ffffff; font-weight: 700; font-size: 13px; padding: 5px 5px 5px 5px; background-color: #b2b7bb;'>Host Chat (Admin and Presenters only)</h2>
-                                    </div>
-                                    <div class="col-md-12" id="group_chat_section">
-                                        <input type="hidden" id="sessions_group_chat_id" value="">
-                                        <div class="wrap-messages" >
-                                            <div id="inbox" class="inbox">                
-                                                <!-- start: EMAIL LIST -->
-                                                <div class="col email-list" style="width: 100% !important">
-                                                    <div class="wrap-list" style="width: 100% !important">                            
-                                                        <ul class="messages-list perfect-scrollbar allmessage" style="top: 0px;">
+                        <div class="col-lg-2 col-md-3" style="padding-left: 0;padding-right: 6px;" id="rightOrder">
+                            <fieldset style="margin: 0px 0px 0px 0px; padding: 0px;min-height:180px">
+                                <div>
+                                    <h2 style='margin-bottom: 5px; color: #ffffff; font-weight: 700; font-size: 15px; padding: 5px 5px 5px 10px; background-color: #b2b7bb; text-transform: uppercase;'>Host Chat</h2>
+                                </div>
+                                <div class="col-md-12" id="group_chat_section">
+                                    <input type="hidden" id="sessions_group_chat_id" value="">
+                                    <div class="wrap-messages">
+                                        <div id="inbox" class="inbox">
+                                            <!-- start: EMAIL LIST -->
+                                            <div class="col email-list" style="width: 100% !important">
+                                                <div class="wrap-list" style="width: 100% !important">
+                                                    <ul class="messages-list perfect-scrollbar allmessage" style="top: 0px;max-height: 280px;">
 
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <!-- end: EMAIL LIST -->                    
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <hr style="border-top:1px solid #b2b7bb">
-                                            <div class="col-md-11 col-xs-9" style="padding-right: 0px; padding-left: 0px">
-                                                <div class="input-group">
-                                                    <span class="input-group-addon" style="padding: 5px 6px; background-color:gray; border-color: gray;"><img src="<?= base_url() ?>front_assets/images/emoji/happy.png"  id="emjis_section_show" title="Check to Show Emoji" data-emjis_section_show_status="0" style="width: 20px; height: 20px;" alt=""/></span>
-                                                    <input type="text" placeholder="Message..." id="message" name="message"  class="form-control">
-                                                    <!--<textarea  rows="2" class="form-control" style="color: #000;" placeholder="Message..."></textarea>-->
+                                                    </ul>
                                                 </div>
                                             </div>
-                                            <div class="col-md-1 col-xs-3" style="padding-left: 0px;">
-                                                <button class="btn btn-primary" id="send" style="height: 35px; padding-right: 5px; background-color:gray; border-color: gray; padding-left: 5px; "><i class="fa fa-send"></i></button>
+                                            <!-- end: EMAIL LIST -->
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top:-75px">
+                                        <hr style="border-top:1px solid #b2b7bb;">
+                                        <div class="col-md-11 col-xs-9" style="padding-right: 0px; padding-left: 0px">
+                                            <div class="input-group">
+                                                <span class="input-group-addon" style="padding: 5px 6px; background-color:gray; border-color: gray;"><img src="<?= base_url() ?>front_assets/images/emoji/happy.png" id="emjis_section_show" title="Check to Show Emoji" data-emjis_section_show_status="0" style="width: 20px; height: 20px;" alt=""/></span>
+                                                <input type="text" placeholder="Message..." id="message" name="message" class="form-control">
+                                                <!--<textarea  rows="2" class="form-control" style="color: #000;" placeholder="Message..."></textarea>-->
                                             </div>
                                         </div>
-                                        <div style="text-align: left; padding-left: 0px; margin-left: -20px; display: flex;" id="emojis_section" >
-                                            <img src="<?= base_url() ?>front_assets/images/emoji/happy.png" title="Happy" id="happy" data-title_name="&#128578;" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
-                                            <img src="<?= base_url() ?>front_assets/images/emoji/sad.png" title="Sad" id="sad" data-title_name="&#128543" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
-                                            <img src="<?= base_url() ?>front_assets/images/emoji/laughing.png" title="Laughing" id="laughing"  data-title_name="😁" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
-                                            <img src="<?= base_url() ?>front_assets/images/emoji/thumbs_up.png" title="Thumbs Up" id="thumbs_up" data-title_name="&#128077;" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
-                                            <img src="<?= base_url() ?>front_assets/images/emoji/thumbs_down.png" title="Thumbs Down" id="thumbs_down" data-title_name="&#128078" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
-                                            <img src="<?= base_url() ?>front_assets/images/emoji/clapping.png" title="Clapping" id="clapping" data-title_name="&#128079;" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
+                                        <div class="col-md-1 col-xs-3" style="padding-left: 0px;">
+                                            <button class="btn btn-primary" id="send" style="height: 35px; padding-right: 5px; background-color:gray; border-color: gray; padding-left: 5px; "><i class="fa fa-send"></i></button>
                                         </div>
                                     </div>
-                                </fieldset>
+                                    <div style="text-align: left; padding-left: 0px; margin-left: -20px; display: flex;" id="emojis_section">
+                                        <img src="<?= base_url() ?>front_assets/images/emoji/happy.png" title="Happy" id="happy" data-title_name="&#128578;" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
+                                        <img src="<?= base_url() ?>front_assets/images/emoji/sad.png" title="Sad" id="sad" data-title_name="&#128543" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
+                                        <img src="<?= base_url() ?>front_assets/images/emoji/laughing.png" title="Laughing" id="laughing" data-title_name="😁" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
+                                        <img src="<?= base_url() ?>front_assets/images/emoji/thumbs_up.png" title="Thumbs Up" id="thumbs_up" data-title_name="&#128077;" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
+                                        <img src="<?= base_url() ?>front_assets/images/emoji/thumbs_down.png" title="Thumbs Down" id="thumbs_down" data-title_name="&#128078" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
+                                        <img src="<?= base_url() ?>front_assets/images/emoji/clapping.png" title="Clapping" id="clapping" data-title_name="&#128079;" style="width: 40px; height: 40px; padding: 5px;" alt=""/>
+                                    </div>
+                                </div>
+                            </fieldset>
 
-                            </div>
-                            <div class="row" style="margin-top: 30px;">
-                                <ul id="myTab1" class="nav nav-tabs" style="background-color: #D3D3D3;">
-                                    <li style="width: 50%" class="active">
-                                        <a href="#attendee_questions" data-toggle="tab" style="padding: 9px 4px; font-size: 12px; color: #fff;">
-                                            Attendee Questions
-                                        </a>
-                                    </li>
-                                    <li style="width: 50%">
-                                        <a href="#favorites" data-toggle="tab" style="padding: 9px 4px; font-size: 12px; color: #fff;">
-                                            Favorites <i class="fa fa-star-o"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content">
-                                    <div class="tab-pane fade in active" id="attendee_questions">
-                                        <input type="hidden" name="sessions_id" id="sessions_id" value="<?= $sessions->sessions_id ?>">
-                                        <input type="hidden" name="last_sessions_cust_question_id" id="last_sessions_cust_question_id" value="0">
-                                        <div id="question_list" style="overflow-y: auto; height: 200px;"></div>
-                                    </div>
-                                    <div class="tab-pane fade" id="favorites">
-                                        <input type="hidden" name="sessions_id" id="sessions_id" value="<?= $sessions->sessions_id ?>">
-                                        <input type="hidden" name="favorite_last_sessions_cust_question_id" id="favorite_last_sessions_cust_question_id" value="0">
-                                        <div id="favorite_question_list" style="overflow-y: auto; height: 200px;"></div>
-                                    </div>
-                                </div>
-                            </div> 
-                        </div>
-                        <div class="col-md-12" style="padding-top: 20px">
-                            <div class="row">
-                                <div class="col-md-12" style="margin-bottom: 15px;">
-                                    <div class="row">
-                                        <div class="col-md-12" style="text-align: center;">
-                                            <p class="col-md-2" id="id_day_time_clock" style="border: 3px solid #000; background-color: #d9d900; color: #000; font-weight: 900; padding: 7px 7px 7px 7px; font-size: 30px; border-radius:20px;"></p>  
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="col-md-2" style="text-align: center;">
-                                                <a id="btn_timer_start" class="btn btn-grey btn-sm">START</a>
-                                                <a id="btn_timer_stop" class="btn btn-grey btn-sm">STOP</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <a href="<?= base_url() ?>presenter/sessions/view_question_answer/<?= $sessions->sessions_id ?>" class="btn btn-grey btn-sm">View Q&A</a>
-                                            <a href="<?= base_url() ?>presenter/sessions/create_poll/<?= $sessions->sessions_id ?>" class="btn btn-grey btn-sm">Create Poll</a>
-                                            <a class="btn btn-grey btn-sm" id="btn_view_poll" >View Poll</a>
-                                            <p></p>
-                                        </div>
-                                        <div class="col-md-12 table-responsive" id="view_poll_table" style="display: none;">
-                                            <table class="table table-bordered table-striped text-center" id="user">
-                                                <thead class="th_center">
-                                                    <tr>
-                                                        <th>Question</th>
-                                                        <th>Option</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    if (isset($poll_data) && !empty($poll_data)) {
-                                                        foreach ($poll_data as $val) {
-                                                            ?>
-                                                            <tr>
-                                                                <td><?= $val->question ?></td>
-                                                                <td>
-                                                                    <?php
-                                                                    if (isset($val->option) && !empty($val->option)) {
-                                                                        foreach ($val->option as $value) {
-                                                                            ?>
-                                                                            <?= $value->option ?>,
-                                                                            <?php
-                                                                        }
-                                                                    }
-                                                                    ?>
-                                                                </td>
-                                                                <td> 
-                                                                    <?php if ($val->status == 0) { ?>
-                                                                        <a data-sessions_poll_question_id="<?= $val->sessions_poll_question_id ?>" class="btn btn-success btn-sm open_poll">Open Poll</a>
-                                                                    <?php } else if ($val->status == 1) { ?>
-                                                                        <a data-sessions_poll_question_id="<?= $val->sessions_poll_question_id ?>" class="btn btn-warning btn-sm close_poll">Close Poll</a>
-                                                                        <a data-sessions_poll_question_id="<?= $val->sessions_poll_question_id ?>" class="btn btn-primary btn-sm show_results">Show Results</a>
-                                                                        <a data-sessions_poll_question_id="<?= $val->sessions_poll_question_id ?>"  class="btn btn-blue btn-sm start_timer">Start Timer</a>
-                                                                    <?php } else if ($val->status == 2) { ?>
-                                                                        <a data-sessions_poll_question_id="<?= $val->sessions_poll_question_id ?>" class="btn btn-warning btn-sm close_results">Close Results</a>
-                                                                    <?php } else if ($val->status == 4) { ?>    
-                                                                        <a data-sessions_poll_question_id="<?= $val->sessions_poll_question_id ?>" class="btn btn-primary btn-sm show_results">Show Results</a>
-                                                                    <?php } else { ?>
-                                                                        <label class="label label-danger">Close Result</label>
-                                                                    <?php } ?>
-                                                                </td>
-                                                            </tr>
-                                                            <?php
-                                                        }
-                                                    }
-                                                    ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
+                            <ul id="myTab1" class="nav nav-tabs" style="background-color: #b2b7bb;margin-top: 10px">
+                                <li class="active">
+                                    <a href="#attendee_questions" data-toggle="tab" style="padding: 9px 4px; text-transform: uppercase; font-size: 12px; color: #fff;">
+                                        Attendee Questions
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#favorites" data-toggle="tab" style="padding: 9px 4px; text-transform: uppercase; font-size: 12px; color: #fff;">
+                                        Favorites <i class="fa fa-star-o"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" style="max-height: 347px; overflow-y: auto;">
+                                <div class="tab-pane fade in active" id="attendee_questions">
+                                    <input type="hidden" name="sessions_id" id="sessions_id" value="<?= $sessions->sessions_id ?>">
+                                    <input type="hidden" name="last_sessions_cust_question_id" id="last_sessions_cust_question_id" value="0">
+                                    <div id="question_list"></div>
 
                                 </div>
-                                <div class="col-md-4" style="float: right;">
-
+                                <div class="tab-pane fade" id="favorites">
+                                    <input type="hidden" name="sessions_id" id="sessions_id" value="<?= $sessions->sessions_id ?>">
+                                    <input type="hidden" name="favorite_last_sessions_cust_question_id" id="favorite_last_sessions_cust_question_id" value="0">
+                                    <div id="favorite_question_list"></div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -360,6 +426,7 @@
     </div>
 </div>
 </div>
+
 
 <script>
     socket.emit("getSessionViewUsers", "<?=getAppName($sessions->sessions_id) ?>", function (resp) {
@@ -372,16 +439,28 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function () {
+        var $iframe = $("#embed_html_code_section iframe");
+
+        $iframe.css("height", "100%")
+
+
+        if ($iframe.attr("width") == "1280") {
+            $iframe.css("width", "100%")
+            if (window.innerWidth <= 991) {
+                $("#rightOrder").css("margin-top", "185px");
+            }
+        }
+
         $(document).on("click", "#btn_view_poll", function () {
             $("#view_poll_table").show();
         });
 
         $(".visible-md").click();
         get_question_list();
-        setInterval(get_question_list, 8000);
+        setInterval(get_question_list, 4000);
 
         get_favorite_question_list();
-        setInterval(get_favorite_question_list, 9000);
+        setInterval(get_favorite_question_list, 5000);
 
         get_poll_vot_section();
         setInterval(get_poll_vot_section, 1000);
@@ -391,7 +470,8 @@
             var questions = $("#message").val();
             if (questions != "") {
                 $("#message").val(questions + ' ' + value);
-            } else {
+            }
+            else {
                 $("#message").val(value);
             }
         });
@@ -401,7 +481,8 @@
             var questions = $("#message").val();
             if (questions != "") {
                 $("#message").val(questions + ' ' + value);
-            } else {
+            }
+            else {
                 $("#message").val(value);
             }
         });
@@ -411,7 +492,8 @@
             var send_message = $("#message").val();
             if (send_message != "") {
                 $("#message").val(send_message + ' ' + value);
-            } else {
+            }
+            else {
                 $("#message").val(value);
             }
         });
@@ -421,7 +503,8 @@
             var send_message = $("#message").val();
             if (send_message != "") {
                 $("#message").val(send_message + ' ' + value);
-            } else {
+            }
+            else {
                 $("#message").val(value);
             }
         });
@@ -431,7 +514,8 @@
             var send_message = $("#message").val();
             if (send_message != "") {
                 $("#message").val(send_message + ' ' + value);
-            } else {
+            }
+            else {
                 $("#message").val(value);
             }
         });
@@ -441,7 +525,8 @@
             var send_message = $("#message").val();
             if (send_message != "") {
                 $("#message").val(send_message + ' ' + value);
-            } else {
+            }
+            else {
                 $("#message").val(value);
             }
         });
@@ -454,7 +539,8 @@
                 $("#resource_show").removeClass('fa-caret-right');
                 $("#resource_show").addClass('fa-caret-down');
                 $("#resource_show").attr('data-resource_show_status', 1);
-            } else {
+            }
+            else {
                 $("#resource_display_status").hide();
                 $("#resource_show").addClass('fa-caret-right');
                 $("#resource_show").removeClass('fa-caret-down');
@@ -468,7 +554,8 @@
             if (emjis_section_show_status == 0) {
                 $("#emojis_section").show();
                 $("#emjis_section_show").attr('data-emjis_section_show_status', 1);
-            } else {
+            }
+            else {
                 $("#emojis_section").hide();
                 $("#emjis_section_show").attr('data-emjis_section_show_status', 0);
             }
@@ -525,7 +612,8 @@
                         }
                     }
                 });
-            } else {
+            }
+            else {
                 alertify.error('Please enter answer');
             }
         });
@@ -542,12 +630,14 @@
                         if (data.status == "success") {
                             sessionStorage.reloadAfterPageLoad = "1";
                             window.location.reload();
-                        } else {
+                        }
+                        else {
                             alertify.error('Already opened other poll..!');
                         }
                     }
                 });
-            } else {
+            }
+            else {
                 alertify.error('Something went wrong, Please try again');
             }
         });
@@ -564,12 +654,14 @@
                         if (data.status == "success") {
                             sessionStorage.reloadAfterPageLoad = "1";
                             window.location.reload();
-                        } else {
+                        }
+                        else {
                             alertify.error('Already opened other poll..!');
                         }
                     }
                 });
-            } else {
+            }
+            else {
                 alertify.error('Something went wrong, Please try again');
             }
         });
@@ -586,12 +678,14 @@
                         if (data.status == "success") {
                             sessionStorage.reloadAfterPageLoad = "1";
                             window.location.reload();
-                        } else {
+                        }
+                        else {
                             alertify.error('Already opened other poll..!');
                         }
                     }
                 });
-            } else {
+            }
+            else {
                 alertify.error('Something went wrong, Please try again');
             }
         });
@@ -608,12 +702,14 @@
                         if (data.status == "success") {
                             sessionStorage.reloadAfterPageLoad = "1";
                             window.location.reload();
-                        } else {
+                        }
+                        else {
                             alertify.error('Already opened other poll..!');
                         }
                     }
                 });
-            } else {
+            }
+            else {
                 alertify.error('Something went wrong, Please try again');
             }
         });
@@ -630,12 +726,14 @@
                         if (data.status == "success") {
                             sessionStorage.reloadAfterPageLoad = "1";
                             window.location.reload();
-                        } else {
+                        }
+                        else {
                             alertify.error('Something went wrong, Please try again');
                         }
                     }
                 });
-            } else {
+            }
+            else {
                 alertify.error('Something went wrong, Please try again');
             }
         });
@@ -646,8 +744,7 @@
 
     });
 
-    function get_question_list()
-    {
+    function get_question_list() {
         var sessions_id = $("#sessions_id").val();
         var last_sessions_cust_question_id = $("#last_sessions_cust_question_id").val();
         var list_last_id = 0;
@@ -676,7 +773,8 @@
 
                         if (val.favorite_status == 0) {
                             var add_star_class = 'fa fa-star-o cust_class_star';
-                        } else {
+                        }
+                        else {
                             var add_star_class = 'fa fa-star cust_class_star_remove';
                         }
                         $("#last_sessions_cust_question_id").val(val.sessions_cust_question_id);
@@ -703,7 +801,6 @@
     });
 
 
-
     $(document).on('click', '.favorite_hide_question', function () {
         var qid = $(this).attr('data-q-id');
         var data_listkey_id = $(this).attr('data-listkey-id');
@@ -720,8 +817,7 @@
         });
     });
 
-    function get_favorite_question_list()
-    {
+    function get_favorite_question_list() {
         var sessions_id = $("#sessions_id").val();
         var favorite_last_sessions_cust_question_id = $("#favorite_last_sessions_cust_question_id").val();
         var list_last_id = 0;
@@ -747,8 +843,7 @@
         });
     }
 
-    function get_poll_vot_section()
-    {
+    function get_poll_vot_section() {
         var poll_vot_section_id_status = $("#poll_vot_section_id_status").val();
         var poll_vot_section_last_status = $("#poll_vot_section_last_status").val();
         var sessions_id = $("#sessions_id").val();
@@ -770,11 +865,13 @@
                         if (poll_vot_section_id_status != data.result.sessions_poll_question_id) {
                             $("#timer_sectiom").show();
                             timer(0);
-                        } else {
+                        }
+                        else {
                             $("#timer_sectiom").show();
                             timer(1);
                         }
-                    } else {
+                    }
+                    else {
                         $("#timer_sectiom").hide();
                     }
 
@@ -783,7 +880,7 @@
                         $("#poll_vot_section_last_status").val(data.result.status);
                         if (data.result.poll_status == 1) {
                             $("#poll_vot_section").html("<form id='frm_reg' name='frm_reg' method='post' action=''>\n\
-            \n\<h2 style='margin-bottom: 0px; color: gray; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #efe4b0; text-transform: uppercase;'>Live Poll</h2>\n\
+            \n\<h2 style='border:1px solid #b79700;margin-bottom: 0px; color: gray; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #efe4b0; text-transform: uppercase;'>Live Poll</h2>\n\
 <div class='col-md-12'>\n\
 \n\<h5 style='letter-spacing: 0px; padding-top: 10px; font-size: 13px; border-bottom: 1px solid #b1b1b1; padding-bottom: 10px;'>" + data.result.question + "</h5></div>\n\
 \n\<input type='hidden' id='sessions_poll_question_id' value='" + data.result.sessions_poll_question_id + "'>\n\
@@ -797,11 +894,13 @@
                                     key++;
                                     if (data.result.select_option_id == val.poll_question_option_id) {
                                         $("#option_section").append("<div class='option_section_css_selected'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option' checked> <label for='option_" + key + "'>" + val.option + "</label></div>");
-                                    } else {
+                                    }
+                                    else {
                                         $("#option_section").append("<div class='option_section_css'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label for='option_" + key + "'>" + val.option + "</label></div>");
                                     }
                                 });
-                            } else {
+                            }
+                            else {
                                 $.each(data.result.option, function (key, val) {
                                     key++;
                                     $("#option_section").append("<div class='option_section_css'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label for='option_" + key + "'>" + val.option + "</label></div>");
@@ -811,8 +910,9 @@
                                 $(':radio:not(:checked)').attr('disabled', true);
                                 $('#fa_fa_check').show();
                             }
-                        } else {
-                            $("#poll_vot_section").html("<div class='row'><div class='col-md-12'><h2 style='margin-bottom: 0px; color: gray; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #efe4b0; text-transform: uppercase;'>Live Poll Results</h2></div><div class='col-md-12'><div class='col-md-12'><h5 style='letter-spacing: 0px; padding-top: 10px; font-size: 13px; border-bottom: 1px solid #b1b1b1; padding-bottom: 10px;'>" + data.result.question + "</h5>\n\
+                        }
+                        else {
+                            $("#poll_vot_section").html("<div class='row'><div class='col-md-12'><h2 style='border: 1px solid #b79700;margin-bottom: 0px; color: gray; font-weight: 700;font-size: 15px; padding: 5px 5px 5px 10px; background-color: #efe4b0; text-transform: uppercase;'>Live Poll Results</h2></div><div class='col-md-12'><div class='col-md-12'><h5 style='letter-spacing: 0px; padding-top: 10px; font-size: 13px; border-bottom: 1px solid #b1b1b1; padding-bottom: 10px;'>" + data.result.question + "</h5>\n\
                                                         \n\<div id='result_section' style='padding-bottom: 10px;'></div></div></div></div>\n\
 ");
                             var total_vote = 0;
@@ -828,32 +928,38 @@
                                 key++;
                                 if (total_vote == 0) {
                                     var result_calculate = 0;
-                                } else {
+                                }
+                                else {
                                     var result_calculate = (val.total_vot * 100) / total_vote;
                                 }
                                 if (data.result.max_value == val.total_vot) {
                                     $("#result_section").append("<label>" + val.option + "</label><div class='progress'><div class='progress_bar_new' role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='width:" + result_calculate.toFixed(0) + "%'>" + result_calculate.toFixed(0) + "%</div></div>");
-                                } else {
+                                }
+                                else {
                                     $("#result_section").append("<label>" + val.option + "</label><div class='progress'><div class='progress-bar' role='progressbar' aria-valuenow='" + result_calculate.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='width:" + result_calculate.toFixed(0) + "%'>" + result_calculate.toFixed(0) + "%</div></div>");
                                 }
 
                                 if (typeof (val.compere_option) != "undefined" && val.compere_option !== null) {
                                     if (total_vote_compere_option == 0) {
                                         var result_calculate_compere = 0;
-                                    } else {
+                                    }
+                                    else {
                                         var result_calculate_compere = (val.compere_option * 100) / total_vote_compere_option;
                                     }
                                     if (data.result.compere_max_value == val.compere_option) {
                                         $("#result_section").append("<div class='progress_1'><div class='progress_bar_new_1' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='width:" + result_calculate_compere.toFixed(0) + "%'>" + result_calculate_compere.toFixed(0) + "%</div></div>");
-                                    } else {
+                                    }
+                                    else {
                                         $("#result_section").append("<div class='progress_1'><div class='progress-bar_1' role='progressbar' aria-valuenow='" + result_calculate_compere.toFixed(0) + "' aria-valuemin='0' aria-valuemax='100' style='width:" + result_calculate_compere.toFixed(0) + "%'>" + result_calculate_compere.toFixed(0) + "%</div></div>");
                                     }
                                 }
                             });
                         }
                     }
-                } else {
+                }
+                else {
                     $("#timer_sectiom").hide();
+                    $('#poll_vot_section_is_ended').val(1);
                     $.ajax({
                         url: "<?= base_url() ?>presenter/sessions/get_poll_vot_section_close_poll",
                         type: "post",
@@ -876,14 +982,16 @@
                                     key++;
                                     if (data.result.select_option_id == val.poll_question_option_id) {
                                         $("#option_section").append("<div class='option_section_css_selected'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option' checked> <label for='option_" + key + "'>" + val.option + "</label></div>");
-                                    } else {
+                                    }
+                                    else {
                                         $("#option_section").append("<div class='option_section_css'><input name='option' type='radio' value='" + val.poll_question_option_id + "' id='option_" + key + "' class='class_option'> <label for='option_" + key + "'>" + val.option + "</label></div>");
                                     }
                                 });
 
                                 $(':radio:not(:checked)').attr('disabled', true);
                                 $('#fa_fa_check').show();
-                            } else {
+                            }
+                            else {
                                 $("#poll_vot_section").html("");
                             }
                         }
@@ -896,13 +1004,13 @@
 <script type="text/javascript">
     $(document).ready(function () {
         getMessage();
-        setInterval(getMessage, 2000);
+        setInterval(getMessage, 1000);
         setTimeout(function () {
             $(".wrap-messages").css('max-height', '340px');
         }, 300);
 
         get_group_chat_section_status();
-        setInterval(get_group_chat_section_status, 20000);
+        setInterval(get_group_chat_section_status, 10000);
 
         function getMessage() {
             $.ajax({
@@ -917,38 +1025,21 @@
 
         function get_group_chat_section_status() {
             var sessions_id = $("#sessions_id").val();
-            var viewer_status = $("#viewer_status").val();
-            if (viewer_status == 1) {
-                $.ajax({
-                    url: "<?= base_url() ?>presenter/groupchat/get_group_chat_section_status",
-                    type: "POST",
-                    data: {'sessions_id': sessions_id},
-                    dataType: "json",
-                    success: function (resultdata, textStatus, jqXHR) {
-                        if (resultdata.status == 'success') {
-                            $("#group_chat_section").show();
-                            $("#sessions_group_chat_id").val(resultdata.result.sessions_group_chat_id);
-                        } else {
-                            $("#group_chat_section").hide();
-                        }
+            $.ajax({
+                url: "<?= base_url() ?>presenter/groupchat/get_group_chat_section_status",
+                type: "POST",
+                data: {'sessions_id': sessions_id},
+                dataType: "json",
+                success: function (resultdata, textStatus, jqXHR) {
+                    if (resultdata.status == 'success') {
+                        $("#group_chat_section").show();
+                        $("#sessions_group_chat_id").val(resultdata.result.sessions_group_chat_id);
                     }
-                });
-            } else {
-                $.ajax({
-                    url: "<?= base_url() ?>presenter/groupchat/get_group_chat_section_status_moderator",
-                    type: "POST",
-                    data: {'sessions_id': sessions_id},
-                    dataType: "json",
-                    success: function (resultdata, textStatus, jqXHR) {
-                        if (resultdata.status == 'success') {
-                            $("#group_chat_section").show();
-                            $("#sessions_group_chat_id").val(resultdata.result.sessions_group_chat_id);
-                        } else {
-                            $("#group_chat_section").hide();
-                        }
+                    else {
+                        $("#group_chat_section").hide();
                     }
-                });
-            }
+                }
+            });
         }
 
         $('#send').click(function () {
@@ -963,7 +1054,8 @@
                         alertify.success('Message Send');
                     }
                 });
-            } else {
+            }
+            else {
                 alertify.error('Write Message');
             }
         });
@@ -983,15 +1075,52 @@
                             alertify.success('Message Send');
                         }
                     });
-                } else {
+                }
+                else {
                     alertify.error('Write Message');
                 }
             }
         });
 
-
     });
 
+    function play_music() {
+        var audio = document.getElementById("audio");
+        audio.play();
+    }
+
+    function stop_music() {
+        var audio = document.getElementById("audio");
+        audio.pause();
+    }
+
+    var upgradeTime = 15;
+    var seconds = upgradeTime;
+
+    function timer(status) {
+        var is_poll_ended = $('#poll_vot_section_is_ended').val();
+        if (status == 0 || is_poll_ended == 1) {
+            seconds = 15;
+        }
+        var remainingSeconds = seconds % 60;
+
+        function pad(n) {
+            return (n < 10 ? "0" + n : n);
+        }
+
+        document.getElementById('id_day_time').innerHTML = pad(remainingSeconds);
+        if (seconds <= 0) {
+            stop_music();
+            $("#btn_vote").hide();
+            $("#id_day_time").css("color", "red");
+        }
+        else {
+            $('#poll_vot_section_is_ended').val(0);
+            $("#id_day_time").css("color", "green");
+            seconds--;
+            play_music();
+        }
+    }
 
     $(function () {
         if (sessionStorage.reloadAfterPageLoad == "1") {
@@ -1002,10 +1131,89 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function () {
+
+        var session_start_datetime = "<?= date('M d, yy', strtotime($sessions->sessions_date)) . ' ' . $sessions->time_slot . ' UTC-4' ?>";
+        var session_end_datetime = "<?= date('M d, yy', strtotime($sessions->sessions_date)) . ' ' . $sessions->end_time . ' UTC-4' ?>";
+
+        function timeleft() {
+            // Set the date we're counting down to
+            var countDownDate = new Date(session_end_datetime).getTime();
+
+            // Update the count down every 1 second
+            var x = setInterval(function () {
+
+                // Get today's date and time
+                var now = new Date().getTime();
+
+                // Find the distance between now and the count down date
+                var distance = countDownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Display the result in the element with id="demo"
+                //$('#quiz-time-left').html('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
+                //console.log('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
+                $('#id_day_time_clock').text('Time Left: ' + hours + "h " + minutes + "m " + seconds + "s ");
+
+                // If the count down is finished,
+                if (distance < 0) {
+                    clearInterval(x);
+                    $('#id_day_time_clock').text('Time Left: ' + 0 + "h " + 0 + "m " + 0 + "s ");
+                    $('#id_day_time_clock').css('color', '#d30e0e')
+                }
+            }, 1000);
+        }
+
+        function timeToStart() {
+            // Set the date we're counting down to
+            var countDownDate = new Date(session_start_datetime).getTime();
+
+            // Update the count down every 1 second
+            var x = setInterval(function () {
+
+                // Get today's date and time
+                var now = new Date().getTime();
+
+                // Find the distance between now and the count down date
+                var distance = countDownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Display the result in the element with id="demo"
+                //$('#quiz-time-left').html('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
+                //console.log('Time Left: '+hours + "h " + minutes + "m " + seconds + "s ");
+                $('#id_day_time_clock').text('Session starts in: ' + days + "d " + hours + "h " + minutes + "m " + seconds + "s ");
+
+                // If the count down is finished,
+                if (distance < 0) {
+                    clearInterval(x);
+                    timeleft();
+                }
+            }, 1000);
+        }
+
+        var now = new Date().getTime();
+        var sessionStartDateTime = new Date(session_start_datetime).getTime();
+        if (now < sessionStartDateTime) {
+            timeToStart();
+        }
+        else {
+            timeleft();
+        }
+
         document.getElementById('id_day_time_clock').innerHTML = 00 + " : " + 00;
         $(document).on("click", "#btn_timer_start", function () {
             $('#btn_timer_start').prop('disabled', true);
-            setInterval('timer()', 1000);
+            //setInterval('timer()', 1000);
+            timeleft();
         });
         $(document).on("click", "#btn_timer_stop", function () {
             document.getElementById('id_day_time_clock').innerHTML = 00 + " : " + 00;
@@ -1014,25 +1222,25 @@
     });
 
     // console.log($("#time_second").val())
-    var upgradeTime = $("#time_second").val();
-    var seconds = upgradeTime;
-    function timer() {
-        var days = Math.floor(seconds / 24 / 60 / 60);
-        var hoursLeft = Math.floor((seconds) - (days * 86400));
-        var hours = Math.floor(hoursLeft / 3600);
-        var minutesLeft = Math.floor((hoursLeft) - (hours * 3600));
-        var minutes = Math.floor(minutesLeft / 60);
-        var remainingSeconds = seconds % 60;
-        function pad(n) {
-            return (n < 10 ? "0" + n : n);
-        }
-        console.log(pad(minutes));
-        console.log(pad(remainingSeconds));
-        document.getElementById('id_day_time_clock').innerHTML = pad(minutes) + " : " + pad(remainingSeconds);
-        if (seconds <= 0) {
-
-        } else {
-            seconds--;
-        }
-    }
+    // var upgradeTime = $("#time_second").val();
+    // var seconds = upgradeTime;
+    // function timer() {
+    //     var days = Math.floor(seconds / 24 / 60 / 60);
+    //     var hoursLeft = Math.floor((seconds) - (days * 86400));
+    //     var hours = Math.floor(hoursLeft / 3600);
+    //     var minutesLeft = Math.floor((hoursLeft) - (hours * 3600));
+    //     var minutes = Math.floor(minutesLeft / 60);
+    //     var remainingSeconds = seconds % 60;
+    //     function pad(n) {
+    //         return (n < 10 ? "0" + n : n);
+    //     }
+    //     //console.log(pad(minutes));
+    //     //console.log(pad(remainingSeconds));
+    //     document.getElementById('id_day_time_clock').innerHTML = pad(minutes) + " : " + pad(remainingSeconds);
+    //     if (seconds <= 0) {
+    //
+    //     } else {
+    //         seconds--;
+    //     }
+    // }
 </script>
