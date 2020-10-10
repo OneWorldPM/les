@@ -57,8 +57,8 @@
                             $datetime = new DateTime($datetime);
                             $datetime1 = new DateTime();
                             $diff = $datetime->getTimestamp() - $datetime1->getTimestamp();
-                            if ($diff >= 300) {
-                                $diff = $diff - 300;
+                            if ($diff >= 60) {
+                                $diff = $diff - 60;
                             } else {
                                 $diff = 0;
                             }
@@ -155,7 +155,7 @@
                                     <div class="col-md-4" style="text-align: center; text-align: center; padding: 10px; background-color: #fff; border: 1px solid;">
                                         <p><i class="fa fa-info-circle" aria-hidden="true" style="font-size: 20px;"></i></p>
                                         <?php if ($sessions->sessions_type_status == "Private") { ?>
-                                            <p>You will automatically enter the session 5 minutes before it is due to begin.</p>
+                                            <p>You will automatically enter the session 1 minute before it is due to begin.</p>
                                             <p>Entry will be enabled in <span id="id_day_time" ></span></p>
                                         <?php } else { ?>
                                             <p>You will automatically enter the session 15 minutes before it is due to begin.</p>
