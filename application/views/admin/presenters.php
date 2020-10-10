@@ -210,9 +210,17 @@
                                                 ?>
                                                 <tr>
                                                     <td>
-                                                        <?php if ($val->presenter_photo != "") { ?>
-                                                            <img src="<?= base_url() ?>uploads/presenter_photo/<?= $val->presenter_photo ?>" style="height: 40px; width: 40px;">
-                                                        <?php } ?>
+                                                        <?php
+                                                        if ($val->presenter_photo != "") {
+                                                            if (file_exists(base_url() . "uploads/presenter_photo/" . $val->presenter_photo)) {
+                                                                ?>
+                                                                <img src="<?= base_url() ?>uploads/presenter_photo/<?= $val->presenter_photo ?>" style="height: 40px; width: 40px;">
+                                                            <?php } else { ?><img src="<?= base_url() ?>uploads/presenter_photo/presenter_avtar.png" style="height: 40px; width: 40px;"> <?php
+                                                            }
+                                                        } else {
+                                                            ?>
+                                                            <img src="<?= base_url() ?>uploads/presenter_photo/presenter_avtar.png" style="height: 40px; width: 40px;">
+                                                        <?php } ?>    
                                                     </td>
                                                     <td><?= $val->first_name . ' ' . $val->last_name ?></td>
                                                     <td><?= $val->title ?></td>
@@ -366,12 +374,3 @@ switch ($msg) {
         return expr.test(sEmail);
     }
 </script>
-
-
-
-
-
-
-
-
-
