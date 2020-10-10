@@ -189,7 +189,7 @@
 </div>
 <div class="chat-popup" id="supportChat">
     <form action="#" class="form-container">
-        <h3>Support Chat</h3>
+        <h3>Information Chat</h3>
 
         <label for="msg"><b>Admin</b></label>
         <div class="support-chat-body">

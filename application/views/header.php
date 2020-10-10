@@ -197,6 +197,11 @@
                                                         </a>
                                                     </li>
                                                     <li>
+                                                        <a href="<?= base_url() ?>home/notes">
+                                                            My Itinerary
+                                                        </a>
+                                                    </li>
+                                                    <li>
                                                         <a href="<?= base_url() ?>login/logout">
                                                             Log Out
                                                         </a>
