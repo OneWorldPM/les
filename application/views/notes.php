@@ -78,7 +78,7 @@
                                                     <td>
                                                         <div class="post-item">
                                                             <div class="post-image col-md-4 m-t-20"> 
-                                                                <h6 style="font-weight: 600; font-size: 13px;"><?= $val->sessions_date . ' ' . date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></h6>
+                                                                <h6 style="font-weight: bold;font-size: 14px;text-align: left;"><?= $val->sessions_date . ' ' . date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></h6>
                                                             </div>
                                                             <div class="post-content-details col-md-8 m-t-10" style="text-align: left;">
 
@@ -121,22 +121,25 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
-                    <!-- CONTENT -->
-                    <section class="content" style="padding: 0px 0;">
-                        <div class="container" style=" background: rgba(250, 250, 250, 0.8); "> 
-                            <!-- Blog post-->
-                            <div class="post-content post-single"> 
-                                <!-- Blog image post-->
-                                <div class="col-md-12 table-responsive" style="margin-top: 30px;">
-                                    <table class="table table-bordered table-striped text-center ">
-                                        <thead class="th_center">
+                <?php
+                if($briefcase_list){
+                    ?>
+                    <div class="col-md-12">
+                        <!-- CONTENT -->
+                        <section class="content" style="padding: 0px 0;">
+                            <div class="container" style=" background: rgba(250, 250, 250, 0.8); ">
+                                <!-- Blog post-->
+                                <div class="post-content post-single">
+                                    <!-- Blog image post-->
+                                    <div class="col-md-12 table-responsive" style="margin-top: 30px;">
+                                        <table class="table table-bordered table-striped text-center ">
+                                            <thead class="th_center">
                                             <tr>
                                                 <th colspan="2"><b>Notes</b></th>
                                                 <th>Action</th>
                                             </tr>
-                                        </thead>
-                                        <tbody>
+                                            </thead>
+                                            <tbody>
                                             <?php
                                             if (isset($briefcase_list) && !empty($briefcase_list)) {
                                                 foreach ($briefcase_list as $val) {
@@ -150,33 +153,40 @@
                                                 }
                                             }
                                             ?>
-                                        </tbody>
-                                    </table>
+                                            </tbody>
+                                        </table>
 
+                                    </div>
+                                    <!-- END: Blog post-->
                                 </div>
-                                <!-- END: Blog post--> 
-                            </div>
-                    </section>
-                    <!-- END: SECTION --> 
-                </div>
+                        </section>
+                        <!-- END: SECTION -->
+                    </div>
+                <?php
+                }
+                ?>
+
             </div>
             <div class="row">
-                <div class="col-md-12">
-                    <!-- CONTENT -->
-                    <section class="content" style="padding: 0px 0;">
-                        <div class="container" style=" background: rgba(250, 250, 250, 0.8); "> 
-                            <!-- Blog post-->
-                            <div class="post-content post-single"> 
-                                <!-- Blog image post-->
-                                <div class="col-md-12 table-responsive" style="margin-top: 30px;">
-                                    <table class="table table-bordered table-striped text-center ">
-                                        <thead class="th_center">
+                <?php
+                if($briefcase_list){
+                    ?>
+                    <div class="col-md-12">
+                        <!-- CONTENT -->
+                        <section class="content" style="padding: 0px 0;">
+                            <div class="container" style=" background: rgba(250, 250, 250, 0.8); ">
+                                <!-- Blog post-->
+                                <div class="post-content post-single">
+                                    <!-- Blog image post-->
+                                    <div class="col-md-12 table-responsive" style="margin-top: 30px;">
+                                        <table class="table table-bordered table-striped text-center ">
+                                            <thead class="th_center">
                                             <tr>
                                                 <th colspan="2"><b>Resource</b></th>
                                                 <th>Action</th>
                                             </tr>
-                                        </thead>
-                                        <tbody>
+                                            </thead>
+                                            <tbody>
                                             <?php
                                             if (isset($briefcase_list) && !empty($briefcase_list)) {
                                                 foreach ($briefcase_list as $val) {
@@ -202,15 +212,19 @@
                                                 }
                                             }
                                             ?>
-                                        </tbody>
-                                    </table>
+                                            </tbody>
+                                        </table>
 
+                                    </div>
+                                    <!-- END: Blog post-->
                                 </div>
-                                <!-- END: Blog post--> 
-                            </div>
-                    </section>
-                    <!-- END: SECTION --> 
-                </div>
+                        </section>
+                        <!-- END: SECTION -->
+                    </div>
+                <?php
+                }
+                ?>
+
             </div>
 
         </div>
