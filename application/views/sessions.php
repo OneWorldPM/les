@@ -76,11 +76,10 @@
     .videoWindow{
         background-color: white;
         width: 640px;
-        height: 360px;
-        margin-left: 1px;
-        margin-right: 1px;
-        margin-bottom: 1px;
-        padding: 5px;
+        height: 320px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 50px;
         box-shadow: inset 0 0 2px 2px #d6d6d6;
     }
     @media screen and (max-width: 1600px) {
@@ -142,7 +141,7 @@
         <section class="content">
             <div>
                 <div class="videoWindow">
-                    <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/467360653" allowfullscreen></iframe>
+                    <iframe class="embed-responsive-item" src="<?= $iframe->value ?>" allowfullscreen></iframe>
                 </div>
 
                 <!-- Blog post-->
