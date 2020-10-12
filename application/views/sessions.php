@@ -142,7 +142,7 @@
         <section class="content">
             <div>
                 <div class="videoWindow">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
+                    <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/467360653" allowfullscreen></iframe>
                 </div>
 
                 <!-- Blog post-->
