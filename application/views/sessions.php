@@ -474,7 +474,11 @@
             } else {
                 $('#presenter_profile').attr('src', "<?= base_url() ?>uploads/presenter_photo/presenter_avtar.png");
             }
-            $('#presenter_title').text(presenter_name + ", " + designation);
+            if (designation != "" && designation != null) {
+                $('#presenter_title').text(presenter_name + ", " + designation);
+            } else {
+                $('#presenter_title').text(presenter_name);
+            }
 
             $('#email').text(email);
             if (company_name != "" && company_name != null) {
