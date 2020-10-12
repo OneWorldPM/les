@@ -75,8 +75,8 @@
     }
     .videoWindow{
         background-color: white;
-        width: 480px;
-        height: 245px;
+        width: 640px;
+        height: 360px;
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 50px;
