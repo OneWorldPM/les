@@ -17,6 +17,8 @@ class Sessions extends CI_Controller {
            redirect('login');   
         }
         $this->load->model('user/m_sessions', 'objsessions');
+        $this->load->model('madmin/m_settings', 'm_settings');
+
     }
 
     public function index() {
@@ -26,7 +28,10 @@ class Sessions extends CI_Controller {
         }
 
         $data['sessions_tracks'] = $this->objsessions->get_sessions_tracks();
-      
+
+        $iframe=$this->m_settings->getSessionIframe();
+        $data['iframe']=$iframe;
+
         $this->load->view('header');
         $this->load->view('sessions', $data);
         $this->load->view('footer');

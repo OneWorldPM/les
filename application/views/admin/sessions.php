@@ -1,3 +1,21 @@
+<style>
+    .modal-footer, .modal-header{
+        border-color:#e5e5e5;
+    }
+    .modal-content{
+        box-shadow: 0 5px 15px rgba(0,0,0,.5);
+        background-color: #fff;
+
+    }
+    .modal-content .btn-default {
+        color: #333;
+        background-color: #fff;
+        border-color: #ccc;
+    }
+    .modal-content .form-control {
+        border-radius: 5px !important;
+    }
+</style>
 <div class="main-content">
     <div class="wrap-content container" id="container">
         <!-- start: PAGE TITLE -->
@@ -146,6 +164,8 @@
                                     Add Sessions  &nbsp;<i class="fa fa-plus"></i>
                                 </a>
                                 <button type="button" id="btndeleteall" class="btn btn-sm btn-danger"><i class="ti-trash"></i> Delete</button>
+                                <button type="button" id="btndeleteall" class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-film"></i> Update Sessions Iframe</button>
+
                             </h5>
                             <div class="row">
                                 <div class="col-md-12 table-responsive">
@@ -264,8 +284,45 @@
     </div>
 </div>
 </div>
+
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="sessionsIframe">Update Sessions Iframe:</label>
+                    <input type="text" class="form-control" id="sessionsIframe" value="<?=$iframe->value?>">
+                </div>
+
+                <button class="btn btn-success" id="updateIframe" data-url="<?= base_url() ?>admin/Settings/setSessionIframe">Save</button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript">
     $(document).ready(function () {
+
+        $("#updateIframe").on("click", function () {
+          var sessionsIframe=$("#sessionsIframe").val();
+          var url=$(this).data("url");
+          console.log(url);
+          $.post(url,{"iframe":sessionsIframe},function (response) {
+
+              if(response=="success"){
+                  alertify.alert('Update Complete');
+              }
+          })
+        });
+
+
         $("#btn_import").on("click", function () {
             if ($('#import_file').val() == '') {
                 alertify.error('Select File');
