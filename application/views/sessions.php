@@ -142,8 +142,7 @@
         <section class="content">
             <div>
                 <div class="videoWindow">
-                    <iframe class="embed-responsive-item" src="<?= $iframe->value ?>" allowfullscreen></iframe>
-
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
                 </div>
 
                 <!-- Blog post-->
