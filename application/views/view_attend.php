@@ -173,9 +173,9 @@
                                 </div>
                                 <div class="col-md-12">
                                     <?php if ($sessions->sessions_type_status == "Private") { ?>
-                                                                                                                                                                                                    <!--<a class="button black-light button-3d rounded right" style="margin: 0px 0;" href="<?= base_url() ?>private_sessions/view/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_id : "" ?>"><span>Take me there</span></a>-->
+                                                                                                                                                                                                        <!--<a class="button black-light button-3d rounded right" style="margin: 0px 0;" href="<?= base_url() ?>private_sessions/view/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_id : "" ?>"><span>Take me there</span></a>-->
                                     <?php } else { ?>
-                                                                                                                                                                                                    <!--<a class="button black-light button-3d rounded right" style="margin: 0px 0;" href="<?= base_url() ?>sessions/view/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_id : "" ?>"><span>Take me there</span></a>-->
+                                                                                                                                                                                                        <!--<a class="button black-light button-3d rounded right" style="margin: 0px 0;" href="<?= base_url() ?>sessions/view/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_id : "" ?>"><span>Take me there</span></a>-->
                                     <?php } ?>
                                 </div>
                             </div>
@@ -245,7 +245,7 @@
 
             if (presenter_photo != "" && presenter_photo != null) {
                 $.ajax({
-                    url: '<?= base_url() ?>uploads/presenter_photo/" + presenter_photo',
+                    url: '<?= base_url() ?>uploads/presenter_photo/' + presenter_photo,
                     type: 'HEAD',
                     error: function ()
                     {
