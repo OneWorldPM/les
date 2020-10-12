@@ -123,10 +123,10 @@
                                 $current_date = $all_sessions_week[0]->sessions_date;
                             }
                             if ($val->sessions_date == $current_date) {
-                            ?>
-                            <div class="col-lg box_home_active text-center">
+                                ?>
+                                <div class="col-lg box_home_active text-center">
                                 <?php } else { ?>
-                                <div class="col-lg box-home text-center">
+                                    <div class="col-lg box-home text-center">
                                     <?php } ?>
                                     <label style="margin-bottom: 20px; margin-top: 20px;   font-size: 30px; font-weight: 700;"><?= $val->dayname ?></label><br>
                                     <label><?= date('M-d-Y', strtotime($val->sessions_date)); ?></label>
@@ -142,7 +142,7 @@
         <section class="content">
             <div>
                 <div class="videoWindow">
-                    <iframe class="embed-responsive-item" src="<?=$iframe->value?>" allowfullscreen></iframe>
+                    <iframe class="embed-responsive-item" src="<?= $iframe->value ?>" allowfullscreen></iframe>
 
                 </div>
 
@@ -178,7 +178,7 @@
                                                         if (isset($val->presenter) && !empty($val->presenter)) {
                                                             foreach ($val->presenter as $value) {
                                                                 ?>
-                                                                <div class="post-info" style="color: #000 !important; font-size: larger; font-weight: 700;"><span class="post-autor"><a href="#" style="color: #000;" data-presenter_photo="<?= $value->presenter_photo ?>" data-presenter_name="<?= $value->presenter_name ?>" data-designation="<?= $value->designation ?>" data-email="<?= $value->email ?>" data-company_name="<?= $value->company_name ?>" data-twitter_link="<?= $value->twitter ?>" data-facebook_link="<?= $value->facebook ?>" data-linkedin_link="<?= $value->linkin ?>" data-bio="<?= $value->bio ?>"  class="presenter_open_modul" style="color: #337ab7;"><u><?= $value->presenter_name ?></u>, </a></span> <span class="post-category"> <?= $value->degree ?></span> </div>
+                                                                <div class="post-info" style="color: #000 !important; font-size: larger; font-weight: 700;"><span class="post-autor"><a href="#" style="color: #000;" data-presenter_photo="<?= $value->presenter_photo ?>" data-presenter_name="<?= $value->presenter_name ?>" data-designation="<?= $value->designation ?>" data-email="<?= $value->email ?>" data-company_name="<?= $value->company_name ?>" data-twitter_link="<?= $value->twitter ?>" data-facebook_link="<?= $value->facebook ?>" data-linkedin_link="<?= $value->linkin ?>" data-bio="<?= $value->bio ?>"  class="presenter_open_modul" style="color: #337ab7;"><u><?= $value->presenter_name ?></u><?= ($value->degree != "") ? "," : "" ?> </a></span> <span class="post-category"> <?= $value->degree ?></span> </div>
                                                                 <div class="post-info" style="color: #337aba !important; font-size: larger; font-weight: 700;"><span class="post-category"> <?= $value->company_name ?></span> </div>
                                                                 <?php
                                                             }
@@ -278,7 +278,7 @@
                                                             }
                                                         }
                                                         ?>
-                                                            </span>
+                                                    </span>
                                                 </h3>
                                             </div>
                                             <?php
@@ -459,14 +459,29 @@
             var linkedin_link = $(this).attr("data-linkedin_link");
             var bio = $(this).attr('data-bio');
             if (presenter_photo != "" && presenter_photo != null) {
-                $('#presenter_profile').attr('src', "<?= base_url() ?>uploads/presenter_photo/" + presenter_photo);
+                $.ajax({
+                    url: '<?= base_url() ?>uploads/presenter_photo/' + presenter_photo,
+                    type: 'HEAD',
+                    error: function ()
+                    {
+                        $('#presenter_profile').attr('src', "<?= base_url() ?>uploads/presenter_photo/presenter_avtar.png");
+                    },
+                    success: function ()
+                    {
+                        $('#presenter_profile').attr('src', "<?= base_url() ?>uploads/presenter_photo/" + presenter_photo);
+                    }
+                });
             } else {
                 $('#presenter_profile').attr('src', "<?= base_url() ?>uploads/presenter_photo/presenter_avtar.png");
             }
             $('#presenter_title').text(presenter_name + ", " + designation);
 
             $('#email').text(email);
-            $('#company').text(company_name);
+            if (company_name != "") {
+                $('#company').text(company_name);
+            } else {
+                $('#company_lbl').text("");
+            }
             $("#twitter_link").attr("href", twitter_link);
             $("#facebook_link").attr("href", facebook_link);
             $("#linkedin_link").attr("href", linkedin_link);
