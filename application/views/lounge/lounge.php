@@ -280,7 +280,7 @@
                 </div>
 
                 <small>Only invited attendees except you will be allowed to the meeting, hence no password is required!</small><br>
-                <small>All date and times are in Central Time Zone(CT)</small><br>
+                <small>All date and times are in Eastern Time Zone(ET)</small><br>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
