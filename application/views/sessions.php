@@ -77,9 +77,9 @@
         background-color: white;
         width: 640px;
         height: 360px;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 50px;
+        margin-left: 1px;
+        margin-right: 1px;
+        margin-bottom: 1px;
         padding: 5px;
         box-shadow: inset 0 0 2px 2px #d6d6d6;
     }
@@ -141,8 +141,8 @@
         <!-- CONTENT -->
         <section class="content">
             <div>
-                <div>
-                    <iframe src="https://player.vimeo.com/video/467360653" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                <div class="videoWindow">
+                    <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/467360653" allowfullscreen></iframe>
                 </div>
 
                 <!-- Blog post-->
