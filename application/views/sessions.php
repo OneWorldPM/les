@@ -63,7 +63,7 @@
     }
     .blueBgOne{
         background-color: #337ab7 !important;
-        border-color: #006fce94;
+        border-color: #006fce94 !important;
     }
 </style>
 <section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/bubble_bg_1920.jpg); top: 0; padding-top: 0px;">
