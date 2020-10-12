@@ -22,7 +22,7 @@
         <div class="text-middle">
             <div class="row">
                 <div class="col-md-12">
-                    <h3 style="font-weight: 600; font-size: 22px; padding-left: 30px; color: #ef9d45;">My Swag Bag</h3>
+                    <h3 style="font-weight: 600; font-size: 22px; padding-left: 30px; color: #ef9d45;">My Briefcase</h3>
                 </div>
             </div>
             <?php if (isset($sponsor_resources) && !empty($sponsor_resources)) { ?>
