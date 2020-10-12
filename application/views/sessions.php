@@ -140,9 +140,9 @@
         <!-- CONTENT -->
         <section class="content">
             <div>
-                <div class="videoWindow">
-                    <iframe class="embed-responsive-item" src="<?= $iframe->value ?>" allowfullscreen></iframe>
-                </div>
+<!--                <div class="videoWindow">-->
+<!--                    <iframe class="embed-responsive-item" src="><?//= $iframe->value ?>" allowfullscreen></iframe>-->
+<!--                </div>-->
 
                 <!-- Blog post-->
                 <div class="post-content post-single">
