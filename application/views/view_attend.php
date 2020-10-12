@@ -90,13 +90,9 @@
                                         <div class="col-md-3">
                                             <?php
                                             if ($sessions->sessions_photo != "") {
-                                                if (file_exists("./uploads/presenter_photo/" . $val->presenter_photo)) {
-                                                    ?>
-                                                    <img alt="" src="<?= base_url() ?>uploads/sessions/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_photo : "" ?>" width="100%">
-                                                <?php } else { ?>
-                                                    <img src="<?= base_url() ?>uploads/presenter_photo/presenter_avtar.png" style="height: 40px; width: 40px;">
-                                                    <?php
-                                                }
+                                                ?>
+                                                <img alt="" src="<?= base_url() ?>uploads/sessions/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_photo : "" ?>" width="100%">
+                                                <?php
                                             } else {
                                                 ?>
                                                 <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg" width="100%">
@@ -173,9 +169,9 @@
                                 </div>
                                 <div class="col-md-12">
                                     <?php if ($sessions->sessions_type_status == "Private") { ?>
-                                                                                                                                                                                                    <!--<a class="button black-light button-3d rounded right" style="margin: 0px 0;" href="<?= base_url() ?>private_sessions/view/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_id : "" ?>"><span>Take me there</span></a>-->
+                                                                                                                                                                                                                    <!--<a class="button black-light button-3d rounded right" style="margin: 0px 0;" href="<?= base_url() ?>private_sessions/view/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_id : "" ?>"><span>Take me there</span></a>-->
                                     <?php } else { ?>
-                                                                                                                                                                                                    <!--<a class="button black-light button-3d rounded right" style="margin: 0px 0;" href="<?= base_url() ?>sessions/view/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_id : "" ?>"><span>Take me there</span></a>-->
+                                                                                                                                                                                                                    <!--<a class="button black-light button-3d rounded right" style="margin: 0px 0;" href="<?= base_url() ?>sessions/view/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_id : "" ?>"><span>Take me there</span></a>-->
                                     <?php } ?>
                                 </div>
                             </div>
@@ -245,7 +241,7 @@
 
             if (presenter_photo != "" && presenter_photo != null) {
                 $.ajax({
-                    url: '<?= base_url() ?>uploads/presenter_photo/" + presenter_photo',
+                    url: '<?= base_url() ?>uploads/presenter_photo/' + presenter_photo,
                     type: 'HEAD',
                     error: function ()
                     {
@@ -259,11 +255,17 @@
             } else {
                 $('#presenter_profile').attr('src', "<?= base_url() ?>uploads/presenter_photo/presenter_avtar.png");
             }
-            $('#presenter_title').text(presenter_name + ", " + designation);
-            $('#email').text(email);
-            if (company_name != "") {
-                $('#company').text(company_name);
+            if (designation != "" && designation != null) {
+                $('#presenter_title').text(presenter_name + ", " + designation);
             } else {
+                $('#presenter_title').text(presenter_name);
+            }
+            $('#email').text(email);
+            if (company_name != "" && company_name != null) {
+                $('#company').text(company_name);
+                $('#company_lbl').text("Company");
+            } else {
+                $('#company').text("");
                 $('#company_lbl').text("");
             }
             $('#modal').modal('show');
