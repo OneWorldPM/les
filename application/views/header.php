@@ -78,6 +78,18 @@
             .button.black-light {
                 border-color: #ef9d45;
             }
+
+            #mainMenu > ul > li > a{
+                color:#ef9d45 !important;
+            }
+
+            .logo img{
+                padding: 8px 0;
+            }
+            .header-container{
+                width: 1600px !important;
+                max-width: 100%;
+            }
         </style> 
         <?php if ($this->uri->segment(1) == "home" && $this->uri->segment(2) != "notes") { ?>
             <style>
@@ -96,6 +108,7 @@
                 #main_menu_top_bar{
                     display: none;
                 }
+
             </style>  
         <?php } ?>
     </head>
@@ -104,7 +117,7 @@
         <div class="wrapper">
             <header id="header" class="header-transparent">
                 <div id="header-wrap">
-                    <div class="container">
+                    <div class="container header-container">
                         <!--LOGO-->
                         <?php if ($this->uri->segment(1) != "home" || $this->uri->segment(2) != "") { ?>
                             <?php
@@ -112,14 +125,14 @@
                                 $profile_data = $this->common->get_user_details($this->session->userdata('cid'));
                                 ?>
                                 <div id="logo">
-                                    <a href="<?= base_url() ?>home" class="logo" data-dark-logo="<?= base_url() ?>front_assets/images/logo_new.png">
-                                        <img src="<?= base_url() ?>front_assets/images/logo_new.png" alt="Polo Logo">
+                                    <a href="<?= base_url() ?>home" class="logo" data-dark-logo="<?= base_url() ?>assets/images/logo2.png">
+                                        <img src="<?= base_url() ?>assets/images/logo2.png" alt="Polo Logo">
                                     </a>
                                 </div>
                             <?php } else { ?>
                                 <div id="logo">
-                                    <a href="<?= base_url() ?>" class="logo" data-dark-logo="<?= base_url() ?>front_assets/images/logo_new.png">
-                                        <img src="<?= base_url() ?>front_assets/images/logo_new.png" alt="Polo Logo">
+                                    <a href="<?= base_url() ?>" class="logo" data-dark-logo="<?= base_url() ?>assets/images/logo2.png">
+                                        <img src="<?= base_url() ?>assets/images/logo2.png" alt="Polo Logo">
                                     </a>
                                 </div>
                                 <?php
@@ -140,12 +153,12 @@
                             <div class="container">
                                 <nav id="mainMenu" class="main-menu mega-menu">
                                     <ul class="main-menu nav nav-pills navbar-left" id="main_menu_top_bar" style="margin-right: 50px;">
-                                        <li><a href="https://lesmeetings.org/am20/agenda" target="_blank" style="color: #ef9d45">AGENDA</a></li>
-                                        <li><a href="<?= base_url() ?>home" style="color: #ef9d45">MAIN HALL</a></li>
+                                        <li><a href="https://lesmeetings.org/am20/agenda" target="_blank">AGENDA</a></li>
+                                        <li><a href="<?= base_url() ?>home">MAIN HALL</a></li>
 
-                                        <li><a href="<?= base_url() ?>sessions" style="color: #ef9d45">Sessions</a></li>
-                                        <li><a href="<?= base_url() ?>sponsor/sponsor_resources" style="color: #ef9d45">Sponsor Resources</a></li>
-                                        <li><a href="<?= base_url() ?>lounge" style="color: #ef9d45">Lounge</a></li>
+                                        <li><a href="<?= base_url() ?>sessions">Sessions</a></li>
+                                        <li><a href="<?= base_url() ?>sponsor/sponsor_resources">Sponsor Resources</a></li>
+                                        <li><a href="<?= base_url() ?>lounge">Lounge</a></li>
                                         <li class="nav-item avatar dropdown">
                                             <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                                 <span class="unread-msg-count badge badge-notify" style="font-size:10px;">0</span>
