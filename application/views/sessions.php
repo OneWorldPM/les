@@ -479,6 +479,7 @@
             $('#email').text(email);
             if (company_name != "") {
                 $('#company').text(company_name);
+                 $('#company_lbl').text("Company");
             } else {
                 $('#company_lbl').text("");
             }
