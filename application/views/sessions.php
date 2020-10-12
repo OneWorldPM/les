@@ -18,7 +18,7 @@
     }
 
     .icon-home {
-        color: #ef9d45;
+        color: #337ab7;
         font-size: 1.5em;
         font-weight: 700;
         vertical-align: middle;
@@ -35,7 +35,7 @@
     }
 
     .box_home_active {
-        background-color: #ef9d45;
+        background-color: #337ab7;
         border-radius: 20px;
         min-height: 150px;
         max-height: 150px;
@@ -54,6 +54,12 @@
 
     .alertify {
         top: 200px;
+    }
+    .colorBlueOne{
+        color:#337ab7 !important;
+    }
+    .colorBlueOne:hover{
+        color:#337ab7 !important;
     }
 </style>
 <section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/bubble_bg_1920.jpg); top: 0; padding-top: 0px;">
@@ -145,7 +151,7 @@
                                                             <div class="post-content-details col-md-9 m-t-30">
                                                                 <div class="post-title">
                                                                     <h6 style="font-weight: 600; font-size: 15px;"><?= $val->sessions_date . ' ' . date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></h6>
-                                                                    <h3><a style="color: #ef9d45; font-weight: 900;"><?= $val->session_title ?></a></h3>
+                                                                    <h3><a class="colorBlueOne" style="font-weight: 900;"><?= $val->session_title ?></a></h3>
                                                                 </div>
                                                                 <?php
                                                                 if (isset($val->presenter) && !empty($val->presenter)) {
