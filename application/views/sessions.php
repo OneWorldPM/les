@@ -348,7 +348,7 @@
                         <div class="col-sm-8" style="padding-top: 15px;">
                             <h3 id="presenter_title" style="font-weight: 700"></h3>
 <!--                        <p style="border-bottom: 1px dotted; margin-bottom: 10px; padding-bottom: 10px;"><b style="color: #000;">Email </b> <span id="email" style="padding-left: 10px;"></span></p>-->
-                            <p style="border-bottom: 1px dotted; margin-bottom: 10px; padding-bottom: 10px;"><b style="color: #000;">Company </b> <span id="company" style="padding-left: 10px;"></span></p>
+                            <p style="border-bottom: 1px dotted; margin-bottom: 10px; padding-bottom: 10px;"><b style="color: #000;" id="company_lbl">Company </b> <span id="company" style="padding-left: 10px;"></span></p>
                             <p style="padding-bottom: 0px; margin-bottom: 0px;"><span id="bio_text" style="padding-left: 10px;"></span></p>
                         </div>
                     </div>
