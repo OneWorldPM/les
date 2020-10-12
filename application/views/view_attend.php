@@ -90,7 +90,7 @@
                                         <div class="col-md-3">
                                             <?php
                                             if ($sessions->sessions_photo != "") {
-                                                if (file_exists("./uploads/presenter_photo/" . $val->presenter_photo)) {
+                                                if (file_exists("./uploads/presenter_photo/" . $sessions->presenter_photo)) {
                                                     ?>
                                                     <img alt="" src="<?= base_url() ?>uploads/sessions/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_photo : "" ?>" width="100%">
                                                 <?php } else { ?>
