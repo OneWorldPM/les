@@ -157,7 +157,8 @@
                                         <li><a href="<?= base_url() ?>home">MAIN HALL</a></li>
 
                                         <li><a href="<?= base_url() ?>sessions">Sessions</a></li>
-                                        <li><a href="<?= base_url() ?>sponsor/sponsor_resources">Sponsor Resources</a></li>
+                                        <li><a href="<?= base_url() ?>sponsor/other_sponsor">Sponsor</a></li>
+                                        <li><a href="<?= base_url() ?>sponsor/sponsor_resources">Resource Library</a></li>
                                         <li><a href="<?= base_url() ?>lounge">Lounge</a></li>
                                         <li class="nav-item avatar dropdown">
                                             <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
