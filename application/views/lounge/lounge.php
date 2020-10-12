@@ -32,7 +32,16 @@
         padding: 15px;
         padding: 0px !important;
     }
+    .list-group-item{
+        padding: 10px 5px;
+    }
 
+    .companyNameBadge{
+        display: inline-block;
+        position: absolute;
+        left: 59px;
+        top: 35px;
+    }
     .fa {
         font-weight: 900;
     }
@@ -93,7 +102,7 @@
 <section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/lounge-bg.jpg);">
     <div class="container container-fullscreen" id="home_first_section">
         <div class="row">
-            <div class="col-md-12" style="text-align: -webkit-center; text-align: -moz-center; margin-left: 45px;">
+            <div class="col-md-12" style="text-align: -webkit-center; text-align: -moz-center;">
                 <div class="col-md-4">
                     <div class="grpchat-margin"></div>
                     <div class="panel panel-danger panel-cco">
