@@ -61,6 +61,10 @@
     .colorBlueOne:hover{
         color:#337ab7 !important;
     }
+    .blueBgOne{
+        background-color: #337ab7 !important;
+        border-color: #006fce94;
+    }
 </style>
 <section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/bubble_bg_1920.jpg); top: 0; padding-top: 0px;">
 <!--<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/Sessions_BG_screened.jpg); top: 0; padding-top: 0px;">-->
@@ -166,7 +170,7 @@
                                                                 <div class="post-description" style="margin-top: 10px;">
                                                                     <p style="margin-bottom: 10px; color: black;"><?= $val->sessions_description ?></p>
                                                                     <a class="button black-light button-3d rounded right btn_sign_up" style="margin: 0px 0;" data-sessions_id="<?= $val->sessions_id ?>" data-user_limit="<?= $val->total_sign_up_sessions_user ?>"><span>Sign up</span></a>
-                                                                    <a class="button black-light button-3d rounded right save_to_swag_bag" data-sessions_id="<?= $val->sessions_id ?>" data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"><?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>
+                                                                    <a class="button black-light button-3d rounded right save_to_swag_bag blueBgOne" data-sessions_id="<?= $val->sessions_id ?>" data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"><?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -192,8 +196,8 @@
                                                                 ?>
                                                                 <div class="post-description" style="margin-top: 10px;">
                                                                     <p style="margin-bottom: 10px; color: black;"><?= $val->sessions_description ?></p>
-                                                                    <a class="button black-light button-3d rounded right" style="margin: 0px 0px 0px 5px; " href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
-                                                                    <a class="button black-light button-3d rounded right btn_unregister" style="margin: 0px 0;" data-sessions_id="<?= $val->sessions_id ?>" ><span>Unregister</span></a>
+                                                                    <a class="button black-light button-3d rounded right blueBgOne" style="margin: 0px 0px 0px 5px; " href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
+                                                                    <a class="button black-light button-3d rounded right btn_unregister blueBgOne" style="margin: 0px 0;" data-sessions_id="<?= $val->sessions_id ?>" ><span>Unregister</span></a>
                                                                     <a class="button black-light button-3d rounded right save_to_swag_bag" data-sessions_id="<?= $val->sessions_id ?>" data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"><?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>
                                                                 </div>
                                                             </div>
@@ -224,12 +228,12 @@
                                                                 <?php
                                                                 if ($val->status_sign_up_sessions == 1) {
                                                                     ?>
-                                                                    <a class="button black-light button-3d rounded right" style="margin: 0px 0px 0px 5px; " href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
-                                                                    <a class="button black-light button-3d rounded right btn_unregister" style="margin: 0px 0;" data-sessions_id="<?= $val->sessions_id ?>" ><span>Unregister</span></a>
+                                                                    <a class="button black-light button-3d rounded right blueBgOne" style="margin: 0px 0px 0px 5px; " href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
+                                                                    <a class="button black-light button-3d rounded right btn_unregister blueBgOne" style="margin: 0px 0;" data-sessions_id="<?= $val->sessions_id ?>" ><span>Unregister</span></a>
                                                                     <?php
                                                                 } else {
                                                                     ?>
-                                                                    <a class="button black-light button-3d rounded right" style="margin: 0px 0;"><span>Roundtable Full</span></a>
+                                                                    <a class="button black-light button-3d rounded right blueBgOne" style="margin: 0px 0;"><span>Roundtable Full</span></a>
                                                                     <?php
                                                                 }
                                                                 ?>
