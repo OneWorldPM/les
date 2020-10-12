@@ -246,7 +246,7 @@ $(function() {
 
                 var company_name_html = '';
                 if (user.company_name && (user.company_name != null || user.company_name != '')){
-                    company_name_html = '<small style="position: absolute;margin-top: 27px;margin-left: -63px;">'+user.company_name+'</small>';
+                    company_name_html = '<small class="companyNameBadge">'+user.company_name+'</small>';
                     var company_name = user.company_name;
                 }else{
                     var company_name = '';
@@ -266,14 +266,9 @@ $(function() {
                     '<li class="attendees-chat-list-item list-group-item text-left" userName="'+fullname+'" userId="'+user.cust_id+'" company_name="'+company_name+'" status="offline" new-text="'+newTextBadge+'">\n' +
                     '<img src="'+userAvatarSrc+'" alt="User Avatar" onerror=this.src="'+userAvatarAlt+'" class="img-circle"> \n' +
                     '<span class="oto-chat-user-list-name" style="font-weight: bold;"> '+fullname+' <span class="badge new-text" style="background-color: #ff0a0a; '+badgeIcon+'">new</span> </span> \n' +
-                    //company_name_html +
-                    '<i class="active-icon fa fa-circle" style="color: #454543;" aria-hidden="true" userId="'+user.cust_id+'"></i> \n' +
-                    '<!--<h5 class="attendee-profile-btn pull-right" userId="'+user.cust_id+'" onclick="userProfileModal('+user.cust_id+')">\n' +
-                    '   <span class="label label-info">\n' +
-                    '      <i class="fa fa-user" aria-hidden="true"></i>\n' +
-                    '   </span>\n' +
-                    '</h5>-->' +
-                    '</li>\n'
+
+                    '<i class="active-icon fa fa-circle" style="color: #454543;" aria-hidden="true" userId="'+user.cust_id+'"></i>'+company_name_html+'</li>'
+
                 );
             });
 
