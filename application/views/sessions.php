@@ -77,10 +77,10 @@
         background-color: white;
         width: 640px;
         height: 360px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-bottom: 0px;
-        padding: 1px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 50px;
+        padding: 5px;
         box-shadow: inset 0 0 2px 2px #d6d6d6;
     }
     @media screen and (max-width: 1600px) {
