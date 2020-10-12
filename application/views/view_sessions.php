@@ -707,6 +707,13 @@ if(false){
     let socket = io("<?=getSocketUrl()?>");
     socket.emit("ConnectSessioViewUsers","<?=getAppName($sessions->sessions_id) ?>")
 
+        socket.on("endSession",function (par) {
+            var sessionId="<?=getAppName($sessions->sessions_id) ?>";
+
+            if(sessionId==par){
+                window.location.href="<?=base_url()?>sessions/session_end";
+            }
+        })
     $('#sendGroupChat').keypress(function (e) {
         var $questions = $("#sendGroupChat");
         var key = e.which;

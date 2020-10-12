@@ -37,6 +37,12 @@ class Sessions extends CI_Controller {
         $this->load->view('footer');
     }
 
+    public function session_end(){
+        $this->load->view('header');
+        $this->load->view('end_session');
+        $this->load->view('footer');
+    }
+
     public function getsessions_data($date) {
         $data["all_sessions_week"] = $this->objsessions->getSessionsWeekData();
         $data["all_sessions"] = $this->objsessions->getsessions_data($date);

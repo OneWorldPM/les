@@ -250,6 +250,7 @@
                                                             <?php } ?>
                                                         </td>
                                                         <td>
+                                                            <button type="button" class="btn btn-danger btn-sm endSessionSocket" style="margin: 3px;" data-session-id="<?=getAppName($val->sessions_id) ?>">End Session</button>
                                                             <a href="<?= base_url() ?>admin/sessions/view_session/<?= $val->sessions_id ?>" class="btn btn-info btn-sm" style="margin: 3px;">View Session</a>
                                                             <a href="<?= base_url() ?>admin/sessions/edit_sessions/<?= $val->sessions_id ?>" class="btn btn-green btn-sm" style="margin: 3px;">Edit</a>
                                                         </td>
@@ -309,7 +310,18 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
+        let socket = io("<?=getSocketUrl()?>");
+        $(".endSessionSocket").on("click", function () {
+            var sesionId=$(this).data("session-id");
+            alertify.confirm("Are you sure you want to end the session?", function (e) {
+                if (e)
+                {
+                    socket.emit("endSession",sesionId);
 
+                }
+            });
+
+        })
         $("#updateIframe").on("click", function () {
           var sessionsIframe=$("#sessionsIframe").val();
           var url=$(this).data("url");
