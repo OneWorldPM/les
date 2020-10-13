@@ -184,7 +184,7 @@
                                                         ?>
                                                         <div class="post-description" style="margin-top: 10px;">
                                                             <p style="margin-bottom: 10px; color: black;"><?= $val->sessions_description ?></p>
-                                                            <a class="button black-light button-3d rounded right btn_sign_up blueBgOne" style="margin: 0px 0;" data-sessions_id="<?= $val->sessions_id ?>" data-user_limit="<?= $val->total_sign_up_sessions_user ?>"><span>Sign up</span></a>
+                                                            <a class="button black-light button-3d rounded right btn_sign_up blueBgOne" style="margin: 0px 0;" data-sessions_id="<?= $val->sessions_id ?>" data-user_limit="<?= $val->total_sign_up_sessions_user ?>"><span>Attend</span></a>
                                                             <a class="button black-light button-3d rounded right save_to_swag_bag blueBgOne" data-sessions_id="<?= $val->sessions_id ?>" data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"><?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>
                                                         </div>
                                                     </div>
