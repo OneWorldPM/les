@@ -103,9 +103,9 @@ $sponsor_cover = ($sponsor->sponsor_cover == '') ? 'expo_background.jpg' : $spon
                     <div class="panel-heading">
                         <h3 class="panel-title">
                             Send a Message to <?= substr($sponsor->company_name, 0, 18) ?>
-                            <span class="schedule-meet-btn small-edit-btn badge badge-primary pull-right">
+<!--                            <span class="schedule-meet-btn small-edit-btn badge badge-primary pull-right">
                                 <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Schedule a meet
-                            </span>
+                            </span>-->
 <!--                            <span class="video-call-btn badge badge-primary pull-right">
                                 <i class="fa fa-video-camera" aria-hidden="true"></i> Call
                             </span>-->
