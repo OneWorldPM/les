@@ -69,8 +69,8 @@
                             $datetime = new DateTime($datetime);
                             $datetime1 = new DateTime();
                             $diff = $datetime->getTimestamp() - $datetime1->getTimestamp();
-                            if ($diff >= 900) {
-                                $diff = $diff - 900;
+                            if ($diff >= 60) {
+                                $diff = $diff - 60;
                             } else {
                                 $diff = 0;
                             }
@@ -162,7 +162,7 @@
                                             <p>You will automatically enter the session 1 minute before it is due to begin.</p>
                                             <p>Entry will be enabled in <span id="id_day_time" ></span></p>
                                         <?php } else { ?>
-                                            <p>You will automatically enter the session 15 minutes before it is due to begin.</p>
+                                            <p>You will automatically enter the session 1 minute before it is due to begin.</p>
                                             <p>Entry will be enabled in <span id="id_day_time" ></span></p>
                                         <?php } ?>
                                     </div>
