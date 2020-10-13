@@ -19,7 +19,7 @@
         vertical-align: middle !important;
     }
 </style>
-<section class="parallax">
+<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/expo_background.jpg); top: 20; padding-top: 20px;">
     <div class="container">
 
         <div class="files well">
