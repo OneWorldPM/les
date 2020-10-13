@@ -51,6 +51,15 @@ class Meetings_Modal extends CI_Model {
         return false;
     }
 
+    public function deleteMeeting()
+    {
+        $meetingId = $this->input->post('meetingId');
+        $this->db->delete('lounge_meeting_attendees', array('meeting_id' => $meetingId));
+        if ($this->db->delete('lounge_meetings', array('id' => $meetingId)))
+            return true;
+        return false;
+    }
+
     public function getMeetings($user)
     {
         $meetings = $query = $this->db->query("

@@ -1,3 +1,5 @@
+var meetingsTable;
+
 $(function() {
 
     var newMeetingSelectedAttendees = [];
@@ -141,9 +143,19 @@ $(function() {
 
     });
 
-    listMeetings();
+    fillFutureMeetingsNumber();
 });
 
+function fillFutureMeetingsNumber() {
+    $.get( base_url+"Lounge/getFutureMeetingsNumber/"+user_id, function(result) {
+        result = JSON.parse(result);
+
+        if (result.length == 0)
+            return;
+
+        $('.number-of-meet-badge').html(result.length);
+    });
+}
 
 
 function listMeetings() {
@@ -151,14 +163,17 @@ function listMeetings() {
     $.get( base_url+"Lounge/getMeetings/"+user_id, function(result) {
         result = JSON.parse(result);
 
-        if (result.length == 0)
-            return;
-
-        $('.number-of-meet-badge').html(result.length);
-
-        $('.meetings-table-items').html('');
+        $('#meetings_table').dataTable().fnDestroy();
+        $('.meetings-table-items').html("");
 
         $.each( result, function( row, meeting ) {
+            if (meeting.host == user_id)
+            {
+                var meeting_delete_button = '<button class="delete-meeting-btn btn btn-xs btn-danger m-t-5" meeting-id="'+meeting.id+'">Delete</button>';
+            }else{
+                var meeting_delete_button = '';
+            }
+
             $('.meetings-table-items').append(
                 '<tr>\n' +
                 '  <td>'+meeting.topic+'</td>\n' +
@@ -166,8 +181,9 @@ function listMeetings() {
                 '  <td>'+meeting.meeting_from+'</td>\n' +
                 '  <td>'+meeting.meeting_to+'</td>\n' +
                 '  <td>' +
-                '<button class="btn btn-xs btn-warning">Attendees</button>' +
-                '<a class="m-l-5" href="'+base_url+'lounge/meet/'+meeting.id+'" target="_blank"><button class="meeting-room-btn btn btn-xs btn-info" meeting-id="'+meeting.id+'">Meeting Room</button></a>' +
+                '<button class="btn btn-xs btn-warning m-b-5">Attendees</button>' +
+                '<a class="m-t-5" href="'+base_url+'lounge/meet/'+meeting.id+'" target="_blank"><button class="meeting-room-btn btn btn-xs btn-info" meeting-id="'+meeting.id+'">Meeting Room</button></a>' +
+                 meeting_delete_button +
                 '</td>\n' +
                 '</tr>'
             );
@@ -177,6 +193,47 @@ function listMeetings() {
     });
 
 }
+
+$(".meetings-table-items").on('click', '.delete-meeting-btn',function () {
+    var meeting_id = $(this).attr('meeting-id');
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+            $.post(base_url+"Lounge/deleteMeeting",
+                {
+                    'meetingId': meeting_id
+                },
+                function(data, status){
+                    if(status == 'success')
+                    {
+                        data = JSON.parse(data);
+
+                        if (data.status == 'success')
+                        {
+                            Swal.fire(
+                                'Deleted!',
+                                'Meeting has been deleted.',
+                                'success'
+                            )
+
+                            listMeetings();
+                        }
+
+                    }else{
+                        toastr["error"]("Network problem!");
+                    }
+                });
+        }
+    })
+});
 
 function addAttendee(newMeetingSelectedAttendees, attendee) {
     newMeetingSelectedAttendees.push(attendee);

@@ -83,6 +83,18 @@ class Lounge extends CI_Controller
         return;
     }
 
+    public function deleteMeeting()
+    {
+        if($this->meetings->deleteMeeting())
+        {
+            echo json_encode(array('status' => 'success'));
+        }else{
+            echo json_encode(array('status' => 'failed'));
+        }
+
+        return;
+    }
+
     public function getMeetings($user)
     {
         $result = $this->meetings->getMeetings($user);
