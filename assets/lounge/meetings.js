@@ -190,7 +190,7 @@ function listMeetings() {
         });
 
         $('#meetings_table').DataTable();
-    });
+    }); 
 
 }
 
