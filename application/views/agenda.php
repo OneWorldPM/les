@@ -19,16 +19,23 @@
         vertical-align: middle !important;
     }
 </style>
-<div class="parallax">
-    <h1 style="position: absolute;  margin-top: 15%; margin-left: 40%; font-weight: bold;">Schedule At A Glance</h1>
-    <img src="<?= base_url() ?>front_assets/images/2020_LES_Annual_Meeting_Schedule_At_A_Glance.jpg" style="width: 100%;"/>
-</div>
-<!--<section class="parallax fullscreen" style="background-image: url(<?= base_url() ?>front_assets/images/2020_LES_Annual_Meeting_Schedule_At_A_Glance.jpg); top: 20; padding-top: 20px;">
-    <div class="container text-middle">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>Schedule At A Glance</h1>
+<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/expo_background.jpg); top: 0; padding-top: 0px;">
+    <div class="container container-fullscreen" style="padding: 0px;">
+        <!-- CONTENT -->
+        <section class="content" style="padding: 10px 0">
+            <div style="background: rgba(250, 250, 250, 0.8);">
+                <div class="videContent"> 
+                    <div class="row p-b-40 ">
+                        <div class="col-md-12" style="background-color: #B2B7BB; margin-bottom: 10px; ">
+                            <h3 style="margin-bottom: 5px; margin-left: 10px; color: #fff; font-weight: 700; text-transform: uppercase;">Schedule At A Glance</h3>
+                        </div>
+                        <div class="col-md-12" style="padding-left: 0px; padding-right: 0px">
+                            <img src="<?= base_url() ?>front_assets/images/2020_LES_Annual_Meeting_Schedule_At_A_Glance.jpg" width="100%"/>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
+        <!-- END: SECTION --> 
     </div>
-</section>-->
+</section>
