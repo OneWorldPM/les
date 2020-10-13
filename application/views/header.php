@@ -90,6 +90,9 @@
                 width: 1600px !important;
                 max-width: 100%;
             }
+            .badge-notify{
+                cursor:  pointer !important;
+            }
         </style> 
         <?php if ($this->uri->segment(1) == "home" && $this->uri->segment(2) != "notes") { ?>
             <style>
