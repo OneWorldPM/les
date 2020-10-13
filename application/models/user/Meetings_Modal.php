@@ -83,6 +83,23 @@ class Meetings_Modal extends CI_Model {
         }
     }
 
+    public function getFutureMeetingsNumber($user)
+    {
+        $now = date('Y-m-d H:i:s');
+        $meetings = $query = $this->db->query("
+                                        SELECT DISTINCT lm.*
+                                        FROM lounge_meetings lm
+                                        LEFT JOIN lounge_meeting_attendees lma ON lm.id = lma.meeting_id
+                                        WHERE (lm.host = '{$user}' OR lma.attendee_id = '{$user}') AND lm.meeting_to > '{$now}'
+                                        ");
+        if ($meetings->num_rows() > 0)
+        {
+            return $meetings->result_array();
+        } else {
+            return false;
+        }
+    }
+
     public function getAttendeesPerMeet($meeting_id)
     {
         $users = $query = $this->db->query("
