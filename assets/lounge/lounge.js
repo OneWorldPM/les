@@ -1,5 +1,12 @@
 var socketServer = "https://socket.yourconference.live:443";
+// var socketServer = "https://127.0.0.1:3080";
 let socket = io(socketServer);
+
+
+
+
+
+
 
 toastr.options = {
     "closeButton": false,
@@ -27,7 +34,6 @@ $(function() {
 
     socket.emit('joinLoungeGroupChat', {"room":socket_lounge_room, "name":user_name});
     socket.on('newLoungeGroupText', function(data) {
-
         if (data.user_id == user_id)
         {
             $('.group-chat').append(
@@ -73,6 +79,7 @@ $(function() {
     });
 
     $.get( base_url+"LoungeGroupChat/getAllChats", function(chatJson) {
+        console.log("geldi");
         var chats = JSON.parse(chatJson);
 
         if (chats == 0)
@@ -127,6 +134,8 @@ $(function() {
         });
 
         $('#grp-chat-body').scrollTop($('#grp-chat-body')[0].scrollHeight);
+
+
     });
 
 
@@ -223,6 +232,7 @@ $(function() {
         toastr["warning"]("Under development!")
     });
 
+    var chatIsLoad=false;
     $.get( base_url+"LoungeOtoChat/checkForUnreadChat/"+user_id, function(unreadMsgsFrom) {
         unreadMsgsFrom = JSON.parse(unreadMsgsFrom);
         $.get( base_url+"user/UserDetails/getAllUsers", function(allUsers) {
@@ -270,7 +280,9 @@ $(function() {
                     '<i class="active-icon fa fa-circle" style="color: #454543;" aria-hidden="true" userId="'+user.cust_id+'"></i>'+company_name_html+'</li>'
 
                 );
+                console.log("eklendi");
             });
+            chatIsLoad=true;
 
             $('.attendees-chat-list-item').on("click", function () {
 
@@ -394,7 +406,36 @@ $(function() {
 
             $(".attendees-chat-list li:first-child").click();
         });
+
     });
+
+   var isLoadInt= setInterval(function () {
+        if(chatIsLoad){
+            clearInterval(isLoadInt);
+            var $unreadMsgCount=$(".unread-msg-count");
+            var unreadMessage=localStorage.getItem("unreadMessage");
+            if(unreadMessage){
+                unreadMessage=JSON.parse(unreadMessage);
+
+                if(unreadMessage["clicked"]==true){
+                    $unreadMsgCount.html("0");
+
+                    var $chatUsersList=$(".chat-users-list");
+                    if($chatUsersList.length>0){
+                        $(".attendees-chat-list-item").each(function () {
+                            var userid=$(this).attr("userid");
+                            if(userid==unreadMessage.from_id){
+                                $(this).click();
+                            }
+                        })
+                    }
+                }
+                localStorage.removeItem("unreadMessage");
+
+            }
+        }
+
+    },200)
 
 
     $('#one-to-one-ChatText').keypress(function(e){
@@ -445,6 +486,7 @@ $(function() {
             });
     });
 
+    //get a message
     socket.on('newLoungeOtoText', function(data) {
 
         var selectedUser = $('.selected-user-name-area').attr('userid');
