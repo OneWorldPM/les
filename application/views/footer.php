@@ -65,9 +65,12 @@
 
         var $unreadMsgCount=$(".unread-msg-count");
         socket.on('unreadMessage', function (data) {
-            data["clicked"]=false;
-            localStorage.setItem("unreadMessage", JSON.stringify(data));
-            $unreadMsgCount.html("1");
+            if($(".chat-users-list").length<=0){
+                data["clicked"]=false;
+                localStorage.setItem("unreadMessage", JSON.stringify(data));
+                $unreadMsgCount.html("1");
+            }
+
         });
 
 
@@ -77,7 +80,7 @@
                 data=JSON.parse(data);
                 data["clicked"]=true;
                 localStorage.setItem("unreadMessage", JSON.stringify(data));
-                window.location.href="/lounge";
+                window.location.href="<?=base_url()?>lounge";
             }
         })
 
