@@ -153,7 +153,7 @@
                             <div class="container">
                                 <nav id="mainMenu" class="main-menu mega-menu">
                                     <ul class="main-menu nav nav-pills navbar-left" id="main_menu_top_bar" style="margin-right: 50px;">
-                                        <li><a href="https://lesmeetings.org/am20/agenda" target="_blank">AGENDA</a></li>
+                                       <li><a href="<?= base_url() ?>agenda" target="_blank">AGENDA</a></li>
                                         <li><a href="<?= base_url() ?>home">MAIN HALL</a></li>
 
                                         <li><a href="<?= base_url() ?>sessions">Sessions</a></li>

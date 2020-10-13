@@ -145,7 +145,7 @@
                                     <?php if ($this->session->userdata('sponsors_id') != "") { ?>
                                         <ul class="main-menu nav nav-pills navbar-left" id="main_menu_top_bar" style="margin-right: 50px;">
                                             <li><a href="<?= base_url() ?>sponsor-admin/" style="color: #ef9d45">Dashboard</a></li>
-                                            <li><a href="https://tiadaannualconference.com/agenda/" target="_blank" style="color: #ef9d45">AGENDA</a></li>
+                                           <li><a href="<?= base_url() ?>agenda" target="_blank">AGENDA</a></li>
 											<li><a target="_blank" href="<?= base_url() ?>sponsor-admin/VchatRoom/join/<?=$this->session->userdata('sponsors_id')?>" style="color: #ef9d45">Video Room</a></li>
                                             <li><a href="<?= base_url() ?>sponsor-admin/booth_tracking" style="color: #ef9d45">BOOTH TRACKING</a></li>
                                             <li><a href="<?= base_url() ?>sponsor-admin/push_notifications" style="color: #ef9d45">Push Notifications</a></li>
