@@ -91,6 +91,14 @@ class Lounge extends CI_Controller
         return;
     }
 
+    public function getFutureMeetingsNumber($user)
+    {
+        $result = $this->meetings->getFutureMeetingsNumber($user);
+
+        echo json_encode($result);
+        return;
+    }
+
     public function meet($meeting_id)
     {
         $user = $this->session->userdata('cid');

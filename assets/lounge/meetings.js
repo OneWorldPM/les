@@ -141,20 +141,25 @@ $(function() {
 
     });
 
-    listMeetings();
+    fillFutureMeetingsNumber();
 });
 
-
-
-function listMeetings() {
-
-    $.get( base_url+"Lounge/getMeetings/"+user_id, function(result) {
+function fillFutureMeetingsNumber() {
+    $.get( base_url+"Lounge/getFutureMeetingsNumber/"+user_id, function(result) {
         result = JSON.parse(result);
 
         if (result.length == 0)
             return;
 
         $('.number-of-meet-badge').html(result.length);
+    });
+}
+
+
+function listMeetings() {
+
+    $.get( base_url+"Lounge/getMeetings/"+user_id, function(result) {
+        result = JSON.parse(result);
 
         $('.meetings-table-items').html('');
 
