@@ -36,6 +36,7 @@ class M_presentation extends CI_Model {
                 $file_upload_name = $this->upload->data();
                 $this->db->update('presentation_resources', array('resources_file' => $file_upload_name['file_name']), array('presentation_resources_id' => $pid));
             }
+			return TRUE;
         } else {
             return '';
         }
