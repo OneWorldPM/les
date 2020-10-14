@@ -30,6 +30,7 @@ $(function() {
         socket.on('contacting-support', function() {
             $.get( firstUrl+"/user/SupportChat/getAllChats/"+user_id, function(chats) {
 
+                var connecting_msg = 'Please wait while we connect you with one of our support agents.  Closing this box will cancel your support request.';
 
                 chats = JSON.parse(chats);
 
@@ -41,7 +42,8 @@ $(function() {
                     {
                         $('.support-chat-list').append('' +
                             '<li class="support-chat-item admin clearfix">\n' +
-                            '  '+chat.message+' <span class="support-chat-name">Admin</span>\n' +
+                            '<span class="support-chat-name pull-right">Admin</span>' +
+                            '<p style="display: inline-block">'+chat.message+'</p>\n' +
                             '</li>');
                     }else{
                         $('.support-chat-list').append('' +
@@ -50,6 +52,12 @@ $(function() {
                             '</li>');
                     }
                 });
+
+                $('.support-chat-list').append('' +
+                    '<li class="support-chat-item admin clearfix">\n' +
+                    '<span class="support-chat-name pull-right">Admin</span>' +
+                    '<p style="display: inline-block">'+connecting_msg+'</p>\n' +
+                    '</li>');
 
                 $('.support-chat-body').scrollTop($('.support-chat-body')[0].scrollHeight);
 
