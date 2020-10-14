@@ -14,6 +14,9 @@ class Attendee_Chat extends CI_Controller
     public function chat($id)
     {
         $chats= $this->SessionGroupChatModel->sessionGetTexts(getAppName($id));
+
+        if($chats)$chats=array_reverse($chats);
+
         $data["chats"]=$chats;
 
         $this->load->view('admin/header');
