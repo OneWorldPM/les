@@ -180,6 +180,7 @@
                                                 <th>Type</th>
                                                 <th>Registrants</th>
                                                 <th>Presenter</th>
+                                                 <th>Zoom Link</th>
                                                 <th>Time Slot</th>
                                                 <th>Visible</th>
                                                 <th style="border-right: 0px solid #ddd;">Action</th>
@@ -241,6 +242,7 @@
                                                         }
                                                         ?>
                                                         </td>-->
+                                                         <td><a target="_blank" href="<?= $val->zoom_link ?>"><?= $val->zoom_link ?></a></td>
                                                         <td style="white-space: pre; text-align: right;"><?= date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></td>
                                                         <td>
                                                             <?php if ($val->sessions_type_status == "Private") { ?>
