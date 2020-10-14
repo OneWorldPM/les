@@ -129,6 +129,8 @@ $(function() {
 
                     if (data.status == 'success')
                     {
+                        newMeetingSelectedAttendees = [];
+
                         Swal.fire(
                             'Done!',
                             'Your meeting has been scheduled and invites are sent!',

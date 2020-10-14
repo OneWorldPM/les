@@ -7,9 +7,54 @@ if ($meeting_status['status'] == false)
         <div class="starter-template">
 <!--            <h1>Sorry!</h1>-->
             <p class="lead"><?=$meeting_status['message']?></p>
+            <p>This page will reload itself once the meeting starts</p>
         </div>
 
     </main>
+
+    <script>
+        // Meeting timer
+        var _second = 1000;
+        var _minute = _second * 60;
+        var _hour = _minute * 60;
+        var _day = _hour * 24;
+        var end = new Date('<?=$meeting->meeting_from?>');
+        var end_et = new Date(end.toLocaleString('en-US', { timeZone: 'America/Chicago' }));
+        function meetingTimer() {
+            var now = new Date();
+            var now_ct = new Date(now.toLocaleString('en-US', { timeZone: 'America/Chicago' }));
+            now_ct.setHours(now_ct.getHours() + 1 );
+
+            var distance = end - now_ct;
+            console.log(now_ct);
+            console.log(end);
+            console.log(distance);
+            if (distance < 0) {
+                clearInterval(timer);
+                location.reload();
+                return;
+            }
+            var days = Math.floor(distance / _day);
+            var hours = Math.floor((distance % _day) / _hour);
+            var minutes = Math.floor((distance % _hour) / _minute);
+            var seconds = Math.floor((distance % _minute) / _second);
+
+            if (days <= 0){
+                if (hours <= 0){
+                    if (minutes <= 0){
+                        $('.meeting_starts_in').html(seconds+' seconds');
+                    }else{
+                        $('.meeting_starts_in').html(minutes+' minutes '+seconds+' seconds');
+                    }
+                }else{
+                    $('.meeting_starts_in').html(hours+' hours '+minutes+' minutes '+seconds+' seconds');
+                }
+            }else{
+                $('.meeting_starts_in').html(days+' day(s) '+hours+' hours '+minutes+' minutes '+seconds+' seconds');
+            }
+        }
+        var timer = setInterval(meetingTimer, 1000);
+    </script>
 
 <?php
 }else{ ?>

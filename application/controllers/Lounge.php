@@ -139,7 +139,7 @@ class Lounge extends CI_Controller
 
             $meeting_from_formatted = (new DateTime($meeting->meeting_from))->format('M-d h:ia');
 
-            $meeting_status = array('status' => false, 'message' => "Meeting starts from {$meeting_from_formatted} (ET) <br> ie; in {$diff}, please return at that time!");
+            $meeting_status = array('status' => false, 'message' => "Meeting starts from {$meeting_from_formatted} (ET) <br> ie; in <span class='meeting_starts_in'>{$diff}</span>, please return at that time!");
         }elseif ($meeting && $meeting->meeting_to < $now){
             $datetime1 = strtotime($meeting->meeting_to);
             $datetime2 = strtotime($now);
