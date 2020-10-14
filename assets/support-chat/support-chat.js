@@ -42,7 +42,7 @@ $(function() {
                     {
                         $('.support-chat-list').append('' +
                             '<li class="support-chat-item admin clearfix">\n' +
-                            '<span class="support-chat-name pull-right">Admin</span>' +
+                            '<span class="support-chat-name pull-right m-l-5">Admin</span>' +
                             '<p style="display: inline-block">'+chat.message+'</p>\n' +
                             '</li>');
                     }else{
@@ -82,7 +82,8 @@ $(function() {
         {
             $('.support-chat-list_'+attendee_id).append('' +
                 '<li class="support-chat-item admin clearfix">\n' +
-                '  '+data.message+' <span class="support-chat-name">Admin</span>\n' +
+                '<span class="support-chat-name pull-right">Admin</span>' +
+                '<p style="display: inline-block">'+connecting_msg+'</p>\n' +
                 '</li>');
         }else{
             $('.support-chat-list_'+attendee_id).append('' +
@@ -97,6 +98,12 @@ $(function() {
     $('#close-support-request').on('click', function () {
         socket.emit('close-support-request');
         closeForm();
+    });
+
+    $('.support-chat-message').on("keypress", function(e) {
+        if (e.keyCode == 13) {
+            $('#send-support-message-btn').click();
+        }
     });
 
     $('#send-support-message-btn').on('click', function () {
