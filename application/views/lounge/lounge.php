@@ -317,7 +317,7 @@
             <div class="modal-header">
                 <h5 class="modal-title"><span class="user-to-call-title-name"></span></h5>
             </div>
-            <div class="attendees-list modal-body" style="text-align: center">
+            <div class="attendees-list modal-body" style="text-align: left">
 
             </div>
             <div class="modal-footer">
