@@ -294,6 +294,18 @@ $uri_segment1 = $this->uri->segment(3);
                                     </div>
                                 </a>
                             </li>
+                            <li class="<?= ($uri_segment == 'lounge_group_chat') ? 'active' : ''; ?>" >
+                                <a href="<?= site_url() ?>admin/lounge_group_chat" id="dash">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-comments"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title">Lounge Group Chat</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                 </div>
