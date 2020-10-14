@@ -17,7 +17,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="text-large">Select File:</label>
-                                            <input type="file" name="resources_file" id="resources_file" class="form-control" accept=".pdf">
+                                            <input type="file" name="resources_file" id="resources_file" class="form-control">
                                         </div>
                                         <h5 class="over-title margin-bottom-15">
                                             <button type="button" id="save_presentation" name="save_presentation" class="btn btn-green add-row">
@@ -57,13 +57,12 @@
                                                         <td><?= $val->title ?></td>
                                                         <td>
                                                             <h6 class="panel-title">
-                                                                <i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i>
                                                                 <span style="font-size: 20px;"> <?= $val->resources_file ?> </span>
                                                             </h6>
                                                         </td>
                                                         <td> 
                                                             <a href="<?= base_url() ?>uploads/presentation_resources/<?= $val->resources_file ?>" download="" type="button" class="btn btn-info btn-sm">Download</a>
-                                                          <!--  <a href="<?= base_url() ?>uploads/presentation_resources/<?= $val->resources_file ?>" target="_black" type="button" class="btn btn-success btn-sm">Open</a>-->
+                                                            <!--<a href="<?= base_url() ?>uploads/presentation_resources/<?= $val->resources_file ?>" target="_black" type="button" class="btn btn-success btn-sm">Open</a>-->
                                                             <a href="<?= base_url() ?>admin/presentation/delete_presentation/<?= $val->presentation_resources_id ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
                                                         </td>
                                                     </tr>

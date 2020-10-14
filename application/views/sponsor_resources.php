@@ -49,11 +49,11 @@
         </div>
         <br>
         <div class="files well">
-            <h2>Presentation Resources</h2>
+            <h2>Sessions</h2>
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Title</th>
+                        <th>Presentation Title</th>
                         <th>File Name</th>
                         <th>Operation</th>
                     </tr>
@@ -65,7 +65,7 @@
                             ?>
                             <tr>
                                 <td><?= $val->title ?></td>
-                                <td> <i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i> <?= $val->resources_file ?></td>
+                                <td><?= $val->resources_file ?></td>
                                 <td>
                                     <a href="<?= base_url() ?>uploads/presentation_resources/<?= $val->resources_file ?>" download="" type="button" class="btn btn-info btn-sm">Download</a>
                                     <a href="<?= base_url() ?>uploads/presentation_resources/<?= $val->resources_file ?>" target="_black" type="button" class="btn btn-success btn-sm">Open</a>
