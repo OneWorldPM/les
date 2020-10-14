@@ -19,7 +19,7 @@
         vertical-align: middle !important;
     }
 </style>
-<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/expo_background.jpg); top: 0; padding-top: 0px;">
+<section class="parallax fullscreen" style="background-image: url(<?= base_url() ?>front_assets/images/expo_background.jpg); top: 0; padding-top: 0px;">
     <div class="container container-fullscreen" style="padding: 0px;">
         <!-- CONTENT -->
         <section class="content" style="padding: 10px 0">
