@@ -58,4 +58,12 @@ class LoungeGroupChat_Model extends CI_Model
             return false;
         }
     }
+    public function deleteOneMessage(){
+        $messageId = $this->input->post()['messageId'];
+
+        $this->db->where('id', $messageId);
+        $this->db->delete('lounge_group_chat');
+
+        return "success";
+    }
 }
