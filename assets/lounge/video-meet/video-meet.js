@@ -33,6 +33,8 @@ $(function() {
         return false;
     });
 
+    $('#main_menu_top_bar').html('');
+
     timer = setInterval(meetingTimer, 1000); //Countdown until meeting ends
 
     toastr.options = {

@@ -156,21 +156,12 @@
                             <div class="container">
                                 <nav id="mainMenu" class="main-menu mega-menu">
                                     <ul class="main-menu nav nav-pills navbar-left" id="main_menu_top_bar" style="margin-right: 50px;">
-                                        <li><a href="https://lesmeetings.org/am20/agenda" target="_blank">AGENDA</a></li>
+                                       <li><a href="<?= base_url() ?>agenda" target="_blank">AGENDA</a></li>
                                         <li><a href="<?= base_url() ?>home">MAIN HALL</a></li>
-
                                         <li><a href="<?= base_url() ?>sessions">Sessions</a></li>
                                         <li><a href="<?= base_url() ?>sponsor/other_sponsor">Sponsor</a></li>
                                         <li><a href="<?= base_url() ?>sponsor/sponsor_resources">Resource Library</a></li>
                                         <li><a href="<?= base_url() ?>lounge">Lounge</a></li>
-                                        <li class="nav-item avatar dropdown">
-                                            <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                <span class="unread-msg-count badge badge-notify" style="font-size:10px;">0</span>
-                                                <i class="fa fa-envelope" style="color:#8286C5;font-size: 25px;"></i>
-                                            </a>
-                                            <div class="unread-msgs-list dropdown-menu dropdown-menu-lg-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5" style="overflow: hidden;"><a target="_blank" class="dropdown-item waves-effect waves-light" href="#">Message from LES</a>
-                                            </div>
-                                        </li>
                                     </ul>
 
                                     <style>
@@ -182,6 +173,14 @@
                                         }
                                     </style>
                                     <ul id="mainMenuItems" class="main-menu nav nav-pills navbar-left">
+                                        <li class="nav-item avatar dropdown m-r-25">
+                                            <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                <span class="unread-msg-count badge badge-notify" style="font-size:10px;">0</span>
+                                                <i class="fa fa-envelope" style="color:#8286C5;font-size: 25px;"></i>
+                                            </a>
+                                            <div class="unread-msgs-list dropdown-menu dropdown-menu-lg-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5" style="overflow: hidden;"><a target="_blank" class="dropdown-item waves-effect waves-light" href="#">Message from LES</a>
+                                            </div>
+                                        </li>
                                     </ul>
                                     <?php
                                     if ($this->session->userdata('cid') != "") {

@@ -335,7 +335,7 @@ if(false){
 
                                     </div>
                                 </div>
-                                <p style="font-weight: 600;">CURRENT TIME : <span id="show_time"></span> CT</p>
+<!--                                <p style="font-weight: 600;">CURRENT TIME : <span id="show_time"></span> CT</p>-->
                             </div>
                         </section>
                         <!-- END: SECTION -->
@@ -402,10 +402,10 @@ if(false){
                             </div>
                         </div>
                     </div>
-                    <p class="currentTime">
+<!--                    <p class="currentTime">
                         CURRENT TIME : <span id="show_time"></span> EDT <a class="button color currentTimeButton" id="close_session"><span>Close the Session</span></a>
                         <span class="borderFooter">test</span>
-                    </p>
+                    </p>-->
                     <div class="col-md-12">
                         <?php
                         if (isset($music_setting)) {
@@ -707,6 +707,13 @@ if(false){
     let socket = io("<?=getSocketUrl()?>");
     socket.emit("ConnectSessioViewUsers","<?=getAppName($sessions->sessions_id) ?>")
 
+        socket.on("endSession",function (par) {
+            var sessionId="<?=getAppName($sessions->sessions_id) ?>";
+
+            if(sessionId==par){
+                window.location.href="<?=base_url()?>sessions/session_end";
+            }
+        })
     $('#sendGroupChat').keypress(function (e) {
         var $questions = $("#sendGroupChat");
         var key = e.which;

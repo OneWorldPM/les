@@ -1,3 +1,21 @@
+<style>
+    .modal-footer, .modal-header{
+        border-color:#e5e5e5;
+    }
+    .modal-content{
+        box-shadow: 0 5px 15px rgba(0,0,0,.5);
+        background-color: #fff;
+
+    }
+    .modal-content .btn-default {
+        color: #333;
+        background-color: #fff;
+        border-color: #ccc;
+    }
+    .modal-content .form-control {
+        border-radius: 5px !important;
+    }
+</style>
 <div class="main-content">
     <div class="wrap-content container" id="container">
         <!-- start: PAGE TITLE -->
@@ -146,6 +164,8 @@
                                     Add Sessions  &nbsp;<i class="fa fa-plus"></i>
                                 </a>
                                 <button type="button" id="btndeleteall" class="btn btn-sm btn-danger"><i class="ti-trash"></i> Delete</button>
+                                <button type="button" id="btndeleteall" class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-film"></i> Update Sessions Iframe</button>
+
                             </h5>
                             <div class="row">
                                 <div class="col-md-12 table-responsive">
@@ -160,6 +180,7 @@
                                                 <th>Type</th>
                                                 <th>Registrants</th>
                                                 <th>Presenter</th>
+                                                 <th>Zoom Meeting Link</th>
                                                 <th>Time Slot</th>
                                                 <th>Visible</th>
                                                 <th style="border-right: 0px solid #ddd;">Action</th>
@@ -221,6 +242,7 @@
                                                         }
                                                         ?>
                                                         </td>-->
+                                                         <td><a target="_blank" href="<?= $val->zoom_link ?>"><?= $val->zoom_link ?></a></td>
                                                         <td style="white-space: pre; text-align: right;"><?= date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></td>
                                                         <td>
                                                             <?php if ($val->sessions_type_status == "Private") { ?>
@@ -230,7 +252,11 @@
                                                             <?php } ?>
                                                         </td>
                                                         <td>
+
                                                             <a href="<?= base_url() ?>admin/attendee_chat/chat/<?= $val->sessions_id ?>" class="btn btn-warning btn-sm" style="margin: 3px;">Attendee Chat</a>
+
+                                                            <button type="button" class="btn btn-danger btn-sm endSessionSocket" style="margin: 3px;" data-session-id="<?=getAppName($val->sessions_id) ?>">End Session</button>
+
                                                             <a href="<?= base_url() ?>admin/sessions/view_session/<?= $val->sessions_id ?>" class="btn btn-info btn-sm" style="margin: 3px;">View Session</a>
                                                             <a href="<?= base_url() ?>admin/sessions/edit_sessions/<?= $val->sessions_id ?>" class="btn btn-green btn-sm" style="margin: 3px;">Edit</a>
                                                         </td>
@@ -265,8 +291,56 @@
     </div>
 </div>
 </div>
+
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="sessionsIframe">Update Sessions Iframe:</label>
+                    <input type="text" class="form-control" id="sessionsIframe" value="<?=$iframe->value?>">
+                </div>
+
+                <button class="btn btn-success" id="updateIframe" data-url="<?= base_url() ?>admin/Settings/setSessionIframe">Save</button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript">
     $(document).ready(function () {
+        let socket = io("<?=getSocketUrl()?>");
+        $(".endSessionSocket").on("click", function () {
+            var sesionId=$(this).data("session-id");
+            alertify.confirm("Are you sure you want to end the session?", function (e) {
+                if (e)
+                {
+                    socket.emit("endSession",sesionId);
+
+                }
+            });
+
+        })
+        $("#updateIframe").on("click", function () {
+          var sessionsIframe=$("#sessionsIframe").val();
+          var url=$(this).data("url");
+          console.log(url);
+          $.post(url,{"iframe":sessionsIframe},function (response) {
+
+              if(response=="success"){
+                  alertify.alert('Update Complete');
+              }
+          })
+        });
+
+
         $("#btn_import").on("click", function () {
             if ($('#import_file').val() == '') {
                 alertify.error('Select File');

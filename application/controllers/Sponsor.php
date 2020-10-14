@@ -38,11 +38,12 @@ class Sponsor extends CI_Controller {
         $this->load->view('sponsor', $data);
         $this->load->view('footer');
     }
-    public function sponsor_resources(){
+    public function sponsor_resources() {
 
-        
-        $resources=$this->sponsor_resources->getResources();
-        $data["resources"]=$resources;
+
+        $resources = $this->sponsor_resources->getResources();
+        $data["resources"] = $resources;
+        $data["presentation_resources"]  = $this->sponsor_resources->get_presentation_resources();
         $this->load->view('header');
         $this->load->view('sponsor_resources', $data);
         $this->load->view('footer');

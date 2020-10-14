@@ -57,50 +57,52 @@
 <section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/expo_background.jpg); top: 0; padding-top: 0px;">
     <div class="container container-fullscreen">
         <div class="text-middle">
-            <div class="row m-t-30">
-                <div class="row">
-                    <form action="<?= base_url() ?>sponsor/filter_search" method="post" id="frm_search_data" name="frm_search_data">
-                        <div class="col-md-2" style="margin-top:10px;">
-                            <div class="input-groug">
-                                <select id="sponsors_category" name="sponsors_category" class="form-control">
-                                    <option value="">Filter By Category</option>
-                                    <?php
-                                    if (isset($sponsors_category) && !empty($sponsors_category)) {
-                                        foreach ($sponsors_category as $val) {
-                                            if ($val->sponsors_category_id != 2 && $val->sponsors_category_id != 5 && $val->sponsors_category_id != 11 && $val->sponsors_category_id != 12 && $val->sponsors_category_id != 14 && $val->sponsors_category_id != 16 && $val->sponsors_category_id != 21 && $val->sponsors_category_id != 22) {
-                                                ?>
-                                                <option value="<?= $val->sponsors_category_id ?>"><?= $val->category_name ?></option>
-                                                <?php
-                                            }
-                                        }
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-2" style="margin-top:10px;">
-                            <div class="input-groug">
-                                <select id="sponsors_type" name="sponsors_type" class="form-control">
-                                    <option value="">Filter By Level</option>
-									<option value="">All</option>
-                                    <option value="platinum">Platinum</option>
-                                    <option value="gold">Gold</option>
-                                    <option value="silver">Silver</option>
-                                    <option value="bronze">Bronze</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-3" style="margin-top:10px;">
-                            <div class="input-groug">
-                                <input type="text" name="searchbox" id="searchbox" class="form-control" value="" placeholder="Search Box">
-                            </div>
-                        </div>
-                        <div class="col-md-3" style="margin-top:10px;">
-                            <button type="submit" id="btn_search" class="btn btn-primary">Search</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+
+<!--            <div class="row m-t-30">-->
+<!--                <div class="row">-->
+<!--                    <form action="--><?//=base_url() ?><!--sponsor/filter_search" method="post" id="frm_search_data" name="frm_search_data">-->
+<!--                        <div class="col-md-2" style="margin-top:10px;">-->
+<!--                            <div class="input-groug">-->
+<!--                                <select id="sponsors_category" name="sponsors_category" class="form-control">-->
+<!--                                    <option value="">Filter By Category</option>-->
+<!--                                    --><?php
+//                                    if (isset($sponsors_category) && !empty($sponsors_category)) {
+//                                        foreach ($sponsors_category as $val) {
+//                                            if ($val->sponsors_category_id != 2 && $val->sponsors_category_id != 5 && $val->sponsors_category_id != 11 && $val->sponsors_category_id != 12 && $val->sponsors_category_id != 14 && $val->sponsors_category_id != 16 && $val->sponsors_category_id != 21 && $val->sponsors_category_id != 22) {
+//                                                ?>
+<!--                                                <option value="<?//=$val->sponsors_category_id ?>"><?//=$val->category_name ?></option>-->
+<!--                                                --><?php
+//                                            }
+//                                        }
+//                                    }
+//                                    ?>
+<!--                                </select>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-2" style="margin-top:10px;">-->
+<!--                            <div class="input-groug">-->
+<!--                                <select id="sponsors_type" name="sponsors_type" class="form-control">-->
+<!--                                    <option value="">Filter By Level</option>-->
+<!--									<option value="">All</option>-->
+<!--                                    <option value="platinum">Platinum</option>-->
+<!--                                    <option value="gold">Gold</option>-->
+<!--                                    <option value="silver">Silver</option>-->
+<!--                                    <option value="bronze">Bronze</option>-->
+<!--                                </select>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-3" style="margin-top:10px;">-->
+<!--                            <div class="input-groug">-->
+<!--                                <input type="text" name="searchbox" id="searchbox" class="form-control" value="" placeholder="Search Box">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-3" style="margin-top:10px;">-->
+<!--                            <button type="submit" id="btn_search" class="btn btn-primary">Search</button>-->
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--            </div>-->
+
             <div class="row">
                 <!--                <div class="col-md-12">
                                     <div class="text-center m-t-0">
@@ -116,7 +118,7 @@
                                 <div class="col-md-3 col-sm-12" style="margin-bottom:40px;">
                                     <a class="icon-home" href="<?= base_url() ?>sponsor/view/<?= $val->sponsors_id ?>">
                                         <div class="col-lg box-home text-center">
-                                            <img src="<?= base_url() ?>uploads/sponsors/<?= $val->sponsors_logo ?>" alt="welcome" style="max-width: 200px; max-height: 130px">
+                                            <img src="<?= base_url() ?>uploads/sponsors/<?= $val->sponsors_logo ?>" alt="platinum" style="max-width: 230px;max-height: 125px;">
                                         </div>
                                     </a>
                                 </div>
@@ -132,8 +134,8 @@
                             <div class="col-md-3 col-sm-12" style="margin-bottom:40px;">
                                 <a class="icon-home" href="<?= base_url() ?>sponsor/view/<?= $val->sponsors_id ?>">
                                     <div class="col-lg box-home text-center">
-                                        <img src="<?= base_url() ?>uploads/sponsors/<?= $val->sponsors_logo ?>" alt="welcome" style="max-width: 100px">
-                                        <h4><?= $val->company_name ?></h4>
+                                        <img src="<?= base_url() ?>uploads/sponsors/<?= $val->sponsors_logo ?>" alt="gold" style="max-width: 200px;max-height: 100px;">
+<!--                                        <h4><?//= $val->company_name ?></h4>-->
                                     </div>
                                 </a>
                             </div>
@@ -148,8 +150,8 @@
                             <div class="col-md-3 col-sm-12" style="margin-bottom:40px;">
                                 <a class="icon-home" href="<?= base_url() ?>sponsor/view/<?= $val->sponsors_id ?>">
                                     <div class="col-lg box-home text-center">
-                                        <img src="<?= base_url() ?>uploads/sponsors/<?= $val->sponsors_logo ?>" alt="welcome" style="max-width: 100px">
-                                        <h4><?= $val->company_name ?></h4>
+                                        <img src="<?= base_url() ?>uploads/sponsors/<?= $val->sponsors_logo ?>" alt="silver" style="max-width: 200px;max-height: 100px;">
+<!--                                        <h4><?//=$val->company_name ?></h4>-->
                                     </div>
                                 </a>
                             </div>
@@ -164,8 +166,8 @@
                             <div class="col-md-3 col-sm-12" style="margin-bottom:40px;">
                                 <a class="icon-home" href="<?= base_url() ?>sponsor/view/<?= $val->sponsors_id ?>">
                                     <div class="col-lg box-home text-center">
-                                        <img src="<?= base_url() ?>uploads/sponsors/<?= $val->sponsors_logo ?>" alt="welcome" style="max-width: 100px">
-                                        <h4><?= $val->company_name ?></h4>
+                                        <img src="<?= base_url() ?>uploads/sponsors/<?= $val->sponsors_logo ?>" alt="bronze" style="max-width: 200px;max-height: 100px;">
+<!--                                        <h4><?//= $val->company_name ?></h4>-->
                                     </div>
                                 </a>
                             </div>

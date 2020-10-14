@@ -162,6 +162,18 @@ $uri_segment1 = $this->uri->segment(3);
                                     </div>
                                 </a>
                             </li>
+							<li class="<?= ($uri_segment == 'presentation') ? 'active' : ''; ?>">
+                                <a href="<?= site_url() ?>admin/presentation " id="dash">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-photo"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title">Presentation</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                             <li class="<?= ($uri_segment == 'plan_pricing') ? 'active' : ''; ?>">
                                 <a href="<?= site_url() ?>admin/plan_pricing" id="dash">
                                     <div class="item-content">
@@ -293,8 +305,7 @@ $uri_segment1 = $this->uri->segment(3);
                                         </div>
                                     </div>
                                 </a>
-                            </li>
-                            <li class="<?= ($uri_segment == 'lounge_group_chat') ? 'active' : ''; ?>" >
+                            </li><li class="<?= ($uri_segment == 'lounge_group_chat') ? 'active' : ''; ?>" >
                                 <a href="<?= site_url() ?>admin/lounge_group_chat" id="dash">
                                     <div class="item-content">
                                         <div class="item-media">
