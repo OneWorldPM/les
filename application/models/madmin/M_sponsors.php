@@ -342,7 +342,7 @@ class M_sponsors extends CI_Model {
     }
 
     function newResource($sponsor) {
-        $unique_str = $this->generateRandomString();
+        $unique_str = $this->generateRandomCode();
         $itemName = $this->input->post()['name'];
         if ($_FILES['resource']) {
             $fileExt = pathinfo($_FILES["resource"]["name"], PATHINFO_EXTENSION);
@@ -364,7 +364,7 @@ class M_sponsors extends CI_Model {
         }
     }
 
-    function generateRandomString($length = 3) {
+    function generateRandomCode($length = 3) {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';
