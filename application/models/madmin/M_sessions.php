@@ -240,10 +240,6 @@ class M_sessions extends CI_Model {
         $post = $this->input->post();
 
 
-        $session_right_bar = "";
-        if (isset($post["session_right_bar"])) {
-            $session_right_bar = implode(",", $post["session_right_bar"]);
-        }
 
         if (isset($post['sessions_type'])) {
             $sessions_type_id = $post['sessions_type'];
@@ -279,7 +275,6 @@ class M_sessions extends CI_Model {
             'sessions_tracks_id' => $sessions_tracks_id,
             'sessions_type_status' => trim($post['sessions_type_status']),
             'sessions_visibility' => (isset($post['sessions_visibility'])) ? $post['sessions_visibility'] : '',
-            'right_bar' => $session_right_bar
         );
         $this->db->update("sessions", $set, array("sessions_id" => $post['sessions_id']));
         $sessions_id = $post['sessions_id'];
