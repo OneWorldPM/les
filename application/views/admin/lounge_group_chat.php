@@ -24,7 +24,6 @@
                     <?php
                     foreach ($chats as $chat) {
                         $profileUrl = base_url() . "uploads/customer_profile/" . $chat["profile"];
-                        $profileUrl = "";
                         ?>
                         <li class="grp-chat left clearfix">
                             <div class="pull-left removeMessage" data-id="<?=$chat["id"]?>"><i class="fa fa-times-circle" aria-hidden="true"></i></div>
