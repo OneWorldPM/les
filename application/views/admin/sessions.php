@@ -180,7 +180,7 @@
                                                 <th>Type</th>
                                                 <th>Registrants</th>
                                                 <th>Presenter</th>
-                                                 <th>Zoom Link</th>
+                                                 <th>Zoom Meeting Link</th>
                                                 <th>Time Slot</th>
                                                 <th>Visible</th>
                                                 <th style="border-right: 0px solid #ddd;">Action</th>
