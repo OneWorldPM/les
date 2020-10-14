@@ -319,8 +319,7 @@ class M_sponsors extends CI_Model {
         }
     }
 
-    function addNewSponsorAdminUser()
-    {
+    function addNewSponsorAdminUser() {
         $sponsor_id = $this->input->post()['sponsor_id'];
         $name = $this->input->post()['name'];
         $email = $this->input->post()['email'];
@@ -331,33 +330,32 @@ class M_sponsors extends CI_Model {
             'name' => $name,
             'email' => $email,
             'password' => $password
-            );
+        );
 
         $this->db->insert("sponsor_extra_admin", $data);
         $id = $this->db->insert_id();
-        if ($id > 0)
-        {
+        if ($id > 0) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    function newResource($sponsor)
-    {
-        $unique_str = md5(uniqid(rand(), true));
+    function newResource($sponsor) {
+        $unique_str = $this->generateRandomCode();
         $itemName = $this->input->post()['name'];
+        $filename = str_replace(' ', '_', strtolower($itemName));
         if ($_FILES['resource']) {
             $fileExt = pathinfo($_FILES["resource"]["name"], PATHINFO_EXTENSION);
             //if (file_exists("sponsor_cover_{$id}.{$fileExt}")) {
-                //chmod("sponsor_cover_{$id}.{$fileExt}", 0755); //Change the file permissions if allowed
-                //unlink("sponsor_cover_{$id}.{$fileExt}"); //remove the file
+            //chmod("sponsor_cover_{$id}.{$fileExt}", 0755); //Change the file permissions if allowed
+            //unlink("sponsor_cover_{$id}.{$fileExt}"); //remove the file
             //}
-            if (move_uploaded_file($_FILES["resource"]["tmp_name"], FCPATH . "front_assets/sponsor/resources/resource_{$sponsor}_{$unique_str}.{$fileExt}")) {
+            if (move_uploaded_file($_FILES["resource"]["tmp_name"], FCPATH . "front_assets/sponsor/resources/{$filename}_{$sponsor}_{$unique_str}.{$fileExt}")) {
                 $data = array(
                     'sponsor_id' => $sponsor,
                     'item_name' => $itemName,
-                    'file_name' => "resource_{$sponsor}_{$unique_str}.{$fileExt}"
+                    'file_name' => "{$filename}_{$sponsor}_{$unique_str}.{$fileExt}"
                 );
                 $this->db->insert('sponsor_resources', $data);
                 return true;
@@ -367,8 +365,17 @@ class M_sponsors extends CI_Model {
         }
     }
 
-    function getAllResources($sponsor)
-    {
+    function generateRandomCode($length = 3) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
+
+    function getAllResources($sponsor) {
         $this->db->select('*');
         $this->db->from('sponsor_resources');
         $this->db->where('sponsor_id', $sponsor);
@@ -380,13 +387,11 @@ class M_sponsors extends CI_Model {
         }
     }
 
-    function deleteResource($resourceId)
-    {
+    function deleteResource($resourceId) {
         return $this->db->delete('sponsor_resources', array('id' => $resourceId));
     }
 
-    function getAllExtraAdmins($sponsor)
-    {
+    function getAllExtraAdmins($sponsor) {
         $this->db->select('*');
         $this->db->from('sponsor_extra_admin');
         $this->db->where('sponsor_id', $sponsor);

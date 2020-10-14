@@ -4,6 +4,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.16/jquery.datetimepicker.full.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.16/jquery.datetimepicker.css">
 
+<style>
+    @media (max-width: 991px) {
+        .informationCol {
+            width: 100%;
+            float: unset;
+        }
+    }
+
+</style>
+
 <?php
 $sponsors_logo = ($sponsor->sponsors_logo == '') ? 'logo_placeholder.png' : $sponsor->sponsors_logo;
 $sponsor_cover = ($sponsor->sponsor_cover == '') ? 'expo_background.jpg' : $sponsor->sponsor_cover;
@@ -30,10 +40,11 @@ $sponsor_cover = ($sponsor->sponsor_cover == '') ? 'expo_background.jpg' : $spon
     </div>
 
     <div class="container">
+        <input type="hidden" id="view_sponsor_history_id" style="display: none">
+
         <!-- Example row of columns -->
         <div class="row m-b-30">
-            <input type="hidden" id="view_sponsor_history_id" value="">
-            <div class="col-md-4">
+            <div class="col-lg-4 col-md-4 col-sm-12 informationCol">
                 <img class="sponsor-main-logo" src="<?= base_url() ?>uploads/sponsors/<?= $sponsors_logo ?>">
                 <h1 class="sponsor-name">
                     <?= $sponsor->company_name ?>
@@ -72,7 +83,7 @@ $sponsor_cover = ($sponsor->sponsor_cover == '') ? 'expo_background.jpg' : $spon
                     echo '<a href="https://www.linkedin.com/company/' . $sponsor->linkedin_id . '" target="_blank"><i class="fa fa-linkedin-square fa-3x m-l-10" aria-hidden="true" style="color: #0077b5;"></i></a>';
                 }
                 if ($sponsor->twitter_id != '') {
-                    echo '<div class="col-md-12 m-t-20" style="height: 420px; overflow: scroll">
+                    echo '<div class="col-md-12 col-sm-12 m-t-20" style="height: 420px; overflow: scroll">
                             <a class="twitter-timeline" href="https://twitter.com/' . $sponsor->twitter_id . '?ref_src=twsrc%5Etfw">Tweets by ' . $sponsor->twitter_id . '</a>
                             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                           </div>
@@ -80,7 +91,7 @@ $sponsor_cover = ($sponsor->sponsor_cover == '') ? 'expo_background.jpg' : $spon
                 }
                 ?>
             </div>
-            <div class="col-md-4">
+            <div class="col-lg-4 col-md-8 col-sm-12">
                 <div class="grpchat-margin"></div>
                 <div class="panel panel-primary">
                     <div class="panel-heading">
@@ -96,19 +107,19 @@ $sponsor_cover = ($sponsor->sponsor_cover == '') ? 'expo_background.jpg' : $spon
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-lg-4 col-md-8 col-sm-12">
                 <div class="grpchat-margin"></div>
 
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">
                             Send a Message to <?= substr($sponsor->company_name, 0, 18) ?>
-                            <span class="schedule-meet-btn small-edit-btn badge badge-primary pull-right">
-                                <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Schedule a meet
-                            </span>
-<!--                            <span class="video-call-btn badge badge-primary pull-right">
-                                <i class="fa fa-video-camera" aria-hidden="true"></i> Call
-                            </span>-->
+                            <!--                            <span class="schedule-meet-btn small-edit-btn badge badge-primary pull-right">
+                                                            <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Schedule a meet
+                                                        </span>-->
+                            <!--                            <span class="video-call-btn badge badge-primary pull-right">
+                                                            <i class="fa fa-video-camera" aria-hidden="true"></i> Call
+                                                        </span>-->
                         </h3>
                     </div>
                     <div id="chat-body" class="panel-body">
@@ -212,7 +223,7 @@ $sponsor_cover = ($sponsor->sponsor_cover == '') ? 'expo_background.jpg' : $spon
                     <small>Available dates are highlighted in green</small>
                 </div>
                 <div class="modal-footer">
-                    <small class="pull-left">All dates and times are in The North American Central Time Zone (CT)</small>
+                    <small class="pull-left">All dates and times are in The North American Eastern Time Zone (ET)</small>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -310,12 +321,12 @@ $sponsor_cover = ($sponsor->sponsor_cover == '') ? 'expo_background.jpg' : $spon
         });
 
         $('#mainMenuItems').append('' +
-                '<li>' +
-                '<a href="sponsor-admin/logout" style="color:#A9A9A9; font-size: 18px;">' +
-                '<i class="fa fa-sign-out" style="color:#A9A9A9; font-size: 18px;"></i>' +
-                'Logout' +
-                '</a>' +
-                '</li>');
+            '<li>' +
+            '<a href="sponsor-admin/logout" style="color:#A9A9A9; font-size: 18px;">' +
+            '<i class="fa fa-sign-out" style="color:#A9A9A9; font-size: 18px;"></i>' +
+            'Logout' +
+            '</a>' +
+            '</li>');
     });
 </script>
 <script src="https://meet.yourconference.live/socket.io/socket.io.js"></script>
@@ -331,8 +342,8 @@ $sponsor_cover = ($sponsor->sponsor_cover == '') ? 'expo_background.jpg' : $spon
     $(document).ready(function () {
         push_notification_sponsor();
         setInterval(push_notification_sponsor, 4000);
-        function push_notification_sponsor()
-        {
+
+        function push_notification_sponsor() {
             var push_notification_id = $("#push_notification_sponsor_id").val();
             $.ajax({
                 url: "<?= base_url() ?>push_notification/get_push_notification_sponsor",
@@ -349,7 +360,8 @@ $sponsor_cover = ($sponsor->sponsor_cover == '') ? 'expo_background.jpg' : $spon
                             $('#push_notification_sponsor').modal('show');
                             $("#push_notification_message_sponsor").text(data.result.message);
                         }
-                    } else {
+                    }
+                    else {
                         $('#push_notification_sponsor').modal('hide');
                     }
                 }

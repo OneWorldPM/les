@@ -51,6 +51,15 @@ class Meetings_Modal extends CI_Model {
         return false;
     }
 
+    public function deleteMeeting()
+    {
+        $meetingId = $this->input->post('meetingId');
+        $this->db->delete('lounge_meeting_attendees', array('meeting_id' => $meetingId));
+        if ($this->db->delete('lounge_meetings', array('id' => $meetingId)))
+            return true;
+        return false;
+    }
+
     public function getMeetings($user)
     {
         $meetings = $query = $this->db->query("
@@ -74,12 +83,30 @@ class Meetings_Modal extends CI_Model {
         }
     }
 
+    public function getFutureMeetingsNumber($user)
+    {
+        $now = date('Y-m-d H:i:s');
+        $meetings = $query = $this->db->query("
+                                        SELECT DISTINCT lm.*
+                                        FROM lounge_meetings lm
+                                        LEFT JOIN lounge_meeting_attendees lma ON lm.id = lma.meeting_id
+                                        WHERE (lm.host = '{$user}' OR lma.attendee_id = '{$user}') AND lm.meeting_to > '{$now}'
+                                        ");
+        if ($meetings->num_rows() > 0)
+        {
+            return $meetings->result_array();
+        } else {
+            return false;
+        }
+    }
+
     public function getAttendeesPerMeet($meeting_id)
     {
         $users = $query = $this->db->query("
-                                        SELECT attendee_id 
-                                        FROM lounge_meeting_attendees
-                                        WHERE meeting_id = '{$meeting_id}'
+                                        SELECT lma.*, CONCAT(cm.first_name, ' ', cm.last_name) AS name, cm.profile
+                                        FROM lounge_meeting_attendees lma
+                                        JOIN customer_master cm ON cm.cust_id = lma.attendee_id
+                                        WHERE lma.meeting_id = '{$meeting_id}'
                                         ");
         if ($users->num_rows() > 0) {
             return $users->result_array();

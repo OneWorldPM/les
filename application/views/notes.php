@@ -22,28 +22,60 @@
         <div class="text-middle">
             <div class="row">
                 <div class="col-md-12">
-                    <h3 style="font-weight: 600; font-size: 22px; padding-left: 30px; color: #ef9d45;">My Swag Bag</h3>
+                    <h3 style="font-weight: 600; font-size: 22px; padding-left: 30px; color: #ef9d45;">My Briefcase</h3>
                 </div>
             </div>
             <?php if (isset($sponsor_resources) && !empty($sponsor_resources)) { ?>
-
                 <div class="row">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Resource files from booths</div>
-                        <div class="panel-body">
-                            <ul class="list-group resources-list">
-                                <?php foreach ($sponsor_resources as $item) { ?>
-                                    <div class="col-md-6 m-b-10 resource-item-div" resource-id="<?= $item->session_resource_id ?>">
-                                        <li class="list-group-item">
-                                            <h3><i class="fa fa-file-pdf-o " aria-hidden="true"></i><?= $item->item_name ?></h3>
-                                            <a class="btn btn-sm btn-success" href="/LES/front_assets/sponsor/resources/<?= $item->file_name ?>" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i> Open</a>
-                                        </li>
+
+                    <div class="col-md-12">
+                        <!-- CONTENT -->
+                        <section class="content" style="padding: 0px 0;">
+                            <div class="container" style=" background: rgba(250, 250, 250, 0.8); "> 
+                                <!-- Blog post-->
+                                <div class="post-content post-single"> 
+                                    <!-- Blog image post-->
+                                    <div class="col-md-12 table-responsive" style="margin-top: 30px;">
+                                        <table class="table table-bordered table-striped text-center ">
+                                            <thead class="th_center">
+                                                <tr>
+                                                    <th><b>Resource files from booths</b></th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach ($sponsor_resources as $item) { ?>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="post-item">
+                                                                <div class="post-content-details col-md-12 m-t-10" style="text-align: center;">
+                                                                    <div class="post-title">
+                                                                        <h3><i class="fa fa-file-pdf-o " aria-hidden="true"></i><?= $item->item_name ?></h3>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="post-description col-md-12">
+                                                                <a class="btn btn-sm btn-success" href="/les/front_assets/sponsor/resources/<?= $item->file_name ?>" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i> Open</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </tbody>
+                                        </table>
+
                                     </div>
-                                <?php } ?>
-                            </ul>
-                        </div>
+                                    <!-- END: Blog post--> 
+                                </div>
+                        </section>
+                        <!-- END: SECTION --> 
                     </div>
                 </div>
+
+
             <?php } ?>
 
             <div class="row">
@@ -78,10 +110,9 @@
                                                     <td>
                                                         <div class="post-item">
                                                             <div class="post-image col-md-4 m-t-20"> 
-                                                                <h6 style="font-weight: 600; font-size: 13px;"><?= $val->sessions_date . ' ' . date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></h6>
+                                                                <h6 style="font-weight: bold;font-size: 14px;text-align: left;"><?= $val->sessions_date . ' ' . date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></h6>
                                                             </div>
                                                             <div class="post-content-details col-md-8 m-t-10" style="text-align: left;">
-
                                                                 <div class="post-title">
                                                                     <h3><a href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>" style="color: #ef9d45; font-weight: 900;"><?= $val->session_title ?></a> </h3>
                                                                 </div>
@@ -121,96 +152,110 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
-                    <!-- CONTENT -->
-                    <section class="content" style="padding: 0px 0;">
-                        <div class="container" style=" background: rgba(250, 250, 250, 0.8); "> 
-                            <!-- Blog post-->
-                            <div class="post-content post-single"> 
-                                <!-- Blog image post-->
-                                <div class="col-md-12 table-responsive" style="margin-top: 30px;">
-                                    <table class="table table-bordered table-striped text-center ">
-                                        <thead class="th_center">
-                                            <tr>
-                                                <th colspan="2"><b>Notes</b></th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            if (isset($briefcase_list) && !empty($briefcase_list)) {
-                                                foreach ($briefcase_list as $val) {
-                                                    ?>
-                                                    <tr>
-                                                        <td><?= $val->session_title ?> </td>
-                                                        <td> <?= $val->note ?></td>
-                                                        <td> <a class="button black-light small" style="margin: 0px 0;" href="<?= base_url() ?>home/delete_note/<?= $val->sessions_cust_briefcase_id ?>"><span>Delete</span></a></td>
-                                                    </tr>
-                                                    <?php
+                <?php
+                if ($briefcase_list) {
+                    ?>
+                    <div class="col-md-12">
+                        <!-- CONTENT -->
+                        <section class="content" style="padding: 0px 0;">
+                            <div class="container" style=" background: rgba(250, 250, 250, 0.8); ">
+                                <!-- Blog post-->
+                                <div class="post-content post-single">
+                                    <!-- Blog image post-->
+                                    <div class="col-md-12 table-responsive" style="margin-top: 30px;">
+                                        <table class="table table-bordered table-striped text-center ">
+                                            <thead class="th_center">
+                                                <tr>
+                                                    <th colspan="2"><b>Notes</b></th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                if (isset($briefcase_list) && !empty($briefcase_list)) {
+                                                    foreach ($briefcase_list as $val) {
+                                                        ?>
+                                                        <tr>
+                                                            <td><?= $val->session_title ?> </td>
+                                                            <td> <?= $val->note ?></td>
+                                                            <td> <a class="button black-light small" style="margin: 0px 0;" href="<?= base_url() ?>home/delete_note/<?= $val->sessions_cust_briefcase_id ?>"><span>Delete</span></a></td>
+                                                        </tr>
+                                                        <?php
+                                                    }
                                                 }
-                                            }
-                                            ?>
-                                        </tbody>
-                                    </table>
+                                                ?>
+                                            </tbody>
+                                        </table>
 
+                                    </div>
+                                    <!-- END: Blog post-->
                                 </div>
-                                <!-- END: Blog post--> 
-                            </div>
-                    </section>
-                    <!-- END: SECTION --> 
-                </div>
+                        </section>
+                        <!-- END: SECTION -->
+                    </div>
+                    <?php
+                }
+                ?>
+
             </div>
             <div class="row">
-                <div class="col-md-12">
-                    <!-- CONTENT -->
-                    <section class="content" style="padding: 0px 0;">
-                        <div class="container" style=" background: rgba(250, 250, 250, 0.8); "> 
-                            <!-- Blog post-->
-                            <div class="post-content post-single"> 
-                                <!-- Blog image post-->
-                                <div class="col-md-12 table-responsive" style="margin-top: 30px;">
-                                    <table class="table table-bordered table-striped text-center ">
-                                        <thead class="th_center">
-                                            <tr>
-                                                <th colspan="2"><b>Resource</b></th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            if (isset($briefcase_list) && !empty($briefcase_list)) {
-                                                foreach ($briefcase_list as $val) {
-                                                    ?>
-                                                    <tr>
-                                                        <td><?= $val->session_title ?></td>
-                                                        <td>
-                                                            <?php
-                                                            if ($val->session_resource_id != "") {
-                                                                $resource_details = $this->common->get_session_resource($val->session_resource_id);
-                                                                if (!empty($resource_details)) {
-                                                                    ?>
-                                                                    <a href="<?= $resource_details->resource_link ?>" target="_blank"><?= $resource_details->link_published_name ?></a><br>
-                                                                    <a href="<?= base_url() ?>uploads/resource_sessions/<?= $resource_details->resource_file ?>" download> <?= $resource_details->upload_published_name ?> </a>
-                                                                    <?php
+                <?php
+                if ($briefcase_list) {
+                    ?>
+                    <div class="col-md-12">
+                        <!-- CONTENT -->
+                        <section class="content" style="padding: 0px 0;">
+                            <div class="container" style=" background: rgba(250, 250, 250, 0.8); ">
+                                <!-- Blog post-->
+                                <div class="post-content post-single">
+                                    <!-- Blog image post-->
+                                    <div class="col-md-12 table-responsive" style="margin-top: 30px;">
+                                        <table class="table table-bordered table-striped text-center ">
+                                            <thead class="th_center">
+                                                <tr>
+                                                    <th colspan="2"><b>Resource</b></th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                if (isset($briefcase_list) && !empty($briefcase_list)) {
+                                                    foreach ($briefcase_list as $val) {
+                                                        ?>
+                                                        <tr>
+                                                            <td><?= $val->session_title ?></td>
+                                                            <td>
+                                                                <?php
+                                                                if ($val->session_resource_id != "") {
+                                                                    $resource_details = $this->common->get_session_resource($val->session_resource_id);
+                                                                    if (!empty($resource_details)) {
+                                                                        ?>
+                                                                        <a href="<?= $resource_details->resource_link ?>" target="_blank"><?= $resource_details->link_published_name ?></a><br>
+                                                                        <a href="<?= base_url() ?>uploads/resource_sessions/<?= $resource_details->resource_file ?>" download> <?= $resource_details->upload_published_name ?> </a>
+                                                                        <?php
+                                                                    }
                                                                 }
-                                                            }
-                                                            ?>
-                                                        </td>
-                                                        <td> <a class="button black-light small" style="margin: 0px 0;" href="<?= base_url() ?>home/delete_note/<?= $val->sessions_cust_briefcase_id ?>"><span>Delete</span></a></td>
-                                                    </tr>
-                                                    <?php
+                                                                ?>
+                                                            </td>
+                                                            <td> <a class="button black-light small" style="margin: 0px 0;" href="<?= base_url() ?>home/delete_note/<?= $val->sessions_cust_briefcase_id ?>"><span>Delete</span></a></td>
+                                                        </tr>
+                                                        <?php
+                                                    }
                                                 }
-                                            }
-                                            ?>
-                                        </tbody>
-                                    </table>
+                                                ?>
+                                            </tbody>
+                                        </table>
 
+                                    </div>
+                                    <!-- END: Blog post-->
                                 </div>
-                                <!-- END: Blog post--> 
-                            </div>
-                    </section>
-                    <!-- END: SECTION --> 
-                </div>
+                        </section>
+                        <!-- END: SECTION -->
+                    </div>
+                    <?php
+                }
+                ?>
+
             </div>
 
         </div>

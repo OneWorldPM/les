@@ -1,3 +1,5 @@
+var meetingsTable;
+
 $(function() {
 
     var newMeetingSelectedAttendees = [];
@@ -56,6 +58,18 @@ $(function() {
             toastr["warning"]("You are the host, you can't add yourself as an attendee!");
             return;
         }
+
+        if (newMeetingSelectedAttendees.includes(id)){
+            toastr["error"]("Already selected this person!");
+            return;
+        }
+
+        if (newMeetingSelectedAttendees.length >= 6){
+            toastr["error"]("You can only have maximum 6 attendees per meet!");
+            return;
+        }
+
+        console.log(newMeetingSelectedAttendees);
 
         $('.selected-attendees-list').append(
             '<div class="selected-attendees-item" attendee-id="'+id+'"><img src="'+userAvatarSrc+'" alt="User Avatar" onerror=this.src="'+userAvatarAlt+'" class="img-circle"> '+name+' <i class="remove-attendee fa fa-times" attendee-id="'+id+'" aria-hidden="true" style="color: #c60d0d;"></i></div>'
@@ -141,9 +155,19 @@ $(function() {
 
     });
 
-    listMeetings();
+    fillFutureMeetingsNumber();
 });
 
+function fillFutureMeetingsNumber() {
+    $.get( base_url+"Lounge/getFutureMeetingsNumber/"+user_id, function(result) {
+        result = JSON.parse(result);
+
+        if (result.length == 0)
+            return;
+
+        $('.number-of-meet-badge').html(result.length);
+    });
+}
 
 
 function listMeetings() {
@@ -151,14 +175,17 @@ function listMeetings() {
     $.get( base_url+"Lounge/getMeetings/"+user_id, function(result) {
         result = JSON.parse(result);
 
-        if (result.length == 0)
-            return;
-
-        $('.number-of-meet-badge').html(result.length);
-
-        $('.meetings-table-items').html('');
+        $('#meetings_table').dataTable().fnDestroy();
+        $('.meetings-table-items').html("");
 
         $.each( result, function( row, meeting ) {
+            if (meeting.host == user_id)
+            {
+                var meeting_delete_button = '<button class="delete-meeting-btn btn btn-xs btn-danger m-t-5" meeting-id="'+meeting.id+'">Delete</button>';
+            }else{
+                var meeting_delete_button = '';
+            }
+
             $('.meetings-table-items').append(
                 '<tr>\n' +
                 '  <td>'+meeting.topic+'</td>\n' +
@@ -166,8 +193,9 @@ function listMeetings() {
                 '  <td>'+meeting.meeting_from+'</td>\n' +
                 '  <td>'+meeting.meeting_to+'</td>\n' +
                 '  <td>' +
-                '<button class="btn btn-xs btn-warning">Attendees</button>' +
-                '<a class="m-l-5" href="'+base_url+'lounge/meet/'+meeting.id+'" target="_blank"><button class="meeting-room-btn btn btn-xs btn-info" meeting-id="'+meeting.id+'">Meeting Room</button></a>' +
+                '<button class="show-attendees-btn btn btn-xs btn-warning m-b-5" meeting-id="'+meeting.id+'">Attendees</button>' +
+                '<a class="m-t-5" href="'+base_url+'lounge/meet/'+meeting.id+'" target="_blank"><button class="meeting-room-btn btn btn-xs btn-info" meeting-id="'+meeting.id+'">Meeting Room</button></a>' +
+                 meeting_delete_button +
                 '</td>\n' +
                 '</tr>'
             );
@@ -177,6 +205,82 @@ function listMeetings() {
     });
 
 }
+
+$(".meetings-table-items").on('click', '.delete-meeting-btn',function () {
+    var meeting_id = $(this).attr('meeting-id');
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+            $.post(base_url+"Lounge/deleteMeeting",
+                {
+                    'meetingId': meeting_id
+                },
+                function(data, status){
+                    if(status == 'success')
+                    {
+                        data = JSON.parse(data);
+
+                        if (data.status == 'success')
+                        {
+                            Swal.fire(
+                                'Deleted!',
+                                'Meeting has been deleted.',
+                                'success'
+                            )
+
+                            listMeetings();
+                        }
+
+                    }else{
+                        toastr["error"]("Network problem!");
+                    }
+                });
+        }
+    })
+});
+$(".meetings-table-items").on('click', '.show-attendees-btn',function () {
+    var meeting_id = $(this).attr('meeting-id');
+
+    $.post(base_url+"Lounge/getMeetingAttendees",
+        {
+            'meetingId': meeting_id
+        },
+        function(data, status){
+            if(status == 'success')
+            {
+                data = JSON.parse(data);
+                $('.attendees-list').html('');
+                $.each( data, function( row, user ) {
+
+                    var fullname = user.name;
+                    if (fullname == '')
+                    {
+                        fullname = 'Name Unavailable';
+                    }
+                    var nameAcronym = fullname.match(/\b(\w)/g).join('');
+                    var color = md5(nameAcronym+user.cust_id).slice(0, 6);
+                    var userAvatarSrc = (user.profile != '' && user.profile != null)?base_url+'uploads/customer_profile/'+user.profile:'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
+                    var userAvatarAlt = 'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
+
+                    $('.attendees-list').append('<p><img src="'+userAvatarSrc+'" alt="User Avatar" onerror=this.src="'+userAvatarAlt+'" class="img-circle"> '+user.name+'</p>');
+                });
+
+                $('#attendees_per_meet_modal').modal('show');
+            }else{
+                toastr["error"]("Network problem!");
+            }
+        });
+});
+
+
 
 function addAttendee(newMeetingSelectedAttendees, attendee) {
     newMeetingSelectedAttendees.push(attendee);

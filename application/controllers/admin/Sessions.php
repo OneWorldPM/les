@@ -13,6 +13,8 @@ class Sessions extends CI_Controller {
             redirect('admin/alogin');
         }
         $this->load->model('madmin/m_sessions', 'msessions');
+        $this->load->model('madmin/m_settings', 'm_settings');
+
     }
 
     public function index() {
@@ -23,6 +25,8 @@ class Sessions extends CI_Controller {
             $data['import_sessions_details'] = $this->session->userdata("session_sessions_data");
             $this->session->unset_userdata('session_sessions_data');
         }
+        $iframe=$this->m_settings->getSessionIframe();
+        $data['iframe']=$iframe;
         $this->load->view('admin/header');
         $this->load->view('admin/sessions', $data);
         $this->load->view('admin/footer');

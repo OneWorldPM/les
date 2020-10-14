@@ -280,7 +280,7 @@
                 </div>
 
                 <small>Only invited attendees except you will be allowed to the meeting, hence no password is required!</small><br>
-                <small>All date and times are in Central Time Zone(CT)</small><br>
+                <small>All date and times are in Eastern Time Zone(ET)</small><br>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
@@ -306,6 +306,22 @@
                 <div class="hang-up-btn" style="display: inline;">
                     <i class="fa fa-times-circle fa-3x leave-btn-icon" aria-hidden="true" style="color:#e3491b;"></i>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="attendees_per_meet_modal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><span class="user-to-call-title-name"></span></h5>
+            </div>
+            <div class="attendees-list modal-body" style="text-align: left">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

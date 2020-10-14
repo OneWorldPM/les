@@ -113,6 +113,8 @@ class M_sessions extends CI_Model {
             'moderator_id' => $moderator_id,
             'session_title' => trim($post['session_title']),
             'sessions_description' => trim($post['sessions_description']),
+            'zoom_link' => trim($post['zoom_link']),
+            'zoom_password' => trim($post['zoom_password']),
             'sessions_date' => date("Y-m-d", strtotime($post['sessions_date'])),
             'time_slot' => date("H:i", strtotime($post['time_slot'])),
             'end_time' => date("H:i", strtotime($post['end_time'])),
@@ -238,10 +240,6 @@ class M_sessions extends CI_Model {
         $post = $this->input->post();
 
 
-        $session_right_bar="";
-        if(isset($post["session_right_bar"])){
-            $session_right_bar=implode(",",$post["session_right_bar"]);
-        }
 
         if (isset($post['sessions_type'])) {
             $sessions_type_id = $post['sessions_type'];
@@ -266,6 +264,8 @@ class M_sessions extends CI_Model {
             'moderator_id' => $moderator_id,
             'session_title' => trim($post['session_title']),
             'sessions_description' => trim($post['sessions_description']),
+            'zoom_link' => trim($post['zoom_link']),
+            'zoom_password' => trim($post['zoom_password']),
             'sessions_date' => date("Y-m-d", strtotime($post['sessions_date'])),
             'time_slot' => date("H:i", strtotime($post['time_slot'])),
             'end_time' => date("H:i", strtotime($post['end_time'])),
@@ -275,7 +275,6 @@ class M_sessions extends CI_Model {
             'sessions_tracks_id' => $sessions_tracks_id,
             'sessions_type_status' => trim($post['sessions_type_status']),
             'sessions_visibility' => (isset($post['sessions_visibility'])) ? $post['sessions_visibility'] : '',
-            'right_bar' => $session_right_bar
         );
         $this->db->update("sessions", $set, array("sessions_id" => $post['sessions_id']));
         $sessions_id = $post['sessions_id'];
@@ -912,7 +911,7 @@ class M_sessions extends CI_Model {
                 $csv_array = $this->csvimport->get_array($file_path);
                 if (!empty($csv_array)) {
                     foreach ($csv_array as $val) {
-                      
+
                         if ($val['session_title'] != "") {
                             if ($val['moderator'] != "") {
                                 $moderator = explode(",", $val['moderator']);
@@ -1035,7 +1034,7 @@ class M_sessions extends CI_Model {
                                 $this->db->update('sessions', array('sessions_photo' => $file_name), array('sessions_id' => $sessions_id));
                             }
 
-                            
+
                             if ($val['sponsor_logo'] != "") {
                                 $file_name = 'sponsor_' . $this->generateRandomString() . '.jpg';
                                 $url = $val['sponsor_logo'];

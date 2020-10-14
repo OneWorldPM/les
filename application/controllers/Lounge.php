@@ -83,9 +83,37 @@ class Lounge extends CI_Controller
         return;
     }
 
+    public function deleteMeeting()
+    {
+        if($this->meetings->deleteMeeting())
+        {
+            echo json_encode(array('status' => 'success'));
+        }else{
+            echo json_encode(array('status' => 'failed'));
+        }
+
+        return;
+    }
+
     public function getMeetings($user)
     {
         $result = $this->meetings->getMeetings($user);
+
+        echo json_encode($result);
+        return;
+    }
+
+    public function getFutureMeetingsNumber($user)
+    {
+        $result = $this->meetings->getFutureMeetingsNumber($user);
+
+        echo json_encode($result);
+        return;
+    }
+
+    public function getMeetingAttendees()
+    {
+        $result = $this->meetings->getAttendeesPerMeet($this->input->post('meetingId'));
 
         echo json_encode($result);
         return;
@@ -111,7 +139,7 @@ class Lounge extends CI_Controller
 
             $meeting_from_formatted = (new DateTime($meeting->meeting_from))->format('M-d h:ia');
 
-            $meeting_status = array('status' => false, 'message' => "Meeting starts from {$meeting_from_formatted} (CT) <br> ie; in {$diff}, please return at that time!");
+            $meeting_status = array('status' => false, 'message' => "Meeting starts from {$meeting_from_formatted} (ET) <br> ie; in {$diff}, please return at that time!");
         }elseif ($meeting && $meeting->meeting_to < $now){
             $datetime1 = strtotime($meeting->meeting_to);
             $datetime2 = strtotime($now);
@@ -121,7 +149,7 @@ class Lounge extends CI_Controller
 
             $meeting_to_formatted = (new DateTime($meeting->meeting_to))->format('M-d h:ia');
 
-            $meeting_status = array('status' => false, 'message' => "Meeting already finished at {$meeting_to_formatted} (CT) <br> ie; {$diff} ago!");
+            $meeting_status = array('status' => false, 'message' => "Meeting already finished at {$meeting_to_formatted} (ET) <br> ie; {$diff} ago!");
         }else{
             $meeting_status = array('status' => true);
         }
@@ -172,7 +200,7 @@ class Lounge extends CI_Controller
 
             $meeting_from_formatted = (new DateTime($meeting->meeting_from))->format('M-d h:ia');
 
-            $meeting_status = array('status' => false, 'message' => "Meeting starts from {$meeting_from_formatted} (CT) <br> ie; in {$diff}, please return at that time!");
+            $meeting_status = array('status' => false, 'message' => "Meeting starts from {$meeting_from_formatted} (ET) <br> ie; in {$diff}, please return at that time!");
         }elseif ($meeting && $meeting->meeting_to < $now){
             $datetime1 = strtotime($meeting->meeting_to);
             $datetime2 = strtotime($now);
@@ -182,7 +210,7 @@ class Lounge extends CI_Controller
 
             $meeting_to_formatted = (new DateTime($meeting->meeting_to))->format('M-d h:ia');
 
-            $meeting_status = array('status' => false, 'message' => "Meeting already finished at {$meeting_to_formatted} (CT) <br> ie; {$diff} ago!");
+            $meeting_status = array('status' => false, 'message' => "Meeting already finished at {$meeting_to_formatted} (ET) <br> ie; {$diff} ago!");
         }else{
             $meeting_status = array('status' => true);
         }
