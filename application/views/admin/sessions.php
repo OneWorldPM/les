@@ -230,6 +230,7 @@
                                                             <?php } ?>
                                                         </td>
                                                         <td>
+                                                            <a href="<?= base_url() ?>admin/attendee_chat/chat/<?= $val->sessions_id ?>" class="btn btn-warning btn-sm" style="margin: 3px;">Attendee Chat</a>
                                                             <a href="<?= base_url() ?>admin/sessions/view_session/<?= $val->sessions_id ?>" class="btn btn-info btn-sm" style="margin: 3px;">View Session</a>
                                                             <a href="<?= base_url() ?>admin/sessions/edit_sessions/<?= $val->sessions_id ?>" class="btn btn-green btn-sm" style="margin: 3px;">Edit</a>
                                                         </td>
