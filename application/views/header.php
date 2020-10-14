@@ -178,7 +178,7 @@
                                                 <span class="unread-msg-count badge badge-notify" style="font-size:10px;">0</span>
                                                 <i class="fa fa-envelope" style="color:#8286C5;font-size: 25px;"></i>
                                             </a>
-                                            <div class="unread-msgs-list dropdown-menu dropdown-menu-lg-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5" style="overflow: hidden;"><a target="_blank" class="dropdown-item waves-effect waves-light" href="#">Message from LES</a>
+                                            <div class="unread-msgs-list dropdown-menu dropdown-menu-lg-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5" style="overflow-y: scroll; overflow-x: hidden; width: max-content; max-height: 360px;">
                                             </div>
                                         </li>
                                     </ul>
