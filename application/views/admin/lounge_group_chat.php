@@ -29,18 +29,8 @@
                             <div class="pull-left removeMessage" data-id="<?=$chat["id"]?>"><i class="fa fa-times-circle" aria-hidden="true"></i></div>
                    <span class="chat-img pull-left">
 
-                       <?php
-                       if ($profileUrl) {
-                           ?>
-                           <img src="<?= $profileUrl ?>" alt="User Avatar" class="img-circle">
-                           <?php
-                       }
-                       else {
-                           ?>
-                           <div class="img-circle"></div>
-                           <?php
-                       }
-                       ?>
+                    <img src="<?= $profileUrl ?>" onerror="this.src=&quot;https://placehold.it/50/067290/fff&amp;&quot;" alt="User Avatar" class="img-circle">
+
                    </span>
                             <div class="chat-body clearfix">
                                 <div class="header">
