@@ -26,16 +26,16 @@
             <div style="background: rgba(250, 250, 250, 0.8);">
                 <div class="videContent"> 
                     <div class="row p-b-40 ">
-                        <div class="col-md-12" style="background-color: #B2B7BB; margin-bottom: 10px; ">
+                        <div class="col-md-12" style="background-color: #B2B7BB; margin-bottom: 0px; ">
                             <h3 style="margin-bottom: 5px; margin-left: 10px; color: #fff; font-weight: 700; text-transform: uppercase;">Schedule At A Glance</h3>
                         </div>
-                        <div class="col-md-12" style="padding-left: 0px; padding-right: 0px">
-                            <img src="<?= base_url() ?>front_assets/images/2020_LES_Annual_Meeting_Schedule_At_A_Glance.jpg" width="100%"/>
+                        <div class="col-md-12" style="text-align: center;">
+                            <a href="<?= base_url() ?>front_assets/images/2020_LES_Annual_Meeting_Schedule_At_A_Glance.jpg" target="_blank"><img src="<?= base_url() ?>front_assets/images/2020_LES_Annual_Meeting_Schedule_At_A_Glance.jpg"/></a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         <!-- END: SECTION --> 
-    </div>
+    </div> 
 </section>
