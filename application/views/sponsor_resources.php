@@ -40,13 +40,11 @@
                         <td><img src="<?= base_url() ?>uploads/sponsors/<?= $val["sponsors_logo"] ?>" alt="welcome"></td>
                         <td><?=$val["item_name"]?></td>
                         <td><?=$val["file_name"]?></td>
-                        <td><a href="<?= base_url() ?><?=$val["file_name"]?>" download type="button" class="btn btn-info btn-sm">Download</a></td>
+                        <td><a href="<?= base_url() ?>front_assets/sponsor/resources/<?=$val["file_name"]?>" download type="button" class="btn btn-info btn-sm">Download</a></td>
                     </tr>
                     <?php
                 }
                 ?>
-
-
                 </tbody>
             </table>
         </div>
