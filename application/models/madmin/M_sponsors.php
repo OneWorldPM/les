@@ -344,17 +344,18 @@ class M_sponsors extends CI_Model {
     function newResource($sponsor) {
         $unique_str = $this->generateRandomCode();
         $itemName = $this->input->post()['name'];
+        $filename = str_replace(' ', '_', strtolower($itemName));
         if ($_FILES['resource']) {
             $fileExt = pathinfo($_FILES["resource"]["name"], PATHINFO_EXTENSION);
             //if (file_exists("sponsor_cover_{$id}.{$fileExt}")) {
             //chmod("sponsor_cover_{$id}.{$fileExt}", 0755); //Change the file permissions if allowed
             //unlink("sponsor_cover_{$id}.{$fileExt}"); //remove the file
             //}
-            if (move_uploaded_file($_FILES["resource"]["tmp_name"], FCPATH . "front_assets/sponsor/resources/{$itemName}_{$sponsor}_{$unique_str}.{$fileExt}")) {
+            if (move_uploaded_file($_FILES["resource"]["tmp_name"], FCPATH . "front_assets/sponsor/resources/{$filename}_{$sponsor}_{$unique_str}.{$fileExt}")) {
                 $data = array(
                     'sponsor_id' => $sponsor,
                     'item_name' => $itemName,
-                    'file_name' => "{$itemName}_{$sponsor}_{$unique_str}.{$fileExt}"
+                    'file_name' => "{$filename}_{$sponsor}_{$unique_str}.{$fileExt}"
                 );
                 $this->db->insert('sponsor_resources', $data);
                 return true;
