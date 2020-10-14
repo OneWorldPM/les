@@ -223,7 +223,7 @@ $sponsor_cover = ($sponsor->sponsor_cover == '') ? 'expo_background.jpg' : $spon
                     <small>Available dates are highlighted in green</small>
                 </div>
                 <div class="modal-footer">
-                    <small class="pull-left">All dates and times are in The North American Central Time Zone (CT)</small>
+                    <small class="pull-left">All dates and times are in The North American Eastern Time Zone (ET)</small>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
