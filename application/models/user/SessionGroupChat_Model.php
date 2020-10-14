@@ -33,5 +33,19 @@ class SessionGroupChat_Model extends CI_Model
         
         return $result;
     }
+    public function sessionGetTexts($sesionId){
+        $query = $this->db->query("SELECT * FROM session_group_chat where session_id='$sesionId' ORDER BY id DESC LIMIT 15");
+        $result = $query->result_array();
+
+        return $result;
+    }
+    public function deleteOneMessage(){
+        $sessionId = $this->input->post()['sessionId'];
+
+        $this->db->where('id', $sessionId);
+        $this->db->delete('session_group_chat');
+
+        return "success";
+    }
 
 }
