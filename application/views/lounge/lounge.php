@@ -311,6 +311,22 @@
     </div>
 </div>
 
+<div id="attendees_per_meet_modal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><span class="user-to-call-title-name"></span></h5>
+            </div>
+            <div class="attendees-list modal-body" style="text-align: center">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="https://blueimp.github.io/JavaScript-MD5/js/md5.js"></script>
 <script>
     var page_link = $(location).attr('href');

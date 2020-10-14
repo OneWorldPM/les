@@ -103,9 +103,10 @@ class Meetings_Modal extends CI_Model {
     public function getAttendeesPerMeet($meeting_id)
     {
         $users = $query = $this->db->query("
-                                        SELECT attendee_id 
-                                        FROM lounge_meeting_attendees
-                                        WHERE meeting_id = '{$meeting_id}'
+                                        SELECT lma.*, CONCAT(cm.first_name, ' ', cm.last_name) AS name, cm.profile
+                                        FROM lounge_meeting_attendees lma
+                                        JOIN customer_master cm ON cm.cust_id = lma.attendee_id
+                                        WHERE lma.meeting_id = '{$meeting_id}'
                                         ");
         if ($users->num_rows() > 0) {
             return $users->result_array();
