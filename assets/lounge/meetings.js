@@ -59,6 +59,18 @@ $(function() {
             return;
         }
 
+        if (newMeetingSelectedAttendees.includes(id)){
+            toastr["error"]("Already selected this person!");
+            return;
+        }
+
+        if (newMeetingSelectedAttendees.length >= 6){
+            toastr["error"]("You can only have maximum 6 attendees per meet!");
+            return;
+        }
+
+        console.log(newMeetingSelectedAttendees);
+
         $('.selected-attendees-list').append(
             '<div class="selected-attendees-item" attendee-id="'+id+'"><img src="'+userAvatarSrc+'" alt="User Avatar" onerror=this.src="'+userAvatarAlt+'" class="img-circle"> '+name+' <i class="remove-attendee fa fa-times" attendee-id="'+id+'" aria-hidden="true" style="color: #c60d0d;"></i></div>'
         );
