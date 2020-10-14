@@ -63,7 +63,7 @@
                                                         </td>
                                                         <td> 
                                                             <a href="<?= base_url() ?>uploads/presentation_resources/<?= $val->resources_file ?>" download="" type="button" class="btn btn-info btn-sm">Download</a>
-                                                            <a href="<?= base_url() ?>uploads/presentation_resources/<?= $val->resources_file ?>" target="_black" type="button" class="btn btn-success btn-sm">Open</a>
+                                                          <!--  <a href="<?= base_url() ?>uploads/presentation_resources/<?= $val->resources_file ?>" target="_black" type="button" class="btn btn-success btn-sm">Open</a>-->
                                                             <a href="<?= base_url() ?>admin/presentation/delete_presentation/<?= $val->presentation_resources_id ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
                                                         </td>
                                                     </tr>
