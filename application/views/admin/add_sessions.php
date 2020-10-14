@@ -31,6 +31,14 @@
                                         <label class="text-large">Sessions Description:</label>
                                         <textarea class="form-control" style="color: #000;" name="sessions_description" id="sessions_description"><?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->sessions_description : "" ?></textarea>
                                     </div>
+                                    <div class="form-group">
+                                        <label class="text-large">Zoom Link :</label>
+                                        <input type="text" name="zoom_link" id="zoom_link" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->zoom_link : "" ?>" class="form-control" placeholder="Zoom Link">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-large">Password :</label>
+                                        <input type="text" name="zoom_password" id="zoom_password" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->zoom_password : "" ?>" class="form-control" placeholder="Password">
+                                    </div>
                                    <div class="form-group">
                                         <label class="text-large">Moderator:</label>
                                         <select class="form-control" id="moderator_id" name="moderator_id[]" multiple>
