@@ -305,8 +305,7 @@ $uri_segment1 = $this->uri->segment(3);
                                         </div>
                                     </div>
                                 </a>
-                            </li>
-                            <li class="<?= ($uri_segment == 'lounge_group_chat') ? 'active' : ''; ?>" >
+                            </li><li class="<?= ($uri_segment == 'lounge_group_chat') ? 'active' : ''; ?>" >
                                 <a href="<?= site_url() ?>admin/lounge_group_chat" id="dash">
                                     <div class="item-content">
                                         <div class="item-media">

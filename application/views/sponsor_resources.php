@@ -60,17 +60,19 @@
                 </thead>
                 <tbody>
                     <?php
-                    foreach ($presentation_resources as $val) {
-                        ?>
-                        <tr>
-                            <td><?= $val->title ?></td>
-                            <td> <i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i> <?= $val->resources_file ?></td>
-                            <td>
-                                <a href="<?= base_url() ?>uploads/presentation_resources/<?= $val->resources_file ?>" download="" type="button" class="btn btn-info btn-sm">Download</a>
-                                <a href="<?= base_url() ?>uploads/presentation_resources/<?= $val->resources_file ?>" target="_black" type="button" class="btn btn-success btn-sm">Open</a>
-                            </td>
-                        </tr>
-                        <?php
+                    if (isset($presentation_resources) && !empty($presentation_resources)) {
+                        foreach ($presentation_resources as $val) {
+                            ?>
+                            <tr>
+                                <td><?= $val->title ?></td>
+                                <td> <i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i> <?= $val->resources_file ?></td>
+                                <td>
+                                    <a href="<?= base_url() ?>uploads/presentation_resources/<?= $val->resources_file ?>" download="" type="button" class="btn btn-info btn-sm">Download</a>
+                                    <a href="<?= base_url() ?>uploads/presentation_resources/<?= $val->resources_file ?>" target="_black" type="button" class="btn btn-success btn-sm">Open</a>
+                                </td>
+                            </tr>
+                            <?php
+                        }
                     }
                     ?>
                 </tbody>
