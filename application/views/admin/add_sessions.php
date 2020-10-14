@@ -32,7 +32,7 @@
                                         <textarea class="form-control" style="color: #000;" name="sessions_description" id="sessions_description"><?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->sessions_description : "" ?></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label class="text-large">Zoom Link :</label>
+                                        <label class="text-large">Zoom Meeting Link :</label>
                                         <input type="text" name="zoom_link" id="zoom_link" value="<?= (isset($sessions_edit) && !empty($sessions_edit) ) ? $sessions_edit->zoom_link : "" ?>" class="form-control" placeholder="Zoom Link">
                                     </div>
                                     <div class="form-group">

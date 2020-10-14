@@ -420,8 +420,8 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                 </div>
             </div>
         </div>
-        <span style="margin-right: 25px;" class="pull-left">Zoom Link : <b><a href="<?= $sessions->zoom_link ?>"><?= $sessions->zoom_link ?></a></b></span>
-        <span style="margin-right: 25px;" class="pull-left">Password : <b><?= $sessions->zoom_password ?></b></span>
+        <span style="margin-right: 25px;" class="pull-left"><?php if($sessions->zoom_link != ""){ ?> Zoom Meeting Link : <b><a href="<?= $sessions->zoom_link ?>"><?= $sessions->zoom_link ?></a></b><?php } ?></span>
+        <span style="margin-right: 25px;" class="pull-left"><?php if($sessions->zoom_password != ""){ ?> Password : <b><?= $sessions->zoom_password ?></b><?php } ?></span>
         <span style="margin-right: 25px;" class="pull-right text-red totalAttende totalAttende<?= getAppName($sessions->sessions_id) ?>">Total attendees: <b>0</b></span>
 
         <!-- end: DYNAMIC TABLE -->
