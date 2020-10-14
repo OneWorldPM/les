@@ -195,7 +195,11 @@
 
     @media only screen and (min-width: 1800px) and (max-width: 2000px) {
         #embed_html_code_section {
-            height: 1085px
+            height: 895px
+        }
+
+        #embed_html_code_section iframe {
+            width: 80%;
         }
 
         #favorite_question_list {
@@ -217,7 +221,11 @@
 
     @media only screen and (min-width: 2200px) and (max-width: 2400px) {
         #embed_html_code_section {
-            height: 950px
+            height: 984px
+        }
+
+        #embed_html_code_section iframe {
+            width: 77%;
         }
 
         #favorite_question_list {
@@ -228,7 +236,11 @@
 
     @media only screen and (min-width: 2400px) and (max-width: 2800px) {
         #embed_html_code_section {
-            height: 995px
+            height: 1185px
+        }
+
+        #embed_html_code_section iframe {
+            width: 80%;
         }
 
         #favorite_question_list {
