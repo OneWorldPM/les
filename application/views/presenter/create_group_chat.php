@@ -46,8 +46,6 @@ $this->load->helper('string');
                                             }
                                         }
                                         ?>
-
-                                        <option value="">test</option>
                                     </select>
                                     <span id="errorpresenter" style="color:red;"></span>
                                 </div>
