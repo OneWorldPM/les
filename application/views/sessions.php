@@ -293,7 +293,11 @@
                                             ?>
                                             <div class="post-description" style="margin-top: 10px;">
                                                 <p style="margin-bottom: 10px; color: black;"><?= $val->sessions_description ?></p>
-                                                <a class="button black-light button-3d rounded right blueBgOne" style="margin: 0px 0;" href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
+                                                <?php if($val->sessions_id == 198) { ?>
+                                                    <a class="button black-light button-3d rounded right blueBgOne" style="margin: 0px 0;" href="" data-toggle="modal" data-target="#presidentRemarksModal"><span>Watch</span></a>
+                                                <?php }else{ ?>
+                                                    <a class="button black-light button-3d rounded right blueBgOne" style="margin: 0px 0;" href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
+                                                <?php } ?>
                                                 <a class="button black-light button-3d rounded right save_to_swag_bag blueBgOne" data-sessions_id="<?= $val->sessions_id ?> " data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"> <?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>
                                             </div>
                                         </div>
@@ -312,6 +316,19 @@
     </div>
 </div>
 </section>
+<!-- Modal -->
+<div class="modal fade" id="presidentRemarksModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <iframe src="https://player.vimeo.com/video/467905144" width="100%" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="modal fade" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content">
