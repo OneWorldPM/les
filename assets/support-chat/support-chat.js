@@ -100,8 +100,11 @@ $(function() {
         closeForm();
     });
 
+
+
     $('.support-chat-message').on("keypress", function(e) {
         if (e.keyCode == 13) {
+            e.preventDefault();
             $('#send-support-message-btn').click();
         }
     });
