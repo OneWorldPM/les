@@ -168,7 +168,7 @@
     }
 
     #embededVideo {
-        height: 959px;
+        height: 850px;
         margin-top: -2px;
         position: relative;
     }
