@@ -41,6 +41,29 @@ $(function() {
                     cancelButtonText: 'Reject'
                 }).then((result) => {
                     if (result.isConfirmed) {
+
+                        socket.on('signaling_message', function(data) {
+                            displaySignalMessage("Signal received: " + data.type);
+
+                            //Setup the RTC Peer Connection object
+                            if (!rtcPeerConn)
+                                startSignaling(data);
+
+                            if (data.type != "user_here") {
+                                var message = JSON.parse(data.message);
+                                if (message.sdp) {
+                                    rtcPeerConn.setRemoteDescription(new RTCSessionDescription(message.sdp), function () {
+                                        // if we received an offer, we need to answer
+                                        if (rtcPeerConn.remoteDescription.type == 'offer') {
+                                            rtcPeerConn.createAnswer(sendLocalDesc, logOTOVideoCallError);
+                                        }
+                                    }, logOTOVideoCallError);
+                                } else {
+                                    rtcPeerConn.addIceCandidate(new RTCIceCandidate(message.candidate));
+                                }
+                            }
+                        });
+
                         videoCallEngaged = true;
 
                         // get a local stream, show it in our video tag and add it to be sent
@@ -57,7 +80,7 @@ $(function() {
                             //Send a first signaling message to anyone listening
                             //This normally would be on a button click
                             socket.emit('joinPersonalVideoRoom', socket_lounge_oto_video+'_'+fromId);
-                            socket.emit('signal',{"type":"user_here", "message":"Are you ready for a call?", "room":socket_lounge_oto_video+'_'+fromId});
+                            socket.emit('signal',{"type":"user_here", "message":"Are you ready for a call?", "room":socket_lounge_oto_video+'_'+fromId, 'from_id':fromId, 'to_id':to});
 
                             nameOtherEnd = fromName;
 
@@ -79,29 +102,30 @@ $(function() {
         }
     });
 
-    socket.on('signaling_message', function(data) {
-        displaySignalMessage("Signal received: " + data.type);
-
-        //Setup the RTC Peer Connection object
-        if (!rtcPeerConn)
-            startSignaling();
-
-        if (data.type != "user_here") {
-            var message = JSON.parse(data.message);
-            if (message.sdp) {
-                rtcPeerConn.setRemoteDescription(new RTCSessionDescription(message.sdp), function () {
-                    // if we received an offer, we need to answer
-                    if (rtcPeerConn.remoteDescription.type == 'offer') {
-                        rtcPeerConn.createAnswer(sendLocalDesc, logOTOVideoCallError);
-                    }
-                }, logOTOVideoCallError);
-            } else {
-                rtcPeerConn.addIceCandidate(new RTCIceCandidate(message.candidate));
-            }
-        }
-    });
 
     $('.lounge-video-call-btn').on('click', function () {
+
+        socket.on('signaling_message', function(data) {
+            displaySignalMessage("Signal received: " + data.type);
+
+            //Setup the RTC Peer Connection object
+            if (!rtcPeerConn)
+                startSignaling(data);
+
+            if (data.type != "user_here") {
+                var message = JSON.parse(data.message);
+                if (message.sdp) {
+                    rtcPeerConn.setRemoteDescription(new RTCSessionDescription(message.sdp), function () {
+                        // if we received an offer, we need to answer
+                        if (rtcPeerConn.remoteDescription.type == 'offer') {
+                            rtcPeerConn.createAnswer(sendLocalDesc, logOTOVideoCallError);
+                        }
+                    }, logOTOVideoCallError);
+                } else {
+                    rtcPeerConn.addIceCandidate(new RTCIceCandidate(message.candidate));
+                }
+            }
+        });
 
         var userToCall = $(this).attr('user-id');
         var userName = $(this).attr('user-name');
@@ -143,7 +167,7 @@ $(function() {
             //Send a first signaling message to anyone listening
             //This normally would be on a button click
             socket.emit('joinPersonalVideoRoom', socket_lounge_oto_video+'_'+user_id);
-            socket.emit('signal',{"type":"user_here", "message":"Are you ready for a call?", "room":socket_lounge_oto_video+'_'+user_id});
+            socket.emit('signal',{"type":"user_here", "message":"Are you ready for a call?", "room":socket_lounge_oto_video+'_'+user_id, 'from_id':user_id, 'to_id':userToCall});
             socket.emit('ring', socket_app_name, socket_lounge_oto_video, user_id, user_name, userToCall);
 
             $('#video-call-modal').modal('show');
@@ -161,7 +185,7 @@ function logOTOVideoCallError(error) {
     console.log(error.name + ': ' + error.message);
 }
 
-function startSignaling() {
+function startSignaling(data) {
     displaySignalMessage("starting signaling...");
 
     rtcPeerConn = new RTCPeerConnection(configuration);
@@ -169,7 +193,7 @@ function startSignaling() {
     // send any ice candidates to the other peer
     rtcPeerConn.onicecandidate = function (evt) {
         if (evt.candidate)
-            socket.emit('signal',{"type":"ice candidate", "message": JSON.stringify({ 'candidate': evt.candidate }), "room":SIGNAL_ROOM});
+            socket.emit('signal',{"type":"ice candidate", "message": JSON.stringify({ 'candidate': evt.candidate }), "room":SIGNAL_ROOM, "from": user_id, "to_user":data.to_id});
         displaySignalMessage("completed that ice candidate...");
     };
 

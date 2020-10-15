@@ -341,11 +341,18 @@
                 <iframe id="presidentRemarksIframe" src="https://player.vimeo.com/video/467905144" width="100%" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
             </div>
             <div class="modal-footer" style="background-color: #3c497e;">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="$('#presidentRemarksIframe').attr('src', $('#presidentRemarksIframe').attr('src'));">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
             </div>
         </div>
     </div>
 </div>
+<script>
+    $(function() {
+        $('#presidentRemarksModal').on('hidden.bs.modal', function () {
+            $('#presidentRemarksIframe').attr('src', $('#presidentRemarksIframe').attr('src'));
+        })
+    });
+</script>
 <div class="modal fade" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content">
