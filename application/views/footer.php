@@ -103,6 +103,11 @@
 
     $(function () {
 
+        $.get("<?=base_url()?>socket_config.php", function (data) {
+            var config = JSON.parse(data);
+            extract(config);
+        });
+
         fillUnreadMessages();
 
         // var $unreadMsgCount=$(".unread-msg-count");
