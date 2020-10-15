@@ -221,7 +221,7 @@ function startSignaling() {
 
             $('#videoCallModal').modal('hide');
             Swal.fire(
-                'TIADA left the video chat!',
+                'User left the video chat!',
                 'if this was a connection problem, please try again!',
                 'warning'
             ).then(function () {
