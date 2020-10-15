@@ -17,6 +17,6 @@
     <div class="jumbotron">
         <h2>Thank you, this session is now closed</h2>
         <p>Please return to the Sessions Page. <br> If you would like to continue the conversation, please navigate to the Networking Lounge.</p>
-        <p><a class="btn btn-primary btn-lg" href="<?=base_url()."sessions"?>" role="button">Go Homepage</a></p>
+        <p><a class="btn btn-primary btn-lg" href="<?=base_url()."sessions"?>" role="button">Go Sessions</a></p>
     </div>
 </div>
