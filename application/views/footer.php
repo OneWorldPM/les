@@ -72,8 +72,8 @@
 
         // var $unreadMsgCount=$(".unread-msg-count");
         socket.on('unreadMessage', function (data) {
-
-            fillUnreadMessages();
+            if(data.chat_to == user_id)
+                fillUnreadMessages();
             /** Why did you do this Hayreddin? you could just call the fillUnreadMessages function **/
             // if($(".chat-users-list").length<=0){
             //     data["clicked"]=false;
