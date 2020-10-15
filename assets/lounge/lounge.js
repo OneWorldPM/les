@@ -304,7 +304,7 @@ $(function() {
 
                 var company_name_html = '';
                 if (company_name && (company_name != null || company_name != ''))
-                    company_name_html = '<small style="position: absolute;margin-top: 27px;margin-left: -75px;">'+company_name+'</small>';
+                    company_name_html = '<small class="companyNameBadgeMain">'+company_name+'</small>';
 
                 var userAvatar = $(this).children('img').attr('src');
                 var userAvatarAlt = 'https://placehold.it/50/'+color+'/fff&amp;text='+nameAcronym;
