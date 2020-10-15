@@ -219,14 +219,14 @@ function startSignaling() {
             //         sponsorId: sponsor_id
             //     });
 
-            $('#videoCallModal').modal('hide');
-            Swal.fire(
-                'User left the video chat!',
-                'if this was a connection problem, please try again!',
-                'warning'
-            ).then(function () {
-                location.reload();
-            });
+            // $('#videoCallModal').modal('hide');
+            // Swal.fire(
+            //     'User left the video chat!',
+            //     'if this was a connection problem, please try again!',
+            //     'warning'
+            // ).then(function () {
+            //     location.reload();
+            // });
             location.reload();
 
             // myVideoArea.srcObject.getVideoTracks().forEach(track => {
