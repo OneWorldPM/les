@@ -227,7 +227,7 @@ function startSignaling() {
             // ).then(function () {
             //     location.reload();
             // });
-            location.reload();
+            //location.reload();
 
             // myVideoArea.srcObject.getVideoTracks().forEach(track => {
             //     track.stop();
