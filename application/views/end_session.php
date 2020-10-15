@@ -8,12 +8,15 @@
     .jumbotron p{
      width: 100%;
     }
+    .jumbotron h2{
+               font-size: 45px;
+    }
 
 </style>
 <div class="container">
     <div class="jumbotron">
-        <h1>Session is over</h1>
-        <p>Thank you for Attending</p>
-        <p><a class="btn btn-primary btn-lg" href="<?=base_url()."home"?>" role="button">Go Homepage</a></p>
+        <h2>Thank you, this session is now closed</h2>
+        <p>Please return to the Sessions Page. <br> If you would like to continue the conversation, please navigate to the Networking Lounge.</p>
+        <p><a class="btn btn-primary btn-lg" href="<?=base_url()."sessions"?>" role="button">Go Homepage</a></p>
     </div>
 </div>
