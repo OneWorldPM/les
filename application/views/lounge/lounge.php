@@ -99,19 +99,9 @@
     }
 
     .socialMedia{
-        margin: auto;
-        background-color: #ffffff;
-        width: 320px;
-        height: 100px;
         position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 10px;
-        border: 1px solid #B8B2A9;
-        box-shadow: 0 0 5px -3px black;
-        text-align: center;
-        padding: 12px 0px;
-        color: #696f6f;
+        right: 30px;
+        bottom: 60px;
     }
     .socialMedia p{
         font-size: 19px;
@@ -225,11 +215,8 @@
 </section>
 
 <div class="socialMedia">
-    <p>Follow me social media</p>
-    <a href="https://twitter/LESUSACanada" class="btn btn-danger" target="_blank">
-<!--        <i class="fa fa-instagram" aria-hidden="true"></i>-->
-        Instagram
-    </a>
+    <a href="https://twitter.com/LESUSACanada?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @LESUSACanada</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 
 </div>
 
