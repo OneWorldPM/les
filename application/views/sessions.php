@@ -140,9 +140,11 @@
         <!-- CONTENT -->
         <section class="content">
             <div>
-<!--                <div class="videoWindow">-->
-<!--                    <iframe class="embed-responsive-item" src="><?//= $iframe->value ?>" allowfullscreen></iframe>-->
-<!--                </div>-->
+                <?php if (isset($iframe)) { ?>
+                <div class="videoWindow">
+                    <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/467905249" allowfullscreen></iframe>
+                </div>
+                <?php } ?>
 
                 <!-- Blog post-->
                 <div class="post-content post-single">

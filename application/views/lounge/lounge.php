@@ -185,7 +185,7 @@
                                                 <i class="fa fa-user" aria-hidden="true"></i> Profile
                                             </span>
                                         </h3>-->
-                                        <button type="button" class="btn btn-info btn-xs pull-right lounge-video-call-btn"><i class="fa fa-video-camera" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-info btn-xs pull-right lounge-video-call-btn"><i class="fa fa-video-camera" aria-hidden="true"></i> Click to Video Chat</button>
                                     </div>
                                     <div class="oto-chat-body panel-body">
                                         <ul class="oto-messages">
