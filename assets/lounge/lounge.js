@@ -1,6 +1,6 @@
 var socketServer = "https://socket.yourconference.live:443";
 // var socketServer = "https://127.0.0.1:3080";
-let socket = io(socketServer);
+//let socket = io(socketServer);
 
 
 

@@ -1,4 +1,24 @@
 </div>
+<div id="video-call-modal" class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><span class="user-to-call-title-name"></span></h5>
+            </div>
+            <div class="modal-body" style="text-align: center">
+                <div class="oto-video-call-div">
+                    <video class="myVideoTagOTOLounge" id="myVideoTagOTOLounge" autoplay muted="muted"></video>
+                    <video class="theirVideoTagOTOLounge" id="theirVideoTagOTOLounge" autoplay></video>
+                </div>
+            </div>
+            <div class="modal-footer text-center">
+                <div class="hang-up-btn" style="display: inline;">
+                    <i class="fa fa-times-circle fa-3x leave-btn-icon" aria-hidden="true" style="color:#e3491b;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- END: WRAPPER -->
 <!-- GO TOP BUTTON -->
 <a class="gototop gototop-button" href="#"><i class="fa fa-chevron-up"></i></a>
@@ -10,12 +30,41 @@
 <script src="<?= base_url() ?>front_assets/js/custom.js"></script>
 <script src="<?= base_url() ?>assets/alertify/alertify.min.js" type="text/javascript"></script>
 
+<script src="https://blueimp.github.io/JavaScript-MD5/js/md5.js"></script>
 
 <script src="https://meet.yourconference.live/socket.io/socket.io.js"></script>
+
+
 <script>
+
+    var socketServer = "<?=getSocketUrl()?>";
+    let socket = io(socketServer);
 
     var user_name = "<?= $this->session->userdata('fullname') ?>";
     var user_id = <?= $this->session->userdata("cid") ?>;
+    var base_url = "<?=base_url()?>";
+    var user_name = "<?= $this->session->userdata('fullname') ?>";
+    var user_type = "attendee";
+    var user_logo = "";
+    user_name = (user_name == '')?'No Name':user_name;
+    var nameAcronym = user_name.match(/\b(\w)/g).join('');
+    var color = md5(nameAcronym+user_id).slice(0, 6);
+    var user_logo_url = (user_logo == '')?"https://placehold.it/50/"+color+"/fff&amp;text="+nameAcronym:base_url+'uploads/customer_profile/'+user_logo;
+
+    function extract(variable) {
+        for (var key in variable) {
+            window[key] = variable[key];
+        }
+    }
+
+    $.get("<?=base_url()?>socket_config.php", function (data) {
+        var config = JSON.parse(data);
+        extract(config);
+
+        $.getScript( "<?= base_url() ?>assets/lounge/one-to-one/one-to-one.js?v=<?= rand(1, 100) ?>", function( data, textStatus, jqxhr )
+        {
+        });
+    });
 
     function fillUnreadMessages() {
         $('.unread-msg-count').html('0');
@@ -51,24 +100,10 @@
     var user_id = <?= $this->session->userdata("cid") ?>;
     var user_name = "<?= $this->session->userdata('fullname') ?>";
 
-    function extract(variable) {
-        for (var key in variable) {
-            window[key] = variable[key];
-        }
-    }
-
-    $.get("<?=base_url()?>socket_config.php", function (data) {
-        var config = JSON.parse(data);
-        extract(config);
-    });
-
 
     $(function () {
 
         fillUnreadMessages();
-
-        var socketServer = "<?=getSocketUrl()?>";
-        let socket = io(socketServer);
 
         // var $unreadMsgCount=$(".unread-msg-count");
         socket.on('unreadMessage', function (data) {

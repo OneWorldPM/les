@@ -21,8 +21,8 @@ var configuration = {
     ]
 };
 
-$(function() {
 
+$(function() {
     socket.emit('joinLoungeOtoVideo', {"room":socket_lounge_oto_video, "name":user_name, "userId":user_id, "userType":user_type});
 
     socket.on('incoming-call', function (fromId, fromName, to) {

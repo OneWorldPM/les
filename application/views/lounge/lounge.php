@@ -2,7 +2,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
 <link href="<?= base_url() ?>assets/lounge/lounge.css?v=<?= rand(200, 300) ?>" rel="stylesheet">
-<link href="<?= base_url() ?>assets/lounge/one-to-one/one-to-one.css?v=<?= rand(200, 300) ?>" rel="stylesheet">
 <style>
     .icon-home {
         color: #ae0201;
@@ -330,27 +329,6 @@
     </div>
 </div>
 
-<div id="video-call-modal" class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title"><span class="user-to-call-title-name"></span></h5>
-            </div>
-            <div class="modal-body" style="text-align: center">
-                <div class="oto-video-call-div">
-                    <video class="myVideoTagOTOLounge" id="myVideoTagOTOLounge" autoplay muted="muted"></video>
-                    <video class="theirVideoTagOTOLounge" id="theirVideoTagOTOLounge" autoplay></video>
-                </div>
-            </div>
-            <div class="modal-footer text-center">
-                <div class="hang-up-btn" style="display: inline;">
-                    <i class="fa fa-times-circle fa-3x leave-btn-icon" aria-hidden="true" style="color:#e3491b;"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div id="attendees_per_meet_modal" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
@@ -421,14 +399,7 @@
     });
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@9.17.0/dist/sweetalert2.all.min.js"></script>
 
-<!--- Toastr -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" />
-
-<!--- SweetAlert2 -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.3.5/dist/sweetalert2.all.min.js"></script>
 
 <!--- DataTable -->
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css"/>
@@ -442,4 +413,4 @@
 
 <script src="<?= base_url() ?>assets/lounge/lounge.js?v=<?= rand(1, 100) ?>"></script>
 <script src="<?= base_url() ?>assets/lounge/meetings.js?v=<?= rand(1, 100) ?>"></script>
-<script src="<?= base_url() ?>assets/lounge/one-to-one/one-to-one.js?v=<?= rand(1, 100) ?>"></script>
+
