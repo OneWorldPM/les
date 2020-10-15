@@ -35,9 +35,9 @@ class M_sessions extends CI_Model {
 
         ($post['session_type'] != "") ? $where['s.sessions_type_id ='] = trim($post['session_type']) : '';
 
-        ($post['start_date'] != "") ? $where['DATE(s.reg_date) >='] = date('Y-m-d', strtotime($post['start_date'])) : '';
+        ($post['start_date'] != "") ? $where['DATE(s.sessions_date) >='] = date('Y-m-d', strtotime($post['start_date'])) : '';
 
-        ($post['end_date'] != "") ? $where['DATE(s.reg_date) <='] = date('Y-m-d', strtotime($post['end_date'])) : '';
+        ($post['end_date'] != "") ? $where['DATE(s.sessions_date) <='] = date('Y-m-d', strtotime($post['end_date'])) : '';
 
         if (!empty($where)) {
             $this->db->where($where);
