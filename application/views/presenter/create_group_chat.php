@@ -23,11 +23,14 @@ $this->load->helper('string');
                                     <label class="control-label">Select Multiple Presenter : </label>
                                     <select name="presenters[]" id="presenters" class="form-control" multiple>
                                         <?php
+                                        $now_user_bool=false;
                                         if (isset($edit_user)) {
                                             if (isset($presenter->presenter) && !empty($presenter->presenter)) {
                                                 foreach ($presenter->presenter as $val) {
                                                     $explode_array = explode(",", $edit_user->presenter_id);
                                                     if (in_array($val->presenter_id, $explode_array)) {
+                                                        if($val->presenter_id==$_SESSION["pid"])$now_user_bool=true;
+
                                                         ?>
                                                         <option selected value="<?= $val->presenter_id ?>"><?= $val->presenter_name ?></option>
                                                     <?php } else { ?> 
@@ -39,14 +42,23 @@ $this->load->helper('string');
                                         } else {
                                             if (isset($presenter->presenter) && !empty($presenter->presenter)) {
                                                 foreach ($presenter->presenter as $val) {
+                                                    if($val->presenter_id==$_SESSION["pid"])$now_user_bool=true;
+
                                                     ?>
                                                     <option value="<?= $val->presenter_id ?>"><?= $val->presenter_name ?></option>
                                                     <?php
                                                 }
                                             }
                                         }
+                                        if(!$now_user_bool){
+                                            ?>
+                                            <option value="<?= $_SESSION["pid"] ?>"><?= $_SESSION["pname"] ?></option>
+                                        <?php
+                                        }
                                         ?>
+
                                     </select>
+
                                     <span id="errorpresenter" style="color:red;"></span>
                                 </div>
                                 <!--                                <div class="form-group">
