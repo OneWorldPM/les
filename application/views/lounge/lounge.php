@@ -98,6 +98,37 @@
             height: 2150px;
         }
     }
+
+    .socialMedia{
+        margin: auto;
+        background-color: #ffffff;
+        width: 320px;
+        height: 100px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 10px;
+        border: 1px solid #B8B2A9;
+        box-shadow: 0 0 5px -3px black;
+        text-align: center;
+        padding: 12px 0px;
+        color: #696f6f;
+    }
+    .socialMedia p{
+        font-size: 19px;
+        font-family: sans-serif;
+    }
+    .socialMedia a{
+        width: 100px;
+        font-size: 13px;
+        height: 32px;
+        line-height: 32px;
+        padding: 0;
+
+    }
+    .socialMedia a:hover{
+
+    }
 </style>
 <section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/lounge-bg.jpg);">
     <div class="container container-fullscreen" id="home_first_section">
@@ -193,6 +224,15 @@
         </div>
     </div>
 </section>
+
+<div class="socialMedia">
+    <p>Follow me social media</p>
+    <a href="https://twitter/LESUSACanada" class="btn btn-danger" target="_blank">
+<!--        <i class="fa fa-instagram" aria-hidden="true"></i>-->
+        Instagram
+    </a>
+
+</div>
 
 <div id="meetings-modal" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
