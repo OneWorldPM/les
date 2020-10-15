@@ -21,6 +21,7 @@ $this->load->helper('string');
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Select Multiple Presenter : </label>
+
                                     <select name="presenters[]" id="presenters" class="form-control" multiple>
                                         <?php
                                         if (isset($edit_user)) {
@@ -36,13 +37,12 @@ $this->load->helper('string');
                                                     }
                                                 }
                                             }
-                                        } else {
-                                            if (isset($presenter->presenter) && !empty($presenter->presenter)) {
-                                                foreach ($presenter->presenter as $val) {
-                                                    ?>
-                                                    <option value="<?= $val->presenter_id ?>"><?= $val->presenter_name ?></option>
-                                                    <?php
-                                                }
+                                        }
+                                        if (isset($presenter->presenter) && !empty($presenter->presenter)) {
+                                            foreach ($presenter->presenter as $val) {
+                                                ?>
+                                                <option value="<?= $val->presenter_id ?>"><?= $val->presenter_name ?></option>
+                                                <?php
                                             }
                                         }
                                         ?>
