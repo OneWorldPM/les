@@ -89,7 +89,7 @@
                     //    '<a href="<?//= base_url() ?>//sponsor/view/' + message.sponsor_id + '" target="_blank">' + message.text + '</a>');
                 }else{
                     $('.unread-msgs-list').append('' +
-                        '<a target="_blank" class="dropdown-item waves-effect waves-light m-b-20" href="<?= base_url() ?>lounge"><i class="fa fa-commenting-o" aria-hidden="true"></i><strong>New message from ' + message.from_name + '</strong><br><small>'+message.text+'</small></a>');
+                        '<a target="_blank" class="dropdown-item waves-effect waves-light m-b-20"><i class="fa fa-commenting-o" aria-hidden="true"></i><strong>New message from ' + message.from_name + '</strong></a>');
                 }
 
 
