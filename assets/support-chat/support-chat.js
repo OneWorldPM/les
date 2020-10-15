@@ -56,7 +56,7 @@ $(function() {
                 $('.support-chat-list').append('' +
                     '<li class="support-chat-item admin clearfix">\n' +
                     '<span class="support-chat-name pull-right">Admin</span>' +
-                    '<p style="display: inline-block">'+connecting_msg+'</p>\n' +
+                    '<p style="display: inline-block;color: red;font-style: italic;">'+connecting_msg+'</p>\n' +
                     '</li>');
 
                 $('.support-chat-body').scrollTop($('.support-chat-body')[0].scrollHeight);
