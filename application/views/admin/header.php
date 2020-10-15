@@ -353,11 +353,11 @@ $uri_segment1 = $this->uri->segment(3);
                                     <img src="<?= base_url() ?>assets/images/Avatar.png" alt="admin"> <span class="username">ADMIN <i class="ti-angle-down"></i></i></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-dark">
-                                    <li>
+                                   <!--                                    <li>
                                         <a href="<?= base_url() ?>admin/stripe_key_setting">
                                             Stripe Key Setting
                                         </a>
-                                    </li>
+                                    </li>-->
                                     <li>
                                         <a href="<?= base_url() ?>admin/changepassword">
                                             Change Password
