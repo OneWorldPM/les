@@ -273,12 +273,21 @@
                                 <?php } else { ?>
                                     <div class="post-item">
                                         <div class="post-image col-md-3 m-t-20">
+                                        <?php if($val->sessions_id == 198) { ?>
+                                            <a href="#" data-toggle="modal" data-target="#presidentRemarksModal"> <?php if ($val->sessions_photo != "") { ?> <img alt="" src="<?= base_url() ?>uploads/sessions/<?= $val->sessions_photo ?>"> <?php } else { ?>  <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg"> <?php } ?>  </a>
+                                        <?php }else{ ?>
                                             <a href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"> <?php if ($val->sessions_photo != "") { ?> <img alt="" src="<?= base_url() ?>uploads/sessions/<?= $val->sessions_photo ?>"> <?php } else { ?>  <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg"> <?php } ?>  </a>
+                                        <?php } ?>
                                         </div>
                                         <div class="post-content-details col-md-9 m-t-30">
                                             <div class="post-title">
                                                 <h6 style="font-weight: 600; font-size: 15px;"><?= $val->sessions_date . ' ' . date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></h6>
-                                                <h3><a href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>" class="colorBlueOne" style="font-weight: 900;"><?= $val->session_title ?></a>
+                                                <h3>
+                                                    <?php if($val->sessions_id == 198) { ?>
+                                                        <a href="#" class="colorBlueOne" style="font-weight: 900;" data-toggle="modal" data-target="#presidentRemarksModal"><?= $val->session_title ?></a>
+                                                    <?php }else{ ?>
+                                                        <a href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>" class="colorBlueOne" style="font-weight: 900;"><?= $val->session_title ?></a>
+                                                    <?php } ?>
                                                     <span style="float: right; font-size: 15px; font-weight: 700;"><?php
                                                         if (isset($val->sessions_tracks_data) && !empty($val->sessions_tracks_data)) {
                                                             foreach ($val->sessions_tracks_data as $value) {
