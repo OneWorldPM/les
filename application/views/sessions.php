@@ -105,6 +105,10 @@
         }
     }
 
+    .videoWindow .fluid-width-video-wrapper{
+        background-color: #3c497e;
+    }
+
 </style>
 <section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/bubble_bg_1920.jpg); top: 0; padding-top: 0px;">
 <!--<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/Sessions_BG_screened.jpg); top: 0; padding-top: 0px;">-->
@@ -320,10 +324,10 @@
 <div class="modal fade" id="presidentRemarksModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-body">
+            <div class="modal-body" style="background-color: #3c497e;">
                 <iframe src="https://player.vimeo.com/video/467905144" width="100%" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer" style="background-color: #3c497e;">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
