@@ -144,7 +144,11 @@
         <!-- CONTENT -->
         <section class="content">
             <div>
-                <?php if (isset($iframe)) { ?>
+                <?php
+                $session_date_from_url = '';
+                $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                $session_date_from_url = substr($url, strrpos( $url, '/' )+1);
+                if (isset($iframe) || $session_date_from_url == '2020-10-15') { ?>
                 <div class="videoWindow">
                     <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/467905249" allowfullscreen></iframe>
                 </div>
