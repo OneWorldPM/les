@@ -249,12 +249,6 @@
             <!-- END: HEADER -->
 
 
-<script>
-    $(function() {
-
-    }
-</script>
-
 
 
 
