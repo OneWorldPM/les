@@ -9,6 +9,7 @@ class M_presenters extends CI_Model {
     function get_presenters() {
         $this->db->select('*');
         $this->db->from('presenter');
+		$this->db->order_by("last_name", "asc");
         $presenter = $this->db->get();
         if ($presenter->num_rows() > 0) {
             return $presenter->result();
