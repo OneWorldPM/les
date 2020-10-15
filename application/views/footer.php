@@ -45,7 +45,7 @@
     var base_url = "<?=base_url()?>";
     var user_name = "<?= $this->session->userdata('fullname') ?>";
     var user_type = "attendee";
-    var user_logo = "";
+    var user_logo = (user_logo)?user_logo:'';
     user_name = (user_name == '')?'No Name':user_name;
     var nameAcronym = user_name.match(/\b(\w)/g).join('');
     var color = md5(nameAcronym+user_id).slice(0, 6);
