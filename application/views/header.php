@@ -184,7 +184,7 @@
                                         }
                                     </style>
                                     <ul id="mainMenuItems" class="main-menu nav nav-pills navbar-left">
-                                        <li class="nav-item avatar dropdown m-r-25">
+                                        <li class="push-notification-icon nav-item avatar dropdown m-r-25">
                                             <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                                 <span class="unread-msg-count badge badge-notify" style="font-size:10px;">0</span>
                                                 <i class="fa fa-envelope" style="color:#8286C5;font-size: 25px;"></i>
@@ -249,7 +249,11 @@
             <!-- END: HEADER -->
 
 
+<script>
+    $(function() {
 
+    }
+</script>
 
 
 
