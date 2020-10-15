@@ -254,6 +254,10 @@
 <?php
 $msg = $this->input->get('msg');
 switch ($msg) {
+    case "A":
+        $m = "Already exists Email or Username exist with new User";
+        $t = "success";
+        break;
     case "D":
         $m = "User Delete Successfully...!!!";
         $t = "success";

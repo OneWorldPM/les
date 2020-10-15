@@ -305,10 +305,18 @@
                                     <span id="errortitle" style="color:red;"></span>
                                 </div>
                                 <div class="form-group">
+                                    <input type="text" class="form-control" name="username" id="username" value="<?php echo (isset($user)) ? $user->username : ''; ?>" placeholder="Username">
+                                    <span id="errorusername" style="color:red;"></span>
+                                </div>
+                                <div class="form-group">
                                     <span class="input-icon">
-                                        <input type="email" class="form-control" name="email" readonly='readonly' value="<?php echo (isset($user)) ? $user->email : ''; ?>" <?php if (isset($user)) { ?>readonly='readonly' <?php } ?> id="email" placeholder="Email">
+                                        <input type="email" class="form-control" name="email" value="<?php echo (isset($user)) ? $user->email : ''; ?>" id="email" placeholder="Email">
                                         <i class="fa fa-envelope"></i> 
                                     </span><span id="erroremail" style="color:red;"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="password" id="password" value="<?php echo (isset($user)) ? base64_decode($user->password) : ''; ?>" placeholder="Password">
+                                    <span id="errortitle" style="color:red;"></span>
                                 </div>
                                 <div class="form-actions">
                                     <button type="submit" class="btn btn-primary form-control" id="btn_register">
