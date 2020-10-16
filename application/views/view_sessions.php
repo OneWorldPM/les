@@ -271,6 +271,10 @@
         }
     }
 
+    /** @Hayreddin, I added this because, video from Vimeo was not showing up. You must check it. -by Athul**/
+    .embed-responsive .fluid-width-video-wrapper{
+        position: unset !important;
+    }
 
 
 </style>
