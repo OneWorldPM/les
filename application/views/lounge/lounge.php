@@ -256,7 +256,7 @@
             <div class="right">
                 <h5>Click here</h5>
                 <button type="button" class="lounge-meetings-btn btn btn-success">
-                    <i class="fa fa-calendar" aria-hidden="true"></i> Meetings <span class="number-of-meet-badge badge badge-warning"></span>
+                    <i class="fa fa-calendar" aria-hidden="true"></i> Meetings <span class="number-of-meet-badge badge badge-warning" style="background-color: #a94442;color: white;"></span>
                 </button>
             </div>
         </div>
