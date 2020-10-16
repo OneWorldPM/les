@@ -32,7 +32,12 @@ class M_sessions extends CI_Model {
         $this->db->from('sessions s');
 
         $post = $this->input->post();
-
+        $session_filter = array(
+            'start_date' => date('Y-m-d', strtotime($post['start_date'])),
+            'end_date' => date('Y-m-d', strtotime($post['end_date']))
+        );
+        $this->session->set_userdata($session_filter);
+		
         ($post['session_type'] != "") ? $where['s.sessions_type_id ='] = trim($post['session_type']) : '';
 
         ($post['start_date'] != "") ? $where['DATE(s.sessions_date) >='] = date('Y-m-d', strtotime($post['start_date'])) : '';
