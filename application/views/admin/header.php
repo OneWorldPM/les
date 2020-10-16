@@ -65,17 +65,42 @@ $uri_segment1 = $this->uri->segment(3);
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>
 
         <script>
-        
-        // let socket = io("https://socket.yourconference.live:443");
-        let socket = io("<?=getSocketUrl()?>");
-        
-        socket.on("newViewUsers",function(resp){
-            if(resp){
-            var totalUsers=resp.users?resp.users.length:0;
-            var sessionId=resp.sessionId;
-            $(".totalAttende"+sessionId+" b").html(totalUsers);
-         }
-        })
+            function extract(variable) {
+                for (var key in variable) {
+                    window[key] = variable[key];
+                }
+            }
+
+            // let socket = io("https://socket.yourconference.live:443");
+            let socket = io("<?=getSocketUrl()?>");
+
+            socket.on("newViewUsers",function(resp){
+                if(resp){
+                    var totalUsers=resp.users?resp.users.length:0;
+                    var sessionId=resp.sessionId;
+                    $(".totalAttende"+sessionId+" b").html(totalUsers);
+                }
+            });
+
+            $.get("<?=base_url()?>socket_config.php", function (data) {
+                var config = JSON.parse(data);
+                extract(config);
+
+                socket.on('activeUserListPerApp', function(data) {
+                    if (data == null)
+                        return;
+
+                    $('.online-users-count').html(Object.keys(data).length);
+                });
+
+                socket.emit('getActiveUserListPerApp', socket_app_name);
+
+                socket.on('userActiveChangeInApp', function() {
+                    socket.emit('getActiveUserListPerApp', socket_app_name);
+                });
+
+            });
+
         </script>
         <!-- <script type="text/javascript" src="assets/toggel/js/on-off-switch.js"></script> -->
         <!-- <script type="text/javascript" src="assets/toggel/js/on-off-switch-onload.js"></script> -->
@@ -348,6 +373,9 @@ $uri_segment1 = $this->uri->segment(3);
                     <!-- start: NAVBAR COLLAPSE -->
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-right">
+                            <li class="online-users" style="color: #06aa3e;margin-right: 80px;margin-top: 20px;font-weight: bold;">
+                                Online Users: <span class="online-users-count"></span>
+                            </li>
                             <li class="dropdown current-user">
                                 <a href class="dropdown-toggle" data-toggle="dropdown">
                                     <img src="<?= base_url() ?>assets/images/Avatar.png" alt="admin"> <span class="username">ADMIN <i class="ti-angle-down"></i></i></span>
