@@ -197,7 +197,7 @@
                                                     <tr>
                                                         <td align="center">
                                                             <div>
-                                                                <input type="checkbox" class="grid_checkbox" id="sessions[]" name="sessions[]" value="<?= $val->sessions_id ?>"/>                                                
+                                                                <input type="checkbox" class="grid_checkbox" id="sessions[]" name="sessions[]" value="<?= $val->sessions_id ?>"/>
                                                             </div>
                                                         </td>
 														<td style="text-align: center;"><?= $val->sessions_id ?></td>
@@ -207,7 +207,7 @@
                                                                 <img src="<?= base_url() ?>uploads/sessions/<?= $val->sessions_photo ?>" style="height: 40px; width: 40px;">
                                                             <?php } else { ?>
                                                                 <img src="<?= base_url() ?>front_assets/images/session_avtar.jpg" style="height: 40px; width: 40px;">
-                                                            <?php } ?>    
+                                                            <?php } ?>
                                                         </td>
                                                         <td style="text-align: left;"><?= $val->session_title ?></td>
                                                         <td style="text-align: left;">
@@ -250,12 +250,12 @@
                                                             <?php if ($val->sessions_type_status == "Private") { ?>
                                                                 <a href="<?= base_url() ?>private_sessions/view/<?= $val->sessions_id ?>" style="margin: 3px;"><?= base_url() ?>private_sessions/view/<?= $val->sessions_id ?></a>
                                                             <?php } else { ?>
-                                                                <a href="<?= base_url() ?>sessions/view/<?= $val->sessions_id ?>" style="margin: 3px;"><?= base_url() ?>sessions/view/<?= $val->sessions_id ?></a> 
+                                                                <a href="<?= base_url() ?>sessions/view/<?= $val->sessions_id ?>" style="margin: 3px;"><?= base_url() ?>sessions/view/<?= $val->sessions_id ?></a>
                                                             <?php } ?>
                                                         </td>
                                                         <td>
                                                             <a href="<?= base_url() ?>admin/Attendee_Chat/chat/<?= $val->sessions_id ?>" class="btn btn-warning btn-sm" style="margin: 3px;">Attendee Chat</a>
-                                                            <button type="button" class="btn btn-danger btn-sm endSessionSocket" style="margin: 3px;" data-session-id="<?=getAppName($val->sessions_id) ?>">End Session</button>
+                                                            <button type="button" class="btn btn-danger btn-sm endSessionSocket" style="margin: 3px;" data-session-id="<?=$val->sessions_id ?>" data-socket-session-id="<?=getAppName($val->sessions_id) ?>">End Session</button>
 
 
                                                             <a href="<?= base_url() ?>admin/sessions/view_session/<?= $val->sessions_id ?>" class="btn btn-info btn-sm" style="margin: 3px;">View Session</a>
@@ -319,11 +319,20 @@
     $(document).ready(function () {
         let socket = io("<?=getSocketUrl()?>");
         $(".endSessionSocket").on("click", function () {
+            var sesionSocketId=$(this).data("socket-session-id");
             var sesionId=$(this).data("session-id");
             alertify.confirm("Are you sure you want to end the session?", function (e) {
                 if (e)
                 {
-                    socket.emit("endSession",sesionId);
+
+                    $.post("<?=base_url()?>admin/sessions/endSession",{"sesionId":sesionId},function (response){
+
+                        if(response=="success"){
+
+                            socket.emit("endSession",sesionSocketId);
+
+                        }
+                    })
 
                 }
             });
@@ -351,7 +360,7 @@
             }
             return false; //Prevent form to submitting
         });
-        
+
          $('#select_all').click(function () {
             if (this.checked)
             {
@@ -365,7 +374,7 @@
                 });
             }
         });
-        
+
        $('#btndeleteall').on("click", function () {
             var checkValues = $('.grid_checkbox:checked').map(function ()
             {
