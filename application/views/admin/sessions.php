@@ -100,11 +100,11 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <input type="submit" name="filter_btn" class="btn btn-primary" style="margin-top: 22px;" id="filter_btn" value="Submit">
                                 </div>
                                 <div class="col-md-2">
-                                    <a href="<?= base_url() ?>admin/session/filter_clear" class="btn btn-danger" style="margin-top: 22px;">Clear</a>
+                                    <a href="<?= base_url() ?>admin/sessions/filter_clear" class="btn btn-danger" style="margin-top: 22px;">Clear</a>
                                 </div>
                             </div>
                         </form>
