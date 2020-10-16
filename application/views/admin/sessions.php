@@ -173,6 +173,7 @@
                                         <thead class="th_center">
                                             <tr>
                                                 <td style="width: 60px; text-align: center;"><input type="checkbox" id="select_all" name="select_all"></td>
+												<th>Session ID</th>
                                                 <th>Date</th>
                                                 <th>Photo</th>
                                                 <th>Title</th>
@@ -199,6 +200,7 @@
                                                                 <input type="checkbox" class="grid_checkbox" id="sessions[]" name="sessions[]" value="<?= $val->sessions_id ?>"/>                                                
                                                             </div>
                                                         </td>
+														<td style="text-align: center;"><?= $val->sessions_id ?></td>
                                                         <td style="white-space: pre;"><?= date("Y-m-d", strtotime($val->sessions_date)) ?></td>
                                                         <td>
                                                             <?php if ($val->sessions_photo != "") { ?>
