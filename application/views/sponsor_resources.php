@@ -21,6 +21,7 @@
 </style>
 <section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/expo_background.jpg); top: 20; padding-top: 20px;">
     <div class="container" style="min-height: 1000px;">
+        <h3 style="margin-bottom: 15px; margin-left: 0px; color: #000; font-weight: 700; text-transform: uppercase;">The Greenblum and Bernstein Resource Library</h3>
         <div class="files well">
             <table class="table">
                 <thead>
@@ -49,7 +50,7 @@
         </div>
         <br>
         <div class="files well">
-            <h2>Sessions</h2>
+            <h2>Resources</h2>
             <table class="table">
                 <thead>
                     <tr>
