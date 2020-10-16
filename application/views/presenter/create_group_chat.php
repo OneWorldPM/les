@@ -1,7 +1,7 @@
 <?php
 $this->load->helper('string');
 ?>
-<!-- end: CLIP-TWO JAVASCRIPTS --> 
+<!-- end: CLIP-TWO JAVASCRIPTS -->
 <div class="main-content">
     <div class="wrap-content container" id="container">
         <!-- start: DYNAMIC TABLE -->
@@ -33,7 +33,7 @@ $this->load->helper('string');
 
                                                         ?>
                                                         <option selected value="<?= $val->presenter_id ?>"><?= $val->presenter_name ?></option>
-                                                    <?php } else { ?> 
+                                                    <?php } else { ?>
                                                         <option value="<?= $val->presenter_id ?>"><?= $val->presenter_name ?></option>
                                                         <?php
                                                     }
@@ -61,6 +61,36 @@ $this->load->helper('string');
 
                                     <span id="errorpresenter" style="color:red;"></span>
                                 </div>
+                                <div class="form-group">
+                                    <label class="control-label">Select Multiple Moderator : </label>
+
+
+                                    <select name="moderators[]" id="presenters" class="form-control" multiple>
+                                        <?php
+                                        $now_user_bool_two=false;
+                                        $moderators= $moderators->moderator;
+                                           foreach ($moderators as $moderator){
+                                               if($moderator->presenter_id==$_SESSION["pid"])$now_user_bool_two=true;
+                                               $name=$moderator->first_name." ".$moderator->last_name;
+                                               ?>
+                                               <option value="<?= $moderator->presenter_id ?>"><?= $name ?></option>
+
+                                               <?php
+
+                                           }
+                                        if(!$now_user_bool_two){
+                                            ?>
+                                            <option value="<?= $_SESSION["pid"] ?>"><?= $_SESSION["pname"] ?></option>
+                                            <?php
+                                        }
+                                        ?>
+
+                                    </select>
+
+                                    <span id="errorpresenter" style="color:red;"></span>
+                                </div>
+
+
                                 <!--                                <div class="form-group">
                                                                     <label class="control-label">Select Multiple Users :</label>
                                                                     <select name="users[]" id="users" class="form-control" multiple>
