@@ -116,8 +116,44 @@
         padding: 0;
 
     }
-    .socialMedia a:hover{
 
+    .meetingBar{
+        background-color: #003263;
+        width: 900px;
+        height: 100px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        z-index: 123;
+        max-width: 100%;
+    }
+    .meetingBar .left{
+        float: left !important;
+        padding-left: 120px;
+        padding-top: 15px;
+    }
+    .meetingBar .left h2{
+        font-weight: bold;
+        margin-bottom: 0;
+        color: #efcd8f;
+        font-style: italic;
+        font-family: cursive;
+        font-size: 25px;
+    }
+    .meetingBar .left p{
+        color: white;
+        font-style: italic;
+        font-family: cursive;
+        font-size: 16px;
+    }
+    .meetingBar .right{
+        text-align: center;
+        width: 200px;
+        padding-top: 20px;
+    }
+    .meetingBar h5{
+      color: white;
     }
 </style>
 <section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/lounge-bg.jpg);">
@@ -212,7 +248,20 @@
             </div>
 
         </div>
+        <div class="meetingBar">
+            <div class="left">
+                <h2>Schedule your own meeting with friends!</h2>
+                <p>Have a video meeting up to 5 LES colleagues...</p>
+            </div>
+            <div class="right">
+                <h5>Click here</h5>
+                <button type="button" class="lounge-meetings-btn btn btn-success">
+                    <i class="fa fa-calendar" aria-hidden="true"></i> Meetings <span class="number-of-meet-badge badge badge-warning"></span>
+                </button>
+            </div>
+        </div>
     </div>
+
 </section>
 
 <div class="socialMedia">
