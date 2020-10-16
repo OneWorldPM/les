@@ -27,6 +27,7 @@ class Groupchat extends CI_Controller {
         $data['sessions_id'] = $sessions_id;
         $data['users'] = $this->objgroupchat->getUsersData();
         $data['presenter'] = $this->objgroupchat->getPresenterData($sessions_id);
+        $data['moderators'] = $this->objgroupchat->getModeratorData($sessions_id);
 
         $this->load->view('presenter/header');
         $this->load->view('presenter/create_group_chat', $data);
