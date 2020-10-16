@@ -159,8 +159,9 @@
                             <div class="row" style="margin-top: 10px; margin-bottom: 10px;">
                                 <div class="col-md-12">
                                     <button type="button" id="btndeleteall" class="btn btn-sm btn-danger"><i class="ti-trash"></i> Delete</button>
+                                    <span style="color: #000; font-size: 20px; font-weight: 600; margin-top: 5px; margin-left: 20px;">Current Users:  <?= sizeof($user) ?></span>
                                 </div>
-                            </div>  
+                            </div>
                             <div class="row">
                                 <div class="col-md-12 table-responsive">
                                     <table class="table table-bordered table-striped text-center" id="user">
