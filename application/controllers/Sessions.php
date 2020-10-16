@@ -79,7 +79,15 @@ class Sessions extends CI_Controller {
     }
 
     public function view($sessions_id) {
-        $data["sessions"] = $this->objsessions->viewSessionsData($sessions_id);
+        $sessions = $this->objsessions->viewSessionsData($sessions_id);
+
+        if ($sessions->status == 0) {
+            header("location:" . base_url() . "sessions/session_end");
+            die();
+        }
+
+
+        $data["sessions"] = $sessions;
         $data["session_resource"] = $this->objsessions->get_session_resource($sessions_id);
 
         $this->load->view('header');

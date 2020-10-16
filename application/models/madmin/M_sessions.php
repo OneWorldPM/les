@@ -86,7 +86,13 @@ class M_sessions extends CI_Model {
             return '';
         }
     }
+    function endSession() {
+        $post = $this->input->post();
+        $sessionId=$post["sesionId"];
+        $this->db->update('sessions', array('status' => 0), array('sessions_id' => $sessionId));
 
+        return "success";
+    }
     function createSessions() {
         $post = $this->input->post();
 
