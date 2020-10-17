@@ -40,6 +40,12 @@ class Sessions extends CI_Controller {
         $this->load->view('admin/sessions', $data);
         $this->load->view('admin/footer');
     }
+	
+	public function filter_clear() {
+        $this->session->unset_userdata('start_date');
+        $this->session->unset_userdata('end_date');
+        header('location:' . base_url() . 'admin/sessions');
+    }
 
     public function add_sessions() {
         $data['presenter'] = $this->msessions->getPresenterDetails();

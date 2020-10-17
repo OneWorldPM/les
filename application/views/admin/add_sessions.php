@@ -130,6 +130,17 @@
                                             <option <?= (isset($sessions_edit) && !empty($sessions_edit) ) ? ($sessions_edit->sessions_type_status == "Private") ? "selected" : "" : "" ?> value="Private">Private Session</option> 
                                         </select>
                                     </div>
+									 <?php if (isset($sessions_edit)) { ?>
+                                        <div class="row">
+                                            <label class="col-md-12 text-large">Tool Box</label>
+                                            <div class="form-group col-md-6" style="color: #000;">
+                                                <input type="radio" class="col-md-1"  name="tool_box_status"  id="tool_box" <?= (isset($sessions_edit) && !empty($sessions_edit)) ? ($sessions_edit->tool_box_status == "1") ? 'checked' : '' : 'checked' ?> value="1">ON<br>
+                                            </div>
+                                            <div class="form-group col-md-6" style="color: #000;">
+                                                <input type="radio" class="col-md-1"  name="tool_box_status"  id="tool_box_2" <?= (isset($sessions_edit) && !empty($sessions_edit)) ? ($sessions_edit->tool_box_status == "0") ? 'checked' : '' : '' ?>  value="0">OFF<br>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
                                     <div class="form-group">
                                         <label>Sessions Photo</label>
                                         <input type="file" class="form-control" name="sessions_photo" id="sessions_photo">

@@ -74,10 +74,10 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Date Range:</label>
-                                        <div class="input-group input-daterange datepicker">
-                                            <input type="text" placeholder="Start Date" name="start_date" value="" id="from_date" class="form-control">
+                                         <div class="input-group input-daterange datepicker">
+                                            <input type="text" placeholder="Start Date" name="start_date" value="<?= ($this->session->userdata('start_date') != "") ? date("m/d/Y",strtotime($this->session->userdata('start_date'))) : ""  ?>" id="from_date" class="form-control">
                                             <span class="input-group-addon bg-primary">to</span>
-                                            <input type="text" placeholder="End Date" name="end_date" value="" id="to_date" class="form-control">
+                                            <input type="text" placeholder="End Date" name="end_date" value="<?= ($this->session->userdata('end_date') != "") ? date("m/d/Y",strtotime($this->session->userdata('end_date'))) : ""  ?>" id="to_date" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -100,8 +100,11 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-1">
                                     <input type="submit" name="filter_btn" class="btn btn-primary" style="margin-top: 22px;" id="filter_btn" value="Submit">
+                                </div>
+                                <div class="col-md-2">
+                                    <a href="<?= base_url() ?>admin/sessions/filter_clear" class="btn btn-danger" style="margin-top: 22px;">Clear</a>
                                 </div>
                             </div>
                         </form>

@@ -271,6 +271,10 @@
         }
     }
 
+    /** @Hayreddin, I added this because, video from Vimeo was not showing up. You must check it. -by Athul**/
+    .embed-responsive .fluid-width-video-wrapper{
+        position: unset !important;
+    }
 
 
 </style>
@@ -371,7 +375,10 @@
 
 
 
-
+<?php
+if (isset($sessions)) {
+    if ($sessions->tool_box_status == "1") {
+        ?>
 <div class="rightSticky" data-screen="customer">
     <ul>
        <?php
@@ -400,7 +407,10 @@
 
     </ul>
 </div>
-
+<?php
+    }
+}
+?>
 
 <div class="rightSticykPopup notesSticky" style="display: none">
     <div class="header"><span></span>

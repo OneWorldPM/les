@@ -106,6 +106,14 @@
         $.get("<?=base_url()?>socket_config.php", function (data) {
             var config = JSON.parse(data);
             extract(config);
+
+            socket.on('serverStatus', function (data) {
+                socket.emit('addMeToActiveListPerApp', {'user_id': user_id, 'app': socket_app_name, 'room': socket_active_user_list});
+
+                setTimeout(function () {
+                    socket.emit('getActiveUserListPerApp', socket_app_name);
+                }, 5000); // Wait 5 seconds and request for new list of active users
+            });
         });
 
         fillUnreadMessages();
@@ -145,16 +153,6 @@
 
 
 
-
-
-
-        socket.on('serverStatus', function (data) {
-            socket.emit('addMeToActiveListPerApp', {'user_id': user_id, 'app': socket_app_name, 'room': socket_active_user_list});
-
-            setTimeout(function () {
-                socket.emit('getActiveUserListPerApp', socket_app_name);
-            }, 5000); // Wait 5 seconds and request for new list of active users
-        });
 
         // Active again
         function resetActive() {

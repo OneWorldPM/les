@@ -123,7 +123,7 @@
                             <?php
                             $current_date = $this->uri->segment(3);
                             if ($current_date == "") {
-                                $current_date = $all_sessions_week[0]->sessions_date;
+                                $current_date = isset($selected_date) ? $selected_date : $all_sessions_week[0]->sessions_date;
                             }
                             if ($val->sessions_date == $current_date) {
                                 ?>
@@ -152,6 +152,14 @@
                 <div class="videoWindow">
                     <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/467905249" allowfullscreen></iframe>
                 </div>
+                <?php }elseif ($session_date_from_url == '2020-10-16'){ ?>
+                    <div class="videoWindow">
+                        <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/467905166" allowfullscreen></iframe>
+                    </div>
+                <?php }elseif ($session_date_from_url == '2020-10-17'){ ?>
+                    <div class="videoWindow">
+                        <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/467905224" allowfullscreen></iframe>
+                    </div>
                 <?php } ?>
 
                 <!-- Blog post-->
@@ -210,9 +218,21 @@
                                                         ?>
                                                         <div class="post-description" style="margin-top: 10px;">
                                                             <p style="margin-bottom: 10px; color: black;"><?= $val->sessions_description ?></p>
-                                                            <a class="button black-light button-3d rounded right btn_sign_up blueBgOne" style="margin: 0px 0;" data-sessions_id="<?= $val->sessions_id ?>" data-user_limit="<?= $val->total_sign_up_sessions_user ?>" data-session-type="<?=$val->sessions_type_status?>" data-session-id="<?=getAppName($val->sessions_id) ?>" data-url="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
 
-                                                            <a class="button black-light button-3d rounded right save_to_swag_bag blueBgOne" data-sessions_id="<?= $val->sessions_id ?>" data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"><?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>
+                                                            <?php
+                                                            if($val->status==0){
+                                                                ?>
+                                                                <a class="button black-light button-3d rounded right btn-danger" style="margin: 0px 0px 0px 5px; "><span>This session is closed</span></a>
+
+                                                                <?php
+                                                            }else{
+                                                                ?>
+                                                            <a class="button black-light button-3d rounded right btn_sign_up blueBgOne" style="margin: 0px 0;" data-sessions_id="<?= $val->sessions_id ?>" data-user_limit="<?= $val->total_sign_up_sessions_user ?>" data-session-type="<?=$val->sessions_type_status?>" data-session-id="<?=getAppName($val->sessions_id) ?>" data-url="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
+                                                                <a class="button black-light button-3d rounded right save_to_swag_bag blueBgOne" data-sessions_id="<?= $val->sessions_id ?>" data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"><?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>
+
+                                                                <?php
+                                                            }
+                                                            ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -238,9 +258,27 @@
                                                         ?>
                                                         <div class="post-description" style="margin-top: 10px;">
                                                             <p style="margin-bottom: 10px; color: black;"><?= $val->sessions_description ?></p>
+
+
+                                                            <?php
+                                                            if($val->status==0){
+                                                                ?>
+                                                                <a class="button black-light button-3d rounded right btn-danger" style="margin: 0px 0px 0px 5px; "><span>This session is closed</span></a>
+
+                                                                <?php
+                                                            }else{
+                                                                ?>
                                                             <a class="button black-light button-3d rounded right blueBgOne goWaitHall" data-session-type="<?=$val->sessions_type_status?>" data-session-id="<?=getAppName($val->sessions_id) ?>" style="margin: 0px 0px 0px 5px; " data-url="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
-                                                            <a class="button black-light button-3d rounded right btn_unregister blueBgOne" style="margin: 0px 0;" data-sessions_id="<?= $val->sessions_id ?>" ><span>Unregister</span></a>
-                                                            <a class="button black-light button-3d rounded right save_to_swag_bag blueBgOne" data-sessions_id="<?= $val->sessions_id ?>" data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"><?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>
+
+                                                                <a class="button black-light button-3d rounded right btn_unregister blueBgOne" style="margin: 0px 0;" data-sessions_id="<?= $val->sessions_id ?>" ><span>Unregister</span></a>
+
+                                                                <a class="button black-light button-3d rounded right save_to_swag_bag blueBgOne" data-sessions_id="<?= $val->sessions_id ?>" data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"><?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>
+
+                                                                <?php
+                                                            }
+                                                            ?>
+
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -270,8 +308,22 @@
                                                         <?php
                                                         if ($val->status_sign_up_sessions == 1) {
                                                             ?>
+
+                                                            <?php
+                                                            if($val->status==0){
+                                                                ?>
+                                                                <a class="button black-light button-3d rounded right btn-danger" style="margin: 0px 0px 0px 5px; "><span>This session is closed</span></a>
+
+                                                                <?php
+                                                            }else{
+                                                                ?>
                                                             <a class="button black-light button-3d rounded right blueBgOne goWaitHall" data-session-type="<?=$val->sessions_type_status?>" data-session-id="<?=getAppName($val->sessions_id) ?>" style="margin: 0px 0px 0px 5px; " data-url="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
-                                                            <a class="button black-light button-3d rounded right btn_unregister blueBgOne" style="margin: 0px 0;" data-sessions_id="<?= $val->sessions_id ?>" ><span>Unregister</span></a>
+                                                                <a class="button black-light button-3d rounded right btn_unregister blueBgOne" style="margin: 0px 0;" data-sessions_id="<?= $val->sessions_id ?>" ><span>Unregister</span></a>
+
+                                                                <?php
+                                                            }
+                                                            ?>
+
                                                             <?php
                                                         } else {
                                                             ?>
@@ -298,6 +350,8 @@
                                             <a target="_blank" href="https://us02web.zoom.us/j/82286796031"> <?php if ($val->sessions_photo != "") { ?> <img alt="" src="<?= base_url() ?>uploads/sessions/<?= $val->sessions_photo ?>"> <?php } else { ?>  <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg"> <?php } ?>  </a>
                                         <?php }elseif($val->sessions_id == 197){ ?>
                                             <a target="_blank" href="https://zoom.us/j/93326270074"> <?php if ($val->sessions_photo != "") { ?> <img alt="" src="<?= base_url() ?>uploads/sessions/<?= $val->sessions_photo ?>"> <?php } else { ?>  <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg"> <?php } ?>  </a>
+                                        <?php }elseif($val->sessions_id == 201){ ?>
+                                            <a target="_blank" href="https://zoom.us/j/98644610288?pwd=ZXpOMzF2VTFoM09MblVObHUzSzFSUT09"> <?php if ($val->sessions_photo != "") { ?> <img alt="" src="<?= base_url() ?>uploads/sessions/<?= $val->sessions_photo ?>"> <?php } else { ?>  <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg"> <?php } ?>  </a>
                                         <?php }else{ ?>
                                             <a href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"> <?php if ($val->sessions_photo != "") { ?> <img alt="" src="<?= base_url() ?>uploads/sessions/<?= $val->sessions_photo ?>"> <?php } else { ?>  <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg"> <?php } ?>  </a>
                                         <?php } ?>
@@ -314,6 +368,8 @@
                                                         <a target="_blank" href="https://us02web.zoom.us/j/82286796031" class="colorBlueOne" style="font-weight: 900;"><?= $val->session_title ?></a>
                                                     <?php }elseif($val->sessions_id == 197){ ?>
                                                         <a target="_blank" href="https://zoom.us/j/93326270074" class="colorBlueOne" style="font-weight: 900;"><?= $val->session_title ?></a>
+                                                    <?php }elseif($val->sessions_id == 201){ ?>
+                                                        <a target="_blank" href="https://zoom.us/j/98644610288?pwd=ZXpOMzF2VTFoM09MblVObHUzSzFSUT09" class="colorBlueOne" style="font-weight: 900;"><?= $val->session_title ?></a>
                                                     <?php }else{ ?>
                                                         <a href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>" class="colorBlueOne" style="font-weight: 900;"><?= $val->session_title ?></a>
                                                     <?php } ?>
@@ -350,9 +406,26 @@
                                                 <?php }elseif($val->sessions_id == 197){ ?>
                                                     <a target="_blank" class="button black-light button-3d rounded right blueBgOne" style="margin: 0px 0;" href="https://zoom.us/j/93326270074"><span>Attend</span></a>
                                                     <a class="button black-light button-3d rounded right save_to_swag_bag blueBgOne" data-sessions_id="<?= $val->sessions_id ?> " data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"> <?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>
-                                                <?php }else{ ?>
-                                                    <a class="button black-light button-3d rounded right blueBgOne" style="margin: 0px 0;" href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
+                                                <?php }elseif($val->sessions_id == 201){ ?>
+                                                    <a target="_blank" class="button black-light button-3d rounded right blueBgOne" style="margin: 0px 0;" href="https://zoom.us/j/98644610288?pwd=ZXpOMzF2VTFoM09MblVObHUzSzFSUT09"><span>Attend</span></a>
                                                     <a class="button black-light button-3d rounded right save_to_swag_bag blueBgOne" data-sessions_id="<?= $val->sessions_id ?> " data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"> <?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>
+                                                <?php }else{ ?>
+
+                                                    <?php
+                                                    if($val->status==0){
+                                                        ?>
+                                                        <a class="button black-light button-3d rounded right btn-danger" style="margin: 0px 0px 0px 5px; "><span>This session is closed</span></a>
+
+                                                        <?php
+                                                    }else{
+                                                        ?>
+                                                        <a class="button black-light button-3d rounded right blueBgOne" style="margin: 0px 0;" href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
+                                                        <a class="button black-light button-3d rounded right save_to_swag_bag blueBgOne" data-sessions_id="<?= $val->sessions_id ?> " data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"> <?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>
+
+                                                        <?php
+                                                    }
+                                                    ?>
+
                                                 <?php } ?>
                                             </div>
                                         </div>

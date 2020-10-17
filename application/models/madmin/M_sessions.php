@@ -32,7 +32,12 @@ class M_sessions extends CI_Model {
         $this->db->from('sessions s');
 
         $post = $this->input->post();
-
+        $session_filter = array(
+            'start_date' => date('Y-m-d', strtotime($post['start_date'])),
+            'end_date' => date('Y-m-d', strtotime($post['end_date']))
+        );
+        $this->session->set_userdata($session_filter);
+		
         ($post['session_type'] != "") ? $where['s.sessions_type_id ='] = trim($post['session_type']) : '';
 
         ($post['start_date'] != "") ? $where['DATE(s.sessions_date) >='] = date('Y-m-d', strtotime($post['start_date'])) : '';
@@ -130,6 +135,7 @@ class M_sessions extends CI_Model {
             'sessions_type_id' => $sessions_type_id,
             'sessions_tracks_id' => $sessions_tracks_id,
             'sessions_type_status' => trim($post['sessions_type_status']),
+			'tool_box_status' => 1,
             'sessions_visibility' => (isset($post['sessions_visibility'])) ? $post['sessions_visibility'] : '',
             "reg_date" => date("Y-m-d h:i")
         );
@@ -281,6 +287,7 @@ class M_sessions extends CI_Model {
             'sessions_type_id' => $sessions_type_id,
             'sessions_tracks_id' => $sessions_tracks_id,
             'sessions_type_status' => trim($post['sessions_type_status']),
+			'tool_box_status' => (isset($post['tool_box_status'])) ? $post['tool_box_status'] : 1,
             'sessions_visibility' => (isset($post['sessions_visibility'])) ? $post['sessions_visibility'] : '',
         );
         $this->db->update("sessions", $set, array("sessions_id" => $post['sessions_id']));
