@@ -148,7 +148,6 @@
     }
     .meetingBar .right{
         text-align: center;
-        width: 400px;
         padding-top: 20px;
     }
     .meetingBar h5{
@@ -251,12 +250,12 @@
 		 <div class="col-md-12">
 		  <div class="col-md-12">
 		<div class="col-md-9">
-        <div class="meetingBar">
-            <div class="left">
+        <div class="meetingBar col-md-12">
+            <div class="left col-md-9">
                 <h2>Schedule your own meeting with friends!</h2>
                 <p>Have a video meeting up to 5 LES colleagues...</p>
             </div>
-            <div class="right">
+            <div class="right col-md-3">
                 <h5>Click here</h5>
                 <button type="button" class="lounge-meetings-btn btn btn-success">
                     <i class="fa fa-calendar" aria-hidden="true"></i> Meetings <span class="number-of-meet-badge badge badge-warning" style="background-color: #a94442;color: white;"></span>
