@@ -251,11 +251,11 @@
 		  <div class="col-md-12">
 		<div class="col-md-9">
         <div class="meetingBar col-md-12">
-            <div class="left col-md-9">
+            <div class="left col-md-8">
                 <h2>Schedule your own meeting with friends!</h2>
                 <p>Have a video meeting up to 5 LES colleagues...</p>
             </div>
-            <div class="right col-md-3">
+            <div class="right col-md-4">
                 <h5>Click here</h5>
                 <button type="button" class="lounge-meetings-btn btn btn-success">
                     <i class="fa fa-calendar" aria-hidden="true"></i> Meetings <span class="number-of-meet-badge badge badge-warning" style="background-color: #a94442;color: white;"></span>
