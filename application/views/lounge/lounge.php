@@ -119,7 +119,6 @@
     .meetingBar{
 	    margin-left: 40px;
         background-color: #003263;
-        width: 900px;
         height: 100px;
         position: absolute;
         left: 0;
@@ -249,6 +248,7 @@
 
         </div>
 		<div class="row">
+		 <div class="col-md-12">
 		<div class="col-md-9">
         <div class="meetingBar">
             <div class="left">
@@ -265,6 +265,7 @@
 		</div>
 		<div class="col-md-3" style="padding-right: 0px; padding-left: 0px; height: 250px; overflow: auto;">
 		<a class="twitter-timeline" href="https://twitter.com/LESUSACanada?ref_src=twsrc%5Etfw">Tweets by LESUSACanada</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+		</div>
 		</div>
 		</div>
     </div>
