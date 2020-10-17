@@ -466,7 +466,10 @@ if(false){
 
 
 
-
+<?php
+if (isset($sessions)) {
+    if ($sessions->tool_box_status == "1") {
+        ?>
 <div class="rightSticky" data-screen="customer">
     <ul>
        <?php
@@ -495,7 +498,10 @@ if(false){
 
     </ul>
 </div>
-
+<?php
+    }
+}
+?>
 
 <div class="rightSticykPopup notesSticky" style="display: none">
     <div class="header"><span></span>
