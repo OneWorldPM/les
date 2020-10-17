@@ -327,7 +327,6 @@
         }
         document.getElementById('id_day_time').innerHTML = pad(days) + " " + days_lable + ", " + pad(hours) + " " + hours_lable + ", " + pad(minutes) + " " + minutes_lable + ", " + pad(remainingSeconds) + " " + remainingSeconds_lable;
         if (seconds <= 60 || seconds <= 0) {
-            return false;
             if ($("#sessions_type_status").val() == "Private") {
                 window.location = "<?= site_url() ?>private_sessions/view/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_id : "" ?>";
                             } else {
