@@ -263,7 +263,7 @@
             </div>
         </div>
 		</div>
-		<div class="col-md-3" style="padding-right: 0px; height: 250px; overflow: auto;">
+		<div class="col-md-3" style="padding-right: 0px; padding-left: 0px; height: 250px; overflow: auto;">
 		<a class="twitter-timeline" href="https://twitter.com/LESUSACanada?ref_src=twsrc%5Etfw">Tweets by LESUSACanada</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 		</div>
 		</div>
@@ -271,11 +271,11 @@
 
 </section>
 
-<div class="socialMedia">
+<!--<div class="socialMedia">
     <a href="https://twitter.com/LESUSACanada?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @LESUSACanada</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
-</div>
+</div>-->
 
 <div id="meetings-modal" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
