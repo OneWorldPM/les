@@ -147,8 +147,12 @@
                 <?php
                 $session_date_from_url = '';
                 $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-                $session_date_from_url = substr($url, strrpos( $url, '/' )+1);
-                if (isset($iframe) || $session_date_from_url == '2020-10-15') { ?>
+				$current_date = $this->uri->segment(3);
+                            if ($current_date == "") {
+                                $current_date = isset($selected_date) ? $selected_date : $all_sessions_week[0]->sessions_date;
+                            }
+                $session_date_from_url = $current_date;
+                if ($session_date_from_url == '2020-10-15') { ?>
                 <div class="videoWindow">
                     <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/467905249" allowfullscreen></iframe>
                 </div>
@@ -156,7 +160,7 @@
                     <div class="videoWindow">
                         <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/467905166" allowfullscreen></iframe>
                     </div>
-                <?php }elseif ($session_date_from_url == '2020-10-17'){ ?>
+                <?php }elseif ($session_date_from_url == '2020-10-17' && date("Y-m-d") == '2020-10-17'){ ?>
                     <div class="videoWindow">
                         <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/467905224" allowfullscreen></iframe>
                     </div>
