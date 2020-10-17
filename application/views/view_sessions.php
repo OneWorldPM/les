@@ -278,98 +278,7 @@
 
 
 </style>
-<?php
-if(false){
-    ?>
-    <section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/bubble_bg_1920.jpg); top: 0; padding-top: 0px;">
-        <!--<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/Sessions_BG_screened.jpg); top: 0; padding-top: 0px;">-->
-        <div class="container container-fullscreen" style="min-height: 900px;">
-            <div class="">
-                <div class="row">
-                    <div class="col-md-12">
-                        <!-- CONTENT -->
-                        <section class="content">
-                            <div class="container" style=" background: rgb(223 223 223 / 60%);">
-                                <div class="row p-b-40">
-                                    <div class="col-md-12" style="background-color: #B2B7BB; margin-bottom: 10px;">
-                                        <h3 style="margin-bottom: 5px; color: #fff; font-weight: 700; text-transform: uppercase;"><?= isset($sessions) ? $sessions->session_title : "" ?></h3>
-                                    </div>
-                                    <div id="embededVideo" class="col-md-12" style="text-align: center; width: 80% !important;">
-                                        <div class="row"><i id="btnFS" class="fa fa-arrows-alt" aria-hidden="true"></i></div>
-                                        <div id="iframeDiv" class="row" style="width: 112%; height: 97%;">
-                                            <?= isset($sessions) ? $sessions->embed_html_code : "" ?>
-                                        </div>
-                                        <img alt="" src="<?= base_url() ?>front_assets/images/hovermouse.png" style="float: left; width: 10%; margin-top: -80px; margin-left: -10px;">
-                                        <div class="modal fade" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left;">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header" style="padding: 0px;">
-                                                        <img class="kent_logo" src="<?= base_url() ?>assets/images/logo.png" alt="MLG">
-                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div class="row" style="padding-top: 10px; padding-bottom: 20px;">
-                                                            <div class="col-sm-12">
-                                                                <div id="poll_vot_section" style="padding: 0px 0px 0px 0px; margin-top: 10px; background-color: #fff; border-radius: 5px;">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row" id="timer_sectiom" style="padding-top: 20px; padding-bottom: 20px; display: none;">
-                                                            <div class="col-md-12" style="text-align: center;">
-                                                                <span id="id_day_time" style="border:1px solid #000; border-radius: 100px; font-size: 76px; font-weight: 700; color: green; padding: 10px 30px 10px 30px;"></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--                                <div class="col-md-3">
-                                                                        <input type="hidden" name="last_sessions_cust_question_id" id="last_sessions_cust_question_id" value="0">
-                                                                        <div id="question_answer_section" style="padding: 0px 12px 0px 12px; margin-top: 20px; background-color: #fff; border-radius: 5px; overflow-y: scroll; height: 400px;">
-                                                                            <h2 style="margin-bottom: 0px; color: #ef9d45; font-weight: 700; font-size: 18px; text-align: center; border-bottom: 1px solid #696f6f;">Question & Answer</h2>
-                                                                            <div id="question_answer_section_list" style="padding: 10px 0px 10px 0px;"></div>
-                                                                        </div>
-                                                                    </div>-->
-                                    <div class="col-md-12">
-                                        <input type="hidden" id="view_sessions_history_id" value="">
-                                        <input type="hidden" id="sessions_id" value=" <?= isset($sessions) ? $sessions->sessions_id : "" ?>">
-                                        <input type="hidden" id="poll_vot_section_id_status" value="0">
-                                        <input type="hidden" id="poll_vot_section_last_status" value="0">
-
-                                    </div>
-                                </div>
-<!--                                <p style="font-weight: 600;">CURRENT TIME : <span id="show_time"></span> CT</p>-->
-                            </div>
-                        </section>
-                        <!-- END: SECTION -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade" id="push_notification" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left; right: unset;">
-            <input type="hidden" id="push_notification_id" value="">
-            <div class="modal-dialog">
-                <div class="modal-content" style="border: 1px solid #ef9d45;">
-                    <div class="modal-body">
-                        <div class="row" style="padding-top: 10px; padding-bottom: 20px;">
-                            <div class="col-sm-12">
-                                <div style="color:#ef9d45; font-size: 16px; font-weight: 800; " id="push_notification_message"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="close push_notification_close" style="padding: 10px; color: #fff; background-color: #ef9d45; opacity: 1;" data-dismiss="modal" aria-hidden="true">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-<?php
-}
-?>
-
-<section class="parallax" style="background: url('<?= base_url() ?>front_assets/images/bubble_bg_1920.jpg') no-repeat;">
+<section class="parallax" style="background: url('<?= base_url() ?>front_assets/images/bubble_bg_1920.jpg') no-repeat;" data-roundtable="<?=$roundtable->roundtable?>" data-session-type="<?=$sessions->sessions_type_status == "Private"?>">
     <!--<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/Sessions_BG_screened.jpg); top: 0; padding-top: 0px;">-->
     <div class="container-fullscreen">
         <!-- CONTENT -->
@@ -713,9 +622,29 @@ if (isset($sessions)) {
 
 <script type="text/javascript">
     $(document).ready(function () {
+        let socket = io("<?=getSocketUrl()?>");
 
-    let socket = io("<?=getSocketUrl()?>");
-    socket.emit("ConnectSessioViewUsers","<?=getAppName($sessions->sessions_id) ?>")
+        var roundTable=parseInt($(".parallax").data("roundtable"));
+        var sessionType=$(".parallax").data("session-type")
+
+        if(sessionType=="1"){
+
+            socket.emit("ConnectSessioViewUsers","<?=getAppName($sessions->sessions_id) ?>",function () {
+                var sessionId="<?=getAppName($sessions->sessions_id) ?>";
+
+                socket.emit("gettHallViewUsers",sessionId,function (data) {
+                    var users=data.users;
+                    if(users>=roundTable) {
+                        window.location.href="<?=base_url()?>sessions";
+
+                        alertify.error('Roundtable is full!');
+                    }
+                })
+
+            })
+        }
+
+
 
         socket.on("endSession",function (par) {
             var sessionId="<?=getAppName($sessions->sessions_id) ?>";

@@ -110,7 +110,7 @@
     }
 
 </style>
-<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/bubble_bg_1920.jpg); top: 0; padding-top: 0px;">
+<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/bubble_bg_1920.jpg); top: 0; padding-top: 0px;" data-roundtable="<?=$roundtable->roundtable?>">
 <!--<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/Sessions_BG_screened.jpg); top: 0; padding-top: 0px;">-->
     <div class="container container-fullscreen" style="min-height: 900px;">
         <div class="col-md-12 m-t-50" style="text-align: -webkit-center;">
@@ -176,12 +176,28 @@
                                 ?>
                                 <?php
                                 if ($val->sessions_type_status == "Private") {
+                                    $time = $val->time_slot;
+                                    $datetime = $val->sessions_date . ' ' . $time;
+//                                    $datetime = date("Y-m-d H:i", strtotime($datetime));
+//                                    $datetime = new DateTime($datetime);
+//                                    $datetime1 = new DateTime();
+//                                    $diff = $datetime->getTimestamp() - $datetime1->getTimestamp();
+//                                    if ($diff >= 60) {
+//                                        $diff = $diff - 60;
+//                                    } else {
+//                                        $diff = 0;
+//                                    }
+
+//                                    var_dump($datetime);
+                                    ?>
+                                    <div class="timerPost" data-date='<?=$datetime?>' data-session-id="<?=getAppName($val->sessions_id)?>" style="display: none"></div>
+                                    <?php
                                     $user_detias = $this->common->get_user_details($this->session->userdata("cid"));
                                     if ($user_detias->customer_type != "Dummy users" && $user_detias->customer_type != "full_conference_no_roundtables" && $user_detias->customer_type != "Associate - Full Payment" && $user_detias->customer_type != "Associate Branch" && $user_detias->customer_type != "Associate - Monthly") {
                                         if ($val->total_sign_up_sessions < $session_limit->roundtable) {
                                             if ($val->status_sign_up_sessions == 0) {
                                                 ?>
-                                                <div class="post-item">
+                                                <div class="post-item post-item<?=getAppName($val->sessions_id) ?>">
                                                     <div class="post-image col-md-3 m-t-20">
                                                         <a> <?php if ($val->sessions_photo != "") { ?> <img alt="" src="<?= base_url() ?>uploads/sessions/<?= $val->sessions_photo ?>"> <?php } else { ?>  <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg"> <?php } ?>  </a>
                                                     </div>
@@ -202,6 +218,7 @@
                                                         ?>
                                                         <div class="post-description" style="margin-top: 10px;">
                                                             <p style="margin-bottom: 10px; color: black;"><?= $val->sessions_description ?></p>
+
                                                             <?php
                                                             if($val->status==0){
                                                                 ?>
@@ -210,7 +227,7 @@
                                                                 <?php
                                                             }else{
                                                                 ?>
-                                                                <a class="button black-light button-3d rounded right btn_sign_up blueBgOne" style="margin: 0px 0;" data-sessions_id="<?= $val->sessions_id ?>" data-user_limit="<?= $val->total_sign_up_sessions_user ?>"><span>Attend</span></a>
+                                                            <a class="button black-light button-3d rounded right btn_sign_up blueBgOne" style="margin: 0px 0;" data-sessions_id="<?= $val->sessions_id ?>" data-user_limit="<?= $val->total_sign_up_sessions_user ?>" data-session-type="<?=$val->sessions_type_status?>" data-session-id="<?=getAppName($val->sessions_id) ?>" data-url="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
                                                                 <a class="button black-light button-3d rounded right save_to_swag_bag blueBgOne" data-sessions_id="<?= $val->sessions_id ?>" data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"><?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>
 
                                                                 <?php
@@ -220,7 +237,7 @@
                                                     </div>
                                                 </div>
                                             <?php } else { ?>
-                                                <div class="post-item">
+                                                <div class="post-item post-item<?=getAppName($val->sessions_id) ?>">
                                                     <div class="post-image col-md-3 m-t-20">
                                                         <a href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"> <?php if ($val->sessions_photo != "") { ?> <img alt="" src="<?= base_url() ?>uploads/sessions/<?= $val->sessions_photo ?>"> <?php } else { ?>  <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg"> <?php } ?>  </a>
                                                     </div>
@@ -242,6 +259,7 @@
                                                         <div class="post-description" style="margin-top: 10px;">
                                                             <p style="margin-bottom: 10px; color: black;"><?= $val->sessions_description ?></p>
 
+
                                                             <?php
                                                             if($val->status==0){
                                                                 ?>
@@ -250,7 +268,7 @@
                                                                 <?php
                                                             }else{
                                                                 ?>
-                                                                <a class="button black-light button-3d rounded right blueBgOne" style="margin: 0px 0px 0px 5px; " href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
+                                                            <a class="button black-light button-3d rounded right blueBgOne goWaitHall" data-session-type="<?=$val->sessions_type_status?>" data-session-id="<?=getAppName($val->sessions_id) ?>" style="margin: 0px 0px 0px 5px; " data-url="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
 
                                                                 <a class="button black-light button-3d rounded right btn_unregister blueBgOne" style="margin: 0px 0;" data-sessions_id="<?= $val->sessions_id ?>" ><span>Unregister</span></a>
 
@@ -260,12 +278,13 @@
                                                             }
                                                             ?>
 
+
                                                         </div>
                                                     </div>
                                                 </div>
                                             <?php } ?>
                                         <?php } else { ?>
-                                            <div class="post-item">
+                                            <div class="post-item post-item<?=getAppName($val->sessions_id) ?>">
                                                 <div class="post-image col-md-3 m-t-20">
                                                     <a> <?php if ($val->sessions_photo != "") { ?> <img alt="" src="<?= base_url() ?>uploads/sessions/<?= $val->sessions_photo ?>"> <?php } else { ?>  <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg"> <?php } ?>  </a>
                                                 </div>
@@ -289,6 +308,7 @@
                                                         <?php
                                                         if ($val->status_sign_up_sessions == 1) {
                                                             ?>
+
                                                             <?php
                                                             if($val->status==0){
                                                                 ?>
@@ -297,7 +317,7 @@
                                                                 <?php
                                                             }else{
                                                                 ?>
-                                                                <a class="button black-light button-3d rounded right blueBgOne" style="margin: 0px 0px 0px 5px; " href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
+                                                            <a class="button black-light button-3d rounded right blueBgOne goWaitHall" data-session-type="<?=$val->sessions_type_status?>" data-session-id="<?=getAppName($val->sessions_id) ?>" style="margin: 0px 0px 0px 5px; " data-url="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
                                                                 <a class="button black-light button-3d rounded right btn_unregister blueBgOne" style="margin: 0px 0;" data-sessions_id="<?= $val->sessions_id ?>" ><span>Unregister</span></a>
 
                                                                 <?php
@@ -506,8 +526,86 @@
         </div>
     </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>
+
 <script type="text/javascript">
     $(document).ready(function () {
+        let socket = io("<?=getSocketUrl()?>");
+        var roundTable=parseInt($(".parallax").data("roundtable"));
+
+
+        function waitHallButtonControl(){
+            $(".timerPost").each(function () {
+                var date=$(this).data("date");
+                var sessionId=$(this).data("sessionId");
+
+                $.post("<?=base_url()?>sessions/waitHallButtonControl",{"date":date},function (response) {
+                    if (response <= 60) {
+                        var post= $(".post-content .post-item"+sessionId)
+                        var hall=post.find(".goWaitHall");
+                        hall.html("Roundtable full");
+                        hall.attr("data-url","");
+                    }
+                })
+
+            })
+        }
+        waitHallButtonControl()
+       setInterval(function () {
+           waitHallButtonControl()
+       },1000)
+
+        $(".post-content .post-item").each(function () {
+            var hall=$(this).find(".goWaitHall");
+            var sessionType=hall.data("session-type");
+            var sesionId=hall.data("session-id")
+
+            if(sessionType=="Private"){
+                socket.emit("gettHallViewUsers",sesionId,function (data) {
+                    var users=data.users;
+                    if(users>=roundTable){
+                        hall.html("Roundtable full");
+                    }
+                })
+            }
+        })
+
+        $('.goWaitHall').on('click', function () {
+            var sesionId=$(this).data("session-id")
+            var url=$(this).data("url")
+            var sessionType=$(this).data("session-type")
+            if(sessionType=="Private"){
+                socket.emit("gettHallViewUsers",sesionId,function (data) {
+                    var users=data.users;
+                    if(roundTable>users) {
+                        if(url)   window.location.href=url;
+
+                    }else{
+                        alertify.error('Roundtable is full!');
+                    }
+                })
+            }
+        })
+
+        socket.on("hallViewUsers",function (response) {
+            var sesionId=response.sessionId;
+            var users=response.users;
+
+            console.log(users);
+
+            console.log(users);
+            console.log(roundTable);
+            var post= $(".post-content .post-item"+sesionId)
+            var hall=post.find(".goWaitHall");
+            if(users>=roundTable) {
+                hall.html("Roundtable full");
+            }else{
+                hall.html("Attend");
+
+            }
+        })
+
 
         $('.btn_sign_up').on('click', function () {
             var sessions_id = $(this).attr("data-sessions_id");

@@ -14,7 +14,7 @@ class Sessions extends CI_Controller {
         }
         $get_user_token_details = $this->common->get_user_details($this->session->userdata('cid'));
         if($this->session->userdata('token') != $get_user_token_details->token){
-           redirect('login');   
+           redirect('login');
         }
         $this->load->model('user/m_sessions', 'objsessions');
         $this->load->model('madmin/m_settings', 'm_settings');
@@ -39,8 +39,12 @@ class Sessions extends CI_Controller {
         $data['selected_date'] = $today_date;
         $data['sessions_tracks'] = $this->objsessions->get_sessions_tracks();
 
-        $iframe = $this->m_settings->getSessionIframe();
-        $data['iframe'] = $iframe;
+       $data["roundtable"]=  $this->db->query("select * from roundtable_setting where roundtable_setting_id='1'")->row();
+
+
+        $iframe=$this->m_settings->getSessionIframe();
+        $data['iframe']=$iframe;
+
 
         $this->load->view('header');
         $this->load->view('sessions', $data);
@@ -54,8 +58,10 @@ class Sessions extends CI_Controller {
     }
 
     public function getsessions_data($date) {
+
         $data["all_sessions_week"] = $this->objsessions->getSessionsWeekData();
         $data["all_sessions"] = $this->objsessions->getsessions_data($date);
+        $data["roundtable"]=  $this->db->query("select * from roundtable_setting where roundtable_setting_id='1'")->row();
 
         $data['sessions_tracks'] = $this->objsessions->get_sessions_tracks();
         $this->load->view('header');
@@ -99,6 +105,8 @@ class Sessions extends CI_Controller {
 
         $data["sessions"] = $sessions;
         $data["session_resource"] = $this->objsessions->get_session_resource($sessions_id);
+        $data["roundtable"]=  $this->db->query("select * from roundtable_setting where roundtable_setting_id='1'")->row();
+
 
         $this->load->view('header');
         $this->load->view('view_sessions', $data);
@@ -205,6 +213,7 @@ class Sessions extends CI_Controller {
 
     public function attend($sessions_id) {
         $data["sessions"] = $this->objsessions->viewSessionsData($sessions_id);
+        $data["roundtable"]=  $this->db->query("select * from roundtable_setting where roundtable_setting_id='1'")->row();
 
         $this->load->view('header');
         $this->load->view('view_attend', $data);
@@ -295,6 +304,31 @@ class Sessions extends CI_Controller {
         $this->db->delete("sign_up_sessions", $session_his_arr);
         $result_array = array("status" => "success");
         echo json_encode($result_array);
+    }
+
+    public function waitHallControl(){
+        $post = $this->input->post();
+
+        $users=$post["users"];
+        $result=  $this->db->query("select * from roundtable_setting where roundtable_setting_id='1'")->row();
+        $roundTable=$result->roundtable;
+
+        if($roundTable>$users)echo "success";
+        else echo "failed";
+    }
+    public function waitHallButtonControl(){
+        $post = $this->input->post();
+        $datetime=$post["date"];
+        $datetime = date("Y-m-d H:i", strtotime($datetime));
+        $datetime = new DateTime($datetime);
+        $datetime1 = new DateTime();
+        $diff = $datetime->getTimestamp() - $datetime1->getTimestamp();
+        if ($diff >= 60) {
+            $diff = $diff - 60;
+        } else {
+            $diff = 0;
+        }
+        echo $diff;
     }
 
 }

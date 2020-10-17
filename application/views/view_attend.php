@@ -42,7 +42,8 @@
         padding: 25px 0px;
     }
 </style>
-<section class="parallax" style="background-image: url(<?= base_url() ?>front_assets/images/bubble_bg_1920.jpg); top: 0; padding-top: 0px;">
+
+<section class="parallax" data-roundtable="<?=$roundtable->roundtable?>" style="background-image: url(<?= base_url() ?>front_assets/images/bubble_bg_1920.jpg); top: 0; padding-top: 0px;" data-session-type="<?=$sessions->sessions_type_status == "Private"?>">
     <div class="container container-fullscreen" style="min-height: 900px;"> 
         <div class="">
             <div class="row">
@@ -223,8 +224,26 @@
         </div>
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>
+
+
 <script type="text/javascript">
     $(document).ready(function () {
+        let socket = io("<?=getSocketUrl()?>");
+        var sessionType=$(".parallax").data("session-type")
+        var roundTable=parseInt($(".parallax").data("roundtable"));
+
+
+        if(sessionType=="1"){
+            socket.emit("connectHallViewUsers","<?=getAppName($sessions->sessions_id) ?>",function (users) {
+                if(users>roundTable) {
+                   window.location.href="<?=base_url()?>sessions";
+                    alertify.error('Roundtable is full!');
+
+                }
+            })
+        }
+
         if ($("#time_second").val() <= 0) {
             timer();
         } else {
@@ -307,7 +326,7 @@
             var remainingSeconds_lable = "second"
         }
         document.getElementById('id_day_time').innerHTML = pad(days) + " " + days_lable + ", " + pad(hours) + " " + hours_lable + ", " + pad(minutes) + " " + minutes_lable + ", " + pad(remainingSeconds) + " " + remainingSeconds_lable;
-        if (seconds <= 0) {
+        if (seconds <= 60 || seconds <= 0) {
             if ($("#sessions_type_status").val() == "Private") {
                 window.location = "<?= site_url() ?>private_sessions/view/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_id : "" ?>";
                             } else {
