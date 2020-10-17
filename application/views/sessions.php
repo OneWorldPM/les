@@ -156,6 +156,10 @@
                     <div class="videoWindow">
                         <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/467905166" allowfullscreen></iframe>
                     </div>
+                <?php }elseif ($session_date_from_url == '2020-10-17'){ ?>
+                    <div class="videoWindow">
+                        <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/467905224" allowfullscreen></iframe>
+                    </div>
                 <?php } ?>
 
                 <!-- Blog post-->
