@@ -148,7 +148,7 @@
     }
     .meetingBar .right{
         text-align: center;
-        width: 200px;
+        width: 400px;
         padding-top: 20px;
     }
     .meetingBar h5{
