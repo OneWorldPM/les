@@ -75,9 +75,9 @@
                                     <div class="form-group">
                                         <label>Date Range:</label>
                                          <div class="input-group input-daterange datepicker">
-                                            <input type="text" placeholder="Start Date" name="start_date" value="<?= ($this->session->userdata('start_date') != "") ? date("m-d-Y",strtotime($this->session->userdata('start_date'))) : ""  ?>" id="from_date" class="form-control">
+                                            <input type="text" placeholder="Start Date" name="start_date" value="<?= ($this->session->userdata('start_date') != "") ? date("m/d/Y",strtotime($this->session->userdata('start_date'))) : ""  ?>" id="from_date" class="form-control">
                                             <span class="input-group-addon bg-primary">to</span>
-                                            <input type="text" placeholder="End Date" name="end_date" value="<?= ($this->session->userdata('end_date') != "") ? date("m-d-Y",strtotime($this->session->userdata('end_date'))) : ""  ?>" id="to_date" class="form-control">
+                                            <input type="text" placeholder="End Date" name="end_date" value="<?= ($this->session->userdata('end_date') != "") ? date("m/d/Y",strtotime($this->session->userdata('end_date'))) : ""  ?>" id="to_date" class="form-control">
                                         </div>
                                     </div>
                                 </div>
