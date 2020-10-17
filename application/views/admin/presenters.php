@@ -311,9 +311,6 @@ switch ($msg) {
             } else if ($('#email').val() == '') {
                 alertify.error('Please Enter Email');
                 return false;
-            } else if (!validateEmail($("#email").val().trim())) {
-                alertify.error('Enter Valid Email Id..');
-                return false;
             } else if ($('#password').val() == '') {
                 alertify.error('Please Enter Password');
                 return false;
