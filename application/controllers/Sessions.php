@@ -21,16 +21,26 @@ class Sessions extends CI_Controller {
 
     }
 
-    public function index() {
+   public function index() {
         $data["all_sessions_week"] = $this->objsessions->getSessionsWeekData();
-        if (!empty($data["all_sessions_week"])) {
-            $data["all_sessions"] = $this->objsessions->getsessions_data($data["all_sessions_week"][0]->sessions_date);
-        }
 
+        if (!empty($data["all_sessions_week"])) {
+            $today_date = "";
+            foreach ($data["all_sessions_week"] as $val) {
+                if (date("Y-m-d") == $val->sessions_date) {
+                  $today_date = $val->sessions_date;  
+                }
+            }
+            if($today_date == ""){
+               $today_date = $data["all_sessions_week"][0]->sessions_date;
+            }
+            $data["all_sessions"] = $this->objsessions->getsessions_data($today_date);
+        }
+        $data['selected_date'] = $today_date;
         $data['sessions_tracks'] = $this->objsessions->get_sessions_tracks();
 
-        $iframe=$this->m_settings->getSessionIframe();
-        $data['iframe']=$iframe;
+        $iframe = $this->m_settings->getSessionIframe();
+        $data['iframe'] = $iframe;
 
         $this->load->view('header');
         $this->load->view('sessions', $data);

@@ -123,7 +123,7 @@
                             <?php
                             $current_date = $this->uri->segment(3);
                             if ($current_date == "") {
-                                $current_date = $all_sessions_week[0]->sessions_date;
+                                $current_date = isset($selected_date) ? $selected_date : $all_sessions_week[0]->sessions_date;
                             }
                             if ($val->sessions_date == $current_date) {
                                 ?>
