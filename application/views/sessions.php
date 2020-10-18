@@ -376,8 +376,8 @@
                                                         <a target="_blank" href="https://us02web.zoom.us/j/82286796031" class="colorBlueOne" style="font-weight: 900;"><?= $val->session_title ?></a>
                                                     <?php }elseif($val->sessions_id == 197){ ?>
                                                         <a target="_blank" href="https://zoom.us/j/93326270074" class="colorBlueOne" style="font-weight: 900;"><?= $val->session_title ?></a>
-                                                    <?php }elseif($val->sessions_id == 201){ ?>
-                                                        <a target="_blank" href="https://zoom.us/j/98644610288?pwd=ZXpOMzF2VTFoM09MblVObHUzSzFSUT09" class="colorBlueOne" style="font-weight: 900;"><?= $val->session_title ?></a>
+                                                    <?php }elseif($val->sessions_id == 204){ ?>
+                                                        <a target="_blank" href="https://zoom.us/j/94150667111" class="colorBlueOne" style="font-weight: 900;"><?= $val->session_title ?></a>
                                                     <?php }else{ ?>
                                                         <a href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>" class="colorBlueOne" style="font-weight: 900;"><?= $val->session_title ?></a>
                                                     <?php } ?>
@@ -414,8 +414,8 @@
                                                 <?php }elseif($val->sessions_id == 197){ ?>
                                                     <a target="_blank" class="button black-light button-3d rounded right blueBgOne" style="margin: 0px 0;" href="https://zoom.us/j/93326270074"><span>Attend</span></a>
                                                     <a class="button black-light button-3d rounded right save_to_swag_bag blueBgOne" data-sessions_id="<?= $val->sessions_id ?> " data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"> <?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>
-                                                <?php }elseif($val->sessions_id == 201){ ?>
-                                                    <a target="_blank" class="button black-light button-3d rounded right blueBgOne" style="margin: 0px 0;" href="https://zoom.us/j/98644610288?pwd=ZXpOMzF2VTFoM09MblVObHUzSzFSUT09"><span>Attend</span></a>
+                                                <?php }elseif($val->sessions_id == 204){ ?>
+                                                    <a target="_blank" class="button black-light button-3d rounded right blueBgOne" style="margin: 0px 0;" href="https://zoom.us/j/94150667111"><span>Attend</span></a>
                                                     <a class="button black-light button-3d rounded right save_to_swag_bag blueBgOne" data-sessions_id="<?= $val->sessions_id ?> " data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"> <?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>
                                                 <?php }else{ ?>
 
