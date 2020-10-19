@@ -268,7 +268,7 @@
             setTimeout(function () {
                 $('#image_popup').modal('hide');
             }, delayInMilliseconds);
-        } else if (sessions_id == '137') {
+        } else if (sessions_id == 'novideofornow') {
             $('#video_popup').modal('show');
             var delayInMilliseconds = 10000; //1 second
             setTimeout(function () {
