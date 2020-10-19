@@ -31,8 +31,8 @@
                                                 <tr>
                                                     <td><?= $val->first_name . ' ' . $val->last_name ?></td>
                                                     <td><?= $val->email ?></td>
-                                                     <td><?= $val->resources_file_name ?></td>
-                                                      <td><?= $val->resources_title ?></td>
+                                                       <td><?= $val->resources_title ?></td>
+                                                       <td><?= $val->resources_file_name ?></td>
                                                     <td><?= $val->ip_address ?></td>
                                                     <td><?= $val->operating_system ?></td>
                                                     <td><?= $val->computer_type ?></td>
