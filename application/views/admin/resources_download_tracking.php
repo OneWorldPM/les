@@ -1,3 +1,9 @@
+<style>
+    #example_wrapper .dt-buttons .buttons-csv{
+        background-color: #1fbba6;
+        padding: 5px 15px 5px 15px;
+    }
+</style>
 <div class="main-content">
     <div class="wrap-content container" id="container">
         <!-- start: DYNAMIC TABLE -->
@@ -10,7 +16,7 @@
                     <div class="panel-body bg-white" style="border: 1px solid #b2b7bb!important;">
                         <div class="row">
                             <div class="col-md-12 table-responsive">
-                                <table class="table table-bordered table-striped text-center" id="user">
+                                <table class="table table-bordered table-striped text-center" id="example">
                                     <thead class="th_center">
                                         <tr>
                                             <th>User</th>
@@ -53,14 +59,20 @@
     </div>
 </div>
 </div>
-<script type="text/javascript">
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+<script>
     $(document).ready(function () {
-        $("#user").dataTable({
-            "ordering": false,
+        $('#example').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'csv'
+            ]
         });
+        $('.buttons-csv').text('Export CSV');
     });
 </script>
-
 
 
 
