@@ -267,6 +267,21 @@ $sponsor_cover = ($sponsor->sponsor_cover == '') ? 'expo_background.jpg' : $spon
     </div>
 </main>
 <script type="text/javascript">
+    window.onbeforeunload = function (e) {
+//      e.preventDefault();
+//      e.returnValue = '';
+        $.ajax({
+            url: "<?= base_url() ?>sponsor/update_viewsessions_history_open",
+            type: "post",
+            data: {'view_sponsor_history_id': $("#view_sponsor_history_id").val()},
+            dataType: "json",
+            success: function (data) {
+
+            }
+        });
+    };
+</script>
+<script type="text/javascript">
     var page_link = $(location).attr('href');
     var user_id = <?= $this->session->userdata("cid") ?>;
     var page_name = "Sponsor View";
