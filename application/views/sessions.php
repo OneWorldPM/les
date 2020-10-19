@@ -364,6 +364,14 @@
                                             <a target="_blank" href="https://zoom.us/j/93326270074"> <?php if ($val->sessions_photo != "") { ?> <img alt="" src="<?= base_url() ?>uploads/sessions/<?= $val->sessions_photo ?>"> <?php } else { ?>  <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg"> <?php } ?>  </a>
                                         <?php }elseif($val->sessions_id == 204){ ?>
                                             <a target="_blank" href="https://zoom.us/j/94150667111"> <?php if ($val->sessions_photo != "") { ?> <img alt="" src="<?= base_url() ?>uploads/sessions/<?= $val->sessions_photo ?>"> <?php } else { ?>  <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg"> <?php } ?>  </a>
+                                        <?php }elseif($val->sessions_id == 193){ ?>
+                                            <a target="_blank" href="https://zoom.us/j/99500477964"> <?php if ($val->sessions_photo != "") { ?> <img alt="" src="<?= base_url() ?>uploads/sessions/<?= $val->sessions_photo ?>"> <?php } else { ?>  <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg"> <?php } ?>  </a>
+                                        <?php }elseif($val->sessions_id == 194){ ?>
+                                            <a target="_blank" href="https://us02web.zoom.us/j/86577780231?pwd=UEdNM28zaDY1Ym9yYjM4eVJFcGhnZz09"> <?php if ($val->sessions_photo != "") { ?> <img alt="" src="<?= base_url() ?>uploads/sessions/<?= $val->sessions_photo ?>"> <?php } else { ?>  <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg"> <?php } ?>  </a>
+                                        <?php }elseif($val->sessions_id == 195){ ?>
+                                            <a target="_blank" href="https://zoom.us/j/96788895930"> <?php if ($val->sessions_photo != "") { ?> <img alt="" src="<?= base_url() ?>uploads/sessions/<?= $val->sessions_photo ?>"> <?php } else { ?>  <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg"> <?php } ?>  </a>
+                                        <?php }elseif($val->sessions_id == 202){ ?>
+                                            <a target="_blank" href="https://zoom.us/j/96912581520"> <?php if ($val->sessions_photo != "") { ?> <img alt="" src="<?= base_url() ?>uploads/sessions/<?= $val->sessions_photo ?>"> <?php } else { ?>  <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg"> <?php } ?>  </a>
                                         <?php }else{ ?>
                                             <a href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"> <?php if ($val->sessions_photo != "") { ?> <img alt="" src="<?= base_url() ?>uploads/sessions/<?= $val->sessions_photo ?>"> <?php } else { ?>  <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg"> <?php } ?>  </a>
                                         <?php } ?>
@@ -382,6 +390,14 @@
                                                         <a target="_blank" href="https://zoom.us/j/93326270074" class="colorBlueOne" style="font-weight: 900;"><?= $val->session_title ?></a>
                                                     <?php }elseif($val->sessions_id == 204){ ?>
                                                         <a target="_blank" href="https://zoom.us/j/94150667111" class="colorBlueOne" style="font-weight: 900;"><?= $val->session_title ?></a>
+                                                    <?php }elseif($val->sessions_id == 193){ ?>
+                                                        <a target="_blank" href="https://zoom.us/j/99500477964" class="colorBlueOne" style="font-weight: 900;"><?= $val->session_title ?></a>
+                                                    <?php }elseif($val->sessions_id == 194){ ?>
+                                                        <a target="_blank" href="https://us02web.zoom.us/j/86577780231?pwd=UEdNM28zaDY1Ym9yYjM4eVJFcGhnZz09" class="colorBlueOne" style="font-weight: 900;"><?= $val->session_title ?></a>
+                                                    <?php }elseif($val->sessions_id == 195){ ?>
+                                                        <a target="_blank" href="https://zoom.us/j/96788895930" class="colorBlueOne" style="font-weight: 900;"><?= $val->session_title ?></a>
+                                                    <?php }elseif($val->sessions_id == 202){ ?>
+                                                        <a target="_blank" href="https://zoom.us/j/96912581520" class="colorBlueOne" style="font-weight: 900;"><?= $val->session_title ?></a>
                                                     <?php }else{ ?>
                                                         <a href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>" class="colorBlueOne" style="font-weight: 900;"><?= $val->session_title ?></a>
                                                     <?php } ?>
@@ -420,6 +436,18 @@
                                                     <a class="button black-light button-3d rounded right save_to_swag_bag blueBgOne" data-sessions_id="<?= $val->sessions_id ?> " data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"> <?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>
                                                 <?php }elseif($val->sessions_id == 204){ ?>
                                                     <a target="_blank" class="button black-light button-3d rounded right blueBgOne" style="margin: 0px 0;" href="https://zoom.us/j/94150667111"><span>Attend</span></a>
+                                                    <a class="button black-light button-3d rounded right save_to_swag_bag blueBgOne" data-sessions_id="<?= $val->sessions_id ?> " data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"> <?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>
+                                                <?php }elseif($val->sessions_id == 193){ ?>
+                                                    <a target="_blank" class="button black-light button-3d rounded right blueBgOne" style="margin: 0px 0;" href="https://zoom.us/j/99500477964"><span>Attend</span></a>
+                                                    <a class="button black-light button-3d rounded right save_to_swag_bag blueBgOne" data-sessions_id="<?= $val->sessions_id ?> " data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"> <?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>
+                                                <?php }elseif($val->sessions_id == 194){ ?>
+                                                    <a target="_blank" class="button black-light button-3d rounded right blueBgOne" style="margin: 0px 0;" href="https://us02web.zoom.us/j/86577780231?pwd=UEdNM28zaDY1Ym9yYjM4eVJFcGhnZz09"><span>Attend</span></a>
+                                                    <a class="button black-light button-3d rounded right save_to_swag_bag blueBgOne" data-sessions_id="<?= $val->sessions_id ?> " data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"> <?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>
+                                                <?php }elseif($val->sessions_id == 195){ ?>
+                                                    <a target="_blank" class="button black-light button-3d rounded right blueBgOne" style="margin: 0px 0;" href="https://zoom.us/j/96788895930"><span>Attend</span></a>
+                                                    <a class="button black-light button-3d rounded right save_to_swag_bag blueBgOne" data-sessions_id="<?= $val->sessions_id ?> " data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"> <?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>
+                                                <?php }elseif($val->sessions_id == 202){ ?>
+                                                    <a target="_blank" class="button black-light button-3d rounded right blueBgOne" style="margin: 0px 0;" href="https://zoom.us/j/96912581520"><span>Attend</span></a>
                                                     <a class="button black-light button-3d rounded right save_to_swag_bag blueBgOne" data-sessions_id="<?= $val->sessions_id ?> " data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"> <?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>
                                                 <?php }else{ ?>
 
