@@ -244,7 +244,7 @@
     </div>
 </div>
 <div class="modal fade" id="video_popup" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header" style="padding: 0px;">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
