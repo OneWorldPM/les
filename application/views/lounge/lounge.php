@@ -253,7 +253,7 @@
         <div class="meetingBar col-md-12">
             <div class="left col-md-8">
                 <h2>Schedule your own meeting with friends!</h2>
-                <p>Have a video meeting up to 5 LES colleagues...</p>
+                <p>Have a video meeting with up to 5 LES colleagues...</p>
             </div>
             <div class="right col-md-4">
                 <h5>Click here</h5>
