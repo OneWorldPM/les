@@ -128,5 +128,21 @@ class Sponsor extends CI_Controller {
         $this->db->insert('fishbowl', $card);
         return;
     }
+	
+	function add_resources_activity() {
+        $post = $this->input->post();
+        $this->load->library('user_agent');
+        $user_agent = $this->input->ip_address();
+        $download_resources_history = array(
+            'cust_id' => $this->session->userdata("cid"),
+            'resources_file_name' => $post['resources_file_name'],
+            'resources_title' => $post['resources_title'],
+            'operating_system' => $this->agent->platform(),
+            'computer_type' => $this->agent->browser(),
+            'ip_address' => $this->input->ip_address(),
+            'date_time' => date("Y-m-d h:i:s")
+        );
+        $this->db->insert('download_resources_history', $download_resources_history);
+    }
 
 }

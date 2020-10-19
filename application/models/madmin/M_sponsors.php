@@ -311,6 +311,7 @@ class M_sponsors extends CI_Model {
         $this->db->from('view_sponsor_history s');
         $this->db->join('customer_master c', 's.cust_id=c.cust_id');
         $this->db->where('s.sponsor_id', $sponsor_id);
+		$this->db->order_by("s.view_sponsor_history_id", "DESC");
         $sessions = $this->db->get();
         if ($sessions->num_rows() > 0) {
             return $sessions->result();

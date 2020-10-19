@@ -40,7 +40,7 @@
                             <td><img src="<?= base_url() ?>uploads/sponsors/<?= $val["sponsors_logo"] ?>" alt="welcome"></td>
                             <td><?= $val["item_name"] ?></td>
                             <td><?= $val["file_name"] ?></td>
-                            <td><a href="<?= base_url() ?>front_assets/sponsor/resources/<?= $val["file_name"] ?>" download type="button" class="btn btn-info btn-sm">Download</a></td>
+                            <td><a href="<?= base_url() ?>front_assets/sponsor/resources/<?= $val["file_name"] ?>" download type="button" data-resources_file="<?= $val["item_name"] ?>" data-resources_title="<?= $val["file_name"] ?>" class="btn btn-info btn-sm download_btn">Download</a></td>
                         </tr>
                         <?php
                     }
@@ -68,7 +68,7 @@
                                 <td><?= $val->title ?></td>
                                 <td><?= $val->resources_file ?></td>
                                 <td>
-                                    <a href="<?= base_url() ?>uploads/presentation_resources/<?= $val->resources_file ?>" download="" type="button" class="btn btn-info btn-sm">Download</a>
+                                    <a href="<?= base_url() ?>uploads/presentation_resources/<?= $val->resources_file ?>"  download="" type="button" data-resources_file="<?= $val->resources_file ?>" data-resources_title="<?= $val->title ?>" class="btn btn-info btn-sm download_btn">Download</a>
                                     <!--<a href="<?= base_url() ?>uploads/presentation_resources/<?= $val->resources_file ?>" target="_black" type="button" class="btn btn-success btn-sm">Open</a>-->
                                 </td>
                             </tr>
@@ -81,3 +81,19 @@
         </div>
     </div>
 </section>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.download_btn').click(function (event) {
+           var resources_file_name = $(this).attr("data-resources_file");
+           var resources_title = $(this).attr("data-resources_title");
+            $.ajax({
+                url: "<?= base_url() ?>sponsor/add_resources_activity",
+                type: "post",
+                data: {'resources_file_name':resources_file_name,'resources_title':resources_title},
+                dataType: "json",
+                success: function (data) {
+                }
+            });
+        });
+    });
+</script>

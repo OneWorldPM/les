@@ -144,6 +144,7 @@ class M_tracking extends CI_Model {
         $this->db->from('view_sessions_history h');
         $this->db->join('customer_master c', 'h.cust_id=c.cust_id');
         $this->db->where("h.sessions_id",$sessions_id);
+		 $this->db->order_by("h.view_sessions_history_id", "desc");
         $result = $this->db->get();
         if ($result->num_rows() > 0) {
             return $result->result();
