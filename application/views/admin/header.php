@@ -247,6 +247,18 @@ $uri_segment1 = $this->uri->segment(3);
                                     </div>
                                 </a>
                             </li>
+							<li class="<?= ($uri_segment == 'resources_download_tracking') ? 'active' : ''; ?>">
+                                <a href="<?= site_url() ?>admin/resources_download_tracking" id="dash">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-tv"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title">Resources Download Tracking</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                             <li class="<?= ($uri_segment == 'UserTracking') ? 'active' : ''; ?>">
                                 <a href="<?= site_url() ?>admin/UserTracking" id="dash">
                                     <div class="item-content">
