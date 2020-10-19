@@ -243,6 +243,22 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="video_popup" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="padding: 0px;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="row" style="padding-top: 10px; padding-bottom: 20px;">
+                    <div class="col-sm-12">
+                        <iframe src="https://player.vimeo.com/video/469724540?autoplay=1&title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript">
     $(document).ready(function () {
         var sessions_id = $("#sessions_id").val();
@@ -252,9 +268,15 @@
             setTimeout(function () {
                 $('#image_popup').modal('hide');
             }, delayInMilliseconds);
+        } else if (sessions_id == '137') {
+            $('#video_popup').modal('show');
+            var delayInMilliseconds = 10000; //1 second
+            setTimeout(function () {
+                $('#video_popup').modal('hide');
+            }, delayInMilliseconds);
         }
     });
-</script> 
+</script>     
 
 <script type="text/javascript">
     $(document).ready(function () {
