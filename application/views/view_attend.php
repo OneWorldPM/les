@@ -80,6 +80,7 @@
                     ?>
                     <input type="hidden" id="time_second" value="<?= $diff ?>">
                     <input type="hidden" id="sessions_type_status" value="<?= $sessions->sessions_type_status ?>">
+					  <input type="hidden" id="sessions_id" value="<?= $sessions->sessions_id ?>">
                     <section class="content">
                         <div class="container" style=" background: rgb(223 223 223 / 60%);"> 
                             <div class="row p-b-40">
@@ -226,6 +227,34 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>
 
+<div class="modal fade" id="image_popup" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="padding: 0px;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="row" style="padding-top: 10px; padding-bottom: 20px;">
+                    <div class="col-sm-12">
+                        <img src="<?= base_url() ?>front_assets/images/New_Frontier_Ad.jpg" style="width:100%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var sessions_id = $("#sessions_id").val();
+        if (sessions_id == '144') {
+            $('#image_popup').modal('show');
+            var delayInMilliseconds = 5000; //1 second
+            setTimeout(function () {
+                $('#image_popup').modal('hide');
+            }, delayInMilliseconds);
+        }
+    });
+</script> 
 
 <script type="text/javascript">
     $(document).ready(function () {
