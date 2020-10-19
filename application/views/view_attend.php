@@ -248,7 +248,7 @@
         var sessions_id = $("#sessions_id").val();
         if (sessions_id == '144') {
             $('#image_popup').modal('show');
-            var delayInMilliseconds = 5000; //1 second
+            var delayInMilliseconds = 10000; //1 second
             setTimeout(function () {
                 $('#image_popup').modal('hide');
             }, delayInMilliseconds);
