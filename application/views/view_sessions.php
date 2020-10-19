@@ -615,7 +615,22 @@ if (isset($sessions)) {
     </div>
 
 </div>
+<script type="text/javascript">
+    window.onbeforeunload = function (e) {
+//      e.preventDefault();
+//      e.returnValue = '';
+        $.ajax({
+            url: "<?= base_url() ?>sessions/update_viewsessions_history_open",
+            type: "post",
+            data: {'view_sessions_history_id': $("#view_sessions_history_id").val()},
+            dataType: "json",
+            success: function (data) {
 
+            }
+        });
+
+    };
+</script>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>

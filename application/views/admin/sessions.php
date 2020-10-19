@@ -271,6 +271,7 @@
                                                             <a href="<?= base_url() ?>admin/sessions/report/<?= $val->sessions_id ?>" class="btn btn-grey btn-sm" style="margin: 3px;">Report</a>
                                                             <a href="<?= base_url() ?>admin/groupchat/sessions_groupchat/<?= $val->sessions_id ?>" class="btn btn-blue btn-sm" style="margin: 3px;">Create Chat</a>
                                                             <a href="<?= base_url() ?>admin/sessions/resource/<?= $val->sessions_id ?>" class="btn btn-success btn-sm" style="margin: 3px;">Resources</a>
+															<a href="<?= base_url() ?>admin/tracking/view_sessions_history/<?= $val->sessions_id ?>" class="btn btn-success btn-sm">Tracking Report</a>
                                                         </td>
                                                         <td>
                                                             <a href="<?= base_url() ?>admin/sessions/delete_sessions/<?= $val->sessions_id ?>" class="btn btn-danger btn-sm" style="font-size: 10px !important;">Delete Session</a>
