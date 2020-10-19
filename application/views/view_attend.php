@@ -252,7 +252,7 @@
             <div class="modal-body">
                 <div class="row" style="padding-top: 10px; padding-bottom: 20px;">
                     <div class="col-sm-12" style="text-align:center">
-                        <iframe src="https://player.vimeo.com/video/469724540?autoplay=1&title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+<!--                        <iframe src="https://player.vimeo.com/video/469724540?autoplay=1&title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>-->
                     </div>
                 </div>
             </div>
