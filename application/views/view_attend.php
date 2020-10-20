@@ -407,6 +407,7 @@
             } else {
                 if (seconds <= 60)
                     window.location = "<?= site_url() ?>sessions/view/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_id : "" ?>";
+                seconds--;
             }
         } else {
             seconds--;
