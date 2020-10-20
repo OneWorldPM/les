@@ -647,14 +647,14 @@ if (isset($sessions)) {
             socket.emit("ConnectSessioViewUsers","<?=getAppName($sessions->sessions_id) ?>",function () {
                 var sessionId="<?=getAppName($sessions->sessions_id) ?>";
 
-                socket.emit("gettHallViewUsers",sessionId,function (data) {
-                    var users=data.users;
-                    if(users>=roundTable) {
-                        window.location.href="<?=base_url()?>sessions";
-
-                        alertify.error('Roundtable is full!');
-                    }
-                })
+                //socket.emit("gettHallViewUsers",sessionId,function (data) {
+                //    var users=data.users;
+                //    if(users>=roundTable) {
+                //        window.location.href="<?//=base_url()?>//sessions";
+                //
+                //        alertify.error('Roundtable is full!');
+                //    }
+                //})
 
             })
         }
