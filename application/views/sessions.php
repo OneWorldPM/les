@@ -226,7 +226,7 @@
                                                 <?php }elseif ($val->sessions_id == 166){ ?>
                                                     <a href="https://us05web.zoom.us/j/83217161048?pwd=bGFvN05wd3Y1OGh1MWp4SVIwVW1JQT09" target="_blank"> <?php if ($val->sessions_photo != "") { ?> <img alt="" src="<?= base_url() ?>uploads/sessions/<?= $val->sessions_photo ?>"> <?php } else { ?>  <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg"> <?php } ?>  </a>
                                                 <?php }elseif ($val->sessions_id == 167){ ?>
-                                                    <a href="https://us04web.zoom.us/j/79545157487?pwd=b2l5NGdFN05LZkJXbTVUKysrcFZhZz09" target="_blank"> <?php if ($val->sessions_photo != "") { ?> <img alt="" src="<?= base_url() ?>uploads/sessions/<?= $val->sessions_photo ?>"> <?php } else { ?>  <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg"> <?php } ?>  </a>
+                                                    <a href="https://us04web.zoom.us/j/72486338078?pwd=RmdtR3VaVlgvRzUzQ0pkT0QvcUJmUT09" target="_blank"> <?php if ($val->sessions_photo != "") { ?> <img alt="" src="<?= base_url() ?>uploads/sessions/<?= $val->sessions_photo ?>"> <?php } else { ?>  <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg"> <?php } ?>  </a>
                                                 <?php }else{ ?>
                                                     <a href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"> <?php if ($val->sessions_photo != "") { ?> <img alt="" src="<?= base_url() ?>uploads/sessions/<?= $val->sessions_photo ?>"> <?php } else { ?>  <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg"> <?php } ?>  </a>
                                                 <?php } ?>
@@ -253,7 +253,7 @@
                                                     <?php }elseif ($val->sessions_id == 166){ ?>
                                                         <h3><a href="https://us05web.zoom.us/j/83217161048?pwd=bGFvN05wd3Y1OGh1MWp4SVIwVW1JQT09" target="_blank" class="colorBlueOne" style="font-weight: 900;"><?= $val->session_title ?></a></h3>
                                                     <?php }elseif ($val->sessions_id == 167){ ?>
-                                                        <h3><a href="https://us04web.zoom.us/j/79545157487?pwd=b2l5NGdFN05LZkJXbTVUKysrcFZhZz09" target="_blank" class="colorBlueOne" style="font-weight: 900;"><?= $val->session_title ?></a></h3>
+                                                        <h3><a href="https://us04web.zoom.us/j/72486338078?pwd=RmdtR3VaVlgvRzUzQ0pkT0QvcUJmUT09" target="_blank" class="colorBlueOne" style="font-weight: 900;"><?= $val->session_title ?></a></h3>
                                                     <?php }else{ ?>
                                                         <h3><a href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>" class="colorBlueOne" style="font-weight: 900;"><?= $val->session_title ?></a></h3>
                                                     <?php } ?>
@@ -299,7 +299,7 @@
                                                         <?php }elseif ($val->sessions_id == 166){ ?>
                                                             <a href="https://us05web.zoom.us/j/83217161048?pwd=bGFvN05wd3Y1OGh1MWp4SVIwVW1JQT09" target="_blank" class="button black-light button-3d rounded right blueBgOne" style="margin: 0px 0px 0px 5px; "><span>Attend</span></a>
                                                         <?php }elseif ($val->sessions_id == 167){ ?>
-                                                            <a href="https://us04web.zoom.us/j/79545157487?pwd=b2l5NGdFN05LZkJXbTVUKysrcFZhZz0" target="_blank" class="button black-light button-3d rounded right blueBgOne" style="margin: 0px 0px 0px 5px; "><span>Attend</span></a>
+                                                            <a href="https://us04web.zoom.us/j/72486338078?pwd=RmdtR3VaVlgvRzUzQ0pkT0QvcUJmUT09" target="_blank" class="button black-light button-3d rounded right blueBgOne" style="margin: 0px 0px 0px 5px; "><span>Attend</span></a>
                                                         <?php }else{ ?>
                                                             <a class="button black-light button-3d rounded right blueBgOne goWaitHall" data-session-type="<?=$val->sessions_type_status?>" data-session-id="<?=getAppName($val->sessions_id) ?>" style="margin: 0px 0px 0px 5px; " data-url="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
                                                         <?php } ?>
