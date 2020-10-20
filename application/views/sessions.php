@@ -483,7 +483,7 @@
                     if (response <= 60) {
                         var post= $(".post-content .post-item"+sessionId)
                         var hall=post.find(".goWaitHall");
-                        hall.html("Roundtable full");
+                        //hall.html("Roundtable full");
                         hall.attr("data-url","");
                     }
                 })
@@ -504,7 +504,7 @@
                 socket.emit("gettHallViewUsers",sesionId,function (data) {
                     var users=data.users;
                     if(users>=roundTable){
-                        hall.html("Roundtable full");
+                        //hall.html("Roundtable full");
                     }
                 })
             }
@@ -538,7 +538,7 @@
             var post= $(".post-content .post-item"+sesionId)
             var hall=post.find(".goWaitHall");
             if(users>=roundTable) {
-                hall.html("Roundtable full");
+                //hall.html("Roundtable full");
             }else{
                 hall.html("Attend");
 
