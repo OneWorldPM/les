@@ -26,7 +26,7 @@ class Private_sessions extends CI_Controller {
         $data["sessions"] = $this->sessions->viewSessionsData($sessions_id);
         $data["session_resource"] = $this->sessions->get_session_resource($sessions_id);
 
-        $startTime = strtotime($data["sessions"]->sessions_date." ".$data["sessions"]->time_slot);
+        $startTime = strtotime("-30 minutes", strtotime($data["sessions"]->sessions_date." ".$data["sessions"]->time_slot));
         $endTime = strtotime($data["sessions"]->sessions_date." ".$data["sessions"]->end_time);
 
         if (isset($_GET['testing'])){
