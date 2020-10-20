@@ -236,7 +236,7 @@
             <div class="modal-body">
                 <div class="row" style="padding-top: 10px; padding-bottom: 20px;">
                     <div class="col-sm-12">
-                        <img src="<?= base_url() ?>front_assets/images/New_Frontier_Ad.jpg" style="width:100%;">
+                        <img id="my_image" style="width:100%;">
                     </div>
                 </div>
             </div>
@@ -264,19 +264,41 @@
         var sessions_id = $("#sessions_id").val();
         if (sessions_id == '144') {
             $('#image_popup').modal('show');
+            $('#my_image').attr('src', '<?= base_url() ?>front_assets/images/New_Frontier_Ad.jpg');
             var delayInMilliseconds = 10000; //1 second
             setTimeout(function () {
                 $('#image_popup').modal('hide');
             }, delayInMilliseconds);
-        } else if (sessions_id == 'novideofornow') {
+        } else if (sessions_id == '137') {
             $('#video_popup').modal('show');
             var delayInMilliseconds = 10000; //1 second
             setTimeout(function () {
                 $('#video_popup').modal('hide');
             }, delayInMilliseconds);
+        } else if (sessions_id == '182') {
+            $('#image_popup').modal('show');
+            $('#my_image').attr('src', '<?= base_url() ?>front_assets/images/182.jpg');
+            var delayInMilliseconds = 10000; //1 second
+            setTimeout(function () {
+                $('#image_popup').modal('hide');
+            }, delayInMilliseconds);
+        } else if (sessions_id == '183') {
+            $('#image_popup').modal('show');
+            $('#my_image').attr('src', '<?= base_url() ?>front_assets/images/183.jpg');
+            var delayInMilliseconds = 10000; //1 second
+            setTimeout(function () {
+                $('#image_popup').modal('hide');
+            }, delayInMilliseconds);
+        } else if (sessions_id == '185') {
+            $('#image_popup').modal('show');
+            $('#my_image').attr('src', '<?= base_url() ?>front_assets/images/185.jpg');
+            var delayInMilliseconds = 10000; //1 second
+            setTimeout(function () {
+                $('#image_popup').modal('hide');
+            }, delayInMilliseconds);
         }
     });
-</script>     
+</script>    
 
 <script type="text/javascript">
     $(document).ready(function () {
