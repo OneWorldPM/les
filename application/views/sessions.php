@@ -173,11 +173,13 @@
                         <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/467905182" allowfullscreen></iframe>
                     </div>	
 				 <?php }elseif ($session_date_from_url == '2020-10-20' && date("Y-m-d") == '2020-10-20'){ ?>
-		            <div class="col-md-6>">
-					  <img alt="" src="<?= base_url() ?>front_assets/images/thanks.jpg">
+		             <div class="col-md-12>">
+					<div class="col-md-6>">
+					  <img alt="" src="<?= base_url() ?>front_assets/images/thanks.png">
 					</div>
 					<div class="col-md-6>">
 					<iframe src="https://player.vimeo.com/video/467905251?autoplay=1&title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+					</div>
 					</div>
 				<?php } ?>
 
