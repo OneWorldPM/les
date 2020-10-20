@@ -515,6 +515,7 @@
             var url=$(this).data("url")
             var sessionType=$(this).data("session-type")
             if(sessionType=="Private"){
+                window.location.href=url;
                 socket.emit("gettHallViewUsers",sesionId,function (data) {
                     var users=data.users;
                     if(roundTable>users) {
