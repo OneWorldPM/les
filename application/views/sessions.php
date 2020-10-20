@@ -490,10 +490,10 @@
 
             })
         }
-        waitHallButtonControl()
-       setInterval(function () {
-           waitHallButtonControl()
-       },1000)
+       //  waitHallButtonControl()
+       // setInterval(function () {
+       //     waitHallButtonControl()
+       // },1000)
 
         $(".post-content .post-item").each(function () {
             var hall=$(this).find(".goWaitHall");
