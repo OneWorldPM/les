@@ -37,14 +37,15 @@ $('.leave-btn').on('click', function () {
         confirmButtonText: 'Yes, leave!'
     }).then((result) => {
         if (result.isConfirmed) {
-            if(!window.top.close())
-            {
-                Swal.fire(
-                    'Problem!',
-                    "Since you didn't open this meeting tab from our app, we are unable to automatically make you leave but you can simply close this browser tab and you will leave the meeting!",
-                    'error'
-                )
-            }
+            window.location.replace("/LES/sessions/");
+            // if(!window.top.close())
+            // {
+            //     Swal.fire(
+            //         'Problem!',
+            //         "Since you didn't open this meeting tab from our app, we are unable to automatically make you leave but you can simply close this browser tab and you will leave the meeting!",
+            //         'error'
+            //     )
+            // }
         }
     });
 });
