@@ -24,7 +24,7 @@
         function timer() {
             count--;
             if (count < 0) {
-                window.location.replace("/LES/sessions/");
+                // window.location.replace("/LES/sessions/");
                 return;
             }
             ;
