@@ -399,16 +399,19 @@
             var remainingSeconds_lable = "second"
         }
         document.getElementById('id_day_time').innerHTML = pad(days) + " " + days_lable + ", " + pad(hours) + " " + hours_lable + ", " + pad(minutes) + " " + minutes_lable + ", " + pad(remainingSeconds) + " " + remainingSeconds_lable;
+
         if (seconds <= 1800 ||seconds <= 60 || seconds <= 0) {
-            if ($("#sessions_type_status").val() == "Private") {
+            if ($("#sessions_type_status").val() == "Private")
+            {
                 window.location = "<?= site_url() ?>private_sessions/view/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_id : "" ?>";
-                            } else {
-                                window.location = "<?= site_url() ?>sessions/view/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_id : "" ?>";
-                                            }
-                                        } else {
-                                            seconds--;
-                                        }
-                                    }
+            } else {
+                if (seconds <= 0)
+                    window.location = "<?= site_url() ?>sessions/view/<?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_id : "" ?>";
+            }
+        } else {
+            seconds--;
+        }
+    }
 </script>
 <script type="text/javascript">
     $(document).ready(function () {
