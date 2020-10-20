@@ -69,6 +69,10 @@
             <i class="fa fa-video-camera fa-3x cam-btn-icon" aria-hidden="true" style="color:#12b81c;"></i>
         </div>
 
+        <div class="share-screen-btn" style="display: inline;" onclick="window.open('<?=base_url()?>private_sessions/sharescreen/<?=$sessions->sessions_id?>', '_blank');">
+            <i class="fa fa-desktop fa-3x share-screen-btn-icon" aria-hidden="true" style="color:#6f8de3;"></i>
+        </div>
+
         <div class="leave-btn" style="display: inline;">
             <i class="fa fa-sign-out fa-3x leave-btn-icon" aria-hidden="true" style="color:#e36f7a;"></i>
         </div>
