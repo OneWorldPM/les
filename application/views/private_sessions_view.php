@@ -49,36 +49,58 @@
 
 
 
-    <div class="col-md-3">
-        <video id="localVideo" autoplay muted playsinline width="100%"></video>
+    <div class="col-md-3 localvideo-div">
+        <div class="videoCover" style="display: none;"></div>
         <span class="name-tag">You</span>
-         <!-- <div class="soundbar"><span class="currentVolume"></span></div> -->
+        <video id="localVideo" autoplay muted playsinline width="100%"></video>
+        <!-- <div class="soundbar"><span class="currentVolume"></span></div> -->
     </div>
 
-    <!--    <div class="col-md-12">-->
-    <!--        <div class="feed-control-icons m-t-15 m-b-15">-->
-    <!--            <div class="mute-mic-btn m-b-20">-->
-    <!--                <i class="fa fa-microphone-slash fa-3x mute-mic-btn-icon" aria-hidden="true" style="color:#ff422b;"></i>-->
-    <!--                <small>Mute</small>-->
-    <!--            </div>-->
-    <!--            <div class="share-screen-btn">-->
-    <!--                <i class="fa fa-desktop fa-3x share-screen-btn-icon" aria-hidden="true" style="color:#6f8de3;"></i>-->
-    <!--                <small>Share Screen</small>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </div>-->
 </div>
+<div class="col-md-12 control-icons-col" style="display: none;">
+    <div class="feed-control-icons" style="display: inline;">
+
+        <div class="mute-mic-btn" style="display: inline;">
+            <i class="fa fa-microphone fa-3x mute-mic-btn-icon" aria-hidden="true" style="color:#12b81c;"></i>
+
+        </div>
+
+        <div class="cam-btn" style="display: inline;">
+            <i class="fa fa-video-camera fa-3x cam-btn-icon" aria-hidden="true" style="color:#12b81c;"></i>
+        </div>
+
+        <div class="leave-btn" style="display: inline;">
+            <i class="fa fa-sign-out fa-3x leave-btn-icon" aria-hidden="true" style="color:#e36f7a;"></i>
+        </div>
+    </div>
+</div>
+
+<input id="muteStatus" type="hidden" value="unmuted">
+<input id="camStatus" type="hidden" value="on">
 
 
 <script>
+    function extract(variable) {
+        for (var key in variable) {
+            window[key] = variable[key];
+        }
+    }
+
     var round_table_id = <?= $sessions->sessions_id ?>;
     var atttendee_name = "<?= $this->session->userdata('fullname') ?>";
     var attendee_id = "<?= $this->session->userdata('cid') ?>";
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-<script src="<?= base_url() ?>assets/js/private-sessions.js?v=<?= rand(1, 100) ?>"></script>
 <script type="text/javascript">
-    pageReady();
+    $.get("<?=base_url()?>socket_config.php", function (data) {
+        var config = JSON.parse(data);
+        extract(config);
+
+        $.getScript( "<?= base_url() ?>assets/js/private-sessions.js?v=<?= rand(1, 100) ?>", function( data, textStatus, jqxhr )
+        {
+            pageReady();
+        });
+    });
 </script>
 <div class="modal fade" id="push_notification" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none; text-align: left; right: unset;">
     <input type="hidden" id="push_notification_id" value="">
