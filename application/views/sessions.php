@@ -199,165 +199,55 @@
                                 if ($val->sessions_type_status == "Private") {
                                     $time = $val->time_slot;
                                     $datetime = $val->sessions_date . ' ' . $time;
-//                                    $datetime = date("Y-m-d H:i", strtotime($datetime));
-//                                    $datetime = new DateTime($datetime);
-//                                    $datetime1 = new DateTime();
-//                                    $diff = $datetime->getTimestamp() - $datetime1->getTimestamp();
-//                                    if ($diff >= 60) {
-//                                        $diff = $diff - 60;
-//                                    } else {
-//                                        $diff = 0;
-//                                    }
-
-//                                    var_dump($datetime);
                                     ?>
                                     <div class="timerPost" data-date='<?=$datetime?>' data-session-id="<?=getAppName($val->sessions_id)?>" style="display: none"></div>
                                     <?php
                                     $user_detias = $this->common->get_user_details($this->session->userdata("cid"));
                                     if ($user_detias->customer_type != "Dummy users" && $user_detias->customer_type != "full_conference_no_roundtables" && $user_detias->customer_type != "Associate - Full Payment" && $user_detias->customer_type != "Associate Branch" && $user_detias->customer_type != "Associate - Monthly") {
-                                        if ($val->total_sign_up_sessions < $session_limit->roundtable) {
-                                            if ($val->status_sign_up_sessions == 0) {
+                                        ?>
+                                        <div class="post-item post-item<?=getAppName($val->sessions_id) ?>">
+                                            <div class="post-image col-md-3 m-t-20">
+                                                <a href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"> <?php if ($val->sessions_photo != "") { ?> <img alt="" src="<?= base_url() ?>uploads/sessions/<?= $val->sessions_photo ?>"> <?php } else { ?>  <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg"> <?php } ?>  </a>
+                                            </div>
+                                            <div class="post-content-details col-md-9 m-t-30">
+                                                <div class="post-title">
+                                                    <h6 style="font-weight: 600; font-size: 15px;"><?= $val->sessions_date . ' ' . date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?> ET</h6>
+                                                    <h3><a href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>" class="colorBlueOne" style="font-weight: 900;"><?= $val->session_title ?></a></h3>
+                                                </div>
+                                                <?php
+                                                if (isset($val->presenter) && !empty($val->presenter)) {
+                                                    foreach ($val->presenter as $value) {
+                                                        ?>
+                                                        <div class="post-info" style="color: #000 !important; font-size: larger; font-weight: 700;"><span class="post-autor"><a href="#" style="color: #000;" data-presenter_photo="<?= $value->presenter_photo ?>" data-presenter_name="<?= $value->presenter_name ?>" data-designation="<?= $value->designation ?>" data-email="<?= $value->email ?>" data-company_name="<?= $value->company_name ?>" data-twitter_link="<?= $value->twitter ?>" data-facebook_link="<?= $value->facebook ?>" data-linkedin_link="<?= $value->linkin ?>" data-bio="<?= $value->bio ?>"  class="presenter_open_modul" style="color: #337ab7;"><u><?= $value->presenter_name ?></u><?= ($value->degree != "") ? "," : "" ?> </a></span> <span class="post-category"> <?= $value->degree ?></span> </div>
+                                                        <div class="post-info" style="color: #337aba !important; font-size: larger; font-weight: 700;"><span class="post-category"> <?= $value->company_name ?></span> </div>
+                                                        <?php
+                                                    }
+                                                }
                                                 ?>
-                                                <div class="post-item post-item<?=getAppName($val->sessions_id) ?>">
-                                                    <div class="post-image col-md-3 m-t-20">
-                                                        <a> <?php if ($val->sessions_photo != "") { ?> <img alt="" src="<?= base_url() ?>uploads/sessions/<?= $val->sessions_photo ?>"> <?php } else { ?>  <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg"> <?php } ?>  </a>
-                                                    </div>
-                                                    <div class="post-content-details col-md-9 m-t-30">
-                                                        <div class="post-title">
-                                                            <h6 style="font-weight: 600; font-size: 15px;"><?= $val->sessions_date . ' ' . date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?> ET</h6>
-                                                            <h3><a class="colorBlueOne" style="font-weight: 900;"><?= $val->session_title ?></a></h3>
-                                                        </div>
-                                                        <?php
-                                                        if (isset($val->presenter) && !empty($val->presenter)) {
-                                                            foreach ($val->presenter as $value) {
-                                                                ?>
-                                                                <div class="post-info" style="color: #000 !important; font-size: larger; font-weight: 700;"><span class="post-autor"><a href="#" style="color: #000;" data-presenter_photo="<?= $value->presenter_photo ?>" data-presenter_name="<?= $value->presenter_name ?>" data-designation="<?= $value->designation ?>" data-email="<?= $value->email ?>" data-company_name="<?= $value->company_name ?>" data-twitter_link="<?= $value->twitter ?>" data-facebook_link="<?= $value->facebook ?>" data-linkedin_link="<?= $value->linkin ?>" data-bio="<?= $value->bio ?>"  class="presenter_open_modul" style="color: #337ab7;"><u><?= $value->presenter_name ?></u><?= ($value->degree != "") ? "," : "" ?> </a></span> <span class="post-category"> <?= $value->degree ?></span> </div>
-                                                                <div class="post-info" style="color: #337aba !important; font-size: larger; font-weight: 700;"><span class="post-category"> <?= $value->company_name ?></span> </div>
-                                                                <?php
-                                                            }
-                                                        }
-                                                        ?>
-                                                        <div class="post-description" style="margin-top: 10px;">
-                                                            <p style="margin-bottom: 10px; color: black;"><?= $val->sessions_description ?></p>
-
-                                                            <?php
-                                                            if($val->status==0){
-                                                                ?>
-                                                                <a class="button black-light button-3d rounded right btn-danger" style="margin: 0px 0px 0px 5px; "><span>This session is closed</span></a>
-
-                                                                <?php
-                                                            }else{
-                                                                ?>
-                                                            <a class="button black-light button-3d rounded right btn_sign_up blueBgOne" style="margin: 0px 0;" data-sessions_id="<?= $val->sessions_id ?>" data-user_limit="<?= $val->total_sign_up_sessions_user ?>" data-session-type="<?=$val->sessions_type_status?>" data-session-id="<?=getAppName($val->sessions_id) ?>" data-url="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
-                                                                <a class="button black-light button-3d rounded right save_to_swag_bag blueBgOne" data-sessions_id="<?= $val->sessions_id ?>" data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"><?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>
-
-                                                                <?php
-                                                            }
-                                                            ?>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            <?php } else { ?>
-                                                <div class="post-item post-item<?=getAppName($val->sessions_id) ?>">
-                                                    <div class="post-image col-md-3 m-t-20">
-                                                        <a href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"> <?php if ($val->sessions_photo != "") { ?> <img alt="" src="<?= base_url() ?>uploads/sessions/<?= $val->sessions_photo ?>"> <?php } else { ?>  <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg"> <?php } ?>  </a>
-                                                    </div>
-                                                    <div class="post-content-details col-md-9 m-t-30">
-                                                        <div class="post-title">
-                                                            <h6 style="font-weight: 600; font-size: 15px;"><?= $val->sessions_date . ' ' . date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?> ET</h6>
-                                                            <h3><a href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>" class="colorBlueOne" style="font-weight: 900;"><?= $val->session_title ?></a></h3>
-                                                        </div>
-                                                        <?php
-                                                        if (isset($val->presenter) && !empty($val->presenter)) {
-                                                            foreach ($val->presenter as $value) {
-                                                                ?>
-                                                                <div class="post-info" style="color: #000 !important; font-size: larger; font-weight: 700;"><span class="post-autor"><a href="#" style="color: #000;" data-presenter_photo="<?= $value->presenter_photo ?>" data-presenter_name="<?= $value->presenter_name ?>" data-designation="<?= $value->designation ?>" data-email="<?= $value->email ?>" data-company_name="<?= $value->company_name ?>" data-twitter_link="<?= $value->twitter ?>" data-facebook_link="<?= $value->facebook ?>" data-linkedin_link="<?= $value->linkin ?>" data-bio="<?= $value->bio ?>"  class="presenter_open_modul" style="color: #337ab7;"><u><?= $value->presenter_name ?></u><?= ($value->degree != "") ? "," : "" ?> </a></span> <span class="post-category"> <?= $value->degree ?></span> </div>
-                                                                <div class="post-info" style="color: #337aba !important; font-size: larger; font-weight: 700;"><span class="post-category"> <?= $value->company_name ?></span> </div>
-                                                                <?php
-                                                            }
-                                                        }
-                                                        ?>
-                                                        <div class="post-description" style="margin-top: 10px;">
-                                                            <p style="margin-bottom: 10px; color: black;"><?= $val->sessions_description ?></p>
+                                                <div class="post-description" style="margin-top: 10px;">
+                                                    <p style="margin-bottom: 10px; color: black;"><?= $val->sessions_description ?></p>
 
 
-                                                            <?php
-                                                            if($val->status==0){
-                                                                ?>
-                                                                <a class="button black-light button-3d rounded right btn-danger" style="margin: 0px 0px 0px 5px; "><span>This session is closed</span></a>
-
-                                                                <?php
-                                                            }else{
-                                                                ?>
-                                                            <a class="button black-light button-3d rounded right blueBgOne goWaitHall" data-session-type="<?=$val->sessions_type_status?>" data-session-id="<?=getAppName($val->sessions_id) ?>" style="margin: 0px 0px 0px 5px; " data-url="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
-
-                                                                <a class="button black-light button-3d rounded right btn_unregister blueBgOne" style="margin: 0px 0;" data-sessions_id="<?= $val->sessions_id ?>" ><span>Unregister</span></a>
-
-                                                                <a class="button black-light button-3d rounded right save_to_swag_bag blueBgOne" data-sessions_id="<?= $val->sessions_id ?>" data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"><?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>
-
-                                                                <?php
-                                                            }
-                                                            ?>
-
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            <?php } ?>
-                                        <?php } else { ?>
-                                            <div class="post-item post-item<?=getAppName($val->sessions_id) ?>">
-                                                <div class="post-image col-md-3 m-t-20">
-                                                    <a> <?php if ($val->sessions_photo != "") { ?> <img alt="" src="<?= base_url() ?>uploads/sessions/<?= $val->sessions_photo ?>"> <?php } else { ?>  <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg"> <?php } ?>  </a>
-                                                </div>
-                                                <div class="post-content-details col-md-9 m-t-30">
-                                                    <div class="post-title">
-                                                        <h6 style="font-weight: 600; font-size: 15px;"><?= $val->sessions_date . ' ' . date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?> ET</h6>
-                                                        <h3><a class="colorBlueOne" style="font-weight: 900;"><?= $val->session_title ?></a></h3>
-                                                    </div>
                                                     <?php
-                                                    if (isset($val->presenter) && !empty($val->presenter)) {
-                                                        foreach ($val->presenter as $value) {
-                                                            ?>
-                                                            <div class="post-info" style="color: #000 !important; font-size: larger; font-weight: 700;"><span class="post-autor"><a href="#" style="color: #000;" data-presenter_photo="<?= $value->presenter_photo ?>" data-presenter_name="<?= $value->presenter_name ?>" data-designation="<?= $value->designation ?>" data-email="<?= $value->email ?>" data-company_name="<?= $value->company_name ?>" data-twitter_link="<?= $value->twitter ?>" data-facebook_link="<?= $value->facebook ?>" data-linkedin_link="<?= $value->linkin ?>" data-bio="<?= $value->bio ?>"  class="presenter_open_modul" style="color: #337ab7;"><u><?= $value->presenter_name ?></u><?= ($value->degree != "") ? "," : "" ?> </a></span> <span class="post-category"> <?= $value->degree ?></span> </div>
-                                                            <div class="post-info" style="color: #337aba !important; font-size: larger; font-weight: 700;"><span class="post-category"> <?= $value->company_name ?></span> </div>
-                                                            <?php
-                                                        }
+                                                    if($val->status==0){
+                                                        ?>
+                                                        <a class="button black-light button-3d rounded right btn-danger" style="margin: 0px 0px 0px 5px; "><span>This session is closed</span></a>
+
+                                                        <?php
+                                                    }else{
+                                                        ?>
+                                                        <a class="button black-light button-3d rounded right blueBgOne goWaitHall" data-session-type="<?=$val->sessions_type_status?>" data-session-id="<?=getAppName($val->sessions_id) ?>" style="margin: 0px 0px 0px 5px; " data-url="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
+                                                        <a class="button black-light button-3d rounded right save_to_swag_bag blueBgOne" data-sessions_id="<?= $val->sessions_id ?>" data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"><?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>
+
+                                                        <?php
                                                     }
                                                     ?>
-                                                    <div class="post-description" style="margin-top: 10px;">
-                                                        <p style="margin-bottom: 10px; color: black;"><?= $val->sessions_description ?></p>
-                                                        <?php
-                                                        if ($val->status_sign_up_sessions == 1) {
-                                                            ?>
 
-                                                            <?php
-                                                            if($val->status==0){
-                                                                ?>
-                                                                <a class="button black-light button-3d rounded right btn-danger" style="margin: 0px 0px 0px 5px; "><span>This session is closed</span></a>
 
-                                                                <?php
-                                                            }else{
-                                                                ?>
-                                                            <a class="button black-light button-3d rounded right blueBgOne goWaitHall" data-session-type="<?=$val->sessions_type_status?>" data-session-id="<?=getAppName($val->sessions_id) ?>" style="margin: 0px 0px 0px 5px; " data-url="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
-                                                                <a class="button black-light button-3d rounded right btn_unregister blueBgOne" style="margin: 0px 0;" data-sessions_id="<?= $val->sessions_id ?>" ><span>Unregister</span></a>
-
-                                                                <?php
-                                                            }
-                                                            ?>
-
-                                                            <?php
-                                                        } else {
-                                                            ?>
-                                                            <a class="button black-light button-3d rounded right blueBgOne" style="margin: 0px 0;"><span>Roundtable Full</span></a>
-                                                            <?php
-                                                        }
-                                                        ?>
-                                                        <a class="button black-light button-3d rounded right save_to_swag_bag blueBgOne" data-sessions_id="<?= $val->sessions_id ?>" data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"><?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?> </a>
-                                                    </div>
                                                 </div>
                                             </div>
-                                            <?php
-                                        }
+                                        </div>
+                                        <?php
                                     }
                                     ?>
                                 <?php } else { ?>
@@ -656,47 +546,7 @@
         })
 
 
-        $('.btn_sign_up').on('click', function () {
-            var sessions_id = $(this).attr("data-sessions_id");
-            var user_limit = $(this).attr("data-user_limit");
-            var total_user_limit = $("#per_attendee").val();
-            if (user_limit < total_user_limit) {
-                alertify.confirm('Are you sure you want to sign up for this roundtable session?', function (e) {
-                    if (e) {
-                        $.ajax({
-                            url: "<?= base_url() ?>sessions/sign_up_sessions",
-                            type: "post",
-                            data: {'sessions_id': sessions_id},
-                            dataType: "json", success: function (data) {
-                                if (data.status == "success") {
-                                    window.location.reload();
-                                } else if (data.status == "exist") {
-                                    alertify.alert('This is not available. Registration is limited to one concurrent roundtable per registrant.');
-                                }
-                            }
-                        });
-                    }
-                });
-            } else {
-                alertify.alert('You have reached your roundtable limitation');
-            }
-        });
 
-        $('.btn_unregister').on('click', function () {
-            var sessions_id = $(this).attr("data-sessions_id");
-            alertify.confirm('Are you sure you want to unregister for this roundtable session?', function (e) {
-                if (e) {
-                    $.ajax({
-                        url: "<?= base_url() ?>sessions/unregister_sessions",
-                        type: "post",
-                        data: {'sessions_id': sessions_id},
-                        dataType: "json", success: function (data) {
-                            window.location.reload();
-                        }
-                    });
-                }
-            });
-        });
 
         $('.save_to_swag_bag').on('click', function () {
             var sessions_id = $(this).attr("data-sessions_id");
