@@ -484,7 +484,7 @@
                         var post= $(".post-content .post-item"+sessionId)
                         var hall=post.find(".goWaitHall");
                         //hall.html("Roundtable full");
-                        hall.attr("data-url","");
+                        //hall.attr("data-url","");
                     }
                 })
 
