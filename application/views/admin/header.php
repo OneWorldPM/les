@@ -90,7 +90,15 @@ $uri_segment1 = $this->uri->segment(3);
                     if (data == null)
                         return;
 
-                    $('.online-users-count').html(Object.keys(data).length);
+                    var result = [];
+                    var keys = Object.keys(data);
+                    keys.forEach(function(key){
+                        result.push(data[key]);
+                    });
+                    const mySet = new Set(result);
+                    const uniqValuesArray = [...mySet];
+
+                    $('.online-users-count').html(uniqValuesArray.length);
                 });
 
                 socket.emit('getActiveUserListPerApp', socket_app_name);
