@@ -98,6 +98,13 @@ class Sessions extends CI_Controller {
 
         echo $data;
     }
+
+    public function openSession() {
+        $data=$this->msessions->openSession();
+
+        echo $data;
+    }
+
     public function create_poll($sessions_id) {
         $data['sessions'] = $this->msessions->edit_sessions($sessions_id);
         $data['poll_type'] = $this->msessions->get_poll_type();

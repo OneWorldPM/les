@@ -258,8 +258,11 @@
                                                         </td>
                                                         <td>
                                                             <a href="<?= base_url() ?>admin/Attendee_Chat/chat/<?= $val->sessions_id ?>" class="btn btn-warning btn-sm" style="margin: 3px;">Attendee Chat</a>
-                                                            <button type="button" class="btn btn-danger btn-sm endSessionSocket" style="margin: 3px;" data-session-id="<?=$val->sessions_id ?>" data-socket-session-id="<?=getAppName($val->sessions_id) ?>">End Session</button>
-
+                                                            <?php if($val->status == 1){ ?>
+                                                                <button type="button" class="btn btn-danger btn-sm endSessionSocket" style="margin: 3px;" data-session-id="<?=$val->sessions_id ?>" data-socket-session-id="<?=getAppName($val->sessions_id) ?>">End Session</button>
+                                                            <?php }else{ ?>
+                                                                <button type="button" class="btn btn-success btn-sm openSessionSocket" style="margin: 3px;" data-session-id="<?=$val->sessions_id ?>" data-socket-session-id="<?=getAppName($val->sessions_id) ?>">Open Session</button>
+                                                            <?php } ?>
 
                                                             <a href="<?= base_url() ?>admin/sessions/view_session/<?= $val->sessions_id ?>" class="btn btn-info btn-sm" style="margin: 3px;">View Session</a>
                                                             <a href="<?= base_url() ?>admin/sessions/edit_sessions/<?= $val->sessions_id ?>" class="btn btn-green btn-sm" style="margin: 3px;">Edit</a>
@@ -334,14 +337,35 @@
                         if(response=="success"){
 
                             socket.emit("endSession",sesionSocketId);
-
+                            alertify.success('Session closed!');
+                            location.reload();
                         }
                     })
 
                 }
             });
 
-        })
+        });
+        $(".openSessionSocket").on("click", function () {
+            var sesionSocketId=$(this).data("socket-session-id");
+            var sesionId=$(this).data("session-id");
+            alertify.confirm("Are you sure you want to open the session?", function (e) {
+                if (e)
+                {
+
+                    $.post("<?=base_url()?>admin/sessions/openSession",{"sesionId":sesionId},function (response){
+
+                        if(response=="success"){
+                            // socket.emit("endSession",sesionSocketId);
+                            alertify.success('Session opened!');
+                            location.reload();
+                        }
+                    })
+
+                }
+            });
+
+        });
         $("#updateIframe").on("click", function () {
           var sessionsIframe=$("#sessionsIframe").val();
           var url=$(this).data("url");
