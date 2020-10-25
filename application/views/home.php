@@ -162,16 +162,16 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-md-3  col-sm-12">
-                        <a class="icon-home" href="<?= base_url() ?>lounge" id="btn_lounge">
-                            <div class="col-lg box-home p-5 text-center">
-                                <img src="<?= base_url() ?>front_assets/images/lounge.png" alt="welcome" class="m-t-20" style="height: 170px; width: 170px;">
-                                <br>
-                                <br>
-                                <span>LOUNGE</span>
-                            </div>
-                        </a>
-                    </div> 
+<!--                    <div class="col-md-3  col-sm-12">-->
+<!--                        <a class="icon-home" href="--><?//= base_url() ?><!--lounge" id="btn_lounge">-->
+<!--                            <div class="col-lg box-home p-5 text-center">-->
+<!--                                <img src="--><?//= base_url() ?><!--front_assets/images/lounge.png" alt="welcome" class="m-t-20" style="height: 170px; width: 170px;">-->
+<!--                                <br>-->
+<!--                                <br>-->
+<!--                                <span>LOUNGE</span>-->
+<!--                            </div>-->
+<!--                        </a>-->
+<!--                    </div> -->
                     <div class="col-md-1  col-sm-12" id="TECHNICAL_HELP">
                         <a class="icon-home" target="_blank" href="https://yourconference.live/support"> 
                             <div class="col-lg box-home_2 p-0 p-b-25 text-center">

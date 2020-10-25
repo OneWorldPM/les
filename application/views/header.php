@@ -172,7 +172,7 @@
                                         <li><a href="<?= base_url() ?>sessions">Sessions</a></li>
                                         <li><a href="<?= base_url() ?>sponsor/other_sponsor">Sponsor</a></li>
                                         <li><a href="<?= base_url() ?>sponsor/sponsor_resources">Resource Library</a></li>
-                                        <li><a href="<?= base_url() ?>lounge">Lounge</a></li>
+<!--                                        <li><a href="--><?//= base_url() ?><!--lounge">Lounge</a></li>-->
                                     </ul>
 
                                     <style>
