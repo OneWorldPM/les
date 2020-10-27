@@ -277,7 +277,7 @@
 															<a href="<?= base_url() ?>admin/tracking/view_sessions_history/<?= $val->sessions_id ?>" class="btn btn-success btn-sm">Tracking Report</a>
                                                         </td>
                                                         <td>
-                                                            <a href="<?= base_url() ?>admin/sessions/delete_sessions/<?= $val->sessions_id ?>" class="btn btn-danger btn-sm" style="font-size: 10px !important;">Delete Session</a>
+                                                            <a  data-session-id="<?= $val->sessions_id ?>" class="btn btn-danger btn-sm delete_session" style="font-size: 10px !important;">Delete Session</a>
                                                             <?php if ($val->sessions_type_status == "Private") { ?>
                                                                 <a href="<?= base_url() ?>admin/sessions/user_sign_up/<?= $val->sessions_id ?>" class="btn btn-grey btn-sm" style="margin: 3px;">Registrants</a>
                                                             <?php } ?>
@@ -366,6 +366,25 @@
             });
 
         });
+		
+		 
+        //====== session delete =======//
+        $(".delete_session").on("click", function () {
+            var sesionId = $(this).data("session-id");
+            alertify.confirm("Are you sure you want to delete this session?", function (e) {
+                if (e)
+                {
+                    $.post("<?= base_url() ?>admin/sessions/delete_sessions",{"sesionId":sesionId},function (response){
+                        if(response=="success"){
+                            alertify.success('Session Deleted!');
+                            location.reload();
+                        }
+                    });
+                }
+            });
+        });
+        
+		
         $("#updateIframe").on("click", function () {
           var sessionsIframe=$("#sessionsIframe").val();
           var url=$(this).data("url");
