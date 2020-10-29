@@ -25,6 +25,8 @@ class UserActivityTracking extends CI_Controller {
         $this->db->select('u.*, c.*');
         $this->db->from('user_activity u');
         $this->db->join('customer_master c', 'u.user_id=c.cust_id');
+        $this->db->order_by("user_activity_id", "desc");
+        $this->db->limit(300);
         $result = $this->db->get();
         if ($result->num_rows() > 0) {
             return $result->result();
