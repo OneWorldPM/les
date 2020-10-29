@@ -259,7 +259,7 @@
                                                         <td>
                                                             <a href="<?= base_url() ?>admin/Attendee_Chat/chat/<?= $val->sessions_id ?>" class="btn btn-warning btn-sm" style="margin: 3px;">Attendee Chat</a>
                                                             <?php if ($val->status == 1) { ?>
-                                                                <?php if ($val->time_slot < date("H:i", time()) && date("H:i", time()) < $val->end_time) { ?>
+                                                                 <?php if (date("Y-m-d H:i",strtotime($val->sessions_date.' '.$val->time_slot)) < date("Y-m-d H:i") && date("Y-m-d H:i",strtotime($val->sessions_date.' '.$val->time_slot)) < date("Y-m-d H:i")) { ?>
                                                                     <button type="button" class="btn btn-danger btn-sm currenttime_runing" style="margin: 3px;">End Session</button>
                                                                 <?php } else { ?>
                                                                     <button type="button" class="btn btn-danger btn-sm endSessionSocket" style="margin: 3px;" data-session-id="<?= $val->sessions_id ?>" data-socket-session-id="<?= getAppName($val->sessions_id) ?>">End Session</button>
