@@ -74,10 +74,10 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Date Range:</label>
-                                         <div class="input-group input-daterange datepicker">
-                                            <input type="text" placeholder="Start Date" name="start_date" value="<?= ($this->session->userdata('start_date') != "") ? date("m/d/Y",strtotime($this->session->userdata('start_date'))) : ""  ?>" id="from_date" class="form-control">
+                                        <div class="input-group input-daterange datepicker">
+                                            <input type="text" placeholder="Start Date" name="start_date" value="<?= ($this->session->userdata('start_date') != "") ? date("m/d/Y", strtotime($this->session->userdata('start_date'))) : "" ?>" id="from_date" class="form-control">
                                             <span class="input-group-addon bg-primary">to</span>
-                                            <input type="text" placeholder="End Date" name="end_date" value="<?= ($this->session->userdata('end_date') != "") ? date("m/d/Y",strtotime($this->session->userdata('end_date'))) : ""  ?>" id="to_date" class="form-control">
+                                            <input type="text" placeholder="End Date" name="end_date" value="<?= ($this->session->userdata('end_date') != "") ? date("m/d/Y", strtotime($this->session->userdata('end_date'))) : "" ?>" id="to_date" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -176,7 +176,7 @@
                                         <thead class="th_center">
                                             <tr>
                                                 <td style="width: 60px; text-align: center;"><input type="checkbox" id="select_all" name="select_all"></td>
-												<th>Session ID</th>
+                                                <th>Session ID</th>
                                                 <th>Date</th>
                                                 <th>Photo</th>
                                                 <th>Title</th>
@@ -184,7 +184,7 @@
                                                 <th>Type</th>
                                                 <th>Registrants</th>
                                                 <th>Presenter</th>
-                                                 <th>Zoom Meeting Link</th>
+                                                <th>Zoom Meeting Link</th>
                                                 <th>Time Slot</th>
                                                 <th>Visible</th>
                                                 <th style="border-right: 0px solid #ddd;">Action</th>
@@ -203,7 +203,7 @@
                                                                 <input type="checkbox" class="grid_checkbox" id="sessions[]" name="sessions[]" value="<?= $val->sessions_id ?>"/>
                                                             </div>
                                                         </td>
-														<td style="text-align: center;"><?= $val->sessions_id ?></td>
+                                                        <td style="text-align: center;"><?= $val->sessions_id ?></td>
                                                         <td style="white-space: pre;"><?= date("Y-m-d", strtotime($val->sessions_date)) ?></td>
                                                         <td>
                                                             <?php if ($val->sessions_photo != "") { ?>
@@ -247,7 +247,7 @@
                                                         }
                                                         ?>
                                                         </td>-->
-                                                         <td><a target="_blank" href="<?= $val->zoom_link ?>"><?= $val->zoom_link ?></a></td>
+                                                        <td><a target="_blank" href="<?= $val->zoom_link ?>"><?= $val->zoom_link ?></a></td>
                                                         <td style="white-space: pre; text-align: right;"><?= date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></td>
                                                         <td>
                                                             <?php if ($val->sessions_type_status == "Private") { ?>
@@ -258,10 +258,15 @@
                                                         </td>
                                                         <td>
                                                             <a href="<?= base_url() ?>admin/Attendee_Chat/chat/<?= $val->sessions_id ?>" class="btn btn-warning btn-sm" style="margin: 3px;">Attendee Chat</a>
-                                                            <?php if($val->status == 1){ ?>
-                                                                <button type="button" class="btn btn-danger btn-sm endSessionSocket" style="margin: 3px;" data-session-id="<?=$val->sessions_id ?>" data-socket-session-id="<?=getAppName($val->sessions_id) ?>">End Session</button>
-                                                            <?php }else{ ?>
-                                                                <button type="button" class="btn btn-success btn-sm openSessionSocket" style="margin: 3px;" data-session-id="<?=$val->sessions_id ?>" data-socket-session-id="<?=getAppName($val->sessions_id) ?>">Open Session</button>
+                                                            <?php if ($val->status == 1) { ?>
+                                                                <?php if ($val->time_slot < date("H:i", time()) && date("H:i", time()) < $val->end_time) { ?>
+                                                                    <button type="button" class="btn btn-danger btn-sm currenttime_runing" style="margin: 3px;">End Session</button>
+                                                                <?php } else { ?>
+                                                                    <button type="button" class="btn btn-danger btn-sm endSessionSocket" style="margin: 3px;" data-session-id="<?= $val->sessions_id ?>" data-socket-session-id="<?= getAppName($val->sessions_id) ?>">End Session</button>
+                                                                <?php } ?>   
+                                                            <?php } else { ?>
+                                                                <button type="button" class="btn btn-success btn-sm undoSessionSocket" style="margin: 3px;" data-session-id="<?= $val->sessions_id ?>" data-socket-session-id="<?= getAppName($val->sessions_id) ?>">Undo Session</button>
+                                                                <button type="button" class="btn btn-success btn-sm openSessionSocket" style="margin: 3px;" data-session-id="<?= $val->sessions_id ?>" data-socket-session-id="<?= getAppName($val->sessions_id) ?>">Open Session</button>
                                                             <?php } ?>
 
                                                             <a href="<?= base_url() ?>admin/sessions/view_session/<?= $val->sessions_id ?>" class="btn btn-info btn-sm" style="margin: 3px;">View Session</a>
@@ -274,7 +279,7 @@
                                                             <a href="<?= base_url() ?>admin/sessions/report/<?= $val->sessions_id ?>" class="btn btn-grey btn-sm" style="margin: 3px;">Report</a>
                                                             <a href="<?= base_url() ?>admin/groupchat/sessions_groupchat/<?= $val->sessions_id ?>" class="btn btn-blue btn-sm" style="margin: 3px;">Create Chat</a>
                                                             <a href="<?= base_url() ?>admin/sessions/resource/<?= $val->sessions_id ?>" class="btn btn-success btn-sm" style="margin: 3px;">Resources</a>
-															<a href="<?= base_url() ?>admin/tracking/view_sessions_history/<?= $val->sessions_id ?>" class="btn btn-success btn-sm">Tracking Report</a>
+                                                            <a href="<?= base_url() ?>admin/tracking/view_sessions_history/<?= $val->sessions_id ?>" class="btn btn-success btn-sm">Tracking Report</a>
                                                         </td>
                                                         <td>
                                                             <a  data-session-id="<?= $val->sessions_id ?>" class="btn btn-danger btn-sm delete_session" style="font-size: 10px !important;">Delete Session</a>
@@ -311,7 +316,7 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label for="sessionsIframe">Update Sessions Iframe:</label>
-                    <input type="text" class="form-control" id="sessionsIframe" value="<?=$iframe->value?>">
+                    <input type="text" class="form-control" id="sessionsIframe" value="<?= $iframe->value ?>">
                 </div>
 
                 <button class="btn btn-success" id="updateIframe" data-url="<?= base_url() ?>admin/Settings/setSessionIframe">Save</button>
@@ -324,19 +329,19 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
-        let socket = io("<?=getSocketUrl()?>");
+        let socket = io("<?= getSocketUrl() ?>");
         $(".endSessionSocket").on("click", function () {
-            var sesionSocketId=$(this).data("socket-session-id");
-            var sesionId=$(this).data("session-id");
-            alertify.confirm("Are you sure you want to end the session?", function (e) {
+            var sesionSocketId = $(this).data("socket-session-id");
+            var sesionId = $(this).data("session-id");
+            alertify.confirm("Are you sure you want to end this session?", function (e) {
                 if (e)
                 {
 
-                    $.post("<?=base_url()?>admin/sessions/endSession",{"sesionId":sesionId},function (response){
+                    $.post("<?= base_url() ?>admin/sessions/endSession", {"sesionId": sesionId}, function (response) {
 
-                        if(response=="success"){
+                        if (response == "success") {
 
-                            socket.emit("endSession",sesionSocketId);
+                            socket.emit("endSession", sesionSocketId);
                             alertify.success('Session closed!');
                             location.reload();
                         }
@@ -346,16 +351,31 @@
             });
 
         });
+
+        $(".undoSessionSocket").on("click", function () {
+            var sesionId = $(this).data("session-id");
+            $.post("<?= base_url() ?>admin/sessions/undoSession", {"sesionId": sesionId}, function (response) {
+                if (response == "success") {
+                    alertify.success('Session Undo!');
+                    location.reload();
+                }
+            });
+        });
+        
+        $(".currenttime_runing").on("click", function () {
+            alertify.error('You cannot close a session that is currently running');
+        });
+
         $(".openSessionSocket").on("click", function () {
-            var sesionSocketId=$(this).data("socket-session-id");
-            var sesionId=$(this).data("session-id");
-            alertify.confirm("Are you sure you want to open the session?", function (e) {
+            var sesionSocketId = $(this).data("socket-session-id");
+            var sesionId = $(this).data("session-id");
+            alertify.confirm("Are you sure you want to open this session?", function (e) {
                 if (e)
                 {
 
-                    $.post("<?=base_url()?>admin/sessions/openSession",{"sesionId":sesionId},function (response){
+                    $.post("<?= base_url() ?>admin/sessions/openSession", {"sesionId": sesionId}, function (response) {
 
-                        if(response=="success"){
+                        if (response == "success") {
                             // socket.emit("endSession",sesionSocketId);
                             alertify.success('Session opened!');
                             location.reload();
@@ -366,16 +386,16 @@
             });
 
         });
-		
-		 
+
+
         //====== session delete =======//
         $(".delete_session").on("click", function () {
             var sesionId = $(this).data("session-id");
             alertify.confirm("Are you sure you want to delete this session?", function (e) {
                 if (e)
                 {
-                    $.post("<?= base_url() ?>admin/sessions/delete_sessions",{"sesionId":sesionId},function (response){
-                        if(response=="success"){
+                    $.post("<?= base_url() ?>admin/sessions/delete_sessions", {"sesionId": sesionId}, function (response) {
+                        if (response == "success") {
                             alertify.success('Session Deleted!');
                             location.reload();
                         }
@@ -383,18 +403,18 @@
                 }
             });
         });
-        
-		
-        $("#updateIframe").on("click", function () {
-          var sessionsIframe=$("#sessionsIframe").val();
-          var url=$(this).data("url");
-          console.log(url);
-          $.post(url,{"iframe":sessionsIframe},function (response) {
 
-              if(response=="success"){
-                  alertify.alert('Update Complete');
-              }
-          })
+
+        $("#updateIframe").on("click", function () {
+            var sessionsIframe = $("#sessionsIframe").val();
+            var url = $(this).data("url");
+            console.log(url);
+            $.post(url, {"iframe": sessionsIframe}, function (response) {
+
+                if (response == "success") {
+                    alertify.alert('Update Complete');
+                }
+            })
         });
 
 
@@ -408,7 +428,7 @@
             return false; //Prevent form to submitting
         });
 
-         $('#select_all').click(function () {
+        $('#select_all').click(function () {
             if (this.checked)
             {
                 $('.grid_checkbox').each(function () {
@@ -422,7 +442,7 @@
             }
         });
 
-       $('#btndeleteall').on("click", function () {
+        $('#btndeleteall').on("click", function () {
             var checkValues = $('.grid_checkbox:checked').map(function ()
             {
                 return $(this).val();
