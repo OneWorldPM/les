@@ -82,6 +82,7 @@ if (isset($booth_tracking) && !empty($booth_tracking)) {
                                             <th>Full Name</th>
                                             <th>Phone No.</th>
                                             <th>Email</th>
+                                            <th>City</th>
                                             <th>Entry Time</th>
                                             <th>End Time</th>
                                             <th>Total Time</th>
@@ -104,6 +105,7 @@ if (isset($booth_tracking) && !empty($booth_tracking)) {
                                                     <td><?= $val->first_name . ' ' . $val->last_name ?></td>
                                                     <td><?= $val->phone ?></td>
                                                     <td><?= $val->email ?></td>
+                                                    <td><?= $val->city ?></td>
                                                     <td><?= date("Y-m-d h:i:s", strtotime($val->start_date_time)) ?></td>
                                                     <td>
         <?php if ($val->end_date_time != '') { ?>
@@ -164,3 +166,4 @@ if (isset($booth_tracking) && !empty($booth_tracking)) {
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+
