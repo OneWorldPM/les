@@ -249,13 +249,6 @@
                                                         </td>-->
                                                         <td><a target="_blank" href="<?= $val->zoom_link ?>"><?= $val->zoom_link ?></a></td>
                                                         <td style="white-space: pre; text-align: right;">
-                                                            <?php
-                                                            echo date("Y-m-d H:i",strtotime($val->sessions_date.' '.$val->time_slot));
-                                                            echo "<br>";
-                                                             echo date("Y-m-d H:i");
-                                                            echo "<br>";
-                                                            echo date("Y-m-d H:i",strtotime($val->sessions_date.' '.$val->end_time));
-                                                            ?>
                                                                 <?= date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></td>
                                                         <td>
                                                             <?php if ($val->sessions_type_status == "Private") { ?>
