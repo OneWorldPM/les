@@ -111,6 +111,14 @@ class M_sessions extends CI_Model {
 
         return "success";
     }
+	
+	function undoSession() {
+        $post = $this->input->post();
+        $sessionId=$post["sesionId"];
+        $this->db->update('sessions', array('status' => 1), array('sessions_id' => $sessionId));
+
+        return "success";
+    }
 
 
     function createSessions() {
