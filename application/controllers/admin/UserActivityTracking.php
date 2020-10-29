@@ -22,7 +22,7 @@ class UserActivityTracking extends CI_Controller {
     }
 
     function get_user_activity_tracking() {
-        $this->db->select('u.*, c.first_name,c.last_name,c.phone,c.email,c.city');
+        $this->db->select('u.*, c.first_name,c.last_name,c.phone,c.email,c.city,c.cust_id');
         $this->db->from('user_activity u');
         $this->db->join('customer_master c', 'u.user_id=c.cust_id');
         $this->db->order_by("user_activity_id", "desc");
