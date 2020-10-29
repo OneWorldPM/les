@@ -13,7 +13,12 @@ if (isset($booth_tracking) && !empty($booth_tracking))
     $unique_list = array_unique($unique_list);
 }
 ?>
-
+<style>
+    #example_wrapper .dt-buttons .buttons-csv{
+        background-color: #1fbba6;
+        padding: 5px 15px 5px 15px;
+    }
+</style>
 <style>
     .post-info {
         margin-bottom: 0px;
@@ -70,7 +75,7 @@ if (isset($booth_tracking) && !empty($booth_tracking))
                     <div class="panel-body bg-white" style="border: 1px solid #b2b7bb!important;">
                         <div class="row">
                             <div class="col-md-12 table-responsive">
-                                <table id="tracking-info-table" class="table table-bordered table-striped text-center ">
+                                <table id="example" class="table table-bordered table-striped text-center ">
                                     <thead class="th_center">
                                     <tr>
                                         <th>Sponsor</th>
@@ -131,11 +136,11 @@ if (isset($booth_tracking) && !empty($booth_tracking))
 <script>
 $(document).ready(function () {
 
-    $('#tracking-info-table thead th').each( function () {
+    $('#example thead th').each( function () {
         var title = $(this).text();
         $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
     } );
-    var trackingTable = $('#tracking-info-table').DataTable({
+    var trackingTable = $('#example').DataTable({
         "order": [[ 6, "desc" ]],
         "dom": '<"top"i>rt<"bottom"flp><"clear">',
         initComplete: function () {
@@ -157,3 +162,18 @@ $(document).ready(function () {
 
     });
 </script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'csv'
+            ]
+        });
+        $('.buttons-csv').text('Export CSV');
+    });
+</script>
+
