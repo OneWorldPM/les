@@ -248,7 +248,15 @@
                                                         ?>
                                                         </td>-->
                                                         <td><a target="_blank" href="<?= $val->zoom_link ?>"><?= $val->zoom_link ?></a></td>
-                                                        <td style="white-space: pre; text-align: right;"><?= date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></td>
+                                                        <td style="white-space: pre; text-align: right;">
+                                                            <?php
+                                                            echo date("Y-m-d H:i",strtotime($val->sessions_date.' '.$val->time_slot));
+                                                            echo "<br>";
+                                                             echo date("Y-m-d H:i");
+                                                            echo "<br>";
+                                                            echo date("Y-m-d H:i",strtotime($val->sessions_date.' '.$val->time_slot));
+                                                            ?>
+                                                                <?= date("h:i A", strtotime($val->time_slot)) . ' - ' . date("h:i A", strtotime($val->end_time)) ?></td>
                                                         <td>
                                                             <?php if ($val->sessions_type_status == "Private") { ?>
                                                                 <a href="<?= base_url() ?>private_sessions/view/<?= $val->sessions_id ?>" style="margin: 3px;"><?= base_url() ?>private_sessions/view/<?= $val->sessions_id ?></a>
@@ -259,7 +267,7 @@
                                                         <td>
                                                             <a href="<?= base_url() ?>admin/Attendee_Chat/chat/<?= $val->sessions_id ?>" class="btn btn-warning btn-sm" style="margin: 3px;">Attendee Chat</a>
                                                             <?php if ($val->status == 1) { ?>
-                                                                 <?php if (date("Y-m-d H:i",strtotime($val->sessions_date.' '.$val->time_slot)) < date("Y-m-d H:i") && date("Y-m-d H:i",strtotime($val->sessions_date.' '.$val->time_slot)) < date("Y-m-d H:i")) { ?>
+                                                                <?php if (date("Y-m-d H:i",strtotime($val->sessions_date.' '.$val->time_slot)) < date("Y-m-d H:i") && date("Y-m-d H:i",strtotime($val->sessions_date.' '.$val->time_slot)) < date("Y-m-d H:i")) { ?>
                                                                     <button type="button" class="btn btn-danger btn-sm currenttime_runing" style="margin: 3px;">End Session</button>
                                                                 <?php } else { ?>
                                                                     <button type="button" class="btn btn-danger btn-sm endSessionSocket" style="margin: 3px;" data-session-id="<?= $val->sessions_id ?>" data-socket-session-id="<?= getAppName($val->sessions_id) ?>">End Session</button>
