@@ -20,6 +20,9 @@
                                     <thead class="th_center">
                                         <tr>
                                             <th>User</th>
+											 <th>Phone Number</th>
+                                            <th>Company</th>
+                                            <th>City</th>
                                             <th>IP Address</th>
                                             <th>Operating System</th>
                                             <th>Browser</th>
@@ -36,6 +39,9 @@
                                                 <tr>
 
                                                     <td><?= $val->first_name . ' ' . $val->last_name ?></td>
+													 <td><?= $val->phone ?></td>
+                                                    <td><?= $val->company_name ?></td>
+                                                    <td><?= $val->city ?></td>
                                                     <td><?= $val->ip_address ?></td>
                                                     <td><?= $val->operating_system ?></td>
                                                     <td><?= $val->computer_type ?></td>

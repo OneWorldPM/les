@@ -25,6 +25,9 @@
                                             <th>Date</th>
                                             <th>Presenter</th>
                                             <th>User</th>
+											 <th>Phone Number</th>
+                                            <th>Company</th>
+                                            <th>City</th>
                                              <th>Session Title</th>
                                             <th>Question</th>
                                             <th>Answer</th>
@@ -39,6 +42,9 @@
                                                     <td><?= date("Y-m-d", strtotime($val->reg_question_date)) ?></td>
                                                      <td><?= $val->presenter_name ?></td>
                                                     <td><?= $val->first_name." ".$val->last_name ?></td>
+													  <td><?= $val->phone ?></td>
+                                                    <td><?= $val->company_name ?></td>
+                                                    <td><?= $val->city ?></td>
                                                     <td><?= $val->session_title ?></td>
                                                     <td><?= $val->question ?></td>
                                                     <td><?= $val->answer ?></td>
