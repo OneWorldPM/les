@@ -89,7 +89,7 @@
                                 </div>    
                                 <div class="col-md-9 m-t-20" style="border-right: 1px solid;">
                                     <div class="row">
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <?php
                                             if ($sessions->sessions_photo != "") {
                                                 ?>
@@ -100,7 +100,7 @@
                                                 <img alt="" src="<?= base_url() ?>front_assets/images/session_avtar.jpg" width="100%">
                                             <?php } ?>   
                                         </div>  
-                                        <div class="col-md-9">
+                                        <div class="col-md-8">
                                             <h2 style="margin-bottom: 0px;"><?= (isset($sessions) && !empty($sessions)) ? $sessions->session_title : "" ?></h2>
                                             <small><i class="fa fa-calendar" aria-hidden="true"></i> <?= date("M-d-Y", strtotime($sessions->sessions_date)) . ' ' . date("H:i", strtotime($sessions->time_slot)) . ' - ' . date("H:i", strtotime($sessions->end_time)) ?></small>
                                             <p class="m-t-20"><?= (isset($sessions) && !empty($sessions)) ? $sessions->sessions_description : "" ?></p>
