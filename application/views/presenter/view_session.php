@@ -302,7 +302,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 <div class="main-content">
     <div class="wrap-content container" id="container">
         <div class="container-fluid container-fullw" style="padding: 6px;">
-            <div class="panel panel-primary" id="panel5">
+            <div class="panel panel-primary" id="panel5" style="margin-bottom: 0">
                 <div class="panel-heading" style="padding-bottom: 8px;">
                     <div class="row">
                         <div class="col-md-8">
