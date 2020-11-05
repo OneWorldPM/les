@@ -269,7 +269,7 @@
         background-color: black;
     }
     #embededVideo {
-    height: 83vh;
+        height: 92vh;
     }
 
     @media only screen and (max-width: 700px) {
