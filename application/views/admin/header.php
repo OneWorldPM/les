@@ -170,6 +170,18 @@ $uri_segment1 = $this->uri->segment(3);
                                     </div>
                                 </a>
                             </li>
+							<li class="<?= ($uri_segment == 'loungereport ') ? 'active' : ''; ?>" >
+                                <a href="<?= site_url() ?>admin/loungereport" id="dash">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-users"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title">Lounge Report</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                             <li class="<?= ($uri_segment == 'presenters') ? 'active' : ''; ?>" >
                                 <a href="<?= site_url() ?>admin/presenters" id="dash">
                                     <div class="item-content">
