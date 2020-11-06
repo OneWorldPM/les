@@ -112,7 +112,6 @@ if (isset($loungereport) && !empty($loungereport)) {
             $(this).html('<b>' + title + '</b><br><input type="text" placeholder="Search ' + title + '" />');
         });
         var trackingTable = $('#example').DataTable({
-            "order": [[4, "desc"]],
             "dom": 'Bfrtip',
             "buttons": [
                 'csv'
