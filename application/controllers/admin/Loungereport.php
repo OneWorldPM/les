@@ -24,13 +24,12 @@ class Loungereport extends CI_Controller {
         $this->load->view('admin/footer');
     }
 
-    function get_loungereport() {
+     function get_loungereport() {
         $meetings = $query = $this->db->query("
                                         SELECT DISTINCT lm.*, CONCAT(cm.first_name, ' ', cm.last_name) AS host_name
                                         FROM lounge_meetings lm
                                         LEFT JOIN lounge_meeting_attendees lma ON lm.id = lma.meeting_id
-                                        LEFT JOIN customer_master cm ON lm.host = cm.cust_id'
-                                        ");
+                                        LEFT JOIN customer_master cm ON lm.host = cm.cust_id");
         if ($meetings->num_rows() > 0) {
 
             foreach ($meetings->result() as $meeting) {
