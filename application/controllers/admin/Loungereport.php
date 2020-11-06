@@ -16,9 +16,7 @@ class Loungereport extends CI_Controller {
 
     public function index() {
         $data['loungereport'] = $this->get_loungereport();
-        echo "<pre>";
-        print_r($data['loungereport']);
-        die;
+        
         $this->load->view('admin/header');
         $this->load->view('admin/loungereport', $data);
         $this->load->view('admin/footer');
