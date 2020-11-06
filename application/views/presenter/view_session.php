@@ -9,6 +9,9 @@
     }
 </style>
 <style>
+    html{
+        zoom: 0.9;
+    }
     .progress-bar_1 {
         height: 100%;
         padding: 3px;
@@ -299,7 +302,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
 <div class="main-content">
     <div class="wrap-content container" id="container">
         <div class="container-fluid container-fullw" style="padding: 6px;">
-            <div class="panel panel-primary" id="panel5">
+            <div class="panel panel-primary" id="panel5" style="margin-bottom: 0">
                 <div class="panel-heading" style="padding-bottom: 8px;">
                     <div class="row">
                         <div class="col-md-8">
@@ -312,7 +315,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                         </div>
                     </div>
                 </div>
-                <div class="panel-body bg-white" style="border: 1px solid #b2b7bb!important; padding: 10px;">
+                <div class="panel-body bg-white" style="border: 1px solid #b2b7bb!important; padding: 10px;padding-bottom: 0">
                     <div class="row" id="orderContainer">
                         <div class="col-lg-2 col-md-3" style="padding-right: 0; padding-left: 8px;" id="leftOrder">
                             <?php
@@ -413,7 +416,7 @@ if (isset($_GET['testing']) && $_GET['testing'] == 1) {
                                     </a>
                                 </li>
                             </ul>
-                            <div class="tab-content" style="max-height: 347px; overflow-y: auto;">
+                            <div class="tab-content" style="max-height: 490px; overflow-y: auto;">
                                 <div class="tab-pane fade in active" id="attendee_questions">
                                     <input type="hidden" name="sessions_id" id="sessions_id" value="<?= $sessions->sessions_id ?>">
                                     <input type="hidden" name="last_sessions_cust_question_id" id="last_sessions_cust_question_id" value="0">

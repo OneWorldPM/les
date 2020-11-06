@@ -168,7 +168,6 @@
     }
 
     #embededVideo {
-        height: 850px;
         margin-top: -2px;
         position: relative;
     }
@@ -222,9 +221,7 @@
         overflow: hidden;
     }
 
-    .parallax {
-        height: 909px;
-    }
+
 
     .questionElement {
         max-height: 230px;
@@ -252,6 +249,38 @@
         z-index: 124124124;
         top: 40px;
     }
+    .borderFrame{
+        margin-top: 0px;
+        width: 100%;
+        background-color: #337ab7;
+        height: 29px;
+        position: absolute;
+        bottom: 0;
+    }
+
+
+
+
+    .parallax {
+        height: 86.7vh;
+    }
+
+    body{
+        background-color: black;
+    }
+    #embededVideo {
+        height: 92vh;
+    }
+
+    @media only screen and (max-width: 700px) {
+        .borderFrame {
+            position: unset;
+        }
+    }
+
+
+
+
 
     .button.color, .btn.btn-primary{
         background-color: #f05d1f;
@@ -372,6 +401,7 @@
         <!-- END: SECTION -->
     </div>
 </section>
+<div class="borderFrame"></div>
 
 
 
