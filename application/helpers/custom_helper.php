@@ -1,8 +1,8 @@
 <?php
 function getAppName($id)
 {
-     $localName="test";
-//    $localName = "";
+//     $localName="test";
+    $localName = "";
 
 
     if ($localName) {
@@ -18,15 +18,15 @@ function getAppName($id)
 
 function getSocketUrl()
 {
-     $localName="https://127.0.0.1:3080";
-//    $localName = "";
+//     $localName="https://127.0.0.1:3080";
+    $localName = "";
 
     return $localName ? $localName : "https://socket.yourconference.live:443";
 }
 
 function getSocketScript(){
-    $localName="local";
-//    $localName="";
+//    $localName="local";
+    $localName="";
 
     if($localName=="local"){
         ?>
