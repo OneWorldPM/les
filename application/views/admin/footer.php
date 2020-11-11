@@ -113,6 +113,8 @@
 <script src="<?= base_url() ?>assets/js/form-elements.js"></script>
 <!--<script src="<?= base_url() ?>assets/js/form-wizard.js"></script>-->
 <script src="<?= base_url() ?>assets/js/pages-messages.js"></script>
+<script src="<?= base_url() ?>front_assets/js/custom.js"></script>
+
 <script>
     jQuery(document).ready(function () {
         Main.init();

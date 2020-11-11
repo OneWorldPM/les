@@ -28,6 +28,8 @@ $(document).ready(function () {
             var $screenWidth = $(document).width();
             var rightStickyWidth=390;
             if(screen=="customer")rightStickyWidth=320;
+            else if(screen=="admin")rightStickyWidth=400;
+
             $screenWidth = $screenWidth - rightStickyWidth;
             $(".videContent,.main-content").animate({
                 marginRight: '40%',

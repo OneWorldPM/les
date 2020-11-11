@@ -53,6 +53,7 @@ $uri_segment1 = $this->uri->segment(3);
         <!-- iCheck for checkboxes and radio inputs -->
         <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/vendor/iCheck/all.css"/>
         <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/vendor/iCheck/minimal/blue.css"  />
+        <link rel="stylesheet" type="text/css" href="<?= base_url() ?>front_assets/css/custom.css" media="screen" />
 
         <link href="<?= base_url() ?>assets/alertify/alertify.core.css" rel="stylesheet" type="text/css"/>
         <link href="<?= base_url() ?>assets/alertify/alertify.default.css" rel="stylesheet" type="text/css"/>
@@ -62,8 +63,8 @@ $uri_segment1 = $this->uri->segment(3);
 
         <script src="<?= base_url() ?>assets/vendor/jquery/jquery.min.js"></script>
         <script src="<?= base_url() ?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>
-
+<!--        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>-->
+        <?= getSocketScript()?>
         <script>
             function extract(variable) {
                 for (var key in variable) {
@@ -72,7 +73,7 @@ $uri_segment1 = $this->uri->segment(3);
             }
 
             // let socket = io("https://socket.yourconference.live:443");
-            let socket = io("<?=getSocketUrl()?>");
+            //let socket = io("<?//=getSocketUrl()?>//");
 
             socket.on("newViewUsers",function(resp){
                 if(resp){
