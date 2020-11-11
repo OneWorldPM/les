@@ -663,11 +663,11 @@ if (isset($sessions)) {
 </script>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>
-
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>-->
+<?= getSocketScript()?>
 <script type="text/javascript">
     $(document).ready(function () {
-        let socket = io("<?=getSocketUrl()?>");
+        //let socket = io("<?//=getSocketUrl()?>//");
 
         var roundTable=parseInt($(".parallax").data("roundtable"));
         var sessionType=$(".parallax").data("session-type")
