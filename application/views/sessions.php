@@ -425,7 +425,7 @@
                                                     }else{
                                                         ?>
                                                         <a class="button black-light button-3d rounded right blueBgOne" style="margin: 0px 0;" href="<?= base_url() ?>sessions/attend/<?= $val->sessions_id ?>"><span>Attend</span></a>
-<!--                                                        <a class="button black-light button-3d rounded right save_to_swag_bag blueBgOne" data-sessions_id="--><?//= $val->sessions_id ?><!-- " data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"> --><?//= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?><!-- </a>-->
+                                                        <a class="button black-light button-3d rounded right save_to_swag_bag blueBgOne" data-sessions_id="<?= $val->sessions_id ?>" data-swag_bag_btn_status="0"   style="margin: 0px 5px 0px 0px"><?= ($val->status_my_swag_bag == 0) ? "Save to Itinerary" : "Remove from Itinerary" ?></a>
 
                                                         <?php
                                                     }
@@ -457,7 +457,7 @@
                 <iframe id="presidentRemarksIframe" src="https://player.vimeo.com/video/467905144" width="100%" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
             </div>
             <div class="modal-footer" style="background-color: #3c497e;">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
