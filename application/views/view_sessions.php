@@ -276,7 +276,15 @@
         .borderFrame {
             position: unset;
         }
+        #popup_title_lbl{
+            font-size: 14px !important;
+            font-weight: 600 !important;
+        }
+       #embededVideo #modal{
+            margin-top: 0 !important;
+        }
     }
+
 
 
 
