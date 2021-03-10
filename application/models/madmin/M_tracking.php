@@ -153,4 +153,27 @@ class M_tracking extends CI_Model {
         }
     }
 
+    function getExportAllTracking() {
+        // $this->db->select('*,h.status as his_status');
+        $this->db->select("s.session_title");
+        $this->db->select("s.sessions_id");
+        $this->db->select("CONCAT(first_name, ' ', last_name) AS name");
+        $this->db->select('phone,company_name,city,ip_address,operating_system,computer_type,resolution,start_date_time,end_date_time');
+        $this->db->from('view_sessions_history h');
+        $this->db->join('customer_master c', 'h.cust_id=c.cust_id');
+        $this->db->join('sessions s', 'h.sessions_id=s.sessions_id');
+
+        $this->db->order_by('s.sessions_date','asc');
+        $this->db->order_by('s.time_slot','asc');
+        $this->db->order_by("c.first_name", "asc");
+
+        $result = $this->db->get();
+        // print_r($result->result_array());exit;
+        if ($result->num_rows() > 0) {
+            return $result;
+        } else {
+            return '';
+        }
+    }
+
 }
